@@ -1,0 +1,14 @@
+vendor
+composer.phar
+composer.lock
+phpunit.phar
+phpunit.log
+tests/report
+.DS_Store
+.php_cs.cache
+.hg
+.vscode
+tmp
+clover.xml
+coverage.xml
+.phpunit.result.cache

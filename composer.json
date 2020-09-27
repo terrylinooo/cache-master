@@ -1,0 +1,17 @@
+{
+    "name": "terrylinooo/cache-master",
+    "description": "Cache Master is an extremely light-weight and high-performace cache plugin that speeds up your WordPress sites on the fly.",
+    "keywords": ["wordpress-plugin", "wordpress-cache", "cache-plugin"],
+    "homepage": "https://github.com/terrylinooo/cache-master",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Terry Lin",
+            "email": "contact@terryl.in",
+            "homepage": "https://terryl.in/zh/"
+        }
+    ],
+    "require": {
+        "shieldon/simple-cache": "^1.0"
+    }
+}
