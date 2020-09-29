@@ -28,7 +28,7 @@ Before you install and use this plugin, please read the following notices carefu
 
 1. Upload the plugin files to the `/wp-content/plugins/cache-master` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Go to the Mynote Admin menu in Plugins and set your options.
+3. Go to the Cache Master menu in Plugins and set your options.
 
 == Features ==
 
@@ -37,8 +37,8 @@ Before you install and use this plugin, please read the following notices carefu
 
 == Copyright ==
 
-Mynote Admin, Copyright 2020 TerryL.in
-Mynote Admin is distributed under the terms of the GNU GPL
+Cache Master, Copyright 2020 TerryL.in
+Cache Master is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

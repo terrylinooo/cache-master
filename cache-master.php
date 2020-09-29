@@ -72,6 +72,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 		register_activation_hook( __FILE__, 'scm_activation' );
 		register_uninstall_hook( __FILE__, 'scm_uninstall' );
+
 		scm_load_textdomain();
 
 		if ( is_admin() ) {
