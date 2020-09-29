@@ -19,30 +19,6 @@ function scm_load_textdomain() {
 }
 
 /**
- * Load view files.
- *
- * @param string $template_path The specific template's path.
- * @param array  $data          Data is being passed to.
- * @return string
- */
-function scm_load_view( $template_path, $data = array() ) {
-	$view_file_path = SCM_PLUGIN_DIR . 'inc/views/' . $template_path . '.php';
-
-	if ( ! empty( $data ) ) {
-		extract( $data );
-	}
-
-	if ( file_exists( $view_file_path ) ) {
-		ob_start();
-		require $view_file_path;
-		$result = ob_get_contents();
-		ob_end_clean();
-		return $result;
-	}
-	return null;
-}
-
-/**
  * Get driver hash.
  *
  * @return string
@@ -197,33 +173,33 @@ function scm_test_driver( $type = '' ) {
 	} elseif ( 'memcache' === $type ) {
 		if ( extension_loaded( 'memcache' ) ) {
 			try {
-                $memcache = new \Memcache();
-                $memcache->addServer(
+				$memcache = new \Memcache();
+				$memcache->addServer(
 					'127.0.0.1',
 					11211,
-                    true,
-                    1
-                );
+					true,
+					1
+				);
 				return true;
-            } catch ( \Exception $e ) {
-                
-            }
+			} catch ( \Exception $e ) {
+				
+			}
 		}
 
 	} elseif ( 'memcached' === $type ) {
 		if (extension_loaded('memcached')) {
 			try {
-                $memcached = new \Memcached();
-                $memcached->addServer(
+				$memcached = new \Memcached();
+				$memcached->addServer(
 					'127.0.0.1',
 					11211,
-                    true,
-                    1
-                );
+					true,
+					1
+				);
 				return true;
-            } catch ( \Exception $e ) {
-                
-            }
+			} catch ( \Exception $e ) {
+				
+			}
 		}
 
 	} elseif ( 'wincache' === $type ) {

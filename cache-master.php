@@ -53,8 +53,6 @@ define( 'SCM_PLUGIN_TEXT_DOMAIN', 'cache-master' );
 /**
  * Start to run SCM plugin cores.
  */
-register_activation_hook( __FILE__, 'scm_activation' );
-register_uninstall_hook( __FILE__, 'scm_uninstall' );
 
 // Support WordPress version 4.7 and below.
 if ( ! function_exists( 'wp_doing_ajax' ) ) {
@@ -69,9 +67,11 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	// No need to load Cache Master's files when AJAX calls.
 	if ( ! wp_doing_ajax() ) {
 
-		require_once SCM_PLUGIN_DIR . 'vendor/autoload.php';
 		require_once SCM_PLUGIN_DIR . 'inc/helpers.php';
+		require_once SCM_PLUGIN_DIR . 'vendor/autoload.php';
 
+		register_activation_hook( __FILE__, 'scm_activation' );
+		register_uninstall_hook( __FILE__, 'scm_uninstall' );
 		scm_load_textdomain();
 
 		if ( is_admin() ) {
@@ -86,15 +86,4 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			$cm->init();
 		}
 	}
-
-} else {
-	/**
-	 * Prompt a warning message while PHP version does not meet the minimum requirement.
-	 * And, nothing to do.
-	 */
-	function scm_plugin_warning() {
-		echo scm_load_view( 'message/php-version-warning' );
-	}
-
-	add_action( 'admin_notices', 'scm_plugin_warning' );
 }

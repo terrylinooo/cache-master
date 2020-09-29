@@ -91,3 +91,22 @@ function scm_setup_security_files() {
 		}
 	}
 }
+
+/**
+ * Only use on testing.
+ *
+ * @return void
+ */
+
+/*
+function scm_deactivation() {
+	delete_option( 'scm_option_driver' );
+	delete_option( 'scm_option_ttl' );
+	delete_option( 'scm_option_post_types' );
+	delete_option( 'scm_option_uninstall' );
+	delete_option( 'scm_last_reset_time' );
+	delete_option( 'scm_version' );
+	delete_option( 'scm_dir_hash' );
+	delete_option( 'scm_blog_id' );
+}
+*/
