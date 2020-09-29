@@ -57,10 +57,18 @@ class Cache_Master {
      */
     public function get_post_data() {
 
-        // Only cache for homepage, posts and pages.
-        if ( is_home() ) {
+        $post_types = get_option( 'scm_option_post_types' );
+
+        // Home page.
+        if ( 'yes' === $post_types['home'] && is_home() ) {
             $this->is_cache = true;
-        } elseif ( is_single() || is_page() ) {
+        
+        // Post type: post
+        } elseif ( 'yes' === $post_types['post'] && is_single() ) {
+            $this->is_cache = true;
+
+        // Post type: page
+        } elseif ( 'yes' === $post_types['page'] && is_page() ) {
             $this->is_cache = true;
         }
 

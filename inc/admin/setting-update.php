@@ -9,7 +9,13 @@
  */
 
 add_action( 'update_option_scm_option_driver', 'scm_update_scm_option_driver' );
+add_action( 'update_option_scm_option_post_types', 'scm_update_scm_option_post_types' );
 
+/**
+ * Rebuild data schema.
+ *
+ * @return void
+ */
 function scm_update_scm_option_driver() {
     $driver_type = get_option( 'scm_option_driver' );
 
@@ -22,4 +28,15 @@ function scm_update_scm_option_driver() {
 
     $driver = scm_driver_factory( $driver_type );
     $driver->rebuild();
+}
+
+/**
+ * Clear all caches.
+ *
+ * @return void
+ */
+function scm_update_scm_option_post_types() {
+    $driver_type = get_option( 'scm_option_driver' );
+    $driver = scm_driver_factory( $driver_type );
+    $driver->clear();
 }

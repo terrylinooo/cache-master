@@ -41,7 +41,9 @@ function scm_options_page() {
 			<small style="font-size: 12px;">
 				<a href="https://github.com/terrylinooo/cache-master" target="_blank" style="text-decoration: none"><?php echo SCM_PLUGIN_VERSION; ?></a>
 				by <a href="https://github.com/terrylinooo" target="_blank" style="text-decoration: none">TerryL</a>
-
+			</small>
+			<small style="font-size: 12px; float: right; border: 1px #dddddd solid; padding: 3px 5px; margin-top: 3px; background-color: #ffffff;">
+				<a href="https://github.com/terrylinooo/simple-cache" target="_blank" style="text-decoration: none">Core <?php echo SCM_PLUGIN_CORE_VERSION; ?></a> 
 			</small>
 		</h1>
 	   <hr />
@@ -52,5 +54,6 @@ function scm_options_page() {
 		   <?php submit_button(); ?>
 	   </form>
    </div>
+
    <?php
 }

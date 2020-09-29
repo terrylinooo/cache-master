@@ -18,6 +18,14 @@ function scm_activation() {
 	add_option( 'scm_option_ttl', '86400' );
 	add_option( 'scm_option_uninstall', 'yes' );
 
+	$post_types = array(
+		'home' => 'yes',
+		'post' => 'yes',
+		'page' => 'yes',
+	);
+
+	add_option( 'scm_option_post_types', $post_types );
+
 	scm_setup_security_files();
 }
 
@@ -32,6 +40,7 @@ function scm_uninstall() {
 	if ( 'yes' === $option_uninstall ) {
 		delete_option( 'scm_option_driver' );
 		delete_option( 'scm_option_ttl' );
+		delete_option( 'scm_option_post_types' );
 		delete_option( 'scm_option_uninstall' );
 	}
 	delete_option( 'scm_last_reset_time' );

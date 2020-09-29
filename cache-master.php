@@ -47,6 +47,7 @@ define( 'SCM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SCM_PLUGIN_PATH', __FILE__ );
 define( 'SCM_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 define( 'SCM_PLUGIN_VERSION', '1.0.0' );
+define( 'SCM_PLUGIN_CORE_VERSION', '1.1.0' );
 define( 'SCM_PLUGIN_TEXT_DOMAIN', 'cache-master' );
 
 /**
