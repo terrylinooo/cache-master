@@ -1,0 +1,52 @@
+sudo: required
+dist: trusty
+
+language: php
+
+branches:
+  only:
+    - master
+  except:
+    - development
+
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+
+services:
+  - mysql
+  - redis
+  - memcached
+
+addons:
+  mariadb: '10.0'
+  
+before_script:
+  - composer self-update
+  - composer install --no-interaction --prefer-source --dev
+  # Create DB for testing.
+  - mysql -u root -e 'CREATE DATABASE shieldon_unittest;'
+  - mysql -u root -e "CREATE USER 'shieldon'@'localhost' IDENTIFIED BY 'taiwan';"
+  - mysql -u root -e "GRANT ALL ON shieldon_unittest.* TO 'shieldon'@'localhost';"
+  # Install PHP PECL extensions.
+  - pecl channel-update pecl.php.net
+  - echo yes | pecl install -f apcu
+  - echo yes | pecl install -f apcu_bc
+  - echo yes | pecl install -f memcache
+  - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # Print php.ini for debugging purpose.
+  - cat ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # Change the apc.so position to fix issues.
+  - sudo sed -i '/apc.so/d' ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - sudo sed -i '/apcu.so/d' ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo "extension = apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo "extension = apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # Enable APC in CLI environment.
+  - echo "apc.enable_cli = On" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
+script: composer test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

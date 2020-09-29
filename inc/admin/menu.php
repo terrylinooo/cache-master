@@ -35,6 +35,7 @@ function scm_option() {
  */
 function scm_options_page() {
 	?>
+
    <div class="wrap">
 	   <h1>Cache Master 
 			<small style="font-size: 12px;">

@@ -14,6 +14,10 @@ namespace Shieldon\SimpleCache;
 
 use Psr\SimpleCache\CacheInterface;
 use Shieldon\SimpleCache\Exception\CacheArgumentException;
+use function file_exists;
+use function is_string;
+use function strtolower;
+use function ucfirst;
 
 /**
  * The base Cache Adapter class.
@@ -119,5 +123,20 @@ class Cache
     public function deleteMultiple($keys)
     {
         return $this->driver->deleteMultiple($keys);
+    }
+
+    /**
+     * Create or rebuid the data schema.
+     * This method is avaialbe for Mysql and Sqlite drivers.
+     *
+     * @return bool
+     */
+    public function rebuild(): bool
+    {
+        if (method_exists($this->driver, 'rebuild')) {
+            return $this->driver->rebuild();
+        }
+
+        return false;
     }
 }

@@ -17,6 +17,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
+ * Cache Master plugin uses "scm" as the prefix on its functions.
+ * Cache Master plugin uses "SCM" as the prefix on its constants.
+ */
+
+/**
  * CONSTANTS - SCM stands for Shieldon Cache Master ^_^
  * 
  * SCM_PLUGIN_NAME          : Plugin's name.
@@ -37,6 +42,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'SCM_PLUGIN_NAME', plugin_basename( __FILE__ ) );
 define( 'SCM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'SCM_PLUGIN_REGISTER_FILE', plugin_dir_path( __FILE__ ) . 'inc/admin/register.php');
 define( 'SCM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SCM_PLUGIN_PATH', __FILE__ );
 define( 'SCM_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
@@ -46,6 +52,8 @@ define( 'SCM_PLUGIN_TEXT_DOMAIN', 'cache-master' );
 /**
  * Start to run SCM plugin cores.
  */
+register_activation_hook( __FILE__, 'scm_activation' );
+register_uninstall_hook( __FILE__, 'scm_uninstall' );
 
 // Support WordPress version 4.7 and below.
 if ( ! function_exists( 'wp_doing_ajax' ) ) {
@@ -57,17 +65,24 @@ if ( ! function_exists( 'wp_doing_ajax' ) ) {
 // The minimum supported version of PHP.
 if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
+	// No need to load Cache Master's files when AJAX calls.
 	if ( ! wp_doing_ajax() ) {
 
-		// PHP composer autoloader.
 		require_once SCM_PLUGIN_DIR . 'vendor/autoload.php';
+		require_once SCM_PLUGIN_DIR . 'inc/helpers.php';
+
+		scm_load_textdomain();
 
 		if ( is_admin() ) {
 			require_once SCM_PLUGIN_DIR . 'inc/admin/register.php';
 			require_once SCM_PLUGIN_DIR . 'inc/admin/setting.php';
 			require_once SCM_PLUGIN_DIR . 'inc/admin/menu.php';
+			require_once SCM_PLUGIN_DIR . 'inc/admin/setting-update.php';
 		} else {
-			// Todo
+			require_once SCM_PLUGIN_DIR . 'inc/autoload.php';
+
+			$cm = new Cache_Master();
+			$cm->init();
 		}
 	}
 
@@ -77,14 +92,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	 * And, nothing to do.
 	 */
 	function scm_plugin_warning() {
-		?>
-			<div class="notice notice-error is-dismissible">
-				<p>
-					<?php printf( __( 'The minimum required PHP version for Cache Master Plugin is PHP <strong>7.1.0</strong>, and yours is <strong>%1s</strong>.', 'cache-master' ), phpversion() ) ?> <br>
-					<?php echo __( 'Please remove WP Githuber MD or upgrade your PHP version.', 'cache-master' ); ?>
-				</p>
-			</div>
-		<?php
+		echo scm_load_view( 'message/php-version-warning' );
 	}
 
 	add_action( 'admin_notices', 'scm_plugin_warning' );

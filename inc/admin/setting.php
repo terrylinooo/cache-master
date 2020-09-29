@@ -77,12 +77,22 @@ function scm_cb_driver() {
 		'sqlite'    => __( 'SQLite', 'cache-master' ),
 	);
 
+	$driver_status = array();
+
+	foreach ( array_keys( $option_list ) as $v ) {
+		$driver_status[ $v ] = scm_test_driver( $v );
+	}
+
 	?>
 		<div>
 			<?php foreach ( $option_list as $k => $v ) : ?>
 				<div>
-					<input type="radio" name="scm_option_driver" id="scm-cache-driver-1" value="<?php echo $k; ?>" <?php checked( $option_driver_type, $k ); ?>>
-					<label for="scm-cache-driver-1">
+					<?php if ( $driver_status[ $k ] ) : ?>
+						<input type="radio" name="scm_option_driver" id="scm-cache-driver-<?php echo $k; ?>" value="<?php echo $k; ?>" <?php checked( $option_driver_type, $k ); ?>>
+					<?php else: ?>
+						<input type="radio" name="scm_option_driver" id="scm-cache-driver-<?php echo $k; ?>" value="<?php echo $k; ?>" disabled>
+					<?php endif; ?>
+					<label for="scm-cache-driver-<?php echo $k; ?>">
 						<?php echo $v; ?>
 						<?php if ( 'file' === $k ) : ?>
 							(<?php echo __( 'default', 'cache-master' ); ?>)

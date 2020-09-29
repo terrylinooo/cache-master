@@ -13,13 +13,16 @@ tools:
 build:
   environment:
     php:
-      version: 7.3.0
+      version: 7.2.5
       pecl_extensions:
         - redis
-        - memcached
         - memcache
-        - apc
-        - apcu
+        - memcached
+        - APCu
+        - apcu_bc
+        - xdebug
+      ini:
+        'apc.enable_cli': 'On'
     mysql: true
     redis: true
     memcached: true

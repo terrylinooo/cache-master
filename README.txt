@@ -13,6 +13,17 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 Cache Master is an extremely light-weight and high-performace cache plugin that speeds up your WordPress sites on the fly. The core is driven by Shieldon [Simple Cache](https://github.com/terrylinooo/simple-cache), a PSR-16 simple cache library.
 
+Notice: 
+
+Before you install and use this plugin, please read the following notices carefully.
+
+- This plugin only caches homepage, posts and pages.
+- Logged-in users will not trigger the caching processes.
+- The cached data outputs at a very eary stage of WordPress, the `init` action hook, so that the admin bar will disappear when browsing homepage, posts and pages, even you are logged in.
+- This plugin is designed for performance, not for convenience.
+- A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching.
+- The cache of a post (page) will be deleted once the post (page) is updated.
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/cache-master` directory, or install the plugin through the WordPress plugins screen directly.
