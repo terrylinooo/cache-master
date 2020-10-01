@@ -197,7 +197,6 @@ function scm_test_driver( $type = '' ) {
 				$memcached->addServer(
 					'127.0.0.1',
 					11211,
-					true,
 					1
 				);
 				return true;

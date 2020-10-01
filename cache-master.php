@@ -71,10 +71,18 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		scm_load_textdomain();
 
 		if ( is_admin() ) {
-			require_once SCM_PLUGIN_DIR . 'inc/admin/register.php';
-			require_once SCM_PLUGIN_DIR . 'inc/admin/setting.php';
-			require_once SCM_PLUGIN_DIR . 'inc/admin/menu.php';
-			require_once SCM_PLUGIN_DIR . 'inc/admin/setting-update.php';
+			$required_files = array(
+				'register',       // Event: activate and uninstall plugin.
+				'setting',        // Plugin settings.
+				'menu',           // Display menu link and render setting page.
+				'setting-update', // Event: update settings.
+				'post-update',    // Event: update posts.
+			);
+
+			foreach ( $required_files as $file ) {
+				require_once SCM_PLUGIN_DIR . 'inc/admin/' . $file . '.php';
+			}
+
 		} else {
 			require_once SCM_PLUGIN_DIR . 'inc/autoload.php';
 
