@@ -83,3 +83,10 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		}
 	}
 }
+
+/**
+ * Cache Master is open sourced at:
+ * https://github.com/terrylinooo/cache-master
+ * 
+ * If you have found any bug or have any suggestion, please let me know.
+ */
