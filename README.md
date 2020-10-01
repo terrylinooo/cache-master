@@ -5,8 +5,8 @@ Cache Master is an extremely light-weight and high-performace cache plugin that 
 ## Requirement
 
 * PHP version > 7.1.0
-* WordPress version > 4.0
-* Tested up to 5.4.0
+* WordPress version > 4.7
+* Tested up to 5.5.1
 
 ## Download
 
