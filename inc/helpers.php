@@ -9,6 +9,10 @@
  * @copyright 2020 Terry Lin
  */
 
+if ( ! defined( 'SCM_INC' ) ) {
+	die;
+}
+
  /**
  * Load plugin textdomain.
  *

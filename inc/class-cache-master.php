@@ -10,6 +10,10 @@
  * @version 1.1.0
  */
 
+if ( ! defined( 'SCM_INC' ) ) {
+	die;
+}
+
 class Cache_Master {
 
 	/**

@@ -2,9 +2,9 @@
 
 Contributors: terrylin
 Tags: cache
-Requires at least: 4.0
-Tested up to: 5.3.0
-Stable tag: 1.1.0
+Requires at least: 4.7
+Tested up to: 5.5.1
+Stable tag: 1.0.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -19,10 +19,9 @@ Before you install and use this plugin, please read the following notices carefu
 
 - This plugin only caches homepage, posts and pages.
 - Logged-in users will not trigger the caching processes.
-- The cached data outputs at a very eary stage of WordPress, the `init` action hook, so that the admin bar will disappear when browsing homepage, posts and pages, even you are logged in.
+- The cached data outputs at a very early stage of WordPress, the `init` action hook, so that the admin bar will disappear when browsing homepage, posts and pages, even you are logged in.
 - This plugin is designed for performance, not for convenience.
 - A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching.
-- The cache of a post (page) will be deleted once the post (page) is updated.
 
 == Installation ==
 

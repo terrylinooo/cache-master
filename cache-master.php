@@ -21,9 +21,11 @@ if ( ! defined( 'WPINC' ) ) {
  * Cache Master plugin uses "SCM" as the prefix on its constants.
  */
 
+define( 'SCM_INC', true );
+
 /**
  * CONSTANTS - SCM stands for Shieldon Cache Master ^_^
- * 
+ *
  * SCM_PLUGIN_NAME          : Plugin's name.
  * SCM_PLUGIN_DIR           : The absolute path of the SCM plugin directory.
  * SCM_PLUGIN_URL           : The URL of the SCM plugin directory.
@@ -53,13 +55,6 @@ define( 'SCM_PLUGIN_TEXT_DOMAIN', 'cache-master' );
 /**
  * Start to run SCM plugin cores.
  */
-
-// Support WordPress version 4.7 and below.
-if ( ! function_exists( 'wp_doing_ajax' ) ) {
-	function wp_doing_ajax() {
-		return false;
-	}
-}
 
 // The minimum supported version of PHP.
 if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {

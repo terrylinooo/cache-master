@@ -8,6 +8,10 @@
  * @version 1.0.0
  */
 
+if ( ! defined( 'SCM_INC' ) ) {
+	die;
+}
+
 add_action( 'update_option_scm_option_driver', 'scm_update_scm_option_driver' );
 add_action( 'update_option_scm_option_post_types', 'scm_update_scm_option_post_types' );
 

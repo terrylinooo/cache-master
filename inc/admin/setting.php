@@ -8,6 +8,10 @@
  * @version 1.0.0
  */
 
+if ( ! defined( 'SCM_INC' ) ) {
+	die;
+}
+
 add_action( 'admin_init', 'scm_settings' );
 
  /**
