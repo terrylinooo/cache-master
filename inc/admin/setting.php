@@ -73,7 +73,7 @@ function scm_settings() {
 
 	add_settings_field(
 		'scm_option_id_4',
-		__( 'Supported Post Types', 'cache-master' ),
+		__( 'Post Types', 'cache-master' ),
 		'scm_cb_post_types',
 		'scm_setting_page_1',
 		'scm_setting_section_2'
@@ -208,6 +208,6 @@ function scm_cb_post_types() {
 			<?php endforeach; ?>
 		</div>
 		<p><em><?php echo __( 'What post types do you like to cache?', 'cache-master' ); ?></em></p>
-		<p><em><?php echo __( 'Once you change this option, all cache will be clear.', 'cache-master' ); ?></em></p>
+		<p><em><?php echo __( 'Once you change this option, all cache data will be cleared.', 'cache-master' ); ?></em></p>
 	<?php
 }
