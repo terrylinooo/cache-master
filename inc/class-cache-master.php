@@ -95,8 +95,7 @@ class Cache_Master {
 		$cached_content = $this->driver->get( $this->cache_key );
 
 		if ( ! empty( $cached_content ) ) {
-			$debug_message = '<!-- This page is cached by Cache Master plugin. //-->';
-			echo $cached_content . $debug_message;
+			echo $cached_content;
 			exit;
 		}
   
@@ -111,12 +110,20 @@ class Cache_Master {
 	public function ob_stop() {
 
 		if ( $this->is_cache ) {
+			$ttl = (int) get_option( 'scm_option_ttl' );
+			$expires = time() + $ttl;
+
+			$debug_message = '<!--' . "\n";
+			$debug_message .= '  This page is cached by Cache Master plugin.' . "\n";
+			$debug_message .= '  Time to cache: ' . date( 'Y-m-d H:i:s' ) . "\n";
+			$debug_message .= '  Expires at: ' . date( 'Y-m-d H:i:s', $expires ) . "\n";
+			$debug_message .= '//-->';
+	
 			$content = ob_get_contents();
+			$content .= $debug_message;
 			ob_end_flush();
 
-			$ttl = (int) get_option( 'scm_option_ttl' );
-
-			$this->driver->set( $this->cache_key,  $content, $ttl);
+			$this->driver->set( $this->cache_key,  $content, $ttl );
 		}
 	}
 }
