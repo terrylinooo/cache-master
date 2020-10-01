@@ -21,6 +21,7 @@ add_action( 'admin_init', 'scm_settings' );
   */
 function scm_settings() {
 
+	register_setting( 'scm_setting_group_1', 'scm_option_caching_status' );
 	register_setting( 'scm_setting_group_1', 'scm_option_driver' );
 	register_setting( 'scm_setting_group_1', 'scm_option_ttl' );
 	register_setting( 'scm_setting_group_1', 'scm_option_post_types' );
@@ -45,6 +46,14 @@ function scm_settings() {
 		__( 'Others', 'cache-master' ),
 		'scm_cb_setting_section',
 		'scm_setting_page_1'
+	);
+
+	add_settings_field(
+		'scm_option_id_5',
+		__( 'Caching Status', 'cache-master' ),
+		'scm_cb_caching_status',
+		'scm_setting_page_1',
+		'scm_setting_section_1'
 	);
 
 	add_settings_field(
@@ -142,7 +151,19 @@ function scm_cb_driver() {
  * @return void
  */
 function scm_cb_ttl() {
-	$option_ttl = get_option( 'scm_option_ttl', 'yes' );
+	$option_ttl = (int) get_option( 'scm_option_ttl', '86400' );
+
+	// 5 minutes.
+	if ( $option_ttl < 300 ) {
+		$option_ttl = '300';
+		update_option( 'scm_option_ttl', $option_ttl );
+	}
+
+	// 24 hours.
+	if ( $option_ttl > 86400 ) {
+		$option_ttl = '86400';
+		update_option( 'scm_option_ttl', $option_ttl );
+	}
 	?>
 		<div>
 			<div>
@@ -207,7 +228,35 @@ function scm_cb_post_types() {
 			</div>
 			<?php endforeach; ?>
 		</div>
-		<p><em><?php echo __( 'What post types do you like to cache?', 'cache-master' ); ?></em></p>
+		<p><em><?php echo __( 'What post type do you like to cache?', 'cache-master' ); ?></em></p>
 		<p><em><?php echo __( 'Once you change this option, all cache data will be cleared.', 'cache-master' ); ?></em></p>
+	<?php
+}
+
+/**
+ * Setting block - Cacing status.
+ *
+ * @return void
+ */
+function scm_cb_caching_status() {
+	$option_caching_status = get_option( 'scm_option_caching_status', 'disable' );
+	?>
+		<div>
+			<div>
+				<input type="radio" name="scm_option_caching_status" id="cache-master-caching-status-enable" value="enable" 
+					<?php checked( $option_caching_status, 'enable' ); ?>>
+				<label for="cache-master-caching-status-enable">
+					<?php echo __( 'Enable', 'cache-master' ); ?><br />
+				<label>
+			</div>
+			<div>
+				<input type="radio" name="scm_option_caching_status" id="cache-master-caching-status-disable" value="disable" 
+					<?php checked( $option_caching_status, 'disable' ); ?>>
+				<label for="cache-master-caching-status-disable">
+					<?php echo __( 'Disable', 'cache-master' ); ?>
+				<label>
+			</div>	
+		</div>
+		<p><em><?php echo __( 'Once you make this option disable, Cache Master will stop working and all cache  will be cleared.', 'cache-master' ); ?></em></p>
 	<?php
 }

@@ -62,6 +62,12 @@ class Cache_Master {
 	public function get_post_data() {
 
 		$post_types = get_option( 'scm_option_post_types' );
+		$status = get_option( 'scm_option_caching_status' );
+
+		if ( 'enable' !== $status ) {
+			$this->is_cache = false;
+			return;
+		}
 
 		// Home page.
 		if ( 'yes' === $post_types['home'] && is_home() ) {

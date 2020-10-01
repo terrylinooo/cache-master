@@ -14,6 +14,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 
 add_action( 'update_option_scm_option_driver', 'scm_update_scm_option_driver' );
 add_action( 'update_option_scm_option_post_types', 'scm_update_scm_option_post_types' );
+add_action( 'update_option_scm_option_caching_status', 'scm_update_scm_option_post_types' );
 
 /**
  * Rebuild data schema.

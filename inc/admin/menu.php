@@ -13,6 +13,8 @@ if ( ! defined( 'SCM_INC' ) ) {
 }
 
 add_action( 'admin_menu', 'scm_option' );
+add_filter( 'plugin_action_links_' . SCM_PLUGIN_NAME, 'scm_plugin_action_links', 10, 5 );
+add_filter( 'plugin_row_meta', 'scm_plugin_extend_links', 10, 2 );
 
 /**
  * Register the plugin setting page.
@@ -60,4 +62,43 @@ function scm_options_page() {
    </div>
 
    <?php
+}
+
+
+/**
+ * Filters the action links displayed for each plugin in the Network Admin Plugins list table.
+ *
+ * @param array  $links Original links.
+ * @param string $file  File position.
+ *
+ * @return array Combined links.
+ */
+function scm_plugin_action_links( $links, $file ) {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return $links;
+	}
+
+	if ( $file === SCM_PLUGIN_NAME ) {
+		$links[] = '<a href="' . admin_url( "options-general.php?page=" . SCM_PLUGIN_TEXT_DOMAIN ) . '">' . __( 'Settings', 'cache-master' ) . '</a>';
+		return $links;
+	}
+}
+
+/**
+ * Add links to plugin meta information on plugin list page.
+ *
+ * @param array  $links Original links.
+ * @param string $file  File position.
+ *
+ * @return array Combined links.
+ */
+function scm_plugin_extend_links( $links, $file ) {
+	if ( ! current_user_can( 'install_plugins' ) ) {
+		return $links;
+	}
+
+	if ( $file === SCM_PLUGIN_NAME ) {
+		$links[] = '<a href="https://github.com/terrylinooo/cache-master" target="_blank">' . __( 'Source code', 'cache-master' ) . '</a>';
+	}
+	return $links;
 }
