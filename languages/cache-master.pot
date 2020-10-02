@@ -1,0 +1,204 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Cache Master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-02 16:09+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.1; wp-5.5.1"
+
+#: inc/class-cache-master.php:158
+#, php-format
+msgid "Current memory usage: %s MB"
+msgstr ""
+
+#: inc/class-cache-master.php:167
+msgid "This page is cached by Cache Master plugin."
+msgstr ""
+
+#: inc/class-cache-master.php:168
+#, php-format
+msgid "Time to cache: %s"
+msgstr ""
+
+#: inc/class-cache-master.php:169
+#, php-format
+msgid "Expires at: %s"
+msgstr ""
+
+#: inc/class-cache-master.php:170
+#, php-format
+msgid "Memory usage before caching: %s MB"
+msgstr ""
+
+#. Name of the plugin
+#: inc/admin/menu.php:29 inc/admin/menu.php:30 inc/admin/post-update.php:51
+msgid "Cache Master"
+msgstr ""
+
+#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:80
+msgid "Settings"
+msgstr ""
+
+#: inc/admin/menu.php:99
+msgid "Source code"
+msgstr ""
+
+#: inc/admin/menu.php:149
+msgid "Cache Master supports only static URL structure."
+msgstr ""
+
+#: inc/admin/menu.php:150
+#, php-format
+msgid "You have to go to %s page and change the permalink settings."
+msgstr ""
+
+#: inc/admin/post-update.php:51
+msgid "Cache has been cleared."
+msgstr ""
+
+#: inc/admin/setting.php:32
+msgid "Driver"
+msgstr ""
+
+#: inc/admin/setting.php:39
+msgid "Preferences"
+msgstr ""
+
+#: inc/admin/setting.php:46
+msgid "Others"
+msgstr ""
+
+#: inc/admin/setting.php:53
+msgid "Caching Status"
+msgstr ""
+
+#: inc/admin/setting.php:61
+msgid "Cache Driver"
+msgstr ""
+
+#: inc/admin/setting.php:69
+msgid "Time to Live"
+msgstr ""
+
+#: inc/admin/setting.php:77
+msgid "Uninstall"
+msgstr ""
+
+#: inc/admin/setting.php:85
+msgid "Post Types"
+msgstr ""
+
+#: inc/admin/setting.php:105
+msgid "File"
+msgstr ""
+
+#: inc/admin/setting.php:106
+msgid "Redis"
+msgstr ""
+
+#: inc/admin/setting.php:107
+msgid "Memcache"
+msgstr ""
+
+#: inc/admin/setting.php:108
+msgid "Memcached"
+msgstr ""
+
+#: inc/admin/setting.php:109
+msgid "APC"
+msgstr ""
+
+#: inc/admin/setting.php:110
+msgid "APCu"
+msgstr ""
+
+#: inc/admin/setting.php:111
+msgid "WinCache"
+msgstr ""
+
+#: inc/admin/setting.php:112
+msgid "MySQL"
+msgstr ""
+
+#: inc/admin/setting.php:113
+msgid "SQLite"
+msgstr ""
+
+#: inc/admin/setting.php:136
+msgid "Choose a driver to cache your posts and pages."
+msgstr ""
+
+#: inc/admin/setting.php:188
+msgid "Please fill in a number between 300-86400. (in seconds)"
+msgstr ""
+
+#: inc/admin/setting.php:205
+msgid "Remove Cache Master generated data."
+msgstr ""
+
+#: inc/admin/setting.php:212
+msgid "Keep Cache Master generated data."
+msgstr ""
+
+#: inc/admin/setting.php:216
+msgid "This option only works when you uninstall this plugin."
+msgstr ""
+
+#: inc/admin/setting.php:229
+msgid "Home"
+msgstr ""
+
+#: inc/admin/setting.php:230
+msgid "Post"
+msgstr ""
+
+#: inc/admin/setting.php:231
+msgid "Page"
+msgstr ""
+
+#: inc/admin/setting.php:246
+msgid "What post type do you like to cache?"
+msgstr ""
+
+#: inc/admin/setting.php:247
+msgid "Once you change this option, all cache data will be cleared."
+msgstr ""
+
+#: inc/admin/setting.php:264
+msgid "Enable"
+msgstr ""
+
+#: inc/admin/setting.php:271
+msgid "Disable"
+msgstr ""
+
+#: inc/admin/setting.php:275
+msgid ""
+"Once you make this option disable, Cache Master will stop working and all "
+"cache  will be cleared."
+msgstr ""
+
+#. Description of the plugin
+msgid "A wordpress cache plugin."
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/terrylinooo/cache-master"
+msgstr ""
+
+#. Author of the plugin
+msgid "Terry Lin"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://terryl.in/"
+msgstr ""

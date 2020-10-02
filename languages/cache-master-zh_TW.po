@@ -1,0 +1,203 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cache Master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-02 16:09+0000\n"
+"PO-Revision-Date: 2020-10-02 16:23+0000\n"
+"Last-Translator: Terry Lin <contact@terryl.in>\n"
+"Language-Team: Chinese (Taiwan)\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.1; wp-5.5.1"
+
+#: inc/class-cache-master.php:158
+#, php-format
+msgid "Current memory usage: %s MB"
+msgstr "目前記憶體用量：%s MB"
+
+#: inc/class-cache-master.php:167
+msgid "This page is cached by Cache Master plugin."
+msgstr "此頁面由快取大師外掛進行快取。"
+
+#: inc/class-cache-master.php:168
+#, php-format
+msgid "Time to cache: %s"
+msgstr "快取的時間：%s"
+
+#: inc/class-cache-master.php:169
+#, php-format
+msgid "Expires at: %s"
+msgstr "過期於："
+
+#: inc/class-cache-master.php:170
+#, php-format
+msgid "Memory usage before caching: %s MB"
+msgstr "在進行快取前的記憶體用量：%s MB"
+
+#. Name of the plugin
+#: inc/admin/menu.php:29 inc/admin/menu.php:30 inc/admin/post-update.php:51
+msgid "Cache Master"
+msgstr "快取大師"
+
+#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:80
+msgid "Settings"
+msgstr "設定"
+
+#: inc/admin/menu.php:99
+msgid "Source code"
+msgstr "原始碼"
+
+#: inc/admin/menu.php:149
+msgid "Cache Master supports only static URL structure."
+msgstr "快取大師只支援靜態網址結構。"
+
+#: inc/admin/menu.php:150
+#, php-format
+msgid "You have to go to %s page and change the permalink settings."
+msgstr "你必須到 %s 頁面改變固定連結設定。"
+
+#: inc/admin/post-update.php:51
+msgid "Cache has been cleared."
+msgstr "快取已被清除。"
+
+#: inc/admin/setting.php:32
+msgid "Driver"
+msgstr "驅動程式"
+
+#: inc/admin/setting.php:39
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: inc/admin/setting.php:46
+msgid "Others"
+msgstr "其它"
+
+#: inc/admin/setting.php:53
+msgid "Caching Status"
+msgstr "快取運行狀態"
+
+#: inc/admin/setting.php:61
+msgid "Cache Driver"
+msgstr "快取驅動程式"
+
+#: inc/admin/setting.php:69
+msgid "Time to Live"
+msgstr "存活時間"
+
+#: inc/admin/setting.php:77
+msgid "Uninstall"
+msgstr "反安裝"
+
+#: inc/admin/setting.php:85
+msgid "Post Types"
+msgstr "文章類型"
+
+#: inc/admin/setting.php:105
+msgid "File"
+msgstr "檔案"
+
+#: inc/admin/setting.php:106
+msgid "Redis"
+msgstr "Redis"
+
+#: inc/admin/setting.php:107
+msgid "Memcache"
+msgstr "Memcache"
+
+#: inc/admin/setting.php:108
+msgid "Memcached"
+msgstr "Memcached"
+
+#: inc/admin/setting.php:109
+msgid "APC"
+msgstr "APC"
+
+#: inc/admin/setting.php:110
+msgid "APCu"
+msgstr "APCu"
+
+#: inc/admin/setting.php:111
+msgid "WinCache"
+msgstr "WinCache"
+
+#: inc/admin/setting.php:112
+msgid "MySQL"
+msgstr "MySQL"
+
+#: inc/admin/setting.php:113
+msgid "SQLite"
+msgstr "SQLite"
+
+#: inc/admin/setting.php:136
+msgid "Choose a driver to cache your posts and pages."
+msgstr "選擇驅動程式來快取你的文章和頁面。"
+
+#: inc/admin/setting.php:188
+msgid "Please fill in a number between 300-86400. (in seconds)"
+msgstr "請填入在 300 至 86400 之間的數字。（以秒計）"
+
+#: inc/admin/setting.php:205
+msgid "Remove Cache Master generated data."
+msgstr "移除快取大師產生的資料。"
+
+#: inc/admin/setting.php:212
+msgid "Keep Cache Master generated data."
+msgstr "保持快取大師產生的資料。"
+
+#: inc/admin/setting.php:216
+msgid "This option only works when you uninstall this plugin."
+msgstr "這個選項只在你反安裝這個外掛時運作。"
+
+#: inc/admin/setting.php:229
+msgid "Home"
+msgstr "首頁"
+
+#: inc/admin/setting.php:230
+msgid "Post"
+msgstr "文章"
+
+#: inc/admin/setting.php:231
+msgid "Page"
+msgstr "頁面"
+
+#: inc/admin/setting.php:246
+msgid "What post type do you like to cache?"
+msgstr "你想快取何種文章類型？"
+
+#: inc/admin/setting.php:247
+msgid "Once you change this option, all cache data will be cleared."
+msgstr "每當你變更這個選項，所有快取資料將被清除。"
+
+#: inc/admin/setting.php:264
+msgid "Enable"
+msgstr "啟用"
+
+#: inc/admin/setting.php:271
+msgid "Disable"
+msgstr "停用"
+
+#: inc/admin/setting.php:275
+msgid ""
+"Once you make this option disable, Cache Master will stop working and all "
+"cache  will be cleared."
+msgstr "每當你使這個選項停用，快取大師會停止運作，所有快取將被清除。"
+
+#. Description of the plugin
+msgid "A wordpress cache plugin."
+msgstr "WordPress 快取外掛"
+
+#. URI of the plugin
+msgid "https://github.com/terrylinooo/cache-master"
+msgstr "https://github.com/terrylinooo/cache-master"
+
+#. Author of the plugin
+msgid "Terry Lin"
+msgstr "Terry Lin"
+
+#. Author URI of the plugin
+msgid "https://terryl.in/"
+msgstr "https://terryl.in/"
