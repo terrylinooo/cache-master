@@ -120,28 +120,43 @@ function scm_cb_driver() {
 	}
 
 	?>
+
+	<div>
 		<div>
-			<?php foreach ( $option_list as $k => $v ) : ?>
-				<div>
+			<select name="scm_option_driver" class="regular">
+				<?php foreach ( $option_list as $k => $v ) : ?>
 					<?php if ( $driver_status[ $k ] ) : ?>
-						<input type="radio" name="scm_option_driver" id="scm-cache-driver-<?php echo $k; ?>" value="<?php echo $k; ?>" <?php checked( $option_driver_type, $k ); ?>>
+						<option value="<?php echo $k; ?>" <?php selected( $option_driver_type, $k ); ?>><?php echo  $v; ?></option>
 					<?php else: ?>
-						<input type="radio" name="scm_option_driver" id="scm-cache-driver-<?php echo $k; ?>" value="<?php echo $k; ?>" disabled>
+						<option value="<?php echo $k; ?>" disabled><?php echo  $v; ?></option>
 					<?php endif; ?>
-					<label for="scm-cache-driver-<?php echo $k; ?>">
-						<?php if ( $driver_status[ $k ] ) : ?>
-							<?php echo $v; ?>
-						<?php else: ?>
-							<span style="color: #aaa"><?php echo $v; ?></span>
-						<?php endif; ?>
-						<?php if ( 'file' === $k ) : ?>
-							(<?php echo __( 'default', 'cache-master' ); ?>)
-						<?php endif; ?>
-					<label>
-				</div>
-			<?php endforeach; ?>
-			<p><em><?php echo __( 'Choose a driver to cache your posts and pages.', 'cache-master' ); ?></em></p>
+				<?php endforeach; ?>
+			</select>
 		</div>
+		<p><em><?php echo __( 'Choose a driver to cache your posts and pages.', 'cache-master' ); ?></em></p>
+	</div>
+	<div>
+		<div class="driver-status-container">
+		<?php foreach ( $option_list as $k => $v ) : ?>
+
+			<div class="driver-status-box">
+				<table style="border: 0; width: 100%">
+					<tr>
+						<td style="width: 80%"><?php echo $v; ?></td>
+						<td style="width: 20%">
+							<?php if ( $driver_status[ $k ] ) : ?>
+								<span class="dashicons dashicons-marker" style="color: #23b900"></span>
+							<?php else : ?>
+								<span class="dashicons dashicons-marker" style="color: #c60900"></span>
+
+							<?php endif; ?>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<?php endforeach; ?>
+		</div>
+	</div>
 	<?php
 }
 

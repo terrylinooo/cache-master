@@ -1,0 +1,38 @@
+.cache-master-info-bar {
+  clear: both;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cache-master-info-bar .version-info {
+  margin-right: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0);
+}
+.cache-master-info-bar .cache-master-logo {
+  height: 60px;
+}
+.cache-master-info-bar a {
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.scm-wrap h2 {
+  border-bottom: 1px #dddddd solid;
+  font-size: 19px;
+  padding: 10px 0;
+}
+.scm-wrap .driver-status-container {
+  width: 100%;
+  max-width: 750px;
+  margin: 20px 0;
+}
+.scm-wrap .driver-status-box {
+  border: 1px #dddddd solid;
+  margin: 2px;
+  background-color: #ffffff;
+  padding: 10px;
+  display: inline-block;
+  width: 150px;
+}

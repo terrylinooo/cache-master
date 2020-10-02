@@ -19,7 +19,7 @@ Before you install and use this plugin, please read the following notices carefu
 
 - This plugin only caches homepage, posts and pages.
 - Logged-in users will not trigger the caching processes.
-- The cached data outputs at a very early stage of WordPress, the `init` action hook, so that the admin bar will disappear when browsing homepage, posts and pages, even you are logged in.
+- The cached data outputs at a very early stage of WordPress, the `muplugins_loaded` action hook, so that the admin bar will disappear when browsing homepage, posts and pages, even you are logged in.
 - This plugin is designed for performance, not for convenience.
 - A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching.
 
@@ -51,6 +51,8 @@ GNU General Public License for more details.
 
 == Changelog ==
 
-= 1.0.0
+= 1.0.1
 
 * First release.
+
+

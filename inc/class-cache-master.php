@@ -44,12 +44,12 @@ class Cache_Master {
 		$this->driver = scm_driver_factory( get_option( 'scm_option_driver' ) );
 		$this->cache_key = md5( $_SERVER['REQUEST_URI'] );
 	}
-	
+
 	/**
 	 * Initialize everything the SCM plugin needs.
 	 */
 	public function init() {
-		add_action( 'init', array( $this, 'ob_start'), 0 );
+		add_action( 'plugins_loaded', array( $this, 'ob_start'), 5 );
 		add_action( 'shutdown', array( $this, 'ob_stop'), 0 );
 		add_action( 'pre_get_posts', array( $this, 'get_post_data' ) );
 	}
@@ -60,6 +60,11 @@ class Cache_Master {
 	 * @return void
 	 */
 	public function get_post_data() {
+
+		// Logged-in users will not trigger the cache.
+		if ( is_user_logged_in() ) {
+			return;
+		}
 
 		$post_types = get_option( 'scm_option_post_types' );
 		$status = get_option( 'scm_option_caching_status' );
@@ -72,7 +77,7 @@ class Cache_Master {
 		// Home page.
 		if ( 'yes' === $post_types['home'] && is_home() ) {
 			$this->is_cache = true;
-		
+
 		// Post type: post
 		} elseif ( 'yes' === $post_types['post'] && is_single() ) {
 			$this->is_cache = true;
@@ -86,21 +91,24 @@ class Cache_Master {
 		if ( is_404() ) {
 			$this->is_cache = false;
 		}
-
-		if ( is_user_logged_in() ) {
-			$this->is_cache = false;
-		}
 	}
-	
+
 	/**
 	 * Start output buffering.
 	 *
 	 * @return void
 	 */
 	public function ob_start() {
+
+		// Logged-in users will not trigger the cache.
+		if ( is_user_logged_in() ) {
+			return;
+		}
+
 		$cached_content = $this->driver->get( $this->cache_key );
 
 		if ( ! empty( $cached_content ) ) {
+			$cached_content .= $this->debug_message( 'ob_start' );
 			echo $cached_content;
 			exit;
 		}
@@ -115,21 +123,54 @@ class Cache_Master {
 	 */
 	public function ob_stop() {
 
+		// Logged-in users will not trigger the cache.
+		if ( is_user_logged_in() ) {
+			return;
+		}
+
 		if ( $this->is_cache ) {
 			$ttl = (int) get_option( 'scm_option_ttl' );
-			$expires = time() + $ttl;
 
-			$debug_message = '<!--' . "\n";
-			$debug_message .= '  This page is cached by Cache Master plugin.' . "\n";
-			$debug_message .= '  Time to cache: ' . date( 'Y-m-d H:i:s' ) . "\n";
-			$debug_message .= '  Expires at: ' . date( 'Y-m-d H:i:s', $expires ) . "\n";
-			$debug_message .= '//-->';
-	
 			$content = ob_get_contents();
-			$content .= $debug_message;
-			ob_end_flush();
+			$content .= $this->debug_message( 'ob_stop' );
 
 			$this->driver->set( $this->cache_key,  $content, $ttl );
 		}
+	}
+
+	/**
+	 * Print debug message.
+	 *
+	 * @param string $position The position of the hook lifecycle.
+	 *
+	 * @return string
+	 */
+	private function debug_message( $position )
+	{
+		$debug_message = '';
+
+		$memory_usage = memory_get_usage();
+		$memory_usage = $memory_usage / (1024 * 1024);
+		$memory_usage = round($memory_usage, 4);
+
+		switch ( $position ) {
+			case 'ob_start':
+				$debug_message .= sprintf( __( 'Current memory usage: %s MB', 'cache-master' ), $memory_usage );
+				$debug_message .= "\n\n//-->";
+				break;
+
+			case 'ob_stop':
+				$ttl     = (int) get_option( 'scm_option_ttl' );
+				$expires = time() + $ttl;
+
+				$debug_message .= "<!--\n\n";
+				$debug_message .= __( 'This page is cached by Cache Master plugin.', 'cache-master' ) . "\n";
+				$debug_message .= sprintf( __( 'Time to cache: %s', 'cache-master' ), date( 'Y-m-d H:i:s' ) ) . "\n";
+				$debug_message .= sprintf( __( 'Expires at: %s', 'cache-master' ), date( 'Y-m-d H:i:s', $expires ) ) . "\n";
+				$debug_message .= sprintf( __( 'Memory usage before caching: %s MB', 'cache-master' ), $memory_usage ) . "\n";
+				break;
+		}
+
+		return $debug_message;
 	}
 }
