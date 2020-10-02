@@ -11,7 +11,13 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 == Description ==
 
-Cache Master is an extremely light-weight and high-performace cache plugin that speeds up your WordPress sites on the fly. The core is driven by Shieldon [Simple Cache](https://github.com/terrylinooo/simple-cache), a PSR-16 simple cache library.
+Cache Master is an extremely light-weight and high-performace cache plugin that speeds up your WordPress sites on the fly.
+The core of Cache Master is driven by Shieldon Simple Cache], a PSR-16 simple cache library.
+
+Open sourced on:
+
+- https://github.com/terrylinooo/simple-cache (Simple Cache library)
+- https://github.com/terrylinooo/cache-master (Cache Master plugin)
 
 Notice: 
 
