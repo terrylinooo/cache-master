@@ -3,7 +3,7 @@
  * Plugin Name: Cache Master
  * Plugin URI:  https://github.com/terrylinooo/cache-master
  * Description: A wordpress cache plugin.
- * Version:     1.0.0
+ * Version:     1.1.0
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
