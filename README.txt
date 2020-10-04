@@ -1,7 +1,7 @@
 === Cache Master ===
 
 Contributors: terrylin
-Tags: cache
+Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
 Stable tag: 1.1.0
