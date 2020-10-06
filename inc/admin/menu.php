@@ -142,7 +142,7 @@ function scm_plugin_action_links( $links, $file ) {
 	}
 
 	if ( $file === SCM_PLUGIN_NAME ) {
-		$links[] = '<a href="' . admin_url( "admin.php?page=" . SCM_PLUGIN_TEXT_DOMAIN ) . '">' . __( 'Settings', 'cache-master' ) . '</a>';
+		$links[] = '<a href="' . admin_url( 'admin.php?page=cache-master-settings' ) . '">' . __( 'Settings', 'cache-master' ) . '</a>';
 		return $links;
 	}
 }
