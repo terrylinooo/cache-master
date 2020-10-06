@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 08:42+0000\n"
-"PO-Revision-Date: 2020-10-06 08:49+0000\n"
+"POT-Creation-Date: 2020-10-06 09:06+0000\n"
+"PO-Revision-Date: 2020-10-06 09:10+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
@@ -55,7 +55,16 @@ msgstr "專家模式"
 msgid ""
 "Because Cache Master works after all plguins installed, it can only save a "
 "maximum of 20-25 percent memory."
-msgstr "因為快取大師在所有外掛載入後運作，最多只能結省 20-25 百分比的記憶體。"
+msgstr "因為快取大師在所有外掛載入後運作，最多只能節省 20-25 百分比的記憶體。"
+
+#: inc/admin/menu.php:86
+#, php-format
+msgid ""
+"However, if you modify %s to let Cache Master output cache before everything "
+"initialized, it can save up to a maximum of <strong>95</strong> percent "
+"memory - even more."
+msgstr ""
+"不過呢，如果你修改 %s 讓快取大師能在所有東西完成初始化之前輸出快取，可以節省上看 <strong>95</strong> 百分比的記憶體，甚至更多。"
 
 #: inc/admin/menu.php:88
 msgid "Code"
@@ -65,6 +74,11 @@ msgstr "程式碼"
 msgid "This PHP code is generated automatically  depends on your settings."
 msgstr "這個 PHP 程式碼自動產生，內容取決於你的設定值。"
 
+#: inc/admin/menu.php:90
+#, php-format
+msgid "Please modify %s and put the following code into %s"
+msgstr "請修改 %s 並將以下程式碼放進 %s"
+
 #: inc/admin/menu.php:115
 msgid "Guide"
 msgstr "指南"
@@ -73,6 +87,13 @@ msgstr "指南"
 msgid ""
 "The position of the PHP code is supposed to put right after the DB constants."
 msgstr "這段 PHP 程式碼的位置應該就放在在 DB 的常數之後。"
+
+#: inc/admin/menu.php:120
+#, php-format
+msgid ""
+"Once you have done things right, if you are using Chome, %s or right click "
+"and select \"View Source\" to vew the HTML source code."
+msgstr "當你把事情正確完成時，如果你正用 Chrome 瀏覽器，%s 或右鍵點擊並選擇 \"檢視原始碼\" 來查看 HTML 原始碼。"
 
 #: inc/admin/menu.php:124
 msgid "You should see the result like this."

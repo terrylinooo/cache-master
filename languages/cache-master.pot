@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 08:42+0000\n"
+"POT-Creation-Date: 2020-10-06 09:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -58,12 +58,25 @@ msgid ""
 "maximum of 20-25 percent memory."
 msgstr ""
 
+#: inc/admin/menu.php:86
+#, php-format
+msgid ""
+"However, if you modify %s to let Cache Master output cache before everything "
+"initialized, it can save up to a maximum of <strong>95</strong> percent "
+"memory - even more."
+msgstr ""
+
 #: inc/admin/menu.php:88
 msgid "Code"
 msgstr ""
 
 #: inc/admin/menu.php:89
 msgid "This PHP code is generated automatically  depends on your settings."
+msgstr ""
+
+#: inc/admin/menu.php:90
+#, php-format
+msgid "Please modify %s and put the following code into %s"
 msgstr ""
 
 #: inc/admin/menu.php:115
@@ -73,6 +86,13 @@ msgstr ""
 #: inc/admin/menu.php:116
 msgid ""
 "The position of the PHP code is supposed to put right after the DB constants."
+msgstr ""
+
+#: inc/admin/menu.php:120
+#, php-format
+msgid ""
+"Once you have done things right, if you are using Chome, %s or right click "
+"and select \"View Source\" to vew the HTML source code."
 msgstr ""
 
 #: inc/admin/menu.php:124

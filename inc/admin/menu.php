@@ -83,11 +83,11 @@ function scm_expert_mode_page() {
 			<h2><?php _e( 'Expert Mode', 'cache-master' ); ?></h2>
 			<div class="scm-expert-mode-intro">
 				<p><?php _e( 'Because Cache Master works after all plguins installed, it can only save a maximum of 20-25 percent memory.', 'cache-master' ); ?> <code>:(</code></p>
-				<p><?php _e( sprintf( 'However, if you modify %s to let Cache Master output cache before everything initialized, it can save up to a maximum of <strong>95</strong> percent memory - even more.', '<code>wp-config.php</code>' ), 'cache-master' ) ?><code>:)</code></p>
+				<p><?php echo sprintf( __( 'However, if you modify %s to let Cache Master output cache before everything initialized, it can save up to a maximum of <strong>95</strong> percent memory - even more.', 'cache-master' ), '<code>wp-config.php</code>' ); ?><code>:)</code></p>
 			</div>
 			<h2><?php _e( 'Code', 'cache-master' ); ?></h2>
 			<p><?php _e( 'This PHP code is generated automatically  depends on your settings.', 'cache-master' ); ?></p>
-			<p><?php _e( sprintf( 'Please modify %s and put the following code into %s', '<code>' . ABSPATH . 'wp-config.php</code>', '<code>wp-config.php</code>' ), 'cache-master' ); ?></p>
+			<p><?php echo sprintf( __( 'Please modify %s and put the following code into %s', 'cache-master' ), '<code>' . ABSPATH . 'wp-config.php</code>', '<code>wp-config.php</code>' ); ?></p>
 			<div class="scm-code-block">
 				
 				<pre>
@@ -117,7 +117,7 @@ if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
 			<div>
 				<img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/expert-mode-code.png">	
 			</div>
-			<p><?php _e( sprintf( 'Once you have done things right, if you are using Chome, %s or right click and select "View Source" to vew the HTML source code.', '<code>Ctrl + U</code>' ), 'cache-master' ); ?></p>
+			<p><?php echo sprintf( __( 'Once you have done things right, if you are using Chome, %s or right click and select "View Source" to vew the HTML source code.', 'cache-master' ), '<code>Ctrl + U</code>' ); ?></p>
 			<div>
 				<img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/expert-mode-result.png">	
 			</div>
