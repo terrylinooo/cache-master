@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -26,6 +26,7 @@ Before you install and use this plugin, please read the following notices carefu
 - This plugin only caches homepage, posts and pages.
 - Logged-in users will not trigger the caching processes.
 - A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching.
+- Even logged-in users will see cache if you manually enable Expert Mode.
 
 == Installation ==
 
@@ -58,5 +59,13 @@ GNU General Public License for more details.
 = 1.1.0
 
 * First release on WordPress plugin directory.
+
+= 1.1.1
+
+* Fix incorrect setting link.
+
+= 1.2.0
+
+* Add "Expert Mode".
 
 

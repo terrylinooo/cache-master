@@ -36,3 +36,33 @@
   display: inline-block;
   width: 150px;
 }
+
+.scm-code-block {
+  background-color: #ffffff;
+  font-size: 0;
+  padding: 10px;
+  border-left: 5px #007eff solid;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.scm-code-block code, .scm-code-block pre {
+  background-color: transparent;
+  font-size: 13px;
+}
+.scm-code-block code {
+  padding: 10px;
+  margin: 10px;
+}
+
+#scm-expert-mode-page img {
+  border: 1px #dddddd solid;
+  padding: 5px;
+}
+
+.scm-expert-mode-intro {
+  width: 100%;
+  max-width: 600px;
+}
+.scm-expert-mode-intro p {
+  font-size: 14px;
+}

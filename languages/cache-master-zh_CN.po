@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 16:09+0000\n"
-"PO-Revision-Date: 2020-10-02 16:24+0000\n"
+"POT-Creation-Date: 2020-10-06 08:42+0000\n"
+"PO-Revision-Date: 2020-10-06 08:49+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
@@ -43,19 +43,50 @@ msgstr "在进行快取前的内存用量：%s MB"
 msgid "Cache Master"
 msgstr "快取大师"
 
-#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:80
+#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:145
 msgid "Settings"
 msgstr "设置"
 
-#: inc/admin/menu.php:99
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/menu.php:83
+msgid "Expert Mode"
+msgstr "专家模式"
+
+#: inc/admin/menu.php:85
+msgid ""
+"Because Cache Master works after all plguins installed, it can only save a "
+"maximum of 20-25 percent memory."
+msgstr "因为快取大师在所有插件载入后运作，最多只能结省 20-25 百分比的内存。"
+
+#: inc/admin/menu.php:88
+msgid "Code"
+msgstr "代码"
+
+#: inc/admin/menu.php:89
+msgid "This PHP code is generated automatically  depends on your settings."
+msgstr "这个 PHP 代码自动产生，内容取决于你的设置。"
+
+#: inc/admin/menu.php:115
+msgid "Guide"
+msgstr "指南"
+
+#: inc/admin/menu.php:116
+msgid ""
+"The position of the PHP code is supposed to put right after the DB constants."
+msgstr "这段 PHP 代码的位置应该就放在在 DB 的常数之后。"
+
+#: inc/admin/menu.php:124
+msgid "You should see the result like this."
+msgstr "你应该看到的结果像这样。"
+
+#: inc/admin/menu.php:164
 msgid "Source code"
 msgstr "源码"
 
-#: inc/admin/menu.php:149
+#: inc/admin/menu.php:214
 msgid "Cache Master supports only static URL structure."
 msgstr "快取大师只支持静态网址结构。"
 
-#: inc/admin/menu.php:150
+#: inc/admin/menu.php:215
 #, php-format
 msgid "You have to go to %s page and change the permalink settings."
 msgstr "你必须到 %s 页面改变固定连结设置。"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 16:09+0000\n"
+"POT-Creation-Date: 2020-10-06 08:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -44,19 +44,50 @@ msgstr ""
 msgid "Cache Master"
 msgstr ""
 
-#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:80
+#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:145
 msgid "Settings"
 msgstr ""
 
-#: inc/admin/menu.php:99
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/menu.php:83
+msgid "Expert Mode"
+msgstr ""
+
+#: inc/admin/menu.php:85
+msgid ""
+"Because Cache Master works after all plguins installed, it can only save a "
+"maximum of 20-25 percent memory."
+msgstr ""
+
+#: inc/admin/menu.php:88
+msgid "Code"
+msgstr ""
+
+#: inc/admin/menu.php:89
+msgid "This PHP code is generated automatically  depends on your settings."
+msgstr ""
+
+#: inc/admin/menu.php:115
+msgid "Guide"
+msgstr ""
+
+#: inc/admin/menu.php:116
+msgid ""
+"The position of the PHP code is supposed to put right after the DB constants."
+msgstr ""
+
+#: inc/admin/menu.php:124
+msgid "You should see the result like this."
+msgstr ""
+
+#: inc/admin/menu.php:164
 msgid "Source code"
 msgstr ""
 
-#: inc/admin/menu.php:149
+#: inc/admin/menu.php:214
 msgid "Cache Master supports only static URL structure."
 msgstr ""
 
-#: inc/admin/menu.php:150
+#: inc/admin/menu.php:215
 #, php-format
 msgid "You have to go to %s page and change the permalink settings."
 msgstr ""
