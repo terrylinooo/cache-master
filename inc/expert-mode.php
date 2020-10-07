@@ -41,7 +41,6 @@ function scm_run_expert_mode( $args ) {
 
     // Make sure that Cache Master exists.
     if ( ! file_exists( $plugin_dir . '/cache-master.php' ) ) {
-       
         return;
     }
 
@@ -107,7 +106,7 @@ function scm_run_expert_mode( $args ) {
             $debug_message = '';
             $debug_message .= sprintf( 'Current memory usage: %s MB', $memory_usage ) . ' (' . date( 'Y-m-d H:i:s' ). ")\n";
             $debug_message .= "\n";
-            $debug_message .= 'Runging as Expert mode, even logged-in users see cache as well.' . "\n";
+            $debug_message .= 'Running as Expert mode, even logged-in users will see cache as well.' . "\n";
             $debug_message .= "\n";
             $debug_message .= "\n//-->";
             $cached_content .= $debug_message;
