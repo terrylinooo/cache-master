@@ -129,12 +129,10 @@ class Cache_Master {
 		}
 
 		$content = ob_get_contents();
-
 		$content .= $this->debug_message( 'ob_stop' );
 
 		if ( $this->is_cache ) {
 			$ttl = (int) get_option( 'scm_option_ttl' );
-
 			$this->driver->set( $this->cache_key,  $content, $ttl );
 		}
 	}
