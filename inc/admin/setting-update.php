@@ -5,7 +5,7 @@
  * @author Terry Lin
  * @link https://terryl.in/
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.3.0
  */
 
 if ( ! defined( 'SCM_INC' ) ) {
@@ -14,6 +14,8 @@ if ( ! defined( 'SCM_INC' ) ) {
 
 add_action( 'update_option_scm_option_driver', 'scm_update_scm_option_driver' );
 add_action( 'update_option_scm_option_post_types', 'scm_update_scm_option_post_types' );
+add_action( 'update_option_scm_option_post_archives', 'scm_update_scm_option_post_archives' );
+add_action( 'update_option_scm_option_post_homepage', 'scm_update_scm_option_post_homepage' );
 add_action( 'update_option_scm_option_caching_status', 'scm_update_scm_option_caching_status' );
 add_action( 'update_option_scm_option_expert_mode_status', 'scm_update_scm_option_expert_mode_status' );
 
@@ -84,4 +86,22 @@ function scm_update_scm_option_expert_mode_status() {
 			unlink( $checkpoint );
 		}
 	}
+}
+
+/**
+ * Clear all cahce after updating homepage option.
+ *
+ * @return void
+ */
+function scm_update_scm_option_post_homepage() {
+	scm_update_scm_option_post_types();
+}
+
+/**
+ * Clear all cahce after updating archive page option.
+ *
+ * @return void
+ */
+function scm_update_scm_option_post_archives() {
+	scm_update_scm_option_post_types();
 }

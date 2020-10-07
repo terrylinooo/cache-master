@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 08:39+0000\n"
-"PO-Revision-Date: 2020-10-07 08:44+0000\n"
+"POT-Creation-Date: 2020-10-07 21:45+0000\n"
+"PO-Revision-Date: 2020-10-07 21:59+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
@@ -14,42 +14,47 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.3.1; wp-5.5.1"
 
-#: inc/class-cache-master.php:162
+#: inc/class-cache-master.php:193
 msgid "After"
 msgstr "快取之后"
 
-#: inc/class-cache-master.php:163
+#: inc/class-cache-master.php:194
 #, php-format
 msgid "Now: %s"
 msgstr "现在时间：%s"
 
-#: inc/class-cache-master.php:164 inc/class-cache-master.php:178
+#: inc/class-cache-master.php:195 inc/class-cache-master.php:210
 #, php-format
 msgid "Memory usage: %s MB"
 msgstr "内存用量：%s MB"
 
-#: inc/class-cache-master.php:165 inc/class-cache-master.php:179
+#: inc/class-cache-master.php:196 inc/class-cache-master.php:211
+#, php-format
+msgid "SQL queries: %s"
+msgstr "SQL 查询次数：%s"
+
+#: inc/class-cache-master.php:197 inc/class-cache-master.php:212
 #, php-format
 msgid "Page generated in %s seconds."
 msgstr "页面在 %s 秒内产生。"
 
-#: inc/class-cache-master.php:174
+#: inc/class-cache-master.php:206
 msgid "This page is cached by Cache Master plugin."
 msgstr "此页面由快取大师插件进行快取。"
 
-#: inc/class-cache-master.php:175
+#: inc/class-cache-master.php:207
 msgid "Before"
 msgstr "快取之前"
 
-#: inc/class-cache-master.php:176
+#: inc/class-cache-master.php:208
 #, php-format
 msgid "Time to cache: %s"
 msgstr "快取的时间：%s"
 
-#: inc/class-cache-master.php:177
+#: inc/class-cache-master.php:209
 #, php-format
 msgid "Expires at: %s"
-msgstr "过期于："
+msgstr "过期于：%s"
 
 #. Name of the plugin
 #: inc/admin/menu.php:29 inc/admin/menu.php:30 inc/admin/post-update.php:51
@@ -60,7 +65,7 @@ msgstr "快取大师"
 msgid "Settings"
 msgstr "设置"
 
-#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:100
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:141
 msgid "Expert Mode"
 msgstr "专家模式"
 
@@ -81,43 +86,63 @@ msgstr "你必须到 %s 页面改变固定连结设置。"
 msgid "Cache has been cleared."
 msgstr "快取已被清除。"
 
-#: inc/admin/setting.php:35
+#: inc/admin/setting.php:39
 msgid "Driver"
 msgstr "驱动程序"
 
-#: inc/admin/setting.php:42
+#: inc/admin/setting.php:46
+msgid "Visibilty"
+msgstr "可见度"
+
+#: inc/admin/setting.php:53
 msgid "Preferences"
 msgstr ""
 "\n"
 "偏好设定"
 
-#: inc/admin/setting.php:49
+#: inc/admin/setting.php:60
 msgid "Others"
 msgstr "其它"
 
-#: inc/admin/setting.php:56
+#: inc/admin/setting.php:67
 msgid "Caching Status"
 msgstr ""
 "\n"
 "快取运行状态"
 
-#: inc/admin/setting.php:64
+#: inc/admin/setting.php:75
 msgid "Cache Driver"
 msgstr "快取驱动程序"
 
-#: inc/admin/setting.php:72
+#: inc/admin/setting.php:83
 msgid "Time to Live"
 msgstr "存活时间"
 
-#: inc/admin/setting.php:80
+#: inc/admin/setting.php:91
 msgid "Uninstall"
 msgstr "卸载"
 
-#: inc/admin/setting.php:88
+#: inc/admin/setting.php:99
 msgid "Post Types"
 msgstr "文章类型"
 
 #: inc/admin/setting.php:107
+msgid "Homepage"
+msgstr "首页"
+
+#: inc/admin/setting.php:115
+msgid "Archive Pages"
+msgstr "库存页面"
+
+#: inc/admin/setting.php:123
+msgid "Guests"
+msgstr "访客"
+
+#: inc/admin/setting.php:131
+msgid "Logged-in Users"
+msgstr "已登录的用户"
+
+#: inc/admin/setting.php:148
 msgid "Status"
 msgstr "状态"
 
@@ -197,25 +222,58 @@ msgid ""
 "This option only works when you have put the custom PHP code in wp-config.php"
 msgstr "这个选项只在你有放客制的 PHP 代码在 wp-config.php 里才会运作。"
 
-#: inc/admin/views/option_post_types.php:19
-msgid "Home"
-msgstr "首页"
+#: inc/admin/views/option_post_archives.php:19
+msgid "Category"
+msgstr "分类"
 
-#: inc/admin/views/option_post_types.php:20
+#: inc/admin/views/option_post_archives.php:20
+msgid "Tag"
+msgstr "标签"
+
+#: inc/admin/views/option_post_archives.php:21
+msgid "Date"
+msgstr "日期"
+
+#: inc/admin/views/option_post_archives.php:22
+msgid "Author"
+msgstr "作者"
+
+#: inc/admin/views/option_post_archives.php:40
+msgid "What type of archive page do you like to cache?"
+msgstr "什么类型的库存页面要被快取？"
+
+#: inc/admin/views/option_post_archives.php:41
+#: inc/admin/views/option_post_homepage.php:36
+#: inc/admin/views/option_post_types.php:39
+msgid "Once you change this option, all cache data will be cleared."
+msgstr "每当你变更这个选项，所有快取资料将被清除。"
+
+#: inc/admin/views/option_post_homepage.php:24
+#: inc/admin/views/option_visibility_guest.php:24
+#: inc/admin/views/option_visibility_login_user.php:24
+msgid "Yes"
+msgstr "是"
+
+#: inc/admin/views/option_post_homepage.php:31
+#: inc/admin/views/option_visibility_login_user.php:31
+msgid "No"
+msgstr "否"
+
+#: inc/admin/views/option_post_homepage.php:35
+msgid "Would you like to cache the homepage of your site?"
+msgstr "你想要快取你的网站首页吗？"
+
+#: inc/admin/views/option_post_types.php:19
 msgid "Post"
 msgstr "文章"
 
-#: inc/admin/views/option_post_types.php:21
+#: inc/admin/views/option_post_types.php:20
 msgid "Page"
 msgstr "页面"
 
-#: inc/admin/views/option_post_types.php:37
+#: inc/admin/views/option_post_types.php:38
 msgid "What post type do you like to cache?"
 msgstr "你想快取何种文章类型？"
-
-#: inc/admin/views/option_post_types.php:38
-msgid "Once you change this option, all cache data will be cleared."
-msgstr "每当你变更这个选项，所有快取资料将被清除。"
 
 #: inc/admin/views/option_ttl.php:36
 msgid "Please fill in a number between 300-86400. (in seconds)"
@@ -232,6 +290,30 @@ msgstr "保持快取大师产生的资料。"
 #: inc/admin/views/option_uninstall.php:35
 msgid "This option only works when you uninstall this plugin."
 msgstr "这个选项只在你卸载这个插件时运作。"
+
+#: inc/admin/views/option_visibility_guest.php:28
+msgid "Always show cached pages to guests."
+msgstr "总是显示快取网页给访客。"
+
+#: inc/admin/views/option_visibility_login_user.php:35
+msgid "Would you like to show cached pages to logged-in users as well?"
+msgstr "你也想要显示快取网页给已登录的用户吗？"
+
+#: inc/admin/views/option_visibility_login_user.php:37
+msgid "Note"
+msgstr "注意"
+
+#: inc/admin/views/option_visibility_login_user.php:38
+msgid ""
+"Logged-in users will not trigger the caching processes to avoid displaying "
+"admin bar to everyone."
+msgstr "已登录的用户不会触发快取的程序以避免管理菜单列给所有人看到。"
+
+#: inc/admin/views/option_visibility_login_user.php:39
+msgid ""
+"Logged-in users always see cached page when Expert Mode is working, because "
+"of outputting cache at a very early stage when running as Expert Mode."
+msgstr "已登录的用户在「专家模式」运行时，总是看到快取网页，因为在「专家模式」时，输出快取是在非常早期阶段的关系。"
 
 #: inc/admin/views/page_expert_mode.php:23
 msgid "Code"

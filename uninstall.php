@@ -7,7 +7,7 @@
  *
  * @package Cache Master
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.3.0
  */
 
 // if uninstall.php is not called by WordPress, die.
@@ -25,6 +25,10 @@ if ( 'yes' === $option_uninstall ) {
 	delete_option( 'scm_option_uninstall' );
 	delete_option( 'scm_option_caching_status' );
 	delete_option( 'scm_option_expert_mode_status' );
+	delete_option( 'scm_option_post_homepage' );
+	delete_option( 'scm_option_post_archives' );
+	delete_option( 'scm_option_visibility_login_user');
+	delete_option( 'scm_option_visibility_guest');
 
 	delete_option( 'scm_last_reset_time' );
 	delete_option( 'scm_version' );

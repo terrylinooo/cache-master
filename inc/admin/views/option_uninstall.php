@@ -4,7 +4,7 @@
  *
  * @author Terry Lin
  * @link https://terryl.in/
- * @since 1.2.1
+ * @since 1.0.0
  * @version 1.0.0
  */
 

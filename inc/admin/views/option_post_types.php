@@ -5,7 +5,7 @@
  * @author Terry Lin
  * @link https://terryl.in/
  * @since 1.2.1
- * @version 1.0.0
+ * @version 1.3.0
  */
 
 if ( ! defined( 'SCM_INC' ) ) {
@@ -16,7 +16,6 @@ if ( ! defined( 'SCM_INC' ) ) {
 $option_post_types = get_option( 'scm_option_post_types');
 
 $option_list = array(
-	'home' => __( 'Home', 'cache-master' ),
 	'post' => __( 'Post', 'cache-master' ),
 	'page' => __( 'Page', 'cache-master' ),
 );
@@ -27,7 +26,9 @@ $option_list = array(
 	<?php foreach ( $option_list as $k => $v ) : ?>
 	<div>
 		<input type="checkbox" name="scm_option_post_types[<?php echo $k; ?>]" id="cache-master-post-type-option-<?php echo $k; ?>" value="yes" 
-			<?php checked( $option_post_types[ $k ], 'yes' ); ?>>
+			<?php if ( isset( $option_post_types[ $k ] ) ) : ?>
+				<?php checked( $option_post_types[ $k ], 'yes' ); ?>>
+			<?php endif; ?>
 		<label for="cache-master-post-type-option-<?php echo $k; ?>">
 			<?php echo $v; ?><br />
 		<label>

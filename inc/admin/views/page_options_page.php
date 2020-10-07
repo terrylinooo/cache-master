@@ -5,7 +5,7 @@
  * @author Terry Lin
  * @link https://terryl.in/
  * @since 1.2.1
- * @version 1.0.0
+ * @version 1.2.1
  */
 
 if ( ! defined( 'SCM_INC' ) ) {

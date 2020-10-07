@@ -7,7 +7,7 @@
  *
  * @package Cache Master
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.3.0
  */
 
 if ( ! defined( 'SCM_INC' ) ) {
@@ -51,7 +51,7 @@ class Cache_Master {
 	public function init() {
 		add_action( 'plugins_loaded', array( $this, 'ob_start' ), 5 );
 		add_action( 'shutdown', array( $this, 'ob_stop' ), 0 );
-		add_action( 'pre_get_posts', array( $this, 'get_post_data' ), 0 );
+		add_action( 'wp', array( $this, 'get_post_data' ), 0 );
 	}
 
 	/**
@@ -66,8 +66,10 @@ class Cache_Master {
 			return;
 		}
 
-		$post_types = get_option( 'scm_option_post_types' );
-		$status     = get_option( 'scm_option_caching_status' );
+		$post_homepage = get_option( 'scm_option_post_homepage' );
+		$post_types    = get_option( 'scm_option_post_types' );
+		$post_archives = get_option( 'scm_option_post_archives' );
+		$status        = get_option( 'scm_option_caching_status' );
 
 		if ( 'enable' !== $status ) {
 			$this->is_cache = false;
@@ -75,21 +77,49 @@ class Cache_Master {
 		}
 
 		// Home page.
-		if ( 'yes' === $post_types['home'] && is_home() ) {
+		if ( is_front_page() ) {
 			$this->is_cache = true;
+
+			if ( 'no' === $post_homepage ) {
+				$this->is_cache = false;
+			}
+			return;
 
 		// Post type: post
-		} elseif ( 'yes' === $post_types['post'] && is_single() ) {
+		} elseif ( isset( $post_types['post'] ) && is_single() ) {
 			$this->is_cache = true;
+			return;
 
 		// Post type: page
-		} elseif ( 'yes' === $post_types['page'] && is_page() ) {
+		} elseif ( isset( $post_types['page'] ) && is_page() ) {
 			$this->is_cache = true;
+			return;
+
+		// Archive page: category
+		} elseif ( isset( $post_archives['category'] ) && is_category() ) {
+			$this->is_cache = true;
+			return;
+
+		// Archive page: tag
+		} elseif ( isset( $post_archives['tag'] ) && is_tag() ) {
+			$this->is_cache = true;
+			return;
+		
+		// Archive page: date
+		} elseif ( isset( $post_archives['date'] ) && is_date() ) {
+			$this->is_cache = true;
+			return;
+
+		// Archive page: author
+		} elseif ( isset( $post_archives['author'] ) && is_author() ) {
+			$this->is_cache = true;
+			return;
 		}
 
 		// Do not cache 404 page.
 		if ( is_404() ) {
 			$this->is_cache = false;
+			return;
 		}
 	}
 
@@ -100,19 +130,21 @@ class Cache_Master {
 	 */
 	public function ob_start() {
 
+		if ( $this->is_cache_visible() ) {
+			$cached_content = $this->driver->get( $this->cache_key );
+
+			if ( ! empty( $cached_content ) ) {
+				$cached_content .= $this->debug_message( 'ob_start' );
+				echo $cached_content;
+				exit;
+			}
+		}
+
 		// Logged-in users will not trigger the cache.
 		if ( is_user_logged_in() ) {
 			return;
 		}
-
-		$cached_content = $this->driver->get( $this->cache_key );
-
-		if ( ! empty( $cached_content ) ) {
-			$cached_content .= $this->debug_message( 'ob_start' );
-			echo $cached_content;
-			exit;
-		}
-
+			
 		ob_start();
 	}
 
@@ -182,5 +214,21 @@ class Cache_Master {
 		}
 
 		return $debug_message;
+	}
+
+	/**
+	 * Check if a user can see the cached pages.
+	 *
+	 * @return bool
+	 */
+	private function is_cache_visible() {
+
+		if ( is_user_logged_in() ) {
+			if ( 'yes' !== get_option( 'scm_option_visibility_login_user' ) ) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

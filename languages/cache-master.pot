@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 08:39+0000\n"
+"POT-Creation-Date: 2020-10-07 21:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,39 +15,44 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.3.1; wp-5.5.1"
 
-#: inc/class-cache-master.php:162
+#: inc/class-cache-master.php:193
 msgid "After"
 msgstr ""
 
-#: inc/class-cache-master.php:163
+#: inc/class-cache-master.php:194
 #, php-format
 msgid "Now: %s"
 msgstr ""
 
-#: inc/class-cache-master.php:164 inc/class-cache-master.php:178
+#: inc/class-cache-master.php:195 inc/class-cache-master.php:210
 #, php-format
 msgid "Memory usage: %s MB"
 msgstr ""
 
-#: inc/class-cache-master.php:165 inc/class-cache-master.php:179
+#: inc/class-cache-master.php:196 inc/class-cache-master.php:211
+#, php-format
+msgid "SQL queries: %s"
+msgstr ""
+
+#: inc/class-cache-master.php:197 inc/class-cache-master.php:212
 #, php-format
 msgid "Page generated in %s seconds."
 msgstr ""
 
-#: inc/class-cache-master.php:174
+#: inc/class-cache-master.php:206
 msgid "This page is cached by Cache Master plugin."
 msgstr ""
 
-#: inc/class-cache-master.php:175
+#: inc/class-cache-master.php:207
 msgid "Before"
 msgstr ""
 
-#: inc/class-cache-master.php:176
+#: inc/class-cache-master.php:208
 #, php-format
 msgid "Time to cache: %s"
 msgstr ""
 
-#: inc/class-cache-master.php:177
+#: inc/class-cache-master.php:209
 #, php-format
 msgid "Expires at: %s"
 msgstr ""
@@ -61,7 +66,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:100
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:141
 msgid "Expert Mode"
 msgstr ""
 
@@ -82,39 +87,59 @@ msgstr ""
 msgid "Cache has been cleared."
 msgstr ""
 
-#: inc/admin/setting.php:35
+#: inc/admin/setting.php:39
 msgid "Driver"
 msgstr ""
 
-#: inc/admin/setting.php:42
+#: inc/admin/setting.php:46
+msgid "Visibilty"
+msgstr ""
+
+#: inc/admin/setting.php:53
 msgid "Preferences"
 msgstr ""
 
-#: inc/admin/setting.php:49
+#: inc/admin/setting.php:60
 msgid "Others"
 msgstr ""
 
-#: inc/admin/setting.php:56
+#: inc/admin/setting.php:67
 msgid "Caching Status"
 msgstr ""
 
-#: inc/admin/setting.php:64
+#: inc/admin/setting.php:75
 msgid "Cache Driver"
 msgstr ""
 
-#: inc/admin/setting.php:72
+#: inc/admin/setting.php:83
 msgid "Time to Live"
 msgstr ""
 
-#: inc/admin/setting.php:80
+#: inc/admin/setting.php:91
 msgid "Uninstall"
 msgstr ""
 
-#: inc/admin/setting.php:88
+#: inc/admin/setting.php:99
 msgid "Post Types"
 msgstr ""
 
 #: inc/admin/setting.php:107
+msgid "Homepage"
+msgstr ""
+
+#: inc/admin/setting.php:115
+msgid "Archive Pages"
+msgstr ""
+
+#: inc/admin/setting.php:123
+msgid "Guests"
+msgstr ""
+
+#: inc/admin/setting.php:131
+msgid "Logged-in Users"
+msgstr ""
+
+#: inc/admin/setting.php:148
 msgid "Status"
 msgstr ""
 
@@ -193,24 +218,57 @@ msgid ""
 "This option only works when you have put the custom PHP code in wp-config.php"
 msgstr ""
 
-#: inc/admin/views/option_post_types.php:19
-msgid "Home"
+#: inc/admin/views/option_post_archives.php:19
+msgid "Category"
 msgstr ""
 
-#: inc/admin/views/option_post_types.php:20
+#: inc/admin/views/option_post_archives.php:20
+msgid "Tag"
+msgstr ""
+
+#: inc/admin/views/option_post_archives.php:21
+msgid "Date"
+msgstr ""
+
+#: inc/admin/views/option_post_archives.php:22
+msgid "Author"
+msgstr ""
+
+#: inc/admin/views/option_post_archives.php:40
+msgid "What type of archive page do you like to cache?"
+msgstr ""
+
+#: inc/admin/views/option_post_archives.php:41
+#: inc/admin/views/option_post_homepage.php:36
+#: inc/admin/views/option_post_types.php:39
+msgid "Once you change this option, all cache data will be cleared."
+msgstr ""
+
+#: inc/admin/views/option_post_homepage.php:24
+#: inc/admin/views/option_visibility_guest.php:24
+#: inc/admin/views/option_visibility_login_user.php:24
+msgid "Yes"
+msgstr ""
+
+#: inc/admin/views/option_post_homepage.php:31
+#: inc/admin/views/option_visibility_login_user.php:31
+msgid "No"
+msgstr ""
+
+#: inc/admin/views/option_post_homepage.php:35
+msgid "Would you like to cache the homepage of your site?"
+msgstr ""
+
+#: inc/admin/views/option_post_types.php:19
 msgid "Post"
 msgstr ""
 
-#: inc/admin/views/option_post_types.php:21
+#: inc/admin/views/option_post_types.php:20
 msgid "Page"
 msgstr ""
 
-#: inc/admin/views/option_post_types.php:37
-msgid "What post type do you like to cache?"
-msgstr ""
-
 #: inc/admin/views/option_post_types.php:38
-msgid "Once you change this option, all cache data will be cleared."
+msgid "What post type do you like to cache?"
 msgstr ""
 
 #: inc/admin/views/option_ttl.php:36
@@ -227,6 +285,30 @@ msgstr ""
 
 #: inc/admin/views/option_uninstall.php:35
 msgid "This option only works when you uninstall this plugin."
+msgstr ""
+
+#: inc/admin/views/option_visibility_guest.php:28
+msgid "Always show cached pages to guests."
+msgstr ""
+
+#: inc/admin/views/option_visibility_login_user.php:35
+msgid "Would you like to show cached pages to logged-in users as well?"
+msgstr ""
+
+#: inc/admin/views/option_visibility_login_user.php:37
+msgid "Note"
+msgstr ""
+
+#: inc/admin/views/option_visibility_login_user.php:38
+msgid ""
+"Logged-in users will not trigger the caching processes to avoid displaying "
+"admin bar to everyone."
+msgstr ""
+
+#: inc/admin/views/option_visibility_login_user.php:39
+msgid ""
+"Logged-in users always see cached page when Expert Mode is working, because "
+"of outputting cache at a very early stage when running as Expert Mode."
 msgstr ""
 
 #: inc/admin/views/page_expert_mode.php:23

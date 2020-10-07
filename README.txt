@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 1.2.2
+Stable tag: 1.3.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -84,4 +84,11 @@ GNU General Public License for more details.
 
 = 1.2.2
 
-* Improve debug message - add SQL query numbers.
+* Improve debug message - Add SQL query numbers.
+
+= 1.3.0
+
+* Add setting option - Visibility of cache for logged-in users.
+* Add setting option - Archive pages: category, tag, date and author.
+* Add setting option - Homepage.
+* Fix some small issues.
