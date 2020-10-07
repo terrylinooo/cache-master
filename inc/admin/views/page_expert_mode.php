@@ -31,16 +31,16 @@ if ( ! defined( 'SCM_INC' ) ) {
 
 if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
 
-	include_once( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' );
+    include_once( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' );
 
-	$args = array(
-		'plugin_dir'        => '<?php echo rtrim( SCM_PLUGIN_DIR, '/' ); ?>',
-		'plugin_upload_dir' => '<?php echo rtrim( scm_get_upload_dir(), '/' ); ?>',
-		'site_url'          => '<?php echo rtrim( get_site_url(), '/' ); ?>',
-		'cache_driver_type' => '<?php echo get_option( 'scm_option_driver' ); ?>',
-	);
+    $args = array(
+        'plugin_dir'        => '<?php echo rtrim( SCM_PLUGIN_DIR, '/' ); ?>',
+        'plugin_upload_dir' => '<?php echo rtrim( scm_get_upload_dir(), '/' ); ?>',
+        'site_url'          => '<?php echo rtrim( get_site_url(), '/' ); ?>',
+        'cache_driver_type' => '<?php echo get_option( 'scm_option_driver' ); ?>',
+    );
 
-	scm_run_expert_mode( $args );
+    scm_run_expert_mode( $args );
 }
 
 // END - Cache Master

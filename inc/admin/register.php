@@ -22,6 +22,7 @@ function scm_activation() {
 	add_option( 'scm_option_ttl', '86400' );
 	add_option( 'scm_option_uninstall', 'yes' );
 	add_option( 'scm_option_caching_status', 'disable' );
+	add_option( 'scm_option_expert_mode_status', 'disable' );
 
 	$post_types = array(
 		'home' => 'yes',
