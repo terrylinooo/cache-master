@@ -23,6 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function scm_run_expert_mode( $args ) {
 
     $microtime_before = microtime(true);
+    $sql_queries = 0;
 
     // Prevent CLI conficts
     if ( ! isset( $_SERVER['REQUEST_URI' ] ) ) {
@@ -66,6 +67,8 @@ function scm_run_expert_mode( $args ) {
                     'pass'    => DB_PASSWORD,
                     'charset' => DB_CHARSET,
                 );
+
+                $sql_queries++;
                 break;
 
             case 'sqlite':
@@ -113,6 +116,7 @@ function scm_run_expert_mode( $args ) {
 
             $debug_message .= sprintf( 'Now: %s', date( 'Y-m-d H:i:s' ) ) . "\n";
             $debug_message .= sprintf( 'Memory usage: %s MB', $memory_usage ) . "\n";
+            $debug_message .= sprintf( 'SQL queries: %s', $sql_queries ) . "\n";
             $debug_message .= sprintf( 'Page generated in %s seconds.', $page_speed ) . "\n\n";
             $debug_message .= '(Running as Expert Mode)' . "\n";
             $debug_message .= "\n\n//-->";

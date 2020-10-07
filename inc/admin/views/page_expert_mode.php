@@ -54,7 +54,7 @@ if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
 	</div>
 	<p><?php echo sprintf( __( 'Once you have done things right, if you are using Chome, %s or right click and select "View Source" to vew the HTML source code.', 'cache-master' ), '<code>Ctrl + U</code>' ); ?></p>
 	<div>
-		<img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/expert-mode-result.png">	
+		<img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/screenshot-3.png">	
 	</div>
 	<p><?php _e( 'You should see the result like this.', 'cache-master' ); ?></p>
 </div>

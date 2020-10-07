@@ -152,14 +152,16 @@ class Cache_Master {
 		$memory_usage = $memory_usage / (1024 * 1024);
 		$memory_usage = round($memory_usage, 4);
 
-		// timer_stop is WordPress function.
+		// timer_stop and get_num_queries is WordPress function.
 		$page_speed = timer_stop();
+		$sql_nums = get_num_queries();
 
 		switch ( $position ) {
 			case 'ob_start':
 				$debug_message .= "\n\n" . '....... ' . __( 'After', 'cache-master' ) . ' .......' . "\n\n";
 				$debug_message .= sprintf( __( 'Now: %s', 'cache-master' ), date( 'Y-m-d H:i:s' ) ) . "\n";
 				$debug_message .= sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $memory_usage ) . "\n";
+				$debug_message .= sprintf( __( 'SQL queries: %s', 'cache-master' ), $sql_nums ) . "\n";
 				$debug_message .= sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $page_speed ) . "\n";
 				$debug_message .= "\n\n//-->";
 				break;
@@ -174,6 +176,7 @@ class Cache_Master {
 				$debug_message .= sprintf( __( 'Time to cache: %s', 'cache-master' ), date( 'Y-m-d H:i:s' ) ) . "\n";
 				$debug_message .= sprintf( __( 'Expires at: %s', 'cache-master' ), date( 'Y-m-d H:i:s', $expires ) ) . "\n";
 				$debug_message .= sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $memory_usage ) . "\n";
+				$debug_message .= sprintf( __( 'SQL queries: %s', 'cache-master' ), $sql_nums ) . "\n";
 				$debug_message .= sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $page_speed ) . "\n";
 				break;
 		}

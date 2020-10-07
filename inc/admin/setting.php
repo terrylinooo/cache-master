@@ -91,8 +91,6 @@ function scm_settings() {
 		'scm_setting_section_2'
 	);
 
-
-
 	// Expert mode.
 
 	add_settings_section(
