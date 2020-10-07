@@ -11,6 +11,24 @@
 if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
+
+$conflict_plugins = array(
+    'clearfy/clearfy.php',
+);
+
+foreach ( $conflict_plugins as $plugin ) {
+    if ( is_plugin_active( $plugin ) ) {
+        ?>
+
+        <div class="notice notice-warning is-dismissible">
+            <p>
+                <?php  echo sprintf( __( 'Cache Master cannot work with the plugin "%s" becasue of output buffer conflicts.', 'cache-master' ), $plugin ); ?>
+            </p>
+        </div>
+
+        <?php
+    }
+}
 ?>
 
 <form action="options.php" method="post">

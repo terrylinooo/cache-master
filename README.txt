@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -30,9 +30,9 @@ Before you install and use this plugin, please read the following notices carefu
 
 == Known Issues:
 
-Cache Master have conflicts with the following plugins. Do use Cache Master or just get rid of them.
+Cache Master have conflicts with the following plugins.
 
-- Clearfy – WordPress optimization plugin and disable ultimate tweaker
+- Clearfy
 
 If you find your website doesn't work with Cache Master, please report an issue on GitHub and list all plugins installed on your website. I'll find out the problem and fix it.
 
@@ -76,4 +76,8 @@ GNU General Public License for more details.
 
 * Add "Expert Mode".
 
+= 1.2.1
 
+* Improve debug message.
+* New setting option for Expert Mode.
+* Add warning message if a user use a plugin having conflicts with Cache Master.

@@ -97,7 +97,7 @@ function scm_settings() {
 
 	add_settings_section(
 		'scm_setting_section_4',
-		__( 'Others', 'cache-master' ),
+		__( 'Expert Mode', 'cache-master' ),
 		'scm_cb_setting_section',
 		'scm_setting_page_2'
 	);

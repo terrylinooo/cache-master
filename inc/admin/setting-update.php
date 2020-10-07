@@ -15,6 +15,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 add_action( 'update_option_scm_option_driver', 'scm_update_scm_option_driver' );
 add_action( 'update_option_scm_option_post_types', 'scm_update_scm_option_post_types' );
 add_action( 'update_option_scm_option_caching_status', 'scm_update_scm_option_caching_status' );
+add_action( 'update_option_scm_option_expert_mode_status', 'scm_update_scm_option_expert_mode_status' );
 
 /**
  * Rebuild data schema.
@@ -65,5 +66,22 @@ function scm_update_scm_option_caching_status() {
 function scm_check_permalink_structure() {
 	if ( '' === get_option( 'permalink_structure') ) {
 		set_option( 'option_caching_status', 'disable' );
+	}
+}
+
+/**
+ * Create checkpoint file for Expert Mode.
+ *
+ * @return void
+ */
+function scm_update_scm_option_expert_mode_status() {
+	$checkpoint = scm_get_upload_dir() . '/expert.lock';
+
+	if ( 'enable' === get_option( 'scm_option_expert_mode_status' ) ) {
+		file_put_contents( $checkpoint, 'VOTE!' );
+	} else {
+		if ( file_exists( $checkpoint ) ) {
+			unlink( $checkpoint );
+		}
 	}
 }

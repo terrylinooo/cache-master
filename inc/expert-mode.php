@@ -22,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function scm_run_expert_mode( $args ) {
 
+    $microtime_before = microtime(true);
+
     // Prevent CLI conficts
     if ( ! isset( $_SERVER['REQUEST_URI' ] ) ) {
         return;
@@ -45,7 +47,7 @@ function scm_run_expert_mode( $args ) {
     }
 
     // Make the "expert mode" is enable.
-    if ( ! file_exists( $plugin_upload_dir . '/expert_mode.lock') ) {
+    if ( ! file_exists( $plugin_upload_dir . '/expert.lock') ) {
         return;
     }
 
@@ -102,13 +104,19 @@ function scm_run_expert_mode( $args ) {
 		$memory_usage = round( $memory_usage, 4 );
         
 		if ( ! empty( $cached_content ) ) {
+
+            $microtime_after = microtime(true);
+
+            $page_speed = round( $microtime_after - $microtime_before, 3 );
            
-            $debug_message = '';
-            $debug_message .= sprintf( 'Current memory usage: %s MB', $memory_usage ) . ' (' . date( 'Y-m-d H:i:s' ). ")\n";
-            $debug_message .= "\n";
-            $debug_message .= 'Running as Expert mode, even logged-in users will see cache as well.' . "\n";
-            $debug_message .= "\n";
-            $debug_message .= "\n//-->";
+            $debug_message .= "\n\n" . '....... ' . 'After' . ' .......' . "\n\n";
+
+            $debug_message .= sprintf( 'Now: %s', date( 'Y-m-d H:i:s' ) ) . "\n";
+            $debug_message .= sprintf( 'Memory usage: %s MB', $memory_usage ) . "\n";
+            $debug_message .= sprintf( 'Page generated in %s seconds.', $page_speed ) . "\n\n";
+            $debug_message .= '(Running as Expert Mode)' . "\n";
+            $debug_message .= "\n\n//-->";
+
             $cached_content .= $debug_message;
 
             // Outpue cache.

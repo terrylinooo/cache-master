@@ -14,13 +14,14 @@ if ( ! defined( 'SCM_INC' ) ) {
 ?>
 
 <div id="scm-expert-mode-page">
-	<h2><?php _e( 'Expert Mode', 'cache-master' ); ?></h2>
-	<div class="scm-expert-mode-intro">
-		<p><?php _e( 'Because Cache Master works after all plguins installed, it can only save a maximum of 20-25 percent memory.', 'cache-master' ); ?> <code>:(</code></p>
-		<p><?php echo sprintf( __( 'However, if you modify %s to let Cache Master output cache before everything initialized, it can save up to a maximum of <strong>95</strong> percent memory - even more.', 'cache-master' ), '<code>wp-config.php</code>' ); ?><code>:)</code></p>
-	</div>
+	<form action="options.php" method="post">
+		<?php settings_fields( 'scm_setting_group_2' ); ?>
+		<?php do_settings_sections( 'scm_setting_page_2' );  ?>
+		<hr />
+		<?php submit_button(); ?>
+	</form>
 	<h2><?php _e( 'Code', 'cache-master' ); ?></h2>
-	<p><?php _e( 'This PHP code is generated automatically  depends on your settings.', 'cache-master' ); ?></p>
+	<p><?php _e( 'This PHP code is generated dynamically depends on your settings.', 'cache-master' ); ?></p>
 	<p><?php echo sprintf( __( 'Please modify %s and put the following code into %s', 'cache-master' ), '<code>' . ABSPATH . 'wp-config.php</code>', '<code>wp-config.php</code>' ); ?></p>
 	<div class="scm-code-block">
 		
@@ -57,10 +58,3 @@ if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
 	</div>
 	<p><?php _e( 'You should see the result like this.', 'cache-master' ); ?></p>
 </div>
-
-<form action="options.php" method="post">
-    <?php settings_fields( 'scm_setting_group_2' ); ?>
-    <?php do_settings_sections( 'scm_setting_page_2' );  ?>
-    <hr />
-    <?php submit_button(); ?>
-</form>

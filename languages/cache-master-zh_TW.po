@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 09:06+0000\n"
-"PO-Revision-Date: 2020-10-06 09:10+0000\n"
+"POT-Creation-Date: 2020-10-07 08:39+0000\n"
+"PO-Revision-Date: 2020-10-07 08:41+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
@@ -14,100 +14,65 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.3.1; wp-5.5.1"
 
-#: inc/class-cache-master.php:158
-#, php-format
-msgid "Current memory usage: %s MB"
-msgstr "目前記憶體用量：%s MB"
+#: inc/class-cache-master.php:162
+msgid "After"
+msgstr "快取後"
 
-#: inc/class-cache-master.php:167
+#: inc/class-cache-master.php:163
+#, php-format
+msgid "Now: %s"
+msgstr "現在時間：%s"
+
+#: inc/class-cache-master.php:164 inc/class-cache-master.php:178
+#, php-format
+msgid "Memory usage: %s MB"
+msgstr "記憶體使用量：%s MB"
+
+#: inc/class-cache-master.php:165 inc/class-cache-master.php:179
+#, php-format
+msgid "Page generated in %s seconds."
+msgstr "頁面在 %s 秒內產生。"
+
+#: inc/class-cache-master.php:174
 msgid "This page is cached by Cache Master plugin."
 msgstr "此頁面由快取大師外掛進行快取。"
 
-#: inc/class-cache-master.php:168
+#: inc/class-cache-master.php:175
+msgid "Before"
+msgstr "快取前"
+
+#: inc/class-cache-master.php:176
 #, php-format
 msgid "Time to cache: %s"
 msgstr "快取的時間：%s"
 
-#: inc/class-cache-master.php:169
+#: inc/class-cache-master.php:177
 #, php-format
 msgid "Expires at: %s"
 msgstr "過期於："
-
-#: inc/class-cache-master.php:170
-#, php-format
-msgid "Memory usage before caching: %s MB"
-msgstr "在進行快取前的記憶體用量：%s MB"
 
 #. Name of the plugin
 #: inc/admin/menu.php:29 inc/admin/menu.php:30 inc/admin/post-update.php:51
 msgid "Cache Master"
 msgstr "快取大師"
 
-#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:145
+#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:93
 msgid "Settings"
 msgstr "設定"
 
-#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/menu.php:83
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:100
 msgid "Expert Mode"
 msgstr "專家模式"
 
-#: inc/admin/menu.php:85
-msgid ""
-"Because Cache Master works after all plguins installed, it can only save a "
-"maximum of 20-25 percent memory."
-msgstr "因為快取大師在所有外掛載入後運作，最多只能節省 20-25 百分比的記憶體。"
-
-#: inc/admin/menu.php:86
-#, php-format
-msgid ""
-"However, if you modify %s to let Cache Master output cache before everything "
-"initialized, it can save up to a maximum of <strong>95</strong> percent "
-"memory - even more."
-msgstr ""
-"不過呢，如果你修改 %s 讓快取大師能在所有東西完成初始化之前輸出快取，可以節省上看 <strong>95</strong> 百分比的記憶體，甚至更多。"
-
-#: inc/admin/menu.php:88
-msgid "Code"
-msgstr "程式碼"
-
-#: inc/admin/menu.php:89
-msgid "This PHP code is generated automatically  depends on your settings."
-msgstr "這個 PHP 程式碼自動產生，內容取決於你的設定值。"
-
-#: inc/admin/menu.php:90
-#, php-format
-msgid "Please modify %s and put the following code into %s"
-msgstr "請修改 %s 並將以下程式碼放進 %s"
-
-#: inc/admin/menu.php:115
-msgid "Guide"
-msgstr "指南"
-
-#: inc/admin/menu.php:116
-msgid ""
-"The position of the PHP code is supposed to put right after the DB constants."
-msgstr "這段 PHP 程式碼的位置應該就放在在 DB 的常數之後。"
-
-#: inc/admin/menu.php:120
-#, php-format
-msgid ""
-"Once you have done things right, if you are using Chome, %s or right click "
-"and select \"View Source\" to vew the HTML source code."
-msgstr "當你把事情正確完成時，如果你正用 Chrome 瀏覽器，%s 或右鍵點擊並選擇 \"檢視原始碼\" 來查看 HTML 原始碼。"
-
-#: inc/admin/menu.php:124
-msgid "You should see the result like this."
-msgstr "你應該看到的的結果像這樣。"
-
-#: inc/admin/menu.php:164
+#: inc/admin/menu.php:112
 msgid "Source code"
 msgstr "原始碼"
 
-#: inc/admin/menu.php:214
+#: inc/admin/menu.php:162
 msgid "Cache Master supports only static URL structure."
 msgstr "快取大師只支援靜態網址結構。"
 
-#: inc/admin/menu.php:215
+#: inc/admin/menu.php:163
 #, php-format
 msgid "You have to go to %s page and change the permalink settings."
 msgstr "你必須到 %s 頁面改變固定連結設定。"
@@ -116,127 +81,193 @@ msgstr "你必須到 %s 頁面改變固定連結設定。"
 msgid "Cache has been cleared."
 msgstr "快取已被清除。"
 
-#: inc/admin/setting.php:32
+#: inc/admin/setting.php:35
 msgid "Driver"
 msgstr "驅動程式"
 
-#: inc/admin/setting.php:39
+#: inc/admin/setting.php:42
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: inc/admin/setting.php:46
+#: inc/admin/setting.php:49
 msgid "Others"
 msgstr "其它"
 
-#: inc/admin/setting.php:53
+#: inc/admin/setting.php:56
 msgid "Caching Status"
 msgstr "快取運行狀態"
 
-#: inc/admin/setting.php:61
+#: inc/admin/setting.php:64
 msgid "Cache Driver"
 msgstr "快取驅動程式"
 
-#: inc/admin/setting.php:69
+#: inc/admin/setting.php:72
 msgid "Time to Live"
 msgstr "存活時間"
 
-#: inc/admin/setting.php:77
+#: inc/admin/setting.php:80
 msgid "Uninstall"
 msgstr "反安裝"
 
-#: inc/admin/setting.php:85
+#: inc/admin/setting.php:88
 msgid "Post Types"
 msgstr "文章類型"
 
-#: inc/admin/setting.php:105
-msgid "File"
-msgstr "檔案"
-
-#: inc/admin/setting.php:106
-msgid "Redis"
-msgstr "Redis"
-
 #: inc/admin/setting.php:107
-msgid "Memcache"
-msgstr "Memcache"
+msgid "Status"
+msgstr "狀態"
 
-#: inc/admin/setting.php:108
-msgid "Memcached"
-msgstr "Memcached"
-
-#: inc/admin/setting.php:109
-msgid "APC"
-msgstr "APC"
-
-#: inc/admin/setting.php:110
-msgid "APCu"
-msgstr "APCu"
-
-#: inc/admin/setting.php:111
-msgid "WinCache"
-msgstr "WinCache"
-
-#: inc/admin/setting.php:112
-msgid "MySQL"
-msgstr "MySQL"
-
-#: inc/admin/setting.php:113
-msgid "SQLite"
-msgstr "SQLite"
-
-#: inc/admin/setting.php:136
-msgid "Choose a driver to cache your posts and pages."
-msgstr "選擇驅動程式來快取你的文章和頁面。"
-
-#: inc/admin/setting.php:188
-msgid "Please fill in a number between 300-86400. (in seconds)"
-msgstr "請填入在 300 至 86400 之間的數字。（以秒計）"
-
-#: inc/admin/setting.php:205
-msgid "Remove Cache Master generated data."
-msgstr "移除快取大師產生的資料。"
-
-#: inc/admin/setting.php:212
-msgid "Keep Cache Master generated data."
-msgstr "保持快取大師產生的資料。"
-
-#: inc/admin/setting.php:216
-msgid "This option only works when you uninstall this plugin."
-msgstr "這個選項只在你反安裝這個外掛時運作。"
-
-#: inc/admin/setting.php:229
-msgid "Home"
-msgstr "首頁"
-
-#: inc/admin/setting.php:230
-msgid "Post"
-msgstr "文章"
-
-#: inc/admin/setting.php:231
-msgid "Page"
-msgstr "頁面"
-
-#: inc/admin/setting.php:246
-msgid "What post type do you like to cache?"
-msgstr "你想快取何種文章類型？"
-
-#: inc/admin/setting.php:247
-msgid "Once you change this option, all cache data will be cleared."
-msgstr "每當你變更這個選項，所有快取資料將被清除。"
-
-#: inc/admin/setting.php:264
+#: inc/admin/views/option_caching_status.php:24
+#: inc/admin/views/option_expert_mode_status.php:29
 msgid "Enable"
 msgstr "啟用"
 
-#: inc/admin/setting.php:271
+#: inc/admin/views/option_caching_status.php:31
+#: inc/admin/views/option_expert_mode_status.php:36
 msgid "Disable"
 msgstr "停用"
 
-#: inc/admin/setting.php:275
+#: inc/admin/views/option_caching_status.php:35
 msgid ""
 "Once you make this option disable, Cache Master will stop working and all "
 "cache  will be cleared."
 msgstr "每當你使這個選項停用，快取大師會停止運作，所有快取將被清除。"
+
+#: inc/admin/views/option_driver.php:18
+msgid "File"
+msgstr "檔案"
+
+#: inc/admin/views/option_driver.php:19
+msgid "Redis"
+msgstr "Redis"
+
+#: inc/admin/views/option_driver.php:20
+msgid "Memcache"
+msgstr "Memcache"
+
+#: inc/admin/views/option_driver.php:21
+msgid "Memcached"
+msgstr "Memcached"
+
+#: inc/admin/views/option_driver.php:22
+msgid "APC"
+msgstr "APC"
+
+#: inc/admin/views/option_driver.php:23
+msgid "APCu"
+msgstr "APCu"
+
+#: inc/admin/views/option_driver.php:24
+msgid "WinCache"
+msgstr "WinCache"
+
+#: inc/admin/views/option_driver.php:25
+msgid "MySQL"
+msgstr "MySQL"
+
+#: inc/admin/views/option_driver.php:26
+msgid "SQLite"
+msgstr "SQLite"
+
+#: inc/admin/views/option_driver.php:49
+msgid "Choose a driver to cache your posts and pages."
+msgstr "選擇驅動程式來快取你的文章和頁面。"
+
+#: inc/admin/views/option_expert_mode_status.php:20
+msgid ""
+"Because Cache Master works after all plguins installed, it can only save a "
+"maximum of 20-25 percent memory."
+msgstr "因為快取大師在所有外掛載入後運作，最多只能節省 20-25 百分比的記憶體。"
+
+#: inc/admin/views/option_expert_mode_status.php:21
+#, php-format
+msgid ""
+"However, if you modify %s to let Cache Master output cache before everything "
+"initialized, it can save up to a maximum of <strong>95</strong> percent "
+"memory - even more."
+msgstr ""
+"不過呢，如果你修改 %s 讓快取大師能在所有東西完成初始化之前輸出快取，可以節省上看 <strong>95</strong> 百分比的記憶體，甚至更多。"
+
+#: inc/admin/views/option_expert_mode_status.php:40
+msgid ""
+"This option only works when you have put the custom PHP code in wp-config.php"
+msgstr "這個選項只在你有放客製的 PHP 程式碼在 wp-config.php 裡才會運作。"
+
+#: inc/admin/views/option_post_types.php:19
+msgid "Home"
+msgstr "首頁"
+
+#: inc/admin/views/option_post_types.php:20
+msgid "Post"
+msgstr "文章"
+
+#: inc/admin/views/option_post_types.php:21
+msgid "Page"
+msgstr "頁面"
+
+#: inc/admin/views/option_post_types.php:37
+msgid "What post type do you like to cache?"
+msgstr "你想快取何種文章類型？"
+
+#: inc/admin/views/option_post_types.php:38
+msgid "Once you change this option, all cache data will be cleared."
+msgstr "每當你變更這個選項，所有快取資料將被清除。"
+
+#: inc/admin/views/option_ttl.php:36
+msgid "Please fill in a number between 300-86400. (in seconds)"
+msgstr "請填入在 300 至 86400 之間的數字。（以秒計）"
+
+#: inc/admin/views/option_uninstall.php:24
+msgid "Remove Cache Master generated data."
+msgstr "移除快取大師產生的資料。"
+
+#: inc/admin/views/option_uninstall.php:31
+msgid "Keep Cache Master generated data."
+msgstr "保持快取大師產生的資料。"
+
+#: inc/admin/views/option_uninstall.php:35
+msgid "This option only works when you uninstall this plugin."
+msgstr "這個選項只在你反安裝這個外掛時運作。"
+
+#: inc/admin/views/page_expert_mode.php:23
+msgid "Code"
+msgstr "程式碼"
+
+#: inc/admin/views/page_expert_mode.php:24
+msgid "This PHP code is generated dynamically depends on your settings."
+msgstr "這個 PHP 程式碼是動態產生，取決於你的設定。"
+
+#: inc/admin/views/page_expert_mode.php:25
+#, php-format
+msgid "Please modify %s and put the following code into %s"
+msgstr "請修改 %s 並將以下程式碼放進 %s"
+
+#: inc/admin/views/page_expert_mode.php:50
+msgid "Guide"
+msgstr "指南"
+
+#: inc/admin/views/page_expert_mode.php:51
+msgid ""
+"The position of the PHP code is supposed to put right after the DB constants."
+msgstr "這段 PHP 程式碼的位置應該就放在在 DB 的常數之後。"
+
+#: inc/admin/views/page_expert_mode.php:55
+#, php-format
+msgid ""
+"Once you have done things right, if you are using Chome, %s or right click "
+"and select \"View Source\" to vew the HTML source code."
+msgstr "當你把事情正確完成時，如果你正用 Chrome 瀏覽器，%s 或右鍵點擊並選擇 \"檢視原始碼\" 來查看 HTML 原始碼。"
+
+#: inc/admin/views/page_expert_mode.php:59
+msgid "You should see the result like this."
+msgstr "你應該看到的的結果像這樣。"
+
+#: inc/admin/views/page_options_page.php:25
+#, php-format
+msgid ""
+"Cache Master cannot work with the plugin \"%s\" becasue of output buffer "
+"conflicts."
+msgstr "快取大師無法和此外掛「%s」一同運作，因為緩衝區輸出衝突的關係。"
 
 #. Description of the plugin
 msgid "A wordpress cache plugin."

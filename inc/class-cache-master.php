@@ -129,11 +129,12 @@ class Cache_Master {
 		}
 
 		$content = ob_get_contents();
-		//ob_get_clean();
+
 		$content .= $this->debug_message( 'ob_stop' );
 
 		if ( $this->is_cache ) {
 			$ttl = (int) get_option( 'scm_option_ttl' );
+
 			$this->driver->set( $this->cache_key,  $content, $ttl );
 		}
 	}
@@ -153,9 +154,15 @@ class Cache_Master {
 		$memory_usage = $memory_usage / (1024 * 1024);
 		$memory_usage = round($memory_usage, 4);
 
+		// timer_stop is WordPress function.
+		$page_speed = timer_stop();
+
 		switch ( $position ) {
 			case 'ob_start':
-				$debug_message .= sprintf( __( 'Current memory usage: %s MB', 'cache-master' ), $memory_usage );
+				$debug_message .= "\n\n" . '....... ' . __( 'After', 'cache-master' ) . ' .......' . "\n\n";
+				$debug_message .= sprintf( __( 'Now: %s', 'cache-master' ), date( 'Y-m-d H:i:s' ) ) . "\n";
+				$debug_message .= sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $memory_usage ) . "\n";
+				$debug_message .= sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $page_speed ) . "\n";
 				$debug_message .= "\n\n//-->";
 				break;
 
@@ -165,9 +172,11 @@ class Cache_Master {
 
 				$debug_message .= "<!--\n\n";
 				$debug_message .= __( 'This page is cached by Cache Master plugin.', 'cache-master' ) . "\n";
+				$debug_message .= "\n\n" . '....... ' . __( 'Before', 'cache-master' ) . ' .......' . "\n\n";
 				$debug_message .= sprintf( __( 'Time to cache: %s', 'cache-master' ), date( 'Y-m-d H:i:s' ) ) . "\n";
 				$debug_message .= sprintf( __( 'Expires at: %s', 'cache-master' ), date( 'Y-m-d H:i:s', $expires ) ) . "\n";
-				$debug_message .= sprintf( __( 'Memory usage before caching: %s MB', 'cache-master' ), $memory_usage ) . "\n";
+				$debug_message .= sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $memory_usage ) . "\n";
+				$debug_message .= sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $page_speed ) . "\n";
 				break;
 		}
 
