@@ -28,6 +28,14 @@ Before you install and use this plugin, please read the following notices carefu
 - A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching.
 - Even logged-in users will see cache if you manually enable Expert Mode.
 
+== Known Issues:
+
+Cache Master have conflicts with the following plugins. Do use Cache Master or just get rid of them.
+
+- Clearfy – WordPress optimization plugin and disable ultimate tweaker
+
+If you find your website doesn't work with Cache Master, please report an issue on GitHub and list all plugins installed on your website. I'll find out the problem and fix it.
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/cache-master` directory, or install the plugin through the WordPress plugins screen directly.

@@ -49,9 +49,9 @@ class Cache_Master {
 	 * Initialize everything the SCM plugin needs.
 	 */
 	public function init() {
-		add_action( 'plugins_loaded', array( $this, 'ob_start'), 5 );
-		add_action( 'shutdown', array( $this, 'ob_stop'), 0 );
-		add_action( 'pre_get_posts', array( $this, 'get_post_data' ) );
+		add_action( 'plugins_loaded', array( $this, 'ob_start' ), 5 );
+		add_action( 'shutdown', array( $this, 'ob_stop' ), 0 );
+		add_action( 'pre_get_posts', array( $this, 'get_post_data' ), 0 );
 	}
 
 	/**
@@ -67,7 +67,7 @@ class Cache_Master {
 		}
 
 		$post_types = get_option( 'scm_option_post_types' );
-		$status = get_option( 'scm_option_caching_status' );
+		$status     = get_option( 'scm_option_caching_status' );
 
 		if ( 'enable' !== $status ) {
 			$this->is_cache = false;
@@ -94,7 +94,7 @@ class Cache_Master {
 	}
 
 	/**
-	 * Start output buffering.
+	 * Start output cache if exists.
 	 *
 	 * @return void
 	 */
@@ -112,7 +112,7 @@ class Cache_Master {
 			echo $cached_content;
 			exit;
 		}
-  
+
 		ob_start();
 	}
 
@@ -128,12 +128,12 @@ class Cache_Master {
 			return;
 		}
 
+		$content = ob_get_contents();
+		//ob_get_clean();
+		$content .= $this->debug_message( 'ob_stop' );
+
 		if ( $this->is_cache ) {
 			$ttl = (int) get_option( 'scm_option_ttl' );
-
-			$content = ob_get_contents();
-			$content .= $this->debug_message( 'ob_stop' );
-
 			$this->driver->set( $this->cache_key,  $content, $ttl );
 		}
 	}

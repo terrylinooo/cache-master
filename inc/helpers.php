@@ -260,3 +260,27 @@ function scm_driver_factory( $type ) {
 
 	return $driver;
 }
+
+/**
+ * Load view files.
+ *
+ * @param string $template_path The specific template's path.
+ * @param array  $data          Data is being passed to.
+ * @return string
+ */
+function scm_load_view( $template_path, $data = array() ) {
+	$view_file_path = SCM_PLUGIN_DIR . 'inc/admin/views/' . $template_path . '.php';
+
+	if ( ! empty( $data ) ) {
+		extract( $data );
+	}
+
+	if ( file_exists( $view_file_path ) ) {
+		ob_start();
+		require $view_file_path;
+		$result = ob_get_contents();
+		ob_end_clean();
+		return $result;
+	}
+	return null;
+}
