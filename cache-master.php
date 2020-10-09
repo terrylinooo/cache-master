@@ -75,6 +75,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 				'menu',           // Display menu link and render setting page.
 				'setting-update', // Event: update settings.
 				'post-update',    // Event: update posts.
+				'functions',      // Helper functions used in admin scope.
 			);
 
 			foreach ( $required_files as $file ) {

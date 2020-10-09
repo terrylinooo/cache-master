@@ -44,10 +44,15 @@
   border-left: 5px #007eff solid;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  font-size: 0;
 }
 .scm-code-block code, .scm-code-block pre {
   background-color: transparent;
   font-size: 13px;
+}
+.scm-code-block pre {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 .scm-code-block code {
   padding: 10px;
@@ -57,6 +62,18 @@
 #scm-expert-mode-page img {
   border: 1px #dddddd solid;
   padding: 5px;
+}
+#scm-expert-mode-page ul {
+  list-style-type: circle;
+  padding-left: 40px;
+}
+#scm-expert-mode-page .scm-no {
+  color: #990000;
+  font-weight: bold;
+}
+#scm-expert-mode-page .scm-yes {
+  color: #009900;
+  font-weight: bold;
 }
 
 .scm-expert-mode-intro {

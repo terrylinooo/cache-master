@@ -20,6 +20,8 @@ add_action( 'update_option_scm_option_caching_status', 'scm_update_scm_option_ca
 add_action( 'update_option_scm_option_expert_mode_status', 'scm_update_scm_option_expert_mode_status' );
 add_action( 'update_option_scm_option_clear_cache', 'scm_update_scm_option_clear_cache' );
 add_action( 'update_option_scm_option_statistics_status', 'scm_update_scm_option_statistics_status' );
+add_action( 'update_option_scm_option_expert_mode_installation', 'scm_update_scm_option_expert_mode_installation' );
+
 
 /**
  * Rebuild data schema.
@@ -114,7 +116,6 @@ function scm_update_scm_option_post_archives() {
  * @return void
  */
 function scm_update_scm_option_clear_cache() {
-
 	$cache_type = get_option( 'scm_option_clear_cache' );
 	$driver     = scm_driver_factory( get_option( 'scm_option_driver' ) );
 	$list       = scm_get_cache_type_list( true );
@@ -172,6 +173,29 @@ function scm_update_scm_option_statistics_status() {
 
 		if ( ! file_exists( $dir ) ) {
 			wp_mkdir_p( $dir );
+		}
+	}
+}
+
+/**
+ * Install Expert Mode code automatically.
+ *
+ * @return void
+ */
+function scm_update_scm_option_expert_mode_installation() {
+	if ( 'yes' === get_option( 'scm_option_expert_mode_installation' ) ) {
+		if ( scm_is_available_inject_code() ) {
+			$sign = '/**#@+';
+
+			$wp_config_file = ABSPATH . 'wp-config.php';
+
+			$content = file_get_contents( $wp_config_file );
+			$replace = "\n\n" . scm_expert_mode_code_template() . "\n\n" . $sign;
+
+			if ( false !== strpos( $content, $sign ) ) {
+				$replaced_content = str_replace( $sign, $replace, $content );
+				file_put_contents( $wp_config_file, $replaced_content );
+			}
 		}
 	}
 }

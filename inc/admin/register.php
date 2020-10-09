@@ -23,6 +23,7 @@ function scm_activation() {
 	add_option( 'scm_option_uninstall', 'yes' );
 	add_option( 'scm_option_caching_status', 'disable' );
 	add_option( 'scm_option_expert_mode_status', 'disable' );
+	add_option( 'scm_option_expert_mode_installation', 'no' );
 	add_option( 'scm_option_post_homepage', 'yes' );
 	add_option( 'scm_option_visibility_login_user', 'no' );
 	add_option( 'scm_option_visibility_guest', 'yes' );

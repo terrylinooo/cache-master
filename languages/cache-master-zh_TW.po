@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-09 09:57+0000\n"
-"PO-Revision-Date: 2020-10-09 11:01+0000\n"
+"POT-Creation-Date: 2020-10-09 19:52+0000\n"
+"PO-Revision-Date: 2020-10-09 20:08+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
@@ -51,40 +51,40 @@ msgstr "快取的時間：%s"
 msgid "Expires at: %s"
 msgstr "過期於：%s"
 
-#: inc/helpers.php:112 inc/admin/setting.php:109
+#: inc/admin/functions.php:46 inc/admin/setting.php:110
 msgid "Homepage"
 msgstr "首頁"
 
-#: inc/helpers.php:113 inc/admin/views/option_post_types.php:19
+#: inc/admin/functions.php:47 inc/admin/views/option_post_types.php:18
 msgid "Post"
 msgstr "文章"
 
-#: inc/helpers.php:114 inc/admin/views/option_post_types.php:20
+#: inc/admin/functions.php:48 inc/admin/views/option_post_types.php:19
 msgid "Page"
 msgstr "頁面"
 
-#: inc/helpers.php:115 inc/helpers.php:116 inc/helpers.php:117
-#: inc/helpers.php:118
+#: inc/admin/functions.php:49 inc/admin/functions.php:50
+#: inc/admin/functions.php:51 inc/admin/functions.php:52
 msgid "Archive"
 msgstr "彙整"
 
-#: inc/helpers.php:115 inc/admin/views/option_post_archives.php:19
+#: inc/admin/functions.php:49 inc/admin/views/option_post_archives.php:19
 msgid "Category"
 msgstr "分類"
 
-#: inc/helpers.php:116 inc/admin/views/option_post_archives.php:20
+#: inc/admin/functions.php:50 inc/admin/views/option_post_archives.php:20
 msgid "Tag"
 msgstr "標籤"
 
-#: inc/helpers.php:117 inc/admin/views/option_post_archives.php:21
+#: inc/admin/functions.php:51 inc/admin/views/option_post_archives.php:21
 msgid "Date"
 msgstr "日期"
 
-#: inc/helpers.php:118 inc/admin/views/option_post_archives.php:22
+#: inc/admin/functions.php:52 inc/admin/views/option_post_archives.php:22
 msgid "Author"
 msgstr "作者"
 
-#: inc/helpers.php:119
+#: inc/admin/functions.php:53
 msgid "Uncategorised"
 msgstr "未分類"
 
@@ -97,12 +97,12 @@ msgstr "快取大師"
 msgid "Settings"
 msgstr "設定"
 
-#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:143
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:144
 msgid "Expert Mode"
 msgstr "專家模式"
 
-#: inc/admin/menu.php:57 inc/admin/menu.php:58 inc/admin/setting.php:160
-#: inc/admin/setting.php:167
+#: inc/admin/menu.php:57 inc/admin/menu.php:58 inc/admin/setting.php:169
+#: inc/admin/setting.php:176
 msgid "Statistics"
 msgstr "統計"
 
@@ -110,11 +110,11 @@ msgstr "統計"
 msgid "Source code"
 msgstr "原始碼"
 
-#: inc/admin/menu.php:180
+#: inc/admin/menu.php:182
 msgid "Cache Master supports only static URL structure."
 msgstr "快取大師只支援靜態網址結構。"
 
-#: inc/admin/menu.php:181
+#: inc/admin/menu.php:183
 #, php-format
 msgid "You have to go to %s page and change the permalink settings."
 msgstr "你必須到 %s 頁面改變固定連結設定。"
@@ -123,63 +123,67 @@ msgstr "你必須到 %s 頁面改變固定連結設定。"
 msgid "Cache has been cleared."
 msgstr "快取已被清除。"
 
-#: inc/admin/setting.php:41
+#: inc/admin/setting.php:42
 msgid "Driver"
 msgstr "驅動程式"
 
-#: inc/admin/setting.php:48
+#: inc/admin/setting.php:49
 msgid "Visibilty"
 msgstr "可見度"
 
-#: inc/admin/setting.php:55
+#: inc/admin/setting.php:56
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: inc/admin/setting.php:62
+#: inc/admin/setting.php:63
 msgid "Others"
 msgstr "其它"
 
-#: inc/admin/setting.php:69
+#: inc/admin/setting.php:70
 msgid "Caching Status"
 msgstr "快取運行狀態"
 
-#: inc/admin/setting.php:77
+#: inc/admin/setting.php:78
 msgid "Cache Driver"
 msgstr "快取驅動程式"
 
-#: inc/admin/setting.php:85
+#: inc/admin/setting.php:86
 msgid "Time to Live"
 msgstr "存活時間"
 
-#: inc/admin/setting.php:93
+#: inc/admin/setting.php:94
 msgid "Uninstall"
 msgstr "反安裝"
 
-#: inc/admin/setting.php:101
+#: inc/admin/setting.php:102
 msgid "Post Types"
 msgstr "文章類型"
 
-#: inc/admin/setting.php:117
+#: inc/admin/setting.php:118
 msgid "Archive Pages"
 msgstr "彙整頁面"
 
-#: inc/admin/setting.php:125
+#: inc/admin/setting.php:126
 msgid "Guests"
 msgstr "訪客"
 
-#: inc/admin/setting.php:133
+#: inc/admin/setting.php:134
 msgid "Logged-in Users"
 msgstr "已登入使用者"
 
-#: inc/admin/setting.php:150
+#: inc/admin/setting.php:151
 msgid "Status"
 msgstr "狀態"
 
-#: inc/admin/setting.php:175
+#: inc/admin/setting.php:159
+msgid "Install the Code"
+msgstr "安裝程式碼"
+
+#: inc/admin/setting.php:184
 msgid "Clear Cache"
 msgstr "清除快取"
 
-#: inc/admin/setting.php:182
+#: inc/admin/setting.php:191
 msgid "Cache Type"
 msgstr "快取類型"
 
@@ -249,6 +253,52 @@ msgstr "SQLite"
 msgid "Choose a driver to cache your posts and pages."
 msgstr "選擇驅動程式來快取你的文章和頁面。"
 
+#: inc/admin/views/option_expert_mode_installation.php:21
+#: inc/admin/views/option_expert_mode_installation.php:22
+#: inc/admin/views/option_post_homepage.php:31
+#: inc/admin/views/option_visibility_login_user.php:31
+msgid "No"
+msgstr "否"
+
+#: inc/admin/views/option_expert_mode_installation.php:25
+#: inc/admin/views/option_expert_mode_installation.php:28
+#: inc/admin/views/option_post_homepage.php:24
+#: inc/admin/views/option_visibility_guest.php:24
+#: inc/admin/views/option_visibility_login_user.php:24
+msgid "Yes"
+msgstr "是"
+
+#: inc/admin/views/option_expert_mode_installation.php:38
+msgid "Yes, help me install the code automatically."
+msgstr "好的，幫我自動地安裝程式碼。"
+
+#: inc/admin/views/option_expert_mode_installation.php:45
+msgid "No, I will install the code manually."
+msgstr "不用，我會手動地安裝程式碼。"
+
+#: inc/admin/views/option_expert_mode_installation.php:49
+msgid ""
+"Code Master can modify <code>wp-config.php</code> and install the code for "
+"you."
+msgstr "快取大師能為你修改 <code>wp-config.php</code> 和安裝程式碼。"
+
+#: inc/admin/views/option_expert_mode_installation.php:50
+msgid "Or, you can follow the guide below to install the code yourself."
+msgstr "或者，你可以依照以下指南，自己安裝程式碼。"
+
+#: inc/admin/views/option_expert_mode_installation.php:54
+#, php-format
+msgid "Check the code block in %s"
+msgstr "檢查在 %s 的程式區塊"
+
+#: inc/admin/views/option_expert_mode_installation.php:56
+msgid "Does the code block exist?"
+msgstr "程式碼區塊存在嗎？"
+
+#: inc/admin/views/option_expert_mode_installation.php:57
+msgid "Does the code block is fit for this blog?"
+msgstr "程式碼區塊適用這個部落格嗎？"
+
 #: inc/admin/views/option_expert_mode_status.php:20
 msgid ""
 "Because Cache Master works after all plguins installed, it can only save a "
@@ -275,26 +325,15 @@ msgstr "什麼類型的彙整頁面要被快取？"
 
 #: inc/admin/views/option_post_archives.php:41
 #: inc/admin/views/option_post_homepage.php:36
-#: inc/admin/views/option_post_types.php:39
+#: inc/admin/views/option_post_types.php:38
 msgid "Once you change this option, all cache data will be cleared."
 msgstr "每當你變更這個選項，所有快取資料將被清除。"
-
-#: inc/admin/views/option_post_homepage.php:24
-#: inc/admin/views/option_visibility_guest.php:24
-#: inc/admin/views/option_visibility_login_user.php:24
-msgid "Yes"
-msgstr "是"
-
-#: inc/admin/views/option_post_homepage.php:31
-#: inc/admin/views/option_visibility_login_user.php:31
-msgid "No"
-msgstr "否"
 
 #: inc/admin/views/option_post_homepage.php:35
 msgid "Would you like to cache the homepage of your site?"
 msgstr "你想要快取你的網站首頁嗎？"
 
-#: inc/admin/views/option_post_types.php:38
+#: inc/admin/views/option_post_types.php:37
 msgid "What post type do you like to cache?"
 msgstr "你想快取何種文章類型？"
 
@@ -342,36 +381,36 @@ msgid ""
 "of outputting cache at a very early stage when running as Expert Mode."
 msgstr "已登入的使用者在「專家模式」運行時，總是看到快取網頁，因為在「專家模式」時，輸出快取是在非常早期階段的關係。"
 
-#: inc/admin/views/page_expert_mode.php:23
+#: inc/admin/views/page_expert_mode.php:26
 msgid "Code"
 msgstr "程式碼"
 
-#: inc/admin/views/page_expert_mode.php:24
+#: inc/admin/views/page_expert_mode.php:27
 msgid "This PHP code is generated dynamically depends on your settings."
 msgstr "這個 PHP 程式碼是動態產生，取決於你的設定。"
 
-#: inc/admin/views/page_expert_mode.php:25
+#: inc/admin/views/page_expert_mode.php:28
 #, php-format
 msgid "Please modify %s and put the following code into %s"
 msgstr "請修改 %s 並將以下程式碼放進 %s"
 
-#: inc/admin/views/page_expert_mode.php:50
+#: inc/admin/views/page_expert_mode.php:31
 msgid "Guide"
 msgstr "指南"
 
-#: inc/admin/views/page_expert_mode.php:51
+#: inc/admin/views/page_expert_mode.php:32
 msgid ""
 "The position of the PHP code is supposed to put right after the DB constants."
 msgstr "這段 PHP 程式碼的位置應該就放在在 DB 的常數之後。"
 
-#: inc/admin/views/page_expert_mode.php:55
+#: inc/admin/views/page_expert_mode.php:36
 #, php-format
 msgid ""
 "Once you have done things right, if you are using Chome, %s or right click "
 "and select \"View Source\" to vew the HTML source code."
 msgstr "當你把事情正確完成時，如果你正用 Chrome 瀏覽器，%s 或右鍵點擊並選擇 \"檢視原始碼\" 來查看 HTML 原始碼。"
 
-#: inc/admin/views/page_expert_mode.php:59
+#: inc/admin/views/page_expert_mode.php:40
 msgid "You should see the result like this."
 msgstr "你應該看到的的結果像這樣。"
 

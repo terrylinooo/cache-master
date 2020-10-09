@@ -11,6 +11,8 @@
 if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
+
+
 ?>
 
 <div id="scm-expert-mode-page">
@@ -20,33 +22,12 @@ if ( ! defined( 'SCM_INC' ) ) {
 		<hr />
 		<?php submit_button(); ?>
 	</form>
+
 	<h2><?php _e( 'Code', 'cache-master' ); ?></h2>
 	<p><?php _e( 'This PHP code is generated dynamically depends on your settings.', 'cache-master' ); ?></p>
 	<p><?php echo sprintf( __( 'Please modify %s and put the following code into %s', 'cache-master' ), '<code>' . ABSPATH . 'wp-config.php</code>', '<code>wp-config.php</code>' ); ?></p>
-	<div class="scm-code-block">
-		
-		<pre>
-			<code>
-// BEGIN - Cache Master
+	<div class="scm-code-block"><pre><code class="language-php"><?php echo scm_expert_mode_code_template(); ?></code></pre></div>
 
-if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
-
-    include_once( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' );
-
-    $args = array(
-        'plugin_dir'        => '<?php echo rtrim( SCM_PLUGIN_DIR, '/' ); ?>',
-        'plugin_upload_dir' => '<?php echo rtrim( scm_get_upload_dir(), '/' ); ?>',
-        'site_url'          => '<?php echo rtrim( get_site_url(), '/' ); ?>',
-        'cache_driver_type' => '<?php echo get_option( 'scm_option_driver' ); ?>',
-    );
-
-    scm_run_expert_mode( $args );
-}
-
-// END - Cache Master
-			</code>
-		</pre>
-	</div>
 	<h2><?php _e( 'Guide', 'cache-master' ); ?></h2>
 	<p><?php _e( 'The position of the PHP code is supposed to put right after the DB constants.', 'cache-master' ); ?> (<code>DB_COLLATE</code>)</p>
 	<div>
@@ -58,3 +39,11 @@ if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
 	</div>
 	<p><?php _e( 'You should see the result like this.', 'cache-master' ); ?></p>
 </div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', (event) => {
+		document.querySelectorAll('pre code').forEach((block) => {
+			hljs.highlightBlock(block);
+		});
+	});
+</script>

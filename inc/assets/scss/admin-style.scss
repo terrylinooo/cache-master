@@ -54,10 +54,17 @@
 	border-left: 5px #007eff solid;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
+	font-size: 0;
 
 	code, pre {
 		background-color: transparent;
 		font-size: 13px;
+	}
+
+	pre {
+		margin: 0 !important;
+		padding: 0 !important;
+		
 	}
 
 	code {
@@ -70,6 +77,21 @@
 	img {
 		border: 1px #dddddd solid;
 		padding: 5px;
+	}
+
+	ul {
+		list-style-type: circle;
+		padding-left: 40px;
+	}
+
+	.scm-no {
+		color: #990000;
+		font-weight: bold;
+	}
+
+	.scm-yes {
+		color: #009900;
+		font-weight: bold;
 	}
 }
 
