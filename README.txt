@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -95,3 +95,7 @@ GNU General Public License for more details.
 
 * Add setting page - Cache statistics.
 * Improve code - Prevent conflicts with others plugins.
+
+= 1.4.1
+
+* Add feature - Automatic installation of Expert Mode code.
