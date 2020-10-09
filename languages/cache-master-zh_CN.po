@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-09 09:57+0000\n"
-"PO-Revision-Date: 2020-10-09 10:08+0000\n"
+"PO-Revision-Date: 2020-10-09 11:01+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
@@ -165,7 +165,7 @@ msgstr "文章类型"
 
 #: inc/admin/setting.php:117
 msgid "Archive Pages"
-msgstr "库存页面"
+msgstr "汇整页面"
 
 #: inc/admin/setting.php:125
 msgid "Guests"
@@ -275,7 +275,7 @@ msgstr "这个选项只在你有放客制的 PHP 代码在 wp-config.php 里才�
 
 #: inc/admin/views/option_post_archives.php:40
 msgid "What type of archive page do you like to cache?"
-msgstr "什么类型的库存页面要被快取？"
+msgstr "什么类型的汇整页面要被快取？"
 
 #: inc/admin/views/option_post_archives.php:41
 #: inc/admin/views/option_post_homepage.php:36

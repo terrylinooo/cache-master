@@ -12,7 +12,6 @@ if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
 
-
 $option_post_types = get_option( 'scm_option_post_types');
 
 $option_list = array(
@@ -37,4 +36,3 @@ $option_list = array(
 </div>
 <p><em><?php echo __( 'What post type do you like to cache?', 'cache-master' ); ?></em></p>
 <p><em><?php echo __( 'Once you change this option, all cache data will be cleared.', 'cache-master' ); ?></em></p>
-
