@@ -26,6 +26,8 @@ function scm_activation() {
 	add_option( 'scm_option_post_homepage', 'yes' );
 	add_option( 'scm_option_visibility_login_user', 'no' );
 	add_option( 'scm_option_visibility_guest', 'yes' );
+	add_option( 'scm_option_statistics_status', 'disable' );
+	add_option( 'scm_option_clear_cache', '' );
 
 	$post_types = array(
 		'home' => 'yes',

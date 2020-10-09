@@ -17,14 +17,14 @@ $option_caching_status = get_option( 'scm_option_caching_status', 'disable' );
 ?>
 
 <div>
-	<div>
+	<div class="scm-option-item">
 		<input type="radio" name="scm_option_caching_status" id="cache-master-caching-status-enable" value="enable" 
 			<?php checked( $option_caching_status, 'enable' ); ?>>
 		<label for="cache-master-caching-status-enable">
 			<?php echo __( 'Enable', 'cache-master' ); ?><br />
 		<label>
 	</div>
-	<div>
+	<div class="scm-option-item">
 		<input type="radio" name="scm_option_caching_status" id="cache-master-caching-status-disable" value="disable" 
 			<?php checked( $option_caching_status, 'disable' ); ?>>
 		<label for="cache-master-caching-status-disable">

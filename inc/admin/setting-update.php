@@ -18,6 +18,8 @@ add_action( 'update_option_scm_option_post_archives', 'scm_update_scm_option_pos
 add_action( 'update_option_scm_option_post_homepage', 'scm_update_scm_option_post_homepage' );
 add_action( 'update_option_scm_option_caching_status', 'scm_update_scm_option_caching_status' );
 add_action( 'update_option_scm_option_expert_mode_status', 'scm_update_scm_option_expert_mode_status' );
+add_action( 'update_option_scm_option_clear_cache', 'scm_update_scm_option_clear_cache' );
+add_action( 'update_option_scm_option_statistics_status', 'scm_update_scm_option_statistics_status' );
 
 /**
  * Rebuild data schema.
@@ -104,4 +106,55 @@ function scm_update_scm_option_post_homepage() {
  */
 function scm_update_scm_option_post_archives() {
 	scm_update_scm_option_post_types();
+}
+
+/**
+ * Perform clearing cache by specific option.
+ *
+ * @return void
+ */
+function scm_update_scm_option_clear_cache() {
+
+	$cache_type = get_option( 'scm_option_clear_cache' );
+
+	update_option( 'scm_option_clear_cache', '' );
+
+	$list = scm_get_cache_type_list( true );
+
+	if ( in_array( $cache_type, $list ) ) {
+		$dir = scm_get_stats_dir( $cache_type );
+
+		if ( is_dir( $dir ) ) {
+			$driver = scm_driver_factory( get_option( 'scm_option_driver' ) );
+
+			foreach ( new DirectoryIterator( $dir ) as $file ) {
+				if ( $file->isFile() && $file->getExtension() === 'json' ) {
+					$filename = $file->getFilename();
+
+					$key = strstr( $filename, '.', true );
+
+					$driver->delete( $key );
+					unlink( $file->getPathname() );
+				}
+			}
+		}
+	}
+}
+
+/**
+ * Check if the statistics directories exist or not.
+ * If not, create the directory for them.
+ *
+ * @return void
+ */
+function scm_update_scm_option_statistics_status() {
+	$list = scm_get_cache_type_list( true );
+
+	foreach ( $list as $v ) {
+		$dir = scm_get_stats_dir( $v );
+
+		if ( ! file_exists( $dir ) ) {
+			wp_mkdir_p( $dir );
+		}
+	}
 }

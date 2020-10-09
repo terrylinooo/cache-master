@@ -22,111 +22,111 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function scm_run_expert_mode( $args ) {
 
-    $microtime_before = microtime(true);
-    $sql_queries = 0;
+	$microtime_before = microtime( true );
+	$sql_queries      = 0;
 
-    // Prevent CLI conficts
-    if ( ! isset( $_SERVER['REQUEST_URI' ] ) ) {
-        return;
-    }
+	// Prevent CLI conficts
+	if ( ! isset( $_SERVER['REQUEST_URI' ] ) ) {
+		return;
+	}
 
-    $plugin_dir        = rtrim( $args['plugin_dir'], '/' );
-    $plugin_upload_dir = rtrim( $args['plugin_upload_dir'], '/' );
-    $site_url          = rtrim( $args['site_url'], '/' ) . '/';
-    $site_path         = parse_url( $site_url, PHP_URL_PATH );
-    $request_uri       = $_SERVER['REQUEST_URI'];
+	$plugin_dir        = rtrim( $args['plugin_dir'], '/' );
+	$plugin_upload_dir = rtrim( $args['plugin_upload_dir'], '/' );
+	$site_url          = rtrim( $args['site_url'], '/' ) . '/';
+	$site_path         = parse_url( $site_url, PHP_URL_PATH );
+	$request_uri       = $_SERVER['REQUEST_URI'];
 
-    // The cache type.
-    $type = $args['cache_driver_type'];
+	// The cache type.
+	$type = $args['cache_driver_type'];
 
-    // The cache key.
-    $key = md5( $request_uri );
+	// The cache key.
+	$key = md5( $request_uri );
 
-    // Make sure that Cache Master exists.
-    if ( ! file_exists( $plugin_dir . '/cache-master.php' ) ) {
-        return;
-    }
+	// Make sure that Cache Master exists.
+	if ( ! file_exists( $plugin_dir . '/cache-master.php' ) ) {
+		return;
+	}
 
-    // Make the "expert mode" is enable.
-    if ( ! file_exists( $plugin_upload_dir . '/expert.lock') ) {
-        return;
-    }
+	// Make the "expert mode" is enable.
+	if ( ! file_exists( $plugin_upload_dir . '/expert.lock') ) {
+		return;
+	}
 
-    // Start "reading-cache" procedure.
-    if ( strpos( $request_uri, $site_path ) === 0 ) {
-        
-        // Composer autoloader.
-        include_once( $plugin_dir . '/vendor/autoload.php' );
+	// Start "reading-cache" procedure.
+	if ( strpos( $request_uri, $site_path ) === 0 ) {
+		
+		// Composer autoloader.
+		include_once( $plugin_dir . '/vendor/autoload.php' );
 
-        switch ( $type )  {
-            case 'mysql':
-                $setting = array(
-                    'host'    => DB_HOST,
-                    'dbname'  => DB_NAME,
-                    'user'    => DB_USER,
-                    'pass'    => DB_PASSWORD,
-                    'charset' => DB_CHARSET,
-                );
+		switch ( $type )  {
+			case 'mysql':
+				$setting = array(
+					'host'    => DB_HOST,
+					'dbname'  => DB_NAME,
+					'user'    => DB_USER,
+					'pass'    => DB_PASSWORD,
+					'charset' => DB_CHARSET,
+				);
 
-                $sql_queries++;
-                break;
+				$sql_queries++;
+				break;
 
-            case 'sqlite':
-            case 'file':
-                $setting = array(
-                    'storage' => $plugin_upload_dir . '/' . $type . '_driver',
-                );
-                break;
+			case 'sqlite':
+			case 'file':
+				$setting = array(
+					'storage' => $plugin_upload_dir . '/' . $type . '_driver',
+				);
+				break;
 
-            case 'redis':
-                $setting = array(
-                    'host' => '127.0.0.1',
-                    'port' =>  6379,
-                );
-                break;
+			case 'redis':
+				$setting = array(
+					'host' => '127.0.0.1',
+					'port' =>  6379,
+				);
+				break;
 
-            case 'memcache':
-            case 'memcached':
-                $setting = array(
-                    'host' => '127.0.0.1',
-                    'port' =>  11211,
-                );
-                break;
+			case 'memcache':
+			case 'memcached':
+				$setting = array(
+					'host' => '127.0.0.1',
+					'port' =>  11211,
+				);
+				break;
 
-            default:
-                // apc, apcu, wincache
-                $setting = array();
-        }
-        
-        $driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
-       
-        $cached_content = $driver->get( $key );
+			default:
+				// apc, apcu, wincache
+				$setting = array();
+		}
+		
+		$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
+	   
+		$cached_content = $driver->get( $key );
 
-        $memory_usage = memory_get_usage();
+		$memory_usage = memory_get_usage();
 		$memory_usage = $memory_usage / ( 1024 * 1024 );
 		$memory_usage = round( $memory_usage, 4 );
-        
+		
 		if ( ! empty( $cached_content ) ) {
 
-            $microtime_after = microtime(true);
+			$microtime_after = microtime(true);
 
-            $page_speed = round( $microtime_after - $microtime_before, 3 );
-           
-            $debug_message .= "\n\n" . '....... ' . 'After' . ' .......' . "\n\n";
+			$page_speed = round( $microtime_after - $microtime_before, 3 );
+		   
+			$debug_message .= "\n" . '....... ' . 'After' . ' .......' . "\n\n";
 
-            $debug_message .= sprintf( 'Now: %s', date( 'Y-m-d H:i:s' ) ) . "\n";
-            $debug_message .= sprintf( 'Memory usage: %s MB', $memory_usage ) . "\n";
-            $debug_message .= sprintf( 'SQL queries: %s', $sql_queries ) . "\n";
-            $debug_message .= sprintf( 'Page generated in %s seconds.', $page_speed ) . "\n\n";
-            $debug_message .= '(Running as Expert Mode)' . "\n";
-            $debug_message .= "\n\n//-->";
+			$debug_message .= sprintf( 'Now: %s', date( 'Y-m-d H:i:s' ) ) . "\n";
+			$debug_message .= sprintf( 'Memory usage: %s MB', $memory_usage ) . "\n";
+			$debug_message .= sprintf( 'SQL queries: %s', $sql_queries ) . "\n";
+			$debug_message .= sprintf( 'Page generated in %s seconds.', $page_speed ) . "\n\n";
+			$debug_message .= '(Running as Expert Mode)' . "\n";
+			$debug_message .= "\n//-->";
 
-            $cached_content .= $debug_message;
+			$cached_content .= $debug_message;
 
-            // Outpue cache.
+			// Outpue cache.
 			echo $cached_content;
 			exit;
-        }  
-    }
+		}  
+	}
 }
 

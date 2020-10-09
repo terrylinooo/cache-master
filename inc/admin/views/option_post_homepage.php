@@ -17,14 +17,14 @@ $option_post_homepage = get_option( 'scm_option_post_homepage', 'yes' );
 ?>
 
 <div>
-	<div>
+	<div class="scm-option-item">
 		<input type="radio" name="scm_option_post_homepage" id="cache-master-post-homepage-option-yes" value="yes" 
 			<?php checked( $option_post_homepage, 'yes' ); ?>>
 		<label for="cache-master-post-homepage-option-yes">
 			<?php echo __( 'Yes', 'cache-master' ); ?><br />
 		<label>
 	</div>
-	<div>
+	<div class="scm-option-item">
 		<input type="radio" name="scm_option_post_homepage" id="cache-master-post-homepage-option-no" value="no" 
 			<?php checked( $option_post_homepage, 'no' ); ?>>
 		<label for="cache-master-post-homepage-option-no">

@@ -22,14 +22,14 @@ $option_expert_mode = get_option( 'scm_option_expert_mode_status', 'enable' );
 </div>
 <br /><br />
 <div>
-	<div>
+	<div class="scm-option-item">
 		<input type="radio" name="scm_option_expert_mode_status" id="cache-master-uninstall-option-enable" value="enable" 
 			<?php checked( $option_expert_mode, 'enable' ); ?>>
 		<label for="cache-master-expert-mode-option-enable">
 			<?php echo __( 'Enable', 'cache-master' ); ?><br />
 		<label>
 	</div>
-	<div>
+	<div class="scm-option-item">
 		<input type="radio" name="scm_option_expert_mode_status" id="cache-master-uninstall-option-disable" value="disable" 
 			<?php checked( $option_expert_mode, 'disable' ); ?>>
 		<label for="cache-master-expert-mode-option-disable">

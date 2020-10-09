@@ -17,14 +17,14 @@ $option_uninstall = get_option( 'scm_option_uninstall', 'yes' );
 ?>
 
 <div>
-	<div>
+	<div class="scm-option-item">
 		<input type="radio" name="scm_option_uninstall" id="cache-master-uninstall-option-yes" value="yes" 
 			<?php checked( $option_uninstall, 'yes' ); ?>>
 		<label for="cache-master-uninstall-option-yes">
 			<?php echo __( 'Remove Cache Master generated data.', 'cache-master' ); ?><br />
 		<label>
 	</div>
-	<div>
+	<div class="scm-option-item">
 		<input type="radio" name="scm_option_uninstall" id="cache-master-uninstall-option-no" value="no" 
 			<?php checked( $option_uninstall, 'no' ); ?>>
 		<label for="cache-master-uninstall-option-no">

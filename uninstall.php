@@ -29,6 +29,8 @@ if ( 'yes' === $option_uninstall ) {
 	delete_option( 'scm_option_post_archives' );
 	delete_option( 'scm_option_visibility_login_user');
 	delete_option( 'scm_option_visibility_guest');
+	delete_option( 'scm_option_statistics_status' );
+	delete_option( 'scm_option_clear_cache' );
 
 	delete_option( 'scm_last_reset_time' );
 	delete_option( 'scm_version' );

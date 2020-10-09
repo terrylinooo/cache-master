@@ -92,6 +92,41 @@ function scm_get_blog_id() {
 }
 
 /**
+ * Get the path of statistics directory.
+ *
+ * @param string $cache_type
+ *
+ * @return string
+ */
+function scm_get_stats_dir( $cache_type = 'post' ) {
+	return scm_get_upload_dir() . '/stats/' . $cache_type;
+}
+
+/**
+ * Get the cache type list.
+ *
+ * @return array
+ */
+function scm_get_cache_type_list( $get_key = false ) {
+	$list = array(
+		'homepage'      => __( 'Homepage', 'cache-master' ),
+		'post'          => __( 'Post', 'cache-master' ),
+		'page'          => __( 'Page', 'cache-master' ),
+		'category'      => __( 'Archive', 'cache-master' ) . ' - ' . __( 'Category', 'cache-master' ),
+		'tag'           => __( 'Archive', 'cache-master' ) . ' - ' . __( 'Tag', 'cache-master' ),
+		'date'          => __( 'Archive', 'cache-master' ) . ' - ' . __( 'Date', 'cache-master' ),
+		'author'        => __( 'Archive', 'cache-master' ) . ' - ' . __( 'Author', 'cache-master' ),
+		'uncategorised' => __( 'Uncategorised', 'cache-master' ),
+	);
+
+	if ( $get_key ) {
+		return array_keys( $list );
+	}
+
+	return $list;
+}
+
+/**
  * Test if specific data driver is available or not.
  *
  * @param string $type Data driver.

@@ -66,3 +66,40 @@
 .scm-expert-mode-intro p {
   font-size: 14px;
 }
+
+.table-stats {
+  width: 100%;
+  border: 1px #dddddd solid;
+}
+.table-stats th {
+  background-color: #dddddd;
+  text-align: center;
+  padding: 5px;
+}
+.table-stats td {
+  text-align: center;
+  padding: 10px;
+}
+
+.table-statistics {
+  width: 100%;
+  border: 1px #dddddd solid;
+}
+.table-statistics h2 {
+  display: none;
+}
+.table-statistics td {
+  vertical-align: top;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.scm-option-item {
+  padding: 2px 0;
+}
+.scm-option-item input[type="radio"] {
+  margin: 0 !important;
+}
+.scm-option-item input[type="checkbox"] {
+  margin: 0 !important;
+}

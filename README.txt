@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -14,10 +14,10 @@ License URI: https://www.gnu.org/licenses/gpl.html
 Cache Master is an extremely light-weight and high-performace cache plugin that speeds up your WordPress sites on the fly.
 The core of Cache Master is driven by Shieldon Simple Cache, a PSR-16 simple cache library.
 
-Open sourced on:
+Open sourced on GitHub:
 
-- [https://github.com/terrylinooo/simple-cache](https://github.com/terrylinooo/simple-cache) (Simple Cache library)
-- [https://github.com/terrylinooo/cache-master](https://github.com/terrylinooo/cache-master) (Cache Master plugin)
+- [terrylinooo/simple-cache](https://github.com/terrylinooo/simple-cache) (Simple Cache library)
+- [terrylinooo/cache-master](https://github.com/terrylinooo/cache-master) (Cache Master plugin)
 
 Notice: 
 
@@ -90,3 +90,8 @@ GNU General Public License for more details.
 * Add setting option - Archive pages: category, tag, date and author.
 * Add setting option - Homepage.
 * Fix some small issues.
+
+= 1.4.0
+
+* Add setting page - Cache statistics.
+* Improve code - Prevent conflicts with others plugins.

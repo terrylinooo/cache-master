@@ -26,7 +26,7 @@ $option_list = array(
 
 <div>
 	<?php foreach ( $option_list as $k => $v ) : ?>
-	<div>
+	<div class="scm-option-item">
 		<input type="checkbox" name="scm_option_post_archives[<?php echo $k; ?>]" id="cache-master-post-archive-option-<?php echo $k; ?>" value="yes" 
 			<?php if ( isset( $option_post_archives[ $k ] ) ) : ?>
 				<?php checked( $option_post_archives[ $k ], 'yes' ); ?>>

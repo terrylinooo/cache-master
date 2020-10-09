@@ -17,14 +17,14 @@ $option_visibility_login_user = get_option( 'scm_option_visibility_login_user', 
 ?>
 
 <div>
-	<div>
+	<div class="scm-option-item">
 		<input type="radio" name="scm_option_visibility_login_user" id="cache-master-visibility-login-user-option-yes" value="yes" 
 			<?php checked( $option_visibility_login_user, 'yes' ); ?>>
 		<label for="cache-master-visibility-login-user-option-yes">
 			<?php echo __( 'Yes', 'cache-master' ); ?><br />
 		<label>
 	</div>
-	<div>
+	<div class="scm-option-item">
 		<input type="radio" name="scm_option_visibility_login_user" id="cache-master-visibility-login-user-option-no" value="no" 
 			<?php checked( $option_visibility_login_user, 'no' ); ?>>
 		<label for="cache-master-visibility-login-user-option-no">
@@ -36,4 +36,4 @@ $option_visibility_login_user = get_option( 'scm_option_visibility_login_user', 
 <br />
 <p><strong><?php echo __( 'Note', 'cache-master' ); ?></strong></p>
 <p><em><?php echo __( 'Logged-in users will not trigger the caching processes to avoid displaying admin bar to everyone.', 'cache-master' ); ?></em></p>
-<p><em><?php echo __( 'Logged-in users always see cached page when Expert Mode is working, because of outputting cache at a very early stage when running as Expert Mode.', 'cache-master' ); ?></em></p>
+<p><em><?php echo __( 'Logged-in users always see cached pages when Expert Mode is working, because of outputting cache at a very early stage when running as Expert Mode.', 'cache-master' ); ?></em></p>

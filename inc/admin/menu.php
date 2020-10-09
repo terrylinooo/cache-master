@@ -51,6 +51,15 @@ function scm_option() {
 		'cache-master-expert-mode',
 		'scm_expert_mode_page'
 	);
+
+	add_submenu_page(
+		'cache-master-settings',
+		__( 'Statistics', 'cache-master' ),
+		__( 'Statistics', 'cache-master' ),
+		'manage_options',
+		'cache-master-statistics',
+		'scm_stats_page'
+	);
 }
 
 /**
@@ -75,6 +84,16 @@ function scm_expert_mode_page() {
 	scm_show_settings_footer();
 }
 
+/**
+ * Output the stats page.
+ *
+ * @return void
+ */
+function scm_stats_page() {
+	scm_show_settings_header();
+	echo scm_load_view( 'page_statistics' );
+	scm_show_settings_footer();
+}
 
 /**
  * Filters the action links displayed for each plugin in the Network Admin Plugins list table.
@@ -136,7 +155,6 @@ function scm_admin_enqueue_scripts( $hook_suffix ) {
 	}
 	wp_enqueue_script( 'jquery-ui-dialog' );
 }
-
 
 /**
  * Show header on setting pages.

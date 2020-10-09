@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 21:45+0000\n"
-"PO-Revision-Date: 2020-10-07 21:59+0000\n"
+"POT-Creation-Date: 2020-10-09 09:57+0000\n"
+"PO-Revision-Date: 2020-10-09 10:08+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
@@ -14,70 +14,107 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.3.1; wp-5.5.1"
 
-#: inc/class-cache-master.php:193
+#: inc/class-cache-master.php:196
 msgid "After"
 msgstr "快取之后"
 
-#: inc/class-cache-master.php:194
+#: inc/class-cache-master.php:197
 #, php-format
 msgid "Now: %s"
 msgstr "现在时间：%s"
 
-#: inc/class-cache-master.php:195 inc/class-cache-master.php:210
+#: inc/class-cache-master.php:198 inc/class-cache-master.php:214
 #, php-format
 msgid "Memory usage: %s MB"
 msgstr "内存用量：%s MB"
 
-#: inc/class-cache-master.php:196 inc/class-cache-master.php:211
-#, php-format
-msgid "SQL queries: %s"
-msgstr "SQL 查询次数：%s"
-
-#: inc/class-cache-master.php:197 inc/class-cache-master.php:212
+#: inc/class-cache-master.php:199 inc/class-cache-master.php:215
 #, php-format
 msgid "Page generated in %s seconds."
 msgstr "页面在 %s 秒内产生。"
 
-#: inc/class-cache-master.php:206
+#: inc/class-cache-master.php:210
 msgid "This page is cached by Cache Master plugin."
 msgstr "此页面由快取大师插件进行快取。"
 
-#: inc/class-cache-master.php:207
+#: inc/class-cache-master.php:211
 msgid "Before"
 msgstr "快取之前"
 
-#: inc/class-cache-master.php:208
+#: inc/class-cache-master.php:212
 #, php-format
 msgid "Time to cache: %s"
 msgstr "快取的时间：%s"
 
-#: inc/class-cache-master.php:209
+#: inc/class-cache-master.php:213
 #, php-format
 msgid "Expires at: %s"
 msgstr "过期于：%s"
+
+#: inc/helpers.php:112 inc/admin/setting.php:109
+msgid "Homepage"
+msgstr "首页"
+
+#: inc/helpers.php:113 inc/admin/views/option_post_types.php:19
+msgid "Post"
+msgstr "文章"
+
+#: inc/helpers.php:114 inc/admin/views/option_post_types.php:20
+msgid "Page"
+msgstr "页面"
+
+#: inc/helpers.php:115 inc/helpers.php:116 inc/helpers.php:117
+#: inc/helpers.php:118
+msgid "Archive"
+msgstr "汇整"
+
+#: inc/helpers.php:115 inc/admin/views/option_post_archives.php:19
+msgid "Category"
+msgstr "分类"
+
+#: inc/helpers.php:116 inc/admin/views/option_post_archives.php:20
+msgid "Tag"
+msgstr "标签"
+
+#: inc/helpers.php:117 inc/admin/views/option_post_archives.php:21
+msgid "Date"
+msgstr "日期"
+
+#: inc/helpers.php:118 inc/admin/views/option_post_archives.php:22
+msgid "Author"
+msgstr "作者"
+
+#: inc/helpers.php:119
+msgid "Uncategorised"
+msgstr "未分类"
 
 #. Name of the plugin
 #: inc/admin/menu.php:29 inc/admin/menu.php:30 inc/admin/post-update.php:51
 msgid "Cache Master"
 msgstr "快取大师"
 
-#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:93
+#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:112
 msgid "Settings"
 msgstr "设置"
 
-#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:141
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:143
 msgid "Expert Mode"
 msgstr "专家模式"
 
-#: inc/admin/menu.php:112
+#: inc/admin/menu.php:57 inc/admin/menu.php:58 inc/admin/setting.php:160
+#: inc/admin/setting.php:167
+msgid "Statistics"
+msgstr "统计"
+
+#: inc/admin/menu.php:131
 msgid "Source code"
 msgstr "源码"
 
-#: inc/admin/menu.php:162
+#: inc/admin/menu.php:180
 msgid "Cache Master supports only static URL structure."
 msgstr "快取大师只支持静态网址结构。"
 
-#: inc/admin/menu.php:163
+#: inc/admin/menu.php:181
 #, php-format
 msgid "You have to go to %s page and change the permalink settings."
 msgstr "你必须到 %s 页面改变固定连结设置。"
@@ -86,73 +123,79 @@ msgstr "你必须到 %s 页面改变固定连结设置。"
 msgid "Cache has been cleared."
 msgstr "快取已被清除。"
 
-#: inc/admin/setting.php:39
+#: inc/admin/setting.php:41
 msgid "Driver"
 msgstr "驱动程序"
 
-#: inc/admin/setting.php:46
+#: inc/admin/setting.php:48
 msgid "Visibilty"
 msgstr "可见度"
 
-#: inc/admin/setting.php:53
+#: inc/admin/setting.php:55
 msgid "Preferences"
 msgstr ""
 "\n"
 "偏好设定"
 
-#: inc/admin/setting.php:60
+#: inc/admin/setting.php:62
 msgid "Others"
 msgstr "其它"
 
-#: inc/admin/setting.php:67
+#: inc/admin/setting.php:69
 msgid "Caching Status"
 msgstr ""
 "\n"
 "快取运行状态"
 
-#: inc/admin/setting.php:75
+#: inc/admin/setting.php:77
 msgid "Cache Driver"
 msgstr "快取驱动程序"
 
-#: inc/admin/setting.php:83
+#: inc/admin/setting.php:85
 msgid "Time to Live"
 msgstr "存活时间"
 
-#: inc/admin/setting.php:91
+#: inc/admin/setting.php:93
 msgid "Uninstall"
 msgstr "卸载"
 
-#: inc/admin/setting.php:99
+#: inc/admin/setting.php:101
 msgid "Post Types"
 msgstr "文章类型"
 
-#: inc/admin/setting.php:107
-msgid "Homepage"
-msgstr "首页"
-
-#: inc/admin/setting.php:115
+#: inc/admin/setting.php:117
 msgid "Archive Pages"
 msgstr "库存页面"
 
-#: inc/admin/setting.php:123
+#: inc/admin/setting.php:125
 msgid "Guests"
 msgstr "访客"
 
-#: inc/admin/setting.php:131
+#: inc/admin/setting.php:133
 msgid "Logged-in Users"
 msgstr "已登录的用户"
 
-#: inc/admin/setting.php:148
+#: inc/admin/setting.php:150
 msgid "Status"
 msgstr "状态"
 
+#: inc/admin/setting.php:175
+msgid "Clear Cache"
+msgstr "清除快取"
+
+#: inc/admin/setting.php:182
+msgid "Cache Type"
+msgstr "清除快取"
+
 #: inc/admin/views/option_caching_status.php:24
 #: inc/admin/views/option_expert_mode_status.php:29
+#: inc/admin/views/option_statistics_status.php:24
 msgid "Enable"
 msgstr "启用"
 
 #: inc/admin/views/option_caching_status.php:31
 #: inc/admin/views/option_expert_mode_status.php:36
+#: inc/admin/views/option_statistics_status.php:31
 msgid "Disable"
 msgstr "停用"
 
@@ -161,6 +204,14 @@ msgid ""
 "Once you make this option disable, Cache Master will stop working and all "
 "cache  will be cleared."
 msgstr "每当你使这个选项停用，快取大师会停止运作，所有快取将被清除。"
+
+#: inc/admin/views/option_clear_cache.php:21
+msgid "All"
+msgstr "全部"
+
+#: inc/admin/views/option_clear_cache.php:33
+msgid "Clear cache data of a specific cache type, or just clear all of them."
+msgstr "清除特定快取类型的快取资料，或就把它们全部清除。"
 
 #: inc/admin/views/option_driver.php:18
 msgid "File"
@@ -222,22 +273,6 @@ msgid ""
 "This option only works when you have put the custom PHP code in wp-config.php"
 msgstr "这个选项只在你有放客制的 PHP 代码在 wp-config.php 里才会运作。"
 
-#: inc/admin/views/option_post_archives.php:19
-msgid "Category"
-msgstr "分类"
-
-#: inc/admin/views/option_post_archives.php:20
-msgid "Tag"
-msgstr "标签"
-
-#: inc/admin/views/option_post_archives.php:21
-msgid "Date"
-msgstr "日期"
-
-#: inc/admin/views/option_post_archives.php:22
-msgid "Author"
-msgstr "作者"
-
 #: inc/admin/views/option_post_archives.php:40
 msgid "What type of archive page do you like to cache?"
 msgstr "什么类型的库存页面要被快取？"
@@ -263,17 +298,13 @@ msgstr "否"
 msgid "Would you like to cache the homepage of your site?"
 msgstr "你想要快取你的网站首页吗？"
 
-#: inc/admin/views/option_post_types.php:19
-msgid "Post"
-msgstr "文章"
-
-#: inc/admin/views/option_post_types.php:20
-msgid "Page"
-msgstr "页面"
-
 #: inc/admin/views/option_post_types.php:38
 msgid "What post type do you like to cache?"
 msgstr "你想快取何种文章类型？"
+
+#: inc/admin/views/option_statistics_status.php:35
+msgid "Record the caching information."
+msgstr "记录快取的信息。"
 
 #: inc/admin/views/option_ttl.php:36
 msgid "Please fill in a number between 300-86400. (in seconds)"
@@ -311,7 +342,7 @@ msgstr "已登录的用户不会触发快取的程序以避免管理菜单列给
 
 #: inc/admin/views/option_visibility_login_user.php:39
 msgid ""
-"Logged-in users always see cached page when Expert Mode is working, because "
+"Logged-in users always see cached pages when Expert Mode is working, because "
 "of outputting cache at a very early stage when running as Expert Mode."
 msgstr "已登录的用户在「专家模式」运行时，总是看到快取网页，因为在「专家模式」时，输出快取是在非常早期阶段的关系。"
 
@@ -354,6 +385,22 @@ msgid ""
 "Cache Master cannot work with the plugin \"%s\" becasue of output buffer "
 "conflicts."
 msgstr "快取大师无法和此外挂「%s」一同运作，因为缓冲区输出冲突的关系。"
+
+#: inc/admin/views/page_statistics.php:49
+msgid "Cache type"
+msgstr "快取类型"
+
+#: inc/admin/views/page_statistics.php:50
+msgid "Rows"
+msgstr "笔数"
+
+#: inc/admin/views/page_statistics.php:51
+msgid "Total size"
+msgstr "总大小"
+
+#: inc/admin/views/page_statistics.php:69
+msgid "Confirm Clearing Cache"
+msgstr "确认清除快取"
 
 #. Description of the plugin
 msgid "A wordpress cache plugin."

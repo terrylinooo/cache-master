@@ -81,3 +81,48 @@
 		font-size: 14px;
 	}
 }
+
+.table-stats {
+	width: 100%;
+	border: 1px #dddddd solid;
+
+
+	th {
+		background-color: #dddddd;
+		text-align: center;
+		padding: 5px;
+	}
+
+	td {
+		text-align: center;
+		padding: 10px;
+	}
+}
+
+.table-statistics {
+	width: 100%;
+	border: 1px #dddddd solid;
+
+	h2 {
+		display: none;
+	}
+
+	td {
+		vertical-align: top;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	
+}
+
+.scm-option-item {
+	padding: 2px 0;
+
+	input[type="radio"] {
+		margin: 0 !important;
+	}
+
+	input[type="checkbox"] {
+		margin: 0 !important;
+	}
+}

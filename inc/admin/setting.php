@@ -31,6 +31,8 @@ function scm_settings() {
 	register_setting( 'scm_setting_group_1', 'scm_option_visibility_login_user' );
 	register_setting( 'scm_setting_group_1', 'scm_option_visibility_guest' );
 	register_setting( 'scm_setting_group_2', 'scm_option_expert_mode_status' );
+	register_setting( 'scm_setting_group_3', 'scm_option_statistics_status' );
+	register_setting( 'scm_setting_group_4', 'scm_option_clear_cache' );
 
 	// Options page.
 
@@ -150,6 +152,38 @@ function scm_settings() {
 		'scm_setting_page_2',
 		'scm_setting_section_4'
 	);
+
+	// Statistics
+
+	add_settings_section(
+		'scm_setting_section_6',
+		__( 'Statistics', 'cache-master' ),
+		'scm_cb_setting_section',
+		'scm_setting_page_3'
+	);
+
+	add_settings_field(
+		'scm_option_id_10',
+		__( 'Statistics', 'cache-master' ),
+		'scm_cb_statistics_status',
+		'scm_setting_page_3',
+		'scm_setting_section_6'
+	);
+
+	add_settings_section(
+		'scm_setting_section_7',
+		__( 'Clear Cache', 'cache-master' ),
+		'scm_cb_setting_section',
+		'scm_setting_page_4'
+	);
+
+	add_settings_field(
+		'scm_option_id_11',
+		__( 'Cache Type', 'cache-master' ),
+		'scm_cb_clear_cache',
+		'scm_setting_page_4',
+		'scm_setting_section_7'
+	);
 }
 
 function scm_cb_setting_section() {
@@ -244,4 +278,22 @@ function scm_cb_visibility_guest() {
  */
 function scm_cb_visibility_loggin_user() {
 	echo scm_load_view( 'option_visibility_login_user' );
+}
+
+/**
+ * Setting block - Statistic status.
+ *
+ * @return void
+ */
+function scm_cb_statistics_status() {
+	echo scm_load_view( 'option_statistics_status' );
+}
+
+/**
+ * Setting block - Clear cache
+ *
+ * @return void
+ */
+function scm_cb_clear_cache() {
+	echo scm_load_view( 'option_clear_cache' );
 }
