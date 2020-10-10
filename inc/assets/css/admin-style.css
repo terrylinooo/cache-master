@@ -67,13 +67,23 @@
   list-style-type: circle;
   padding-left: 40px;
 }
-#scm-expert-mode-page .scm-no {
+
+.scm-no {
   color: #990000;
   font-weight: bold;
 }
-#scm-expert-mode-page .scm-yes {
+
+.scm-yes {
   color: #009900;
   font-weight: bold;
+}
+
+.scm-warning {
+  color: #990000;
+}
+
+.scm-info {
+  color: #009900;
 }
 
 .scm-expert-mode-intro {
@@ -84,9 +94,38 @@
   font-size: 14px;
 }
 
+.table-stats-wrapper {
+  border: 1px #dddddd solid;
+  width: 100%;
+}
+.table-stats-wrapper td {
+  vertical-align: top;
+  padding: 20px;
+}
+.table-stats-wrapper td h2 {
+  margin: 0;
+}
+.table-stats-wrapper td .form-table th {
+  width: auto;
+}
+.table-stats-wrapper .stats-l, .table-stats-wrapper .stats-r {
+  width: 50%;
+}
+@media screen and (max-width: 782px) {
+  .table-stats-wrapper .stats-l, .table-stats-wrapper .stats-r {
+    width: 100%;
+    display: block;
+    padding: 0;
+  }
+  .table-stats-wrapper .stats-l h2, .table-stats-wrapper .stats-r h2 {
+    margin: 10px 0;
+  }
+}
+
 .table-stats {
   width: 100%;
   border: 1px #dddddd solid;
+  background-color: #f5f5f5;
 }
 .table-stats th {
   background-color: #dddddd;

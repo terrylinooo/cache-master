@@ -190,12 +190,15 @@ class Cache_Master {
 	 */
 	private function debug_message( $position = '' )
 	{
+		$sql_queries = get_num_queries();
+
 		switch ( $position ) {
 			case 'ob_start':
 				$this->msg();
 				$this->msg( '....... ' . __( 'After', 'cache-master' ) . ' .......', 2 );
 				$this->msg( sprintf( __( 'Now: %s', 'cache-master' ), $this->get_date() ) );
 				$this->msg( sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $this->get_memory_usage() ) );
+				$this->msg( sprintf( __( 'SQL queries: %s', 'cache-master' ), $sql_queries ) );
 				$this->msg( sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $this->wp_timer_stop() ) );
 				$this->msg();
 				$this->msg( '//-->' );
@@ -212,6 +215,7 @@ class Cache_Master {
 				$this->msg( sprintf( __( 'Time to cache: %s', 'cache-master' ), $this->get_date() ) );
 				$this->msg( sprintf( __( 'Expires at: %s', 'cache-master' ), $this->get_date( $expires ) ) );
 				$this->msg( sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $this->get_memory_usage() ) );
+				$this->msg( sprintf( __( 'SQL queries: %s', 'cache-master' ), $sql_queries ) );
 				$this->msg( sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $this->wp_timer_stop() ) );
 				break;
 		}
