@@ -31,7 +31,6 @@ function scm_settings() {
 	register_setting( 'scm_setting_group_1', 'scm_option_visibility_login_user' );
 	register_setting( 'scm_setting_group_1', 'scm_option_visibility_guest' );
 	register_setting( 'scm_setting_group_2', 'scm_option_expert_mode_status' );
-	register_setting( 'scm_setting_group_2', 'scm_option_expert_mode_installation' );
 	register_setting( 'scm_setting_group_3', 'scm_option_statistics_status' );
 	register_setting( 'scm_setting_group_4', 'scm_option_clear_cache' );
 
@@ -154,16 +153,6 @@ function scm_settings() {
 		'scm_setting_section_4'
 	);
 
-	/*
-	add_settings_field(
-		'scm_option_id_12',
-		__( 'Install the Code', 'cache-master' ),
-		'scm_cb_expert_mode_installation',
-		'scm_setting_page_2',
-		'scm_setting_section_4'
-	);
-	*/
-
 	// Statistics
 
 	add_settings_section(
@@ -253,15 +242,6 @@ function scm_cb_caching_status() {
  */
 function scm_cb_expert_mode_status() {
 	echo scm_load_view( 'option_expert_mode_status' );
-}
-
-/**
- * Setting block - Expert mode - Install code.
- *
- * @return void
- */
-function scm_cb_expert_mode_installation() {
-	echo scm_load_view( 'option_expert_mode_installation' );
 }
 
 /**
