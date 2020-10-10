@@ -211,7 +211,7 @@ if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
 }
 
 // END - Cache Master
-	<?php
+<?php
 
 	return ob_get_clean();
 }

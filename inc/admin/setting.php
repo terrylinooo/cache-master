@@ -154,6 +154,7 @@ function scm_settings() {
 		'scm_setting_section_4'
 	);
 
+	/*
 	add_settings_field(
 		'scm_option_id_12',
 		__( 'Install the Code', 'cache-master' ),
@@ -161,6 +162,7 @@ function scm_settings() {
 		'scm_setting_page_2',
 		'scm_setting_section_4'
 	);
+	*/
 
 	// Statistics
 

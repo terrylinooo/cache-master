@@ -159,3 +159,63 @@
 .scm-option-item input[type="checkbox"] {
   margin: 0 !important;
 }
+
+.about-us-container {
+  max-width: 640px;
+  margin: 20px auto;
+  padding: 0;
+  border: 1px #dddddd solid;
+  background-color: #ffffff;
+  line-height: 150%;
+  position: relative;
+}
+.about-us-container .shieldon-cover img {
+  width: 100%;
+}
+.about-us-container .shieldon-author {
+  padding: 30px;
+  position: relative;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.about-us-container .shieldon-author a {
+  text-decoration: none;
+}
+.about-us-container .shieldon-author p {
+  font-size: 16px;
+}
+.about-us-container .shieldon-author .created-by {
+  font-size: 20px;
+}
+.about-us-container .shieldon-author .info-links {
+  text-align: center;
+}
+.about-us-container .shieldon-author .info-links ul {
+  list-style: none;
+  display: inline-block;
+}
+.about-us-container .shieldon-author .info-links li {
+  float: left;
+  padding: 10px;
+}
+.about-us-container .shieldon-author .info-links a {
+  font-size: 35px;
+  color: #aaaaaa;
+}
+.about-us-container .shieldon-author .info-links:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.about-us-container .shieldon-author .report-area {
+  margin-top: 50px;
+}
+.about-us-container .shieldon-author .report-area span {
+  margin: 10px;
+  border: 1px #dddddd solid;
+  padding: 20px;
+  font-size: 30px;
+  width: 150px;
+  overflow: hidden;
+  display: inline-block;
+}

@@ -19,7 +19,6 @@ add_action( 'update_option_scm_option_post_homepage', 'scm_update_scm_option_pos
 add_action( 'update_option_scm_option_caching_status', 'scm_update_scm_option_caching_status' );
 add_action( 'update_option_scm_option_expert_mode_status', 'scm_update_scm_option_expert_mode_status' );
 add_action( 'update_option_scm_option_clear_cache', 'scm_update_scm_option_clear_cache' );
-add_action( 'update_option_scm_option_statistics_status', 'scm_update_scm_option_statistics_status' );
 add_action( 'update_option_scm_option_expert_mode_installation', 'scm_update_scm_option_expert_mode_installation' );
 
 
@@ -160,24 +159,6 @@ function scm_update_scm_option_clear_cache() {
 }
 
 /**
- * Check if the statistics directories exist or not.
- * If not, create the directory for them.
- *
- * @return void
- */
-function scm_update_scm_option_statistics_status() {
-	$list = scm_get_cache_type_list( true );
-
-	foreach ( $list as $v ) {
-		$dir = scm_get_stats_dir( $v );
-
-		if ( ! file_exists( $dir ) ) {
-			wp_mkdir_p( $dir );
-		}
-	}
-}
-
-/**
  * Install Expert Mode code automatically.
  *
  * @return void
@@ -194,8 +175,34 @@ function scm_update_scm_option_expert_mode_installation() {
 
 			if ( false !== strpos( $content, $sign ) ) {
 				$replaced_content = str_replace( $sign, $replace, $content );
-				file_put_contents( $wp_config_file, $replaced_content );
+				file_put_contents( $wp_config_file, trim( $replaced_content ) );
 			}
 		}
+	}
+
+	if ( 'remove' === get_option( 'scm_option_expert_mode_installation' ) ) {
+		$start = '// BEGIN - Cache Master';
+		$end   = '// END - Cache Master';
+
+		$wp_config_file = ABSPATH . 'wp-config.php';
+
+		$content = file_get_contents( $wp_config_file );
+		$content = str_replace( $start, '_x_' . $start, $content );
+		$content = str_replace( $end, $end . '_x_', $content );
+
+		$start = '\/\/ BEGIN - Cache Master';
+		$end   = '\/\/ END - Cache Master';
+
+		$replaced_content = preg_replace( '/' . $start . '[\s\S]+?' . $end . '/', '', $content );
+		
+		if ( false !== strpos( $replaced_content, '_x__x_' ) ) {
+			$replaced_content = preg_replace( "/[\r\n]+_x__x_[\r\n]+/", "\n\n", $replaced_content );
+
+			$file = fopen( $wp_config_file, 'w' );
+			fwrite( $file, $replaced_content );
+			fclose( $file );
+		}
+
+		update_option( 'scm_option_expert_mode_installation', 'no' );
 	}
 }

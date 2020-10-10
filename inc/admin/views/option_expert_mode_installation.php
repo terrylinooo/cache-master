@@ -56,5 +56,15 @@ if ( $is_blog_dir ) {
     <li><?php _e( 'Does the code block exist?', 'cache-master' ); ?> <?php echo $result_1; ?></li>
     <li><?php _e( 'Does the code block is fit for this blog?', 'cache-master' ); ?> <?php echo $result_2; ?></li>
 </ul>
+<div>
+	<div class="scm-option-item">
+		<input type="checkbox" name="scm_option_expert_mode_installation" id="cache-master-expert-mode-installation-option-remove" value="remove" 
+			<?php checked( $option_expert_mode_installation, 'remove' ); ?>>
+		<label for="cache-master-expert-mode-installation-option-remove">
+			<?php echo __( 'Restore', 'cache-master' ); ?><br />
+		<label>
+	</div>
+	<p><?php echo sprintf( __( 'Click the checkbox if you would like to remove the Expert Mode code block from %s', 'cache-master' ), '<code>wp-config.php</code><p>' ); ?></p>
+</div>
 
 <?php endif; ?>

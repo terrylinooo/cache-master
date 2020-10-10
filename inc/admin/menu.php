@@ -60,6 +60,15 @@ function scm_option() {
 		'cache-master-statistics',
 		'scm_stats_page'
 	);
+
+	add_submenu_page(
+		'cache-master-settings',
+		__( 'About', 'cache-master' ),
+		__( 'About', 'cache-master' ),
+		'manage_options',
+		'cache-master-about',
+		'scm_about_page'
+	);
 }
 
 /**
@@ -92,6 +101,17 @@ function scm_expert_mode_page() {
 function scm_stats_page() {
 	scm_show_settings_header();
 	echo scm_load_view( 'page_statistics' );
+	scm_show_settings_footer();
+}
+
+/**
+ * Output the about page.
+ *
+ * @return void
+ */
+function scm_about_page() {
+	scm_show_settings_header();
+	echo scm_load_view( 'page_about' );
 	scm_show_settings_footer();
 }
 
