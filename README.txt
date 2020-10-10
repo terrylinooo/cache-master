@@ -19,18 +19,19 @@ Open sourced on GitHub:
 - [terrylinooo/simple-cache](https://github.com/terrylinooo/simple-cache) (Simple Cache library)
 - [terrylinooo/cache-master](https://github.com/terrylinooo/cache-master) (Cache Master plugin)
 
+First release date: October, 1, 2020
+
+== Features ==
+
+* Extremely light-weight and high-performace.
+* Support up to 8 cache drivers such as Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL and SQLite.
+
 Notice: 
 
 Before you install and use this plugin, please read the following notices carefully.
 
 - Logged-in users will not trigger the caching processes.
 - A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching.
-
-== Known Issues:
-
-Cache Master have conflicts with the following plugins.
-
-- Clearfy
 
 If you find your website doesn't work with Cache Master, please report an issue on GitHub and list all plugins installed on your website. I'll find out the problem and fix it.
 
@@ -39,11 +40,6 @@ If you find your website doesn't work with Cache Master, please report an issue 
 1. Upload the plugin files to the `/wp-content/plugins/cache-master` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Go to the Cache Master menu in Plugins and set your options.
-
-== Features ==
-
-* Extremely light-weight and high-performace.
-* Support up to 8 cache drivers such as Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL and SQLite.
 
 == Copyright ==
 
