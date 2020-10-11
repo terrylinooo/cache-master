@@ -18,7 +18,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 	<div class="shieldon-cover"><img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/banner-772x250.png"></div>
 	<div class="shieldon-author">
 		<p class="created-by">
-			<?php printf( __( 'WP Shieldon is brought to you by <a href="%1$s">Terry L.</a> from <a href="%2$s">Taiwan</a>.', 'cache-master' ), 'https://terryl.in', 'https://www.google.com/maps/@23.4722181,120.9910232,8z'); ?>
+			<?php printf( __( 'Cache Master is brought to you by <a href="%1$s">Terry L.</a> from <a href="%2$s">Taiwan</a>.', 'cache-master' ), 'https://terryl.in', 'https://www.google.com/maps/@23.4722181,120.9910232,8z'); ?>
 		</p>
 		<div class="info-links">
 			<ul>
