@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -25,6 +25,7 @@ First release date: October, 1, 2020
 
 * Extremely light-weight and high-performace.
 * Support up to 8 cache drivers such as Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL and SQLite.
+* Detailed cache statistics, easy to manage.
 
 Notice: 
 
@@ -40,6 +41,15 @@ If you find your website doesn't work with Cache Master, please report an issue 
 1. Upload the plugin files to the `/wp-content/plugins/cache-master` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Go to the Cache Master menu in Plugins and set your options.
+
+== Screenshots ==
+
+1. Main setting page.
+2. Main setting page. (Bottom part)
+3. Debug message (Normal mode)
+4. Debug message (Expert mode)
+5. Expert Mode setting page.
+6. Cache statistics setting page.
 
 == Copyright ==
 

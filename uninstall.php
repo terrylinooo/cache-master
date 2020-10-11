@@ -25,7 +25,6 @@ if ( 'yes' === $option_uninstall ) {
 	delete_option( 'scm_option_uninstall' );
 	delete_option( 'scm_option_caching_status' );
 	delete_option( 'scm_option_expert_mode_status' );
-	delete_option( 'scm_option_expert_mode_installation' );
 	delete_option( 'scm_option_post_homepage' );
 	delete_option( 'scm_option_post_archives' );
 	delete_option( 'scm_option_visibility_login_user');

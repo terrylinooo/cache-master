@@ -31,7 +31,7 @@ function scm_option() {
 		'manage_options',
 		'cache-master-settings',
 		'__return_false',
-		'dashicons-superhero'
+		plugins_url( 'cache-master/inc/assets/images/menu_icon.png' )
 	);
 
 	add_submenu_page(
