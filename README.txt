@@ -45,9 +45,9 @@ If you find your website doesn't work with Cache Master, please report an issue 
 == Screenshots ==
 
 1. Main setting page.
-2. Main setting page. (Bottom part)
-3. Debug message (Normal mode)
-4. Debug message (Expert mode)
+2. Debug message (Normal mode)
+3. Debug message (Expert mode)
+4. Main setting page. (Bottom part)
 5. Expert Mode setting page.
 6. Cache statistics setting page.
 
