@@ -58,6 +58,11 @@ define( 'SCM_PLUGIN_TEXT_DOMAIN', 'cache-master' );
 // The minimum supported version of PHP.
 if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
+	// Loaded in front, back and ajax call.
+	if ( 'yes' === get_option( 'scm_option_benchmark_widget' ) ) {
+		require_once SCM_PLUGIN_DIR . 'inc/admin/widgets.php';
+	}
+
 	// No need to load Cache Master's files when AJAX calls.
 	if ( ! wp_doing_ajax() ) {
 
@@ -69,6 +74,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		scm_load_textdomain();
 
 		if ( is_admin() ) {
+
 			$required_files = array(
 				'register',       // Event: activate and uninstall plugin.
 				'setting',        // Plugin settings.

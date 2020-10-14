@@ -7,7 +7,7 @@
  *
  * @package Cache Master
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.5.0
  */
 
 if ( ! defined( 'SCM_INC' ) ) {
@@ -49,16 +49,39 @@ class Cache_Master {
 	 */
 	public function __construct() {
 		$this->driver = scm_driver_factory( get_option( 'scm_option_driver' ) );
-		$this->cache_key = md5( $_SERVER['REQUEST_URI'] );
 	}
 
 	/**
 	 * Initialize everything the SCM plugin needs.
+	 * 
+	 * @return void
 	 */
 	public function init() {
+
+		$uri = $this->get_request_uri();
+
+		// Ignore all .php files.
+		if ( '.php' === substr( $uri, -4 ) ) {
+			return;
+		}
+
+		$this->cache_key = md5( $uri );
+
 		add_action( 'plugins_loaded', array( $this, 'ob_start' ), 5 );
 		add_action( 'shutdown', array( $this, 'ob_stop' ), 0 );
 		add_action( 'wp', array( $this, 'get_post_data' ), 0 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ) );
+	}
+
+	/**
+	 * Register CSS style files for frontend use.
+	 * 
+	 * @return void
+	 */
+	public function front_enqueue_styles() {
+		wp_register_style( 'scm-style', false );
+		wp_enqueue_style( 'scm-style' );
+		wp_add_inline_style( 'scm-style', $this->get_front_enqueue_styles() );
 	}
 
 	/**
@@ -130,7 +153,7 @@ class Cache_Master {
 		}
 	}
 
-    /**
+	/**
 	 * Start output cache if exists.
 	 *
 	 * @return void
@@ -142,6 +165,23 @@ class Cache_Master {
 
 			if ( ! empty( $cached_content ) ) {
 				$cached_content .= $this->debug_message( 'ob_start' );
+
+				if ( 'yes' === get_option( 'scm_option_benchmark_footer_text') ) {
+					$cached_content = str_replace(
+						'</body>',
+						"\n" . $this->get_footer_html() . "\n" . '</body>',
+						$cached_content
+					);
+				}
+
+				if ( $this->is_active_cache_master_widget() ) {
+					$cached_content = str_replace(
+						'</body>',
+						"\n" . $this->json_string() . "\n" . '</body>',
+						$cached_content
+					);
+				}
+
 				echo $cached_content;
 				exit;
 			}
@@ -162,15 +202,12 @@ class Cache_Master {
 	 */
 	public function ob_stop() {
 	
-		// Logged-in users will not trigger the cache.
-		if ( is_user_logged_in() ) {
-			return;
-		}
-
 		$this->wp_ob_end_flush_all();
 
 		$content = ob_get_contents();
-		$content .= $this->debug_message( 'ob_stop' );
+		$debug_message = $this->debug_message( 'ob_stop' );
+
+		$content .= $debug_message;
 
 		if ( $this->is_cache ) {
 			$ttl = (int) get_option( 'scm_option_ttl' );
@@ -179,6 +216,165 @@ class Cache_Master {
 
 			$this->log( $this->data_type, $this->cache_key, $content );
 		}
+
+		if ( 'yes' === get_option( 'scm_option_benchmark_footer_text')  || $this->is_active_cache_master_widget() ) {
+
+			ob_get_clean();
+			ob_start();
+
+			if ( 'yes' === get_option( 'scm_option_benchmark_footer_text') ) {
+				$content = str_replace(
+					'</body>',
+					"\n" . $this->get_footer_html() . "\n" . '</body>',
+					$content
+				);
+			}
+
+			if ( $this->is_active_cache_master_widget() ) {
+				$content = str_replace(
+					'</body>',
+					"\n" . $this->json_string() . "\n" . '</body>',
+					$content
+				);
+			}
+
+			echo $content;
+		}
+	}
+
+	/**
+	 * Add inline CSS.
+	 *
+	 * @return string
+	 */
+	public function get_front_enqueue_styles() {
+		$custom_css = '';
+
+		if ( 'yes' === get_option( 'scm_option_benchmark_widget' ) ) {
+			$custom_css .= '
+				.cache-master-plugin-widget {
+					
+				}
+				.cache-master-plugin-widget .scm-table {
+					display: table;                       
+					border: 1px solid #dddddd;
+					padding: 5px;
+					width: 100%;
+				}
+				.cache-master-plugin-widget .scm-tr {
+					display: table-row;
+					clear: both;
+				}
+				.cache-master-plugin-widget .scm-td {
+					font-size: 14px;
+					padding: 3px 10px;
+					display: table-cell;         
+				}
+
+				.scm-tr .scm-td:first-child {
+					width: 60%;
+				}
+
+				.scm-tr .scm-td:last-child {
+					width: 40%;
+				}
+
+				.scm-td svg {
+					width: 17px;
+					height: 17px;
+				}
+
+				.scm-text {
+					vertical-align: middle;
+				}
+
+				.scm-img {
+					background-color: #ffffff;
+					border: 2px #cccccc solid;
+					border-radius: 50%;
+					width: 27px;
+					height: 27px;
+					line-height: 32px;
+					display: inline-block;
+					vertical-align: middle;
+					overflow: hidden;
+					text-align: center;
+				}
+				.scm-img-1 path {
+					fill: #787705;
+				}
+
+				.scm-img-2 path {
+					fill: #1a2ac3;
+				}
+
+				.scm-img-3 path {
+					fill: #01824a;
+				}
+
+				.scm-img-4 path {
+					fill: #c90005;
+				}
+			';
+		}
+
+		if ( 'yes' === get_option( 'scm_option_benchmark_footer_text' ) ) {
+			$custom_css .= '
+				.cache-master-benchmark-report {
+					clear: both;
+					display: block;
+					width: 100%;
+					text-align: center;
+					font-size: 13px;
+				}
+				.cache-master-benchmark-report .scm-table {
+					display: flex;
+					justify-content: center;                 
+				}
+				.cache-master-benchmark-report .scm-tr {
+					display: inline-block;
+					padding: 3px 6px;
+				}
+				.cache-master-benchmark-report .scm-td {
+					font-size: 13px;
+					display: inline-block;          
+				}
+			';
+		}
+
+		return preg_replace( '/\s+/', ' ', $custom_css );
+	}
+
+	/**
+	 * The footer HTML.
+	 *
+	 * @return void
+	 */
+	private function get_footer_html() {
+		
+		$html = '
+			<div class="cache-master-benchmark-report">
+				<div class="scm-table">
+					<div class="scm-tr">
+						<div class="scm-td">' . __( 'Cache status', 'cache-master' ) . '</div>
+						<div class="scm-td"><span class="scm-field-cache-status">-</span></div>
+					</div>
+					<div class="scm-tr">
+						<div class="scm-td">' . __( 'Memory usage', 'cache-master' ) . '</div>
+						<div class="scm-td"><span class="scm-field-memory-usage">-</span> (MB)</div>
+					</div>
+					<div class="scm-tr">
+						<div class="scm-td">' .  __( 'SQL queries', 'cache-master' ) . '</div>
+						<div class="scm-td"><span class="scm-field-sql-queries">-</span></div>
+					</div>
+					<div class="scm-tr">
+						<div class="scm-td">' . __( 'Page generation time', 'cache-master' ) . '</div>
+						<div class="scm-td"><span class="scm-field-page-generation-time">-</span> (s)</div>
+					</div>
+				</div>
+			</div>';
+		
+		return $html;
 	}
 
 	/**
@@ -190,37 +386,116 @@ class Cache_Master {
 	 */
 	private function debug_message( $position = '' )
 	{
-		$sql_queries = get_num_queries();
+		$sql_queries  = get_num_queries();
+		$timer_stop   = $this->wp_timer_stop();
+		$memory_usage = $this->get_memory_usage();
+		$date         = $this->get_date();
 
 		switch ( $position ) {
 			case 'ob_start':
 				$this->msg();
 				$this->msg( '....... ' . __( 'After', 'cache-master' ) . ' .......', 2 );
-				$this->msg( sprintf( __( 'Now: %s', 'cache-master' ), $this->get_date() ) );
-				$this->msg( sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $this->get_memory_usage() ) );
+				$this->msg( sprintf( __( 'Now: %s', 'cache-master' ), $date ) );
+				$this->msg( sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $memory_usage ) );
 				$this->msg( sprintf( __( 'SQL queries: %s', 'cache-master' ), $sql_queries ) );
-				$this->msg( sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $this->wp_timer_stop() ) );
+				$this->msg( sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $timer_stop ) );
 				$this->msg();
 				$this->msg( '//-->' );
+
+				$this->variable_stack( 'now',  $date, 'after' );
+				$this->variable_stack( 'memory_usage',  $memory_usage, 'after' );
+				$this->variable_stack( 'sql_queries',  $sql_queries, 'after' );
+				$this->variable_stack( 'page_generation_time',  $timer_stop, 'after' );
 				break;
 
 			case 'ob_stop':
-				$ttl     = (int) get_option( 'scm_option_ttl' );
-				$expires = time() + $ttl;
+				$ttl          = (int) get_option( 'scm_option_ttl' );
+				$expires      = time() + $ttl;
+				$date_expires = $this->get_date( $expires );
 
 				$this->msg();
 				$this->msg( '<!--', 2 );
 				$this->msg( __( 'This page is cached by Cache Master plugin.', 'cache-master' ), 2 );
 				$this->msg( '....... ' . __( 'Before', 'cache-master' ) . ' .......', 2 );
-				$this->msg( sprintf( __( 'Time to cache: %s', 'cache-master' ), $this->get_date() ) );
-				$this->msg( sprintf( __( 'Expires at: %s', 'cache-master' ), $this->get_date( $expires ) ) );
-				$this->msg( sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $this->get_memory_usage() ) );
+				$this->msg( sprintf( __( 'Time to cache: %s', 'cache-master' ), $date ) );
+				$this->msg( sprintf( __( 'Expires at: %s', 'cache-master' ), $date_expires ) );
+				$this->msg( sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $memory_usage ) );
 				$this->msg( sprintf( __( 'SQL queries: %s', 'cache-master' ), $sql_queries ) );
-				$this->msg( sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $this->wp_timer_stop() ) );
+				$this->msg( sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $timer_stop ) );
+
+				$this->variable_stack( 'time_to_cache',  $date, 'before' );
+				$this->variable_stack( 'memory_usage',  $memory_usage, 'before' );
+				$this->variable_stack( 'sql_queries',  $sql_queries, 'before' );
+				$this->variable_stack( 'page_generation_time',  $timer_stop, 'before' );
 				break;
 		}
 
 		return $this->msg( null );
+	}
+
+	/**
+	 * Get JSON string of the performance report.
+	 *
+	 * @return void
+	 */
+	private function json_string() {
+		$script = '
+			<script id="cache-master-plugin">
+				var cache_master = \'' . $this->variable_stack( null ) . '\';
+				var scm_report   = JSON.parse(cache_master);
+
+				var scm_text_cache_status = "";
+				var scm_text_memory_usage = "";
+				var scm_text_sql_queries  = "";
+				var scm_text_page_generation_time = "";
+
+				if ("before" in scm_report) {
+					scm_text_cache_status = "' . __( 'No', 'cache-master' ) . '";
+					scm_text_memory_usage = scm_report["before"]["memory_usage"];
+					scm_text_sql_queries = scm_report["before"]["sql_queries"];
+					scm_text_page_generation_time = scm_report["before"]["page_generation_time"];
+				}
+				if ("after" in scm_report) {
+					scm_text_cache_status = "' . __( 'Yes', 'cache-master' ) . '";
+					scm_text_memory_usage = scm_report["after"]["memory_usage"];
+					scm_text_sql_queries = scm_report["after"]["sql_queries"];
+					scm_text_page_generation_time = scm_report["after"]["page_generation_time"];
+				}
+
+				(function($) {
+					$(function() {
+						$(".scm-field-cache-status").html(scm_text_cache_status);
+						$(".scm-field-memory-usage").html(scm_text_memory_usage);
+						$(".scm-field-sql-queries").html(scm_text_sql_queries);
+						$(".scm-field-page-generation-time").html(scm_text_page_generation_time);
+					});
+				})(jQuery);
+			</script>
+		';
+
+		return preg_replace( '/\s+/', ' ', $script );
+	}
+
+	/**
+	 * The variable stack for JavaScript.
+	 *
+	 * @param string      $key      The key of the field.
+	 * @param string|inx  $value    The value of the field.
+	 * @param string      $poistion The position.
+	 *
+	 * @return void
+	 */
+	private function variable_stack( $key, $value = '', $poistion = 'before' ) {
+		static $vars = array();
+
+		if ( is_null( $key ) ) {
+			$output = $vars;
+			$vars   = array();
+
+			return json_encode($output);
+		}
+
+		$vars[ $poistion ][ $key ] = $value;
 	}
 
 	/**
@@ -357,5 +632,48 @@ class Cache_Master {
 			return mb_strlen( $content, '8bit' );
 		}
 		return strlen( $content );
+	}
+
+	/**
+	 * Get widget status.
+	 *
+	 * @return void
+	 */
+	private function is_active_cache_master_widget() {
+
+		static $status;
+
+		if ( isset( $status ) ) {
+			return $status;
+		}
+
+		$status = false;
+
+		if ( 'yes' === get_option( 'scm_option_benchmark_widget' ) ) {
+			if ( is_active_widget( false, false, 'scm_benchmark', true ) ) {
+				$status = true;
+			}
+		}
+		return $status;
+	}
+
+	/**
+	 * Get request URI.
+	 *
+	 * @return string
+	 */
+	private function get_request_uri()
+	{
+		static $path;
+
+		if ( isset( $path) ) {
+			return $path;
+		}
+
+		if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+			$path = $_SERVER['REQUEST_URI'];
+		}
+
+		return $path;
 	}
 }

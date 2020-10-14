@@ -28,6 +28,8 @@ function scm_activation() {
 	add_option( 'scm_option_visibility_guest', 'yes' );
 	add_option( 'scm_option_statistics_status', 'disable' );
 	add_option( 'scm_option_clear_cache', 'no' );
+	add_option( 'scm_option_benchmark_widget', 'no' );
+	add_option( 'scm_option_benchmark_footer_text', 'no' );
 
 	$post_types = array(
 		'home' => 'yes',
