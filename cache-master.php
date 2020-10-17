@@ -82,6 +82,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 				'setting-update', // Event: update settings.
 				'post-update',    // Event: update posts.
 				'functions',      // Helper functions used in admin scope.
+				'admin-bar',      
 			);
 
 			foreach ( $required_files as $file ) {
@@ -93,6 +94,10 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 			$cm = new Cache_Master();
 			$cm->init();
+		}
+	} else {
+		if ( is_admin() ) {
+			require_once SCM_PLUGIN_DIR . 'inc/admin/ajax-action.php';
 		}
 	}
 }

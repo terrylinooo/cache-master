@@ -183,7 +183,7 @@ function scm_settings() {
 
 	add_settings_field(
 		'scm_option_id_11',
-		__( 'Cache Type', 'cache-master' ),
+		'',
 		'scm_cb_clear_cache',
 		'scm_setting_page_4',
 		'scm_setting_section_7'

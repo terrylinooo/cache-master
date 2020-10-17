@@ -62,7 +62,6 @@ class Cache_Master {
 
 		// Ignore all .php files.
 		if ( '.php' === substr( $uri, -4 ) ) {
-			
 			return;
 		}
 
@@ -72,6 +71,7 @@ class Cache_Master {
 		add_action( 'shutdown', array( $this, 'ob_stop' ), 0 );
 		add_action( 'wp', array( $this, 'get_post_data' ), 0 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ) );
+		add_action( 'login_enqueue_scripts', array( $this, 'front_enqueue_styles' ) );
 	}
 
 	/**
@@ -737,7 +737,7 @@ class Cache_Master {
 		}
 
 		if ( isset( $_SERVER['REQUEST_URI'] ) ) {
-			$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+			$path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 		}
 
 		return $path;

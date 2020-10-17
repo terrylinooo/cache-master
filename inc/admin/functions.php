@@ -265,3 +265,36 @@ function scm_is_available_inject_code() {
     }
     return false;
 }
+
+/**
+ * Clear all cache.
+ *
+ * @return int
+ */
+function scm_clear_all_cache() {
+	$driver = scm_driver_factory( get_option( 'scm_option_driver' ) );
+	$list   = scm_get_cache_type_list( true );
+
+	$driver->clear();
+
+	$i = 0;
+
+	foreach ( $list as $cache_type ) {
+		$dir = scm_get_stats_dir( $cache_type );
+
+		if ( is_dir( $dir ) ) {
+			foreach ( new DirectoryIterator( $dir ) as $file ) {
+				if ( $file->isFile() && $file->getExtension() === 'json' ) {
+					$filename = $file->getFilename();
+					$key      = strstr( $filename, '.', true );
+
+					$driver->delete( $key );
+					unlink( $file->getPathname() );
+					$i++;
+				}
+			}
+		}
+	}
+
+	return $i;
+}

@@ -35,6 +35,9 @@ function scm_get_stats( $type ) {
 	);
 }
 
+$total_size = 0;
+$total_rows = 0;
+
 ?>
 
 <div id="scm-statistic-page">
@@ -73,10 +76,17 @@ function scm_get_stats( $type ) {
 											echo '<span class="scm-info">' . $size . '</span>';
 										}
 
+										$total_size += $size;
+										$total_rows += $stats_data['nums'];
 									?>
 								</td>
 							</tr>
 						<?php endforeach; ?>
+						<tr>
+							<td></td>
+							<td class="scm-total-size"><?php echo $total_rows; ?></td>
+							<td class="scm-total-size"><?php echo $total_size; ?></td>
+						</tr>
 					</table>
 				</td>
 				<td class="stats-r">
