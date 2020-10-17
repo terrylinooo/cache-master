@@ -174,13 +174,11 @@ class Cache_Master {
 					);
 				}
 
-				if ( $this->is_active_cache_master_widget() ) {
-					$cached_content = str_replace(
-						'</body>',
-						"\n" . $this->json_string() . "\n" . '</body>',
-						$cached_content
-					);
-				}
+				$cached_content = str_replace(
+					'</body>',
+					"\n" . $this->json_string() . "\n" . '</body>',
+					$cached_content
+				);
 
 				echo $cached_content;
 				exit;
@@ -204,17 +202,17 @@ class Cache_Master {
 	
 		$this->wp_ob_end_flush_all();
 
-		$content = ob_get_contents();
+		$content       = ob_get_contents();
+		$cache_content = $content;
 		$debug_message = $this->debug_message( 'ob_stop' );
 
 		if ( $this->is_cache ) {
 			$ttl = (int) get_option( 'scm_option_ttl' );
 
-			$content .= $debug_message;
+			$cache_content .= $debug_message;
 
-			$this->driver->set( $this->cache_key, $content, $ttl );
-
-			$this->log( $this->data_type, $this->cache_key, $content );
+			$this->driver->set( $this->cache_key, $cache_content, $ttl );
+			$this->log( $this->data_type, $this->cache_key, $cache_content );
 		}
 
 		if ( 'yes' === get_option( 'scm_option_benchmark_footer_text') || $this->is_active_cache_master_widget() ) {
