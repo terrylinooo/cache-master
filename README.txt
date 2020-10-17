@@ -26,6 +26,7 @@ First release date: October, 1, 2020
 * Extremely light-weight and high-performace.
 * Support up to 8 cache drivers such as Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL and SQLite.
 * Detailed cache statistics, easy to manage.
+* Benchmark information in the footer area or a widget.
 
 Notice: 
 
