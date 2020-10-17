@@ -113,3 +113,7 @@ GNU General Public License for more details.
 * Add setting page - Benchmark settings.
 * Add feature - Benchmark information in widget or footer area.
 * Fix some small issues.
+
+= 1.5.2
+
+* Add a Clear Cache button on admin bar.

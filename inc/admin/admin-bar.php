@@ -25,21 +25,19 @@ add_action( 'admin_footer', 'scm_footer_js_clear_cache' );
 function scm_button_clear_cache( $admin_bar ){
     $admin_bar->add_menu( array( 
         'id'    => 'scm-clear-cache',
-        'title' => '<img src="' . plugins_url( 'cache-master/inc/assets/images/menu_icon.png' ) . '" style="vertical-align: middle; padding-bottom: 2px; padding-right: 4px;">' . __( 'Clear Cache', 'cache-master' ),
+        'title' => '<span class="ab-icon dashicons dashicons-trash" style="top: 2px"></span><span class="ab-label">' . __( 'Clear Cache', 'cache-master' ) . '</span>',
         'href'  => '#' 
     ) );
 }
 
 /**
- * Ajax handler for the action of the clear cache button.
+ * Ajax for the action of the clear cache button.
  *
  * @return void
  */
 function scm_footer_js_clear_cache() {
     ?>
-
     <script>
-
         (function($) {
             $(function() {
                 $('li#wp-admin-bar-scm-clear-cache .ab-item').on('click', function() {
@@ -53,9 +51,7 @@ function scm_footer_js_clear_cache() {
                 });
             });
         })(jQuery);
-
     </script> 
-
     <?php
 }
 

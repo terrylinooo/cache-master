@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 08:16+0000\n"
-"PO-Revision-Date: 2020-10-17 09:10+0000\n"
+"POT-Creation-Date: 2020-10-17 14:12+0000\n"
+"PO-Revision-Date: 2020-10-17 14:15+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
@@ -14,82 +14,82 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.3.1; wp-5.5.1"
 
-#: inc/class-cache-master.php:417
+#: inc/class-cache-master.php:414
 #: inc/admin/classes/class-scm-benchmark-widget.php:52
 msgid "Cache status powered by Cache Master plugin"
 msgstr "快取状态由 Cache Master 插件提供"
 
-#: inc/class-cache-master.php:418
+#: inc/class-cache-master.php:415
 #: inc/admin/classes/class-scm-benchmark-widget.php:53
 msgid "Cache status"
 msgstr "快取状态"
 
-#: inc/class-cache-master.php:424 inc/class-cache-master.php:425
+#: inc/class-cache-master.php:421 inc/class-cache-master.php:422
 #: inc/admin/classes/class-scm-benchmark-widget.php:61
 #: inc/admin/classes/class-scm-benchmark-widget.php:62
 msgid "Memory usage"
 msgstr "内存使用量"
 
-#: inc/class-cache-master.php:431 inc/class-cache-master.php:432
+#: inc/class-cache-master.php:428 inc/class-cache-master.php:429
 #: inc/admin/classes/class-scm-benchmark-widget.php:70
 #: inc/admin/classes/class-scm-benchmark-widget.php:71
 msgid "SQL queries"
 msgstr "资料库查询次数"
 
-#: inc/class-cache-master.php:438 inc/class-cache-master.php:439
+#: inc/class-cache-master.php:435 inc/class-cache-master.php:436
 #: inc/admin/classes/class-scm-benchmark-widget.php:79
 #: inc/admin/classes/class-scm-benchmark-widget.php:80
 msgid "Page generation time"
 msgstr "页面产生时间"
 
-#: inc/class-cache-master.php:441
+#: inc/class-cache-master.php:438
 #: inc/admin/classes/class-scm-benchmark-widget.php:83
 msgid "sec"
 msgstr "秒"
 
-#: inc/class-cache-master.php:466
+#: inc/class-cache-master.php:463
 msgid "After"
 msgstr "快取之后"
 
-#: inc/class-cache-master.php:467
+#: inc/class-cache-master.php:464
 #, php-format
 msgid "Now: %s"
 msgstr "现在时间：%s"
 
-#: inc/class-cache-master.php:468 inc/class-cache-master.php:491
+#: inc/class-cache-master.php:465 inc/class-cache-master.php:488
 #, php-format
 msgid "Memory usage: %s MB"
 msgstr "内存用量：%s MB"
 
-#: inc/class-cache-master.php:469 inc/class-cache-master.php:492
+#: inc/class-cache-master.php:466 inc/class-cache-master.php:489
 #, php-format
 msgid "SQL queries: %s"
 msgstr "资料库查询次数：%s"
 
-#: inc/class-cache-master.php:470 inc/class-cache-master.php:493
+#: inc/class-cache-master.php:467 inc/class-cache-master.php:490
 #, php-format
 msgid "Page generated in %s seconds."
 msgstr "页面在 %s 秒内产生。"
 
-#: inc/class-cache-master.php:487
+#: inc/class-cache-master.php:484
 msgid "This page is cached by Cache Master plugin."
 msgstr "此页面由Cache Master插件进行快取。"
 
-#: inc/class-cache-master.php:488
+#: inc/class-cache-master.php:485
 msgid "Before"
 msgstr "快取之前"
 
-#: inc/class-cache-master.php:489
+#: inc/class-cache-master.php:486
 #, php-format
 msgid "Time to cache: %s"
 msgstr "快取的时间：%s"
 
-#: inc/class-cache-master.php:490
+#: inc/class-cache-master.php:487
 #, php-format
 msgid "Expires at: %s"
 msgstr "过期于：%s"
 
-#: inc/class-cache-master.php:522
+#: inc/class-cache-master.php:519
 #: inc/admin/views/option_benchmark_footer_text.php:31
 #: inc/admin/views/option_benchmark_widget.php:31
 #: inc/admin/views/option_post_homepage.php:31
@@ -97,7 +97,7 @@ msgstr "过期于：%s"
 msgid "No"
 msgstr "否"
 
-#: inc/class-cache-master.php:528
+#: inc/class-cache-master.php:525
 #: inc/admin/views/option_benchmark_footer_text.php:24
 #: inc/admin/views/option_benchmark_widget.php:24
 #: inc/admin/views/option_post_homepage.php:24
@@ -105,6 +105,27 @@ msgstr "否"
 #: inc/admin/views/option_visibility_login_user.php:24
 msgid "Yes"
 msgstr "是"
+
+#: inc/admin/admin-bar.php:28 inc/admin/setting.php:179
+msgid "Clear Cache"
+msgstr "清除快取"
+
+#: inc/admin/ajax-action.php:29
+msgid "Token has been rejected."
+msgstr "令牌已被拒绝。"
+
+#: inc/admin/ajax-action.php:34
+msgid "Access denied."
+msgstr "连线禁止。"
+
+#: inc/admin/ajax-action.php:41
+#, php-format
+msgid "%s rows has been deleted."
+msgstr "%s 笔资料已被删除。"
+
+#: inc/admin/ajax-action.php:43
+msgid "There is no cache on your site currently."
+msgstr "目前在你的网站上没有快取资料。"
 
 #: inc/admin/functions.php:46 inc/admin/setting.php:113
 msgid "Homepage"
@@ -237,14 +258,6 @@ msgstr "已登录的用户"
 msgid "Status"
 msgstr "状态"
 
-#: inc/admin/setting.php:179
-msgid "Clear Cache"
-msgstr "清除快取"
-
-#: inc/admin/setting.php:186
-msgid "Cache Type"
-msgstr "清除快取"
-
 #: inc/admin/setting.php:196
 msgid "Widget"
 msgstr "小工具"
@@ -275,6 +288,16 @@ msgstr "资准分析报告"
 #: inc/admin/views/option_benchmark_footer_text.php:35
 msgid "Display the benchmark information in the footer area."
 msgstr "在底部区域显示基准分析资讯。"
+
+#: inc/admin/views/option_benchmark_footer_text.php:36
+#: inc/admin/views/option_benchmark_footer_text_display.php:61
+#: inc/admin/views/option_benchmark_widget.php:36
+#: inc/admin/views/option_benchmark_widget_display.php:61
+#: inc/admin/views/option_post_archives.php:41
+#: inc/admin/views/option_post_homepage.php:36
+#: inc/admin/views/option_post_types.php:38
+msgid "Once you change this option, all cache data will be cleared."
+msgstr "每当你变更这个选项，所有快取资料将被清除。"
 
 #: inc/admin/views/option_benchmark_footer_text_display.php:25
 #: inc/admin/views/option_benchmark_widget_display.php:25
@@ -395,12 +418,6 @@ msgstr "这个选项只在你有放客制的 PHP 代码在 wp-config.php 里才�
 #: inc/admin/views/option_post_archives.php:40
 msgid "What type of archive page do you like to cache?"
 msgstr "什么类型的汇整页面要被快取？"
-
-#: inc/admin/views/option_post_archives.php:41
-#: inc/admin/views/option_post_homepage.php:36
-#: inc/admin/views/option_post_types.php:38
-msgid "Once you change this option, all cache data will be cleared."
-msgstr "每当你变更这个选项，所有快取资料将被清除。"
 
 #: inc/admin/views/option_post_homepage.php:35
 msgid "Would you like to cache the homepage of your site?"
@@ -537,20 +554,20 @@ msgid ""
 "generation time and page caching status."
 msgstr "基准分析资讯由内存使用量、资料库读取次数、页面产生耗费时间及页面快取状态所组成。"
 
-#: inc/admin/views/page_statistics.php:56
+#: inc/admin/views/page_statistics.php:59
 msgid "Cache type"
 msgstr "快取类型"
 
-#: inc/admin/views/page_statistics.php:57
+#: inc/admin/views/page_statistics.php:60
 msgid "Rows"
 msgstr "笔数"
 
-#: inc/admin/views/page_statistics.php:58
+#: inc/admin/views/page_statistics.php:61
 msgid "Total size"
 msgstr "总大小"
 
-#: inc/admin/views/page_statistics.php:87
-#: inc/admin/views/page_statistics.php:98
+#: inc/admin/views/page_statistics.php:97
+#: inc/admin/views/page_statistics.php:108
 msgid "Confirm Clearing Cache"
 msgstr "确认清除快取"
 
