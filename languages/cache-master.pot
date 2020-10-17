@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-09 19:52+0000\n"
+"POT-Creation-Date: 2020-10-17 08:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,44 +15,99 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.3.1; wp-5.5.1"
 
-#: inc/class-cache-master.php:196
+#: inc/class-cache-master.php:417
+#: inc/admin/classes/class-scm-benchmark-widget.php:52
+msgid "Cache status powered by Cache Master plugin"
+msgstr ""
+
+#: inc/class-cache-master.php:418
+#: inc/admin/classes/class-scm-benchmark-widget.php:53
+msgid "Cache status"
+msgstr ""
+
+#: inc/class-cache-master.php:424 inc/class-cache-master.php:425
+#: inc/admin/classes/class-scm-benchmark-widget.php:61
+#: inc/admin/classes/class-scm-benchmark-widget.php:62
+msgid "Memory usage"
+msgstr ""
+
+#: inc/class-cache-master.php:431 inc/class-cache-master.php:432
+#: inc/admin/classes/class-scm-benchmark-widget.php:70
+#: inc/admin/classes/class-scm-benchmark-widget.php:71
+msgid "SQL queries"
+msgstr ""
+
+#: inc/class-cache-master.php:438 inc/class-cache-master.php:439
+#: inc/admin/classes/class-scm-benchmark-widget.php:79
+#: inc/admin/classes/class-scm-benchmark-widget.php:80
+msgid "Page generation time"
+msgstr ""
+
+#: inc/class-cache-master.php:441
+#: inc/admin/classes/class-scm-benchmark-widget.php:83
+msgid "sec"
+msgstr ""
+
+#: inc/class-cache-master.php:466
 msgid "After"
 msgstr ""
 
-#: inc/class-cache-master.php:197
+#: inc/class-cache-master.php:467
 #, php-format
 msgid "Now: %s"
 msgstr ""
 
-#: inc/class-cache-master.php:198 inc/class-cache-master.php:214
+#: inc/class-cache-master.php:468 inc/class-cache-master.php:491
 #, php-format
 msgid "Memory usage: %s MB"
 msgstr ""
 
-#: inc/class-cache-master.php:199 inc/class-cache-master.php:215
+#: inc/class-cache-master.php:469 inc/class-cache-master.php:492
+#, php-format
+msgid "SQL queries: %s"
+msgstr ""
+
+#: inc/class-cache-master.php:470 inc/class-cache-master.php:493
 #, php-format
 msgid "Page generated in %s seconds."
 msgstr ""
 
-#: inc/class-cache-master.php:210
+#: inc/class-cache-master.php:487
 msgid "This page is cached by Cache Master plugin."
 msgstr ""
 
-#: inc/class-cache-master.php:211
+#: inc/class-cache-master.php:488
 msgid "Before"
 msgstr ""
 
-#: inc/class-cache-master.php:212
+#: inc/class-cache-master.php:489
 #, php-format
 msgid "Time to cache: %s"
 msgstr ""
 
-#: inc/class-cache-master.php:213
+#: inc/class-cache-master.php:490
 #, php-format
 msgid "Expires at: %s"
 msgstr ""
 
-#: inc/admin/functions.php:46 inc/admin/setting.php:110
+#: inc/class-cache-master.php:522
+#: inc/admin/views/option_benchmark_footer_text.php:31
+#: inc/admin/views/option_benchmark_widget.php:31
+#: inc/admin/views/option_post_homepage.php:31
+#: inc/admin/views/option_visibility_login_user.php:31
+msgid "No"
+msgstr ""
+
+#: inc/class-cache-master.php:528
+#: inc/admin/views/option_benchmark_footer_text.php:24
+#: inc/admin/views/option_benchmark_widget.php:24
+#: inc/admin/views/option_post_homepage.php:24
+#: inc/admin/views/option_visibility_guest.php:24
+#: inc/admin/views/option_visibility_login_user.php:24
+msgid "Yes"
+msgstr ""
+
+#: inc/admin/functions.php:46 inc/admin/setting.php:113
 msgid "Homepage"
 msgstr ""
 
@@ -91,31 +146,36 @@ msgstr ""
 
 #. Name of the plugin
 #: inc/admin/menu.php:29 inc/admin/menu.php:30 inc/admin/post-update.php:51
+#: inc/admin/classes/class-scm-benchmark-widget.php:101
 msgid "Cache Master"
 msgstr ""
 
-#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:112
+#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:143
 msgid "Settings"
 msgstr ""
 
-#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:144
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:147
 msgid "Expert Mode"
 msgstr ""
 
-#: inc/admin/menu.php:57 inc/admin/menu.php:58 inc/admin/setting.php:169
-#: inc/admin/setting.php:176
+#: inc/admin/menu.php:57 inc/admin/menu.php:58 inc/admin/setting.php:164
+#: inc/admin/setting.php:171
 msgid "Statistics"
 msgstr ""
 
-#: inc/admin/menu.php:131
+#: inc/admin/menu.php:66 inc/admin/menu.php:67
+msgid "About"
+msgstr ""
+
+#: inc/admin/menu.php:162
 msgid "Source code"
 msgstr ""
 
-#: inc/admin/menu.php:182
+#: inc/admin/menu.php:213
 msgid "Cache Master supports only static URL structure."
 msgstr ""
 
-#: inc/admin/menu.php:183
+#: inc/admin/menu.php:214
 #, php-format
 msgid "You have to go to %s page and change the permalink settings."
 msgstr ""
@@ -124,74 +184,130 @@ msgstr ""
 msgid "Cache has been cleared."
 msgstr ""
 
-#: inc/admin/setting.php:42
+#: inc/admin/setting.php:45
 msgid "Driver"
 msgstr ""
 
-#: inc/admin/setting.php:49
+#: inc/admin/setting.php:52
 msgid "Visibilty"
 msgstr ""
 
-#: inc/admin/setting.php:56
-msgid "Preferences"
+#: inc/admin/setting.php:59
+msgid "Pages"
 msgstr ""
 
-#: inc/admin/setting.php:63
+#: inc/admin/setting.php:66
 msgid "Others"
 msgstr ""
 
-#: inc/admin/setting.php:70
+#: inc/admin/setting.php:73
 msgid "Caching Status"
 msgstr ""
 
-#: inc/admin/setting.php:78
+#: inc/admin/setting.php:81
 msgid "Cache Driver"
 msgstr ""
 
-#: inc/admin/setting.php:86
+#: inc/admin/setting.php:89
 msgid "Time to Live"
 msgstr ""
 
-#: inc/admin/setting.php:94
+#: inc/admin/setting.php:97
 msgid "Uninstall"
 msgstr ""
 
-#: inc/admin/setting.php:102
+#: inc/admin/setting.php:105
 msgid "Post Types"
 msgstr ""
 
-#: inc/admin/setting.php:118
+#: inc/admin/setting.php:121
 msgid "Archive Pages"
 msgstr ""
 
-#: inc/admin/setting.php:126
+#: inc/admin/setting.php:129
 msgid "Guests"
 msgstr ""
 
-#: inc/admin/setting.php:134
+#: inc/admin/setting.php:137
 msgid "Logged-in Users"
 msgstr ""
 
-#: inc/admin/setting.php:151
+#: inc/admin/setting.php:154
 msgid "Status"
 msgstr ""
 
-#: inc/admin/setting.php:159
-msgid "Install the Code"
-msgstr ""
-
-#: inc/admin/setting.php:184
+#: inc/admin/setting.php:179
 msgid "Clear Cache"
 msgstr ""
 
-#: inc/admin/setting.php:191
+#: inc/admin/setting.php:186
 msgid "Cache Type"
 msgstr ""
 
+#: inc/admin/setting.php:196
+msgid "Widget"
+msgstr ""
+
+#: inc/admin/setting.php:203
+msgid "Footer Text"
+msgstr ""
+
+#: inc/admin/setting.php:210 inc/admin/setting.php:226
 #: inc/admin/views/option_caching_status.php:24
 #: inc/admin/views/option_expert_mode_status.php:29
 #: inc/admin/views/option_statistics_status.php:24
 msgid "Enable"
+msgstr ""
+
+#: inc/admin/setting.php:218 inc/admin/setting.php:234
+msgid "Display"
+msgstr ""
+
+#: inc/admin/classes/class-scm-benchmark-widget.php:29
+msgid "Display the benchmark report before and after caching by Cache Master."
+msgstr ""
+
+#: inc/admin/classes/class-scm-benchmark-widget.php:33
+msgid "Benchmark Report"
+msgstr ""
+
+#: inc/admin/views/option_benchmark_footer_text.php:35
+msgid "Display the benchmark information in the footer area."
+msgstr ""
+
+#: inc/admin/views/option_benchmark_footer_text_display.php:25
+#: inc/admin/views/option_benchmark_widget_display.php:25
+msgid "Text"
+msgstr ""
+
+#: inc/admin/views/option_benchmark_footer_text_display.php:29
+#: inc/admin/views/option_benchmark_footer_text_display.php:42
+#: inc/admin/views/option_benchmark_footer_text_display.php:55
+#: inc/admin/views/option_benchmark_widget_display.php:29
+#: inc/admin/views/option_benchmark_widget_display.php:42
+#: inc/admin/views/option_benchmark_widget_display.php:55
+msgid "Example"
+msgstr ""
+
+#: inc/admin/views/option_benchmark_footer_text_display.php:38
+#: inc/admin/views/option_benchmark_widget_display.php:38
+msgid "Icon"
+msgstr ""
+
+#: inc/admin/views/option_benchmark_footer_text_display.php:51
+#: inc/admin/views/option_benchmark_widget_display.php:51
+msgid "Both"
+msgstr ""
+
+#: inc/admin/views/option_benchmark_footer_text_display.php:60
+#: inc/admin/views/option_benchmark_widget_display.php:60
+msgid ""
+"Would you like to use text or icon as the label name when display benchmark "
+"results?"
+msgstr ""
+
+#: inc/admin/views/option_benchmark_widget.php:35
+msgid "Register a widget that can show the benchmark information."
 msgstr ""
 
 #: inc/admin/views/option_caching_status.php:31
@@ -252,52 +368,6 @@ msgstr ""
 
 #: inc/admin/views/option_driver.php:49
 msgid "Choose a driver to cache your posts and pages."
-msgstr ""
-
-#: inc/admin/views/option_expert_mode_installation.php:21
-#: inc/admin/views/option_expert_mode_installation.php:22
-#: inc/admin/views/option_post_homepage.php:31
-#: inc/admin/views/option_visibility_login_user.php:31
-msgid "No"
-msgstr ""
-
-#: inc/admin/views/option_expert_mode_installation.php:25
-#: inc/admin/views/option_expert_mode_installation.php:28
-#: inc/admin/views/option_post_homepage.php:24
-#: inc/admin/views/option_visibility_guest.php:24
-#: inc/admin/views/option_visibility_login_user.php:24
-msgid "Yes"
-msgstr ""
-
-#: inc/admin/views/option_expert_mode_installation.php:38
-msgid "Yes, help me install the code automatically."
-msgstr ""
-
-#: inc/admin/views/option_expert_mode_installation.php:45
-msgid "No, I will install the code manually."
-msgstr ""
-
-#: inc/admin/views/option_expert_mode_installation.php:49
-msgid ""
-"Code Master can modify <code>wp-config.php</code> and install the code for "
-"you."
-msgstr ""
-
-#: inc/admin/views/option_expert_mode_installation.php:50
-msgid "Or, you can follow the guide below to install the code yourself."
-msgstr ""
-
-#: inc/admin/views/option_expert_mode_installation.php:54
-#, php-format
-msgid "Check the code block in %s"
-msgstr ""
-
-#: inc/admin/views/option_expert_mode_installation.php:56
-msgid "Does the code block exist?"
-msgstr ""
-
-#: inc/admin/views/option_expert_mode_installation.php:57
-msgid "Does the code block is fit for this blog?"
 msgstr ""
 
 #: inc/admin/views/option_expert_mode_status.php:20
@@ -381,6 +451,27 @@ msgid ""
 "of outputting cache at a very early stage when running as Expert Mode."
 msgstr ""
 
+#: inc/admin/views/page_about.php:21
+#, php-format
+msgid ""
+"Cache Master is brought to you by <a href=\"%1$s\">Terry L.</a> from <a "
+"href=\"%2$s\">Taiwan</a>."
+msgstr ""
+
+#: inc/admin/views/page_about.php:31
+msgid ""
+"If you have any issues, or found any bugs, please report them in the "
+"following URL."
+msgstr ""
+
+#: inc/admin/views/page_about.php:33
+msgid "Core"
+msgstr ""
+
+#: inc/admin/views/page_about.php:34
+msgid "Plugin"
+msgstr ""
+
 #: inc/admin/views/page_expert_mode.php:26
 msgid "Code"
 msgstr ""
@@ -421,19 +512,39 @@ msgid ""
 "conflicts."
 msgstr ""
 
-#: inc/admin/views/page_statistics.php:49
+#: inc/admin/views/page_options_page.php:47
+msgid "Basic"
+msgstr ""
+
+#: inc/admin/views/page_options_page.php:50
+msgid "Preferences"
+msgstr ""
+
+#: inc/admin/views/page_options_page.php:53
+#: inc/admin/views/page_options_page.php:77
+msgid "Benchmark"
+msgstr ""
+
+#: inc/admin/views/page_options_page.php:78
+msgid ""
+"Benchmark information consists of memory usage, SQL query number, page "
+"generation time and page caching status."
+msgstr ""
+
+#: inc/admin/views/page_statistics.php:56
 msgid "Cache type"
 msgstr ""
 
-#: inc/admin/views/page_statistics.php:50
+#: inc/admin/views/page_statistics.php:57
 msgid "Rows"
 msgstr ""
 
-#: inc/admin/views/page_statistics.php:51
+#: inc/admin/views/page_statistics.php:58
 msgid "Total size"
 msgstr ""
 
-#: inc/admin/views/page_statistics.php:69
+#: inc/admin/views/page_statistics.php:87
+#: inc/admin/views/page_statistics.php:98
 msgid "Confirm Clearing Cache"
 msgstr ""
 

@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 1.4.3
+Stable tag: 1.5.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -104,4 +104,11 @@ GNU General Public License for more details.
 
 = 1.4.1
 
+
 * Add feature - Automatic installation of Expert Mode code.
+
+= 1.5.0
+
+* Add setting page - Benchmark settings.
+* Add feature - Benchmark information in widget or footer area.
+* Fix some small issues.

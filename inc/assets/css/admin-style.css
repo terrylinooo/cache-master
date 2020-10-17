@@ -219,3 +219,17 @@
   overflow: hidden;
   display: inline-block;
 }
+
+.scm-option-example {
+  margin: 10px;
+  border: 1px #dddddd solid;
+  padding: 5px;
+  font-style: italic;
+  border-radius: 3px;
+  background-color: #f5f5f5;
+}
+.scm-option-example img {
+  margin-top: 5px;
+  border: 0;
+  border-radius: 3px;
+}

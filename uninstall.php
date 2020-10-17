@@ -33,6 +33,8 @@ if ( 'yes' === $option_uninstall ) {
 	delete_option( 'scm_option_clear_cache' );
 	delete_option( 'scm_option_benchmark_widget' );
 	delete_option( 'scm_option_benchmark_footer_text' );
+	delete_option( 'scm_option_benchmark_widget_display' );
+	delete_option( 'scm_option_benchmark_footer_text_display' );
 
 	delete_option( 'scm_last_reset_time' );
 	delete_option( 'scm_version' );

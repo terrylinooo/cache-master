@@ -30,6 +30,8 @@ function scm_activation() {
 	add_option( 'scm_option_clear_cache', 'no' );
 	add_option( 'scm_option_benchmark_widget', 'no' );
 	add_option( 'scm_option_benchmark_footer_text', 'no' );
+	add_option( 'scm_option_benchmark_widget_display', 'both' );
+	add_option( 'scm_option_benchmark_footer_text_display', 'text' );
 
 	$post_types = array(
 		'home' => 'yes',

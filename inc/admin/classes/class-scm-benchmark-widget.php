@@ -49,7 +49,7 @@ class SCM_Benchmark_Widget extends WP_Widget {
 				<div class="scm-table">
 					<div class="scm-tr">
 						<div class="scm-td">
-							<span class="scm-img scm-img-1"><?php echo scm_get_svg_icon( 'status' ); ?></span>
+							<span class="scm-img scm-img-1" title="<?php echo esc_attr__( 'Cache status powered by Cache Master plugin', 'cache-master' ); ?>"><?php echo scm_get_svg_icon( 'status' ); ?></span>
 							<span class="scm-text"><?php _e( 'Cache status', 'cache-master' ); ?></span>
 						</div>
 						<div class="scm-td">
@@ -58,16 +58,16 @@ class SCM_Benchmark_Widget extends WP_Widget {
 					</div>
 					<div class="scm-tr">
 						<div class="scm-td">
-							<span class="scm-img scm-img-2"><?php echo scm_get_svg_icon( 'memory' ); ?></span>
+							<span class="scm-img scm-img-2" title="<?php echo esc_attr__( 'Memory usage', 'cache-master' ); ?>"><?php echo scm_get_svg_icon( 'memory' ); ?></span>
 							<span class="scm-text"><?php _e( 'Memory usage', 'cache-master' ); ?></span>
 						</div>
 						<div class="scm-td">
-							<span class="scm-field-memory-usage">-</span>
+							<span class="scm-field-memory-usage">-</span> MB
 						</div>
 					</div>
 					<div class="scm-tr">
 						<div class="scm-td">
-							<span class="scm-img scm-img-3"><?php echo scm_get_svg_icon( 'database' ); ?></span>
+							<span class="scm-img scm-img-3" title="<?php echo esc_attr__( 'SQL queries', 'cache-master' ); ?>"><?php echo scm_get_svg_icon( 'database' ); ?></span>
 							<span class="scm-text"><?php _e( 'SQL queries', 'cache-master' ); ?></span>
 						</div>
 						<div class="scm-td">
@@ -76,11 +76,11 @@ class SCM_Benchmark_Widget extends WP_Widget {
 					</div>
 					<div class="scm-tr">
 						<div class="scm-td">
-							<span class="scm-img scm-img-4"><?php echo scm_get_svg_icon( 'speed' ); ?></span>
+							<span class="scm-img scm-img-4" title="<?php echo esc_attr__( 'Page generation time', 'cache-master' ); ?>"><?php echo scm_get_svg_icon( 'speed' ); ?></span>
 							<span class="scm-text"><?php _e( 'Page generation time', 'cache-master' ); ?></span>
 						</div>
 						<div class="scm-td">
-							<span class="scm-field-page-generation-time">-</span>
+							<span class="scm-field-page-generation-time">-</span> (<?php _e( 'sec', 'cache-master' ); ?>)
 						</div>
 					</div>
 				</div>

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-09 19:52+0000\n"
-"PO-Revision-Date: 2020-10-09 20:08+0000\n"
+"POT-Creation-Date: 2020-10-17 08:16+0000\n"
+"PO-Revision-Date: 2020-10-17 09:01+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
@@ -14,44 +14,99 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.3.1; wp-5.5.1"
 
-#: inc/class-cache-master.php:196
+#: inc/class-cache-master.php:417
+#: inc/admin/classes/class-scm-benchmark-widget.php:52
+msgid "Cache status powered by Cache Master plugin"
+msgstr "快取狀態由 Cache Master 外掛提供"
+
+#: inc/class-cache-master.php:418
+#: inc/admin/classes/class-scm-benchmark-widget.php:53
+msgid "Cache status"
+msgstr "快取狀態"
+
+#: inc/class-cache-master.php:424 inc/class-cache-master.php:425
+#: inc/admin/classes/class-scm-benchmark-widget.php:61
+#: inc/admin/classes/class-scm-benchmark-widget.php:62
+msgid "Memory usage"
+msgstr "記憶體使用量"
+
+#: inc/class-cache-master.php:431 inc/class-cache-master.php:432
+#: inc/admin/classes/class-scm-benchmark-widget.php:70
+#: inc/admin/classes/class-scm-benchmark-widget.php:71
+msgid "SQL queries"
+msgstr "資料庫查詢次數"
+
+#: inc/class-cache-master.php:438 inc/class-cache-master.php:439
+#: inc/admin/classes/class-scm-benchmark-widget.php:79
+#: inc/admin/classes/class-scm-benchmark-widget.php:80
+msgid "Page generation time"
+msgstr "頁面產生時間"
+
+#: inc/class-cache-master.php:441
+#: inc/admin/classes/class-scm-benchmark-widget.php:83
+msgid "sec"
+msgstr "秒"
+
+#: inc/class-cache-master.php:466
 msgid "After"
 msgstr "快取後"
 
-#: inc/class-cache-master.php:197
+#: inc/class-cache-master.php:467
 #, php-format
 msgid "Now: %s"
 msgstr "現在時間：%s"
 
-#: inc/class-cache-master.php:198 inc/class-cache-master.php:214
+#: inc/class-cache-master.php:468 inc/class-cache-master.php:491
 #, php-format
 msgid "Memory usage: %s MB"
 msgstr "記憶體使用量：%s MB"
 
-#: inc/class-cache-master.php:199 inc/class-cache-master.php:215
+#: inc/class-cache-master.php:469 inc/class-cache-master.php:492
+#, php-format
+msgid "SQL queries: %s"
+msgstr "資料庫查詢次數：%s"
+
+#: inc/class-cache-master.php:470 inc/class-cache-master.php:493
 #, php-format
 msgid "Page generated in %s seconds."
 msgstr "頁面在 %s 秒內產生。"
 
-#: inc/class-cache-master.php:210
+#: inc/class-cache-master.php:487
 msgid "This page is cached by Cache Master plugin."
-msgstr "此頁面由快取大師外掛進行快取。"
+msgstr "此頁面由Cache Master外掛進行快取。"
 
-#: inc/class-cache-master.php:211
+#: inc/class-cache-master.php:488
 msgid "Before"
 msgstr "快取前"
 
-#: inc/class-cache-master.php:212
+#: inc/class-cache-master.php:489
 #, php-format
 msgid "Time to cache: %s"
 msgstr "快取的時間：%s"
 
-#: inc/class-cache-master.php:213
+#: inc/class-cache-master.php:490
 #, php-format
 msgid "Expires at: %s"
 msgstr "過期於：%s"
 
-#: inc/admin/functions.php:46 inc/admin/setting.php:110
+#: inc/class-cache-master.php:522
+#: inc/admin/views/option_benchmark_footer_text.php:31
+#: inc/admin/views/option_benchmark_widget.php:31
+#: inc/admin/views/option_post_homepage.php:31
+#: inc/admin/views/option_visibility_login_user.php:31
+msgid "No"
+msgstr "否"
+
+#: inc/class-cache-master.php:528
+#: inc/admin/views/option_benchmark_footer_text.php:24
+#: inc/admin/views/option_benchmark_widget.php:24
+#: inc/admin/views/option_post_homepage.php:24
+#: inc/admin/views/option_visibility_guest.php:24
+#: inc/admin/views/option_visibility_login_user.php:24
+msgid "Yes"
+msgstr "是"
+
+#: inc/admin/functions.php:46 inc/admin/setting.php:113
 msgid "Homepage"
 msgstr "首頁"
 
@@ -90,31 +145,36 @@ msgstr "未分類"
 
 #. Name of the plugin
 #: inc/admin/menu.php:29 inc/admin/menu.php:30 inc/admin/post-update.php:51
+#: inc/admin/classes/class-scm-benchmark-widget.php:101
 msgid "Cache Master"
-msgstr "快取大師"
+msgstr "Cache Master"
 
-#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:112
+#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:143
 msgid "Settings"
 msgstr "設定"
 
-#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:144
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:147
 msgid "Expert Mode"
 msgstr "專家模式"
 
-#: inc/admin/menu.php:57 inc/admin/menu.php:58 inc/admin/setting.php:169
-#: inc/admin/setting.php:176
+#: inc/admin/menu.php:57 inc/admin/menu.php:58 inc/admin/setting.php:164
+#: inc/admin/setting.php:171
 msgid "Statistics"
 msgstr "統計"
 
-#: inc/admin/menu.php:131
+#: inc/admin/menu.php:66 inc/admin/menu.php:67
+msgid "About"
+msgstr "關於"
+
+#: inc/admin/menu.php:162
 msgid "Source code"
 msgstr "原始碼"
 
-#: inc/admin/menu.php:182
+#: inc/admin/menu.php:213
 msgid "Cache Master supports only static URL structure."
-msgstr "快取大師只支援靜態網址結構。"
+msgstr "Cache Master只支援靜態網址結構。"
 
-#: inc/admin/menu.php:183
+#: inc/admin/menu.php:214
 #, php-format
 msgid "You have to go to %s page and change the permalink settings."
 msgstr "你必須到 %s 頁面改變固定連結設定。"
@@ -123,75 +183,131 @@ msgstr "你必須到 %s 頁面改變固定連結設定。"
 msgid "Cache has been cleared."
 msgstr "快取已被清除。"
 
-#: inc/admin/setting.php:42
+#: inc/admin/setting.php:45
 msgid "Driver"
 msgstr "驅動程式"
 
-#: inc/admin/setting.php:49
+#: inc/admin/setting.php:52
 msgid "Visibilty"
 msgstr "可見度"
 
-#: inc/admin/setting.php:56
-msgid "Preferences"
-msgstr "偏好設定"
+#: inc/admin/setting.php:59
+msgid "Pages"
+msgstr "頁面"
 
-#: inc/admin/setting.php:63
+#: inc/admin/setting.php:66
 msgid "Others"
 msgstr "其它"
 
-#: inc/admin/setting.php:70
+#: inc/admin/setting.php:73
 msgid "Caching Status"
 msgstr "快取運行狀態"
 
-#: inc/admin/setting.php:78
+#: inc/admin/setting.php:81
 msgid "Cache Driver"
 msgstr "快取驅動程式"
 
-#: inc/admin/setting.php:86
+#: inc/admin/setting.php:89
 msgid "Time to Live"
 msgstr "存活時間"
 
-#: inc/admin/setting.php:94
+#: inc/admin/setting.php:97
 msgid "Uninstall"
 msgstr "反安裝"
 
-#: inc/admin/setting.php:102
+#: inc/admin/setting.php:105
 msgid "Post Types"
 msgstr "文章類型"
 
-#: inc/admin/setting.php:118
+#: inc/admin/setting.php:121
 msgid "Archive Pages"
 msgstr "彙整頁面"
 
-#: inc/admin/setting.php:126
+#: inc/admin/setting.php:129
 msgid "Guests"
 msgstr "訪客"
 
-#: inc/admin/setting.php:134
+#: inc/admin/setting.php:137
 msgid "Logged-in Users"
 msgstr "已登入使用者"
 
-#: inc/admin/setting.php:151
+#: inc/admin/setting.php:154
 msgid "Status"
 msgstr "狀態"
 
-#: inc/admin/setting.php:159
-msgid "Install the Code"
-msgstr "安裝程式碼"
-
-#: inc/admin/setting.php:184
+#: inc/admin/setting.php:179
 msgid "Clear Cache"
 msgstr "清除快取"
 
-#: inc/admin/setting.php:191
+#: inc/admin/setting.php:186
 msgid "Cache Type"
 msgstr "快取類型"
 
+#: inc/admin/setting.php:196
+msgid "Widget"
+msgstr "小工具"
+
+#: inc/admin/setting.php:203
+msgid "Footer Text"
+msgstr "底部文字"
+
+#: inc/admin/setting.php:210 inc/admin/setting.php:226
 #: inc/admin/views/option_caching_status.php:24
 #: inc/admin/views/option_expert_mode_status.php:29
 #: inc/admin/views/option_statistics_status.php:24
 msgid "Enable"
 msgstr "啟用"
+
+#: inc/admin/setting.php:218 inc/admin/setting.php:234
+msgid "Display"
+msgstr "顯示"
+
+#: inc/admin/classes/class-scm-benchmark-widget.php:29
+msgid "Display the benchmark report before and after caching by Cache Master."
+msgstr "顯示經由 Cache Master 快取前後的基準分析報告。"
+
+#: inc/admin/classes/class-scm-benchmark-widget.php:33
+msgid "Benchmark Report"
+msgstr "資準分析報告"
+
+#: inc/admin/views/option_benchmark_footer_text.php:35
+msgid "Display the benchmark information in the footer area."
+msgstr "在底部區域顯示基準分析資訊。"
+
+#: inc/admin/views/option_benchmark_footer_text_display.php:25
+#: inc/admin/views/option_benchmark_widget_display.php:25
+msgid "Text"
+msgstr "文字"
+
+#: inc/admin/views/option_benchmark_footer_text_display.php:29
+#: inc/admin/views/option_benchmark_footer_text_display.php:42
+#: inc/admin/views/option_benchmark_footer_text_display.php:55
+#: inc/admin/views/option_benchmark_widget_display.php:29
+#: inc/admin/views/option_benchmark_widget_display.php:42
+#: inc/admin/views/option_benchmark_widget_display.php:55
+msgid "Example"
+msgstr "例子"
+
+#: inc/admin/views/option_benchmark_footer_text_display.php:38
+#: inc/admin/views/option_benchmark_widget_display.php:38
+msgid "Icon"
+msgstr "圖示"
+
+#: inc/admin/views/option_benchmark_footer_text_display.php:51
+#: inc/admin/views/option_benchmark_widget_display.php:51
+msgid "Both"
+msgstr "兩者皆是"
+
+#: inc/admin/views/option_benchmark_footer_text_display.php:60
+#: inc/admin/views/option_benchmark_widget_display.php:60
+msgid ""
+"Would you like to use text or icon as the label name when display benchmark "
+"results?"
+msgstr "你想要使用文字還是圖示作為顯示基準分析結果的標籤名稱？"
+
+#: inc/admin/views/option_benchmark_widget.php:35
+msgid "Register a widget that can show the benchmark information."
+msgstr "註冊一個可顯示基準分析資訊的小工具。"
 
 #: inc/admin/views/option_caching_status.php:31
 #: inc/admin/views/option_expert_mode_status.php:36
@@ -203,7 +319,7 @@ msgstr "停用"
 msgid ""
 "Once you make this option disable, Cache Master will stop working and all "
 "cache  will be cleared."
-msgstr "每當你使這個選項停用，快取大師會停止運作，所有快取將被清除。"
+msgstr "每當你使這個選項停用，Cache Master會停止運作，所有快取將被清除。"
 
 #: inc/admin/views/option_clear_cache.php:21
 msgid "All"
@@ -253,57 +369,11 @@ msgstr "SQLite"
 msgid "Choose a driver to cache your posts and pages."
 msgstr "選擇驅動程式來快取你的文章和頁面。"
 
-#: inc/admin/views/option_expert_mode_installation.php:21
-#: inc/admin/views/option_expert_mode_installation.php:22
-#: inc/admin/views/option_post_homepage.php:31
-#: inc/admin/views/option_visibility_login_user.php:31
-msgid "No"
-msgstr "否"
-
-#: inc/admin/views/option_expert_mode_installation.php:25
-#: inc/admin/views/option_expert_mode_installation.php:28
-#: inc/admin/views/option_post_homepage.php:24
-#: inc/admin/views/option_visibility_guest.php:24
-#: inc/admin/views/option_visibility_login_user.php:24
-msgid "Yes"
-msgstr "是"
-
-#: inc/admin/views/option_expert_mode_installation.php:38
-msgid "Yes, help me install the code automatically."
-msgstr "好的，幫我自動地安裝程式碼。"
-
-#: inc/admin/views/option_expert_mode_installation.php:45
-msgid "No, I will install the code manually."
-msgstr "不用，我會手動地安裝程式碼。"
-
-#: inc/admin/views/option_expert_mode_installation.php:49
-msgid ""
-"Code Master can modify <code>wp-config.php</code> and install the code for "
-"you."
-msgstr "快取大師能為你修改 <code>wp-config.php</code> 和安裝程式碼。"
-
-#: inc/admin/views/option_expert_mode_installation.php:50
-msgid "Or, you can follow the guide below to install the code yourself."
-msgstr "或者，你可以依照以下指南，自己安裝程式碼。"
-
-#: inc/admin/views/option_expert_mode_installation.php:54
-#, php-format
-msgid "Check the code block in %s"
-msgstr "檢查在 %s 的程式區塊"
-
-#: inc/admin/views/option_expert_mode_installation.php:56
-msgid "Does the code block exist?"
-msgstr "程式碼區塊存在嗎？"
-
-#: inc/admin/views/option_expert_mode_installation.php:57
-msgid "Does the code block is fit for this blog?"
-msgstr "程式碼區塊適用這個部落格嗎？"
-
 #: inc/admin/views/option_expert_mode_status.php:20
 msgid ""
 "Because Cache Master works after all plguins installed, it can only save a "
 "maximum of 20-25 percent memory."
-msgstr "因為快取大師在所有外掛載入後運作，最多只能節省 20-25 百分比的記憶體。"
+msgstr "因為Cache Master在所有外掛載入後運作，最多只能節省 20-25 百分比的記憶體。"
 
 #: inc/admin/views/option_expert_mode_status.php:21
 #, php-format
@@ -312,7 +382,8 @@ msgid ""
 "initialized, it can save up to a maximum of <strong>95</strong> percent "
 "memory - even more."
 msgstr ""
-"不過呢，如果你修改 %s 讓快取大師能在所有東西完成初始化之前輸出快取，可以節省上看 <strong>95</strong> 百分比的記憶體，甚至更多。"
+"不過呢，如果你修改 %s 讓Cache Master能在所有東西完成初始化之前輸出快取，可以節省上看 <strong>95</strong> "
+"百分比的記憶體，甚至更多。"
 
 #: inc/admin/views/option_expert_mode_status.php:40
 msgid ""
@@ -347,11 +418,11 @@ msgstr "請填入在 300 至 86400 之間的數字。（以秒計）"
 
 #: inc/admin/views/option_uninstall.php:24
 msgid "Remove Cache Master generated data."
-msgstr "移除快取大師產生的資料。"
+msgstr "移除Cache Master產生的資料。"
 
 #: inc/admin/views/option_uninstall.php:31
 msgid "Keep Cache Master generated data."
-msgstr "保持快取大師產生的資料。"
+msgstr "保持Cache Master產生的資料。"
 
 #: inc/admin/views/option_uninstall.php:35
 msgid "This option only works when you uninstall this plugin."
@@ -380,6 +451,28 @@ msgid ""
 "Logged-in users always see cached pages when Expert Mode is working, because "
 "of outputting cache at a very early stage when running as Expert Mode."
 msgstr "已登入的使用者在「專家模式」運行時，總是看到快取網頁，因為在「專家模式」時，輸出快取是在非常早期階段的關係。"
+
+#: inc/admin/views/page_about.php:21
+#, php-format
+msgid ""
+"Cache Master is brought to you by <a href=\"%1$s\">Terry L.</a> from <a "
+"href=\"%2$s\">Taiwan</a>."
+msgstr ""
+"來自<a href=\"%2$s\">台灣</a>的<a href=\"%1$s\">Terry L.</a> 帶給您 Cache Master。"
+
+#: inc/admin/views/page_about.php:31
+msgid ""
+"If you have any issues, or found any bugs, please report them in the "
+"following URL."
+msgstr "如果你有任何問題或找到任何程式臭蟲，請在下方網址回報。"
+
+#: inc/admin/views/page_about.php:33
+msgid "Core"
+msgstr "核心程式"
+
+#: inc/admin/views/page_about.php:34
+msgid "Plugin"
+msgstr "外掛"
 
 #: inc/admin/views/page_expert_mode.php:26
 msgid "Code"
@@ -419,21 +512,41 @@ msgstr "你應該看到的的結果像這樣。"
 msgid ""
 "Cache Master cannot work with the plugin \"%s\" becasue of output buffer "
 "conflicts."
-msgstr "快取大師無法和此外掛「%s」一同運作，因為緩衝區輸出衝突的關係。"
+msgstr "Cache Master無法和此外掛「%s」一同運作，因為緩衝區輸出衝突的關係。"
 
-#: inc/admin/views/page_statistics.php:49
+#: inc/admin/views/page_options_page.php:47
+msgid "Basic"
+msgstr "基本設定"
+
+#: inc/admin/views/page_options_page.php:50
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: inc/admin/views/page_options_page.php:53
+#: inc/admin/views/page_options_page.php:77
+msgid "Benchmark"
+msgstr "基準分析"
+
+#: inc/admin/views/page_options_page.php:78
+msgid ""
+"Benchmark information consists of memory usage, SQL query number, page "
+"generation time and page caching status."
+msgstr "基準分析資訊由記憶體使用量、資料庫讀取次數、頁面產生耗費時間及頁面快取狀態所組成。"
+
+#: inc/admin/views/page_statistics.php:56
 msgid "Cache type"
 msgstr "快取類型"
 
-#: inc/admin/views/page_statistics.php:50
+#: inc/admin/views/page_statistics.php:57
 msgid "Rows"
 msgstr "筆數"
 
-#: inc/admin/views/page_statistics.php:51
+#: inc/admin/views/page_statistics.php:58
 msgid "Total size"
 msgstr "總大小"
 
-#: inc/admin/views/page_statistics.php:69
+#: inc/admin/views/page_statistics.php:87
+#: inc/admin/views/page_statistics.php:98
 msgid "Confirm Clearing Cache"
 msgstr "確認清除快取"
 

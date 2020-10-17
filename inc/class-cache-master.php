@@ -207,10 +207,10 @@ class Cache_Master {
 		$content = ob_get_contents();
 		$debug_message = $this->debug_message( 'ob_stop' );
 
-		$content .= $debug_message;
-
 		if ( $this->is_cache ) {
 			$ttl = (int) get_option( 'scm_option_ttl' );
+
+			$content .= $debug_message;
 
 			$this->driver->set( $this->cache_key, $content, $ttl );
 
@@ -250,14 +250,63 @@ class Cache_Master {
 	public function get_front_enqueue_styles() {
 		$custom_css = '';
 
-		if ( 'yes' === get_option( 'scm_option_benchmark_widget' ) ) {
+		$is_widget = ( 'yes' === get_option( 'scm_option_benchmark_widget' ) );
+		$is_footer = ( 'yes' === get_option( 'scm_option_benchmark_footer_text' ) );
+
+		$display_widget = get_option( 'scm_option_benchmark_widget_display' );
+		$display_footer = get_option( 'scm_option_benchmark_footer_text_display' );
+
+		if ( $is_widget || $is_footer ) {
+			$custom_css .= '
+				.scm-tr .scm-td:first-child {
+					width: 60%;
+				}
+				.scm-tr .scm-td:last-child {
+					width: 40%;
+				}
+				.scm-td svg {
+					width: 17px;
+					height: 17px;
+				}
+				.scm-text {
+					vertical-align: middle;
+					padding-left: 5px;
+				}
+				.scm-img {
+					background-color: #ffffff;
+					border: 2px #cccccc solid;
+					border-radius: 50%;
+					width: 27px;
+					height: 27px;
+					line-height: 32px;
+					display: inline-block;
+					vertical-align: middle;
+					overflow: hidden;
+					text-align: center;
+					cursor: pointer;
+				}
+				.scm-img-1 path {
+					fill: #999999;
+				}
+				.scm-img-2 path {
+					fill: #999999;
+				}
+				.scm-img-3 path {
+					fill: #999999;
+				}
+				.scm-img-4 path {
+					fill: #999999;
+				}
+			';
+		}
+
+		if ( $is_widget ) {
 			$custom_css .= '
 				.cache-master-plugin-widget {
 					
 				}
 				.cache-master-plugin-widget .scm-table {
 					display: table;                       
-					border: 1px solid #dddddd;
 					padding: 5px;
 					width: 100%;
 				}
@@ -270,79 +319,89 @@ class Cache_Master {
 					padding: 3px 10px;
 					display: table-cell;         
 				}
-
-				.scm-tr .scm-td:first-child {
-					width: 60%;
-				}
-
-				.scm-tr .scm-td:last-child {
-					width: 40%;
-				}
-
-				.scm-td svg {
-					width: 17px;
-					height: 17px;
-				}
-
-				.scm-text {
-					vertical-align: middle;
-				}
-
-				.scm-img {
-					background-color: #ffffff;
-					border: 2px #cccccc solid;
-					border-radius: 50%;
-					width: 27px;
-					height: 27px;
-					line-height: 32px;
-					display: inline-block;
-					vertical-align: middle;
-					overflow: hidden;
-					text-align: center;
-				}
-				.scm-img-1 path {
-					fill: #787705;
-				}
-
-				.scm-img-2 path {
-					fill: #1a2ac3;
-				}
-
-				.scm-img-3 path {
-					fill: #01824a;
-				}
-
-				.scm-img-4 path {
-					fill: #c90005;
-				}
 			';
+
+			if ( 'text' === $display_widget ) {
+				$custom_css .= '
+					.cache-master-plugin-widget .scm-img  {
+						display: none;
+					}
+				';
+			}
+
+			if ( 'icon' === $display_widget ) {
+				$custom_css .= '
+					.cache-master-plugin-widget .scm-text  {
+						display: none;
+					}
+					.cache-master-plugin-widget .scm-tr .scm-td:first-child {
+						width: 15%;
+					}
+					.cache-master-plugin-widget .scm-tr .scm-td:last-child {
+						width: 85%;
+					}
+				';
+			}
 		}
 
-		if ( 'yes' === get_option( 'scm_option_benchmark_footer_text' ) ) {
+		if ( $is_footer ) {
 			$custom_css .= '
 				.cache-master-benchmark-report {
 					clear: both;
 					display: block;
 					width: 100%;
 					text-align: center;
-					font-size: 13px;
-				}
-				.cache-master-benchmark-report .scm-table {
-					display: flex;
-					justify-content: center;                 
-				}
-				.cache-master-benchmark-report .scm-tr {
-					display: inline-block;
-					padding: 3px 6px;
+					font-size: 12px;
+					margin: 10px 0;
 				}
 				.cache-master-benchmark-report .scm-td {
 					font-size: 13px;
-					display: inline-block;          
+					display: inline-block;
+					position: relative;        
+				}
+				.cache-master-benchmark-report .scm-value {
+					display: inline-block;
+					margin-right: 5px;
+					vertical-align: middle;
+					font-weight: 600;
+				}
+				.cache-master-benchmark-report .scm-img {
+					width: 22px;
+					height: 22px;
+				}
+				.cache-master-benchmark-report .scm-td svg {
+					width: 14px;
+					height: 14px;
+					position: relative;
+					top: -4px;
 				}
 			';
+
+			if ( 'text' === $display_footer ) {
+				$custom_css .= '
+					.cache-master-benchmark-report .scm-img  {
+						display: none;
+					}
+				';
+			}
+
+			if ( 'icon' === $display_footer ) {
+				$custom_css .= '
+					.cache-master-benchmark-report .scm-text  {
+						display: none;
+					}
+					.cache-master-benchmark-report .scm-value {
+						padding-left: 2px;
+					}
+				';
+			}
 		}
 
-		return preg_replace( '/\s+/', ' ', $custom_css );
+		if ( ! empty( $custom_css ) ) {
+			return preg_replace( '/\s+/', ' ', $custom_css );
+		}
+
+		return '';
 	}
 
 	/**
@@ -354,23 +413,33 @@ class Cache_Master {
 		
 		$html = '
 			<div class="cache-master-benchmark-report">
-				<div class="scm-table">
-					<div class="scm-tr">
-						<div class="scm-td">' . __( 'Cache status', 'cache-master' ) . '</div>
-						<div class="scm-td"><span class="scm-field-cache-status">-</span></div>
-					</div>
-					<div class="scm-tr">
-						<div class="scm-td">' . __( 'Memory usage', 'cache-master' ) . '</div>
-						<div class="scm-td"><span class="scm-field-memory-usage">-</span> (MB)</div>
-					</div>
-					<div class="scm-tr">
-						<div class="scm-td">' .  __( 'SQL queries', 'cache-master' ) . '</div>
-						<div class="scm-td"><span class="scm-field-sql-queries">-</span></div>
-					</div>
-					<div class="scm-tr">
-						<div class="scm-td">' . __( 'Page generation time', 'cache-master' ) . '</div>
-						<div class="scm-td"><span class="scm-field-page-generation-time">-</span> (s)</div>
-					</div>
+				<div class="scm-td">
+					<span class="scm-img scm-img-1" title="' . esc_attr( __( 'Cache status powered by Cache Master plugin', 'cache-master' ) ) . '">' . scm_get_svg_icon( 'status' ) . '</span>
+					<span class="scm-text">' .  __( 'Cache status', 'cache-master' ) . ': </span>
+					<span class="scm-value">
+						<span class="scm-field-cache-status">-</span>
+					</span>
+				</div>
+				<div class="scm-td">
+					<span class="scm-img scm-img-2" title="' . esc_attr( __( 'Memory usage', 'cache-master' ) ) . '">' . scm_get_svg_icon( 'memory' ) . '</span>
+					<span class="scm-text">' .  __( 'Memory usage', 'cache-master' ) . ': </span>
+					<span class="scm-value">
+						<span class="scm-field-memory-usage">-</span> MB
+					</span>
+				</div>
+				<div class="scm-td">
+					<span class="scm-img scm-img-3" title="' . esc_attr( __( 'SQL queries', 'cache-master' ) ) . '">' . scm_get_svg_icon( 'database' ) . '</span>
+					<span class="scm-text">' .  __( 'SQL queries', 'cache-master' ) . ': </span>
+					<span class="scm-value">
+						<span class="scm-field-sql-queries">-</span>
+					</span>
+				</div>
+				<div class="scm-td">
+					<span class="scm-img scm-img-4" title="' . esc_attr( __( 'Page generation time', 'cache-master' ) ) . '">' . scm_get_svg_icon( 'speed' ) . '</span>
+					<span class="scm-text">' .  __( 'Page generation time', 'cache-master' ) . ': </span>
+					<span class="scm-value">
+						<span class="scm-field-page-generation-time">-</span> (' .  __( 'sec', 'cache-master' ) . ')
+					</span>
 				</div>
 			</div>';
 		

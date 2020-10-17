@@ -24,17 +24,19 @@ function scm_settings() {
 	register_setting( 'scm_setting_group_1', 'scm_option_caching_status' );
 	register_setting( 'scm_setting_group_1', 'scm_option_driver' );
 	register_setting( 'scm_setting_group_1', 'scm_option_ttl' );
-	register_setting( 'scm_setting_group_1', 'scm_option_post_types' );
+	register_setting( 'scm_setting_group_6', 'scm_option_post_types' );
 	register_setting( 'scm_setting_group_1', 'scm_option_uninstall' );
-	register_setting( 'scm_setting_group_1', 'scm_option_post_homepage' );
-	register_setting( 'scm_setting_group_1', 'scm_option_post_archives' );
+	register_setting( 'scm_setting_group_6', 'scm_option_post_homepage' );
+	register_setting( 'scm_setting_group_6', 'scm_option_post_archives' );
 	register_setting( 'scm_setting_group_1', 'scm_option_visibility_login_user' );
 	register_setting( 'scm_setting_group_1', 'scm_option_visibility_guest' );
-	register_setting( 'scm_setting_group_1', 'scm_option_benchmark_widget' );
-	register_setting( 'scm_setting_group_1', 'scm_option_benchmark_footer_text' );
 	register_setting( 'scm_setting_group_2', 'scm_option_expert_mode_status' );
 	register_setting( 'scm_setting_group_3', 'scm_option_statistics_status' );
 	register_setting( 'scm_setting_group_4', 'scm_option_clear_cache' );
+	register_setting( 'scm_setting_group_5', 'scm_option_benchmark_widget' );
+	register_setting( 'scm_setting_group_5', 'scm_option_benchmark_footer_text' );
+	register_setting( 'scm_setting_group_5', 'scm_option_benchmark_widget_display' );
+	register_setting( 'scm_setting_group_5', 'scm_option_benchmark_footer_text_display' );
 
 	// Options page.
 
@@ -54,16 +56,9 @@ function scm_settings() {
 
 	add_settings_section( // Section 2
 		'scm_setting_section_2',
-		__( 'Preferences', 'cache-master' ),
+		__( 'Pages', 'cache-master' ),
 		'scm_cb_setting_section',
-		'scm_setting_page_1'
-	);
-
-	add_settings_section( // Section 8
-		'scm_setting_section_8',
-		__( 'Benchmark', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_1'
+		'scm_setting_page_6'
 	);
 
 	add_settings_section( // Section 3
@@ -109,7 +104,7 @@ function scm_settings() {
 		'scm_option_id_4',
 		__( 'Post Types', 'cache-master' ),
 		'scm_cb_post_types',
-		'scm_setting_page_1',
+		'scm_setting_page_6',
 		'scm_setting_section_2'
 	);
 
@@ -117,7 +112,7 @@ function scm_settings() {
 		'scm_option_id_7',
 		__( 'Homepage', 'cache-master' ),
 		'scm_cb_post_homepage',
-		'scm_setting_page_1',
+		'scm_setting_page_6',
 		'scm_setting_section_2'
 	);
 
@@ -125,7 +120,7 @@ function scm_settings() {
 		'scm_option_id_8',
 		__( 'Archive Pages', 'cache-master' ),
 		'scm_cb_post_archives',
-		'scm_setting_page_1',
+		'scm_setting_page_6',
 		'scm_setting_section_2'
 	);
 
@@ -143,22 +138,6 @@ function scm_settings() {
 		'scm_cb_visibility_loggin_user',
 		'scm_setting_page_1',
 		'scm_setting_section_5'
-	);
-
-	add_settings_field(
-		'scm_option_id_12',
-		__( 'Widget', 'cache-master' ),
-		'scm_cb_benchmark_widget',
-		'scm_setting_page_1',
-		'scm_setting_section_8'
-	);
-
-	add_settings_field(
-		'scm_option_id_13',
-		__( 'Footer Text', 'cache-master' ),
-		'scm_cb_benchmark_footer_text',
-		'scm_setting_page_1',
-		'scm_setting_section_8'
 	);
 
 	// Expert mode.
@@ -209,6 +188,55 @@ function scm_settings() {
 		'scm_setting_page_4',
 		'scm_setting_section_7'
 	);
+
+	// Benchmark settings.
+
+	add_settings_section( // Section 8
+		'scm_setting_section_8',
+		__( 'Widget', 'cache-master' ),
+		'scm_cb_setting_section',
+		'scm_setting_page_5'
+	);
+
+	add_settings_section( // Section 8
+		'scm_setting_section_9',
+		__( 'Footer Text', 'cache-master' ),
+		'scm_cb_setting_section',
+		'scm_setting_page_5'
+	);
+
+	add_settings_field(
+		'scm_option_id_12',
+		__( 'Enable', 'cache-master' ),
+		'scm_cb_benchmark_widget',
+		'scm_setting_page_5',
+		'scm_setting_section_8'
+	);
+
+	add_settings_field(
+		'scm_option_id_14',
+		__( 'Display', 'cache-master' ),
+		'scm_cb_benchmark_widget_display',
+		'scm_setting_page_5',
+		'scm_setting_section_8'
+	);
+
+	add_settings_field(
+		'scm_option_id_13',
+		__( 'Enable', 'cache-master' ),
+		'scm_cb_benchmark_footer_text',
+		'scm_setting_page_5',
+		'scm_setting_section_9'
+	);
+
+	add_settings_field(
+		'scm_option_id_15',
+		__( 'Display', 'cache-master' ),
+		'scm_cb_benchmark_footer_text_display',
+		'scm_setting_page_5',
+		'scm_setting_section_9'
+	);
+
 }
 
 function scm_cb_setting_section() {
@@ -339,4 +367,22 @@ function scm_cb_benchmark_widget() {
  */
 function scm_cb_benchmark_footer_text() {
 	echo scm_load_view( 'option_benchmark_footer_text' );
+}
+
+/**
+ * Setting block - Widget
+ *
+ * @return void
+ */
+function scm_cb_benchmark_widget_display() {
+	echo scm_load_view( 'option_benchmark_widget_display' );
+}
+
+/**
+ * Setting block -Footer text
+ *
+ * @return void
+ */
+function scm_cb_benchmark_footer_text_display() {
+	echo scm_load_view( 'option_benchmark_footer_text_display' );
 }

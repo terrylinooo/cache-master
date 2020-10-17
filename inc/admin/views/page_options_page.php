@@ -13,7 +13,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 }
 
 $conflict_plugins = array(
-    'clearfy/clearfy.php',
+    //'clearfy/clearfy.php',
 );
 
 foreach ( $conflict_plugins as $plugin ) {
@@ -29,11 +29,61 @@ foreach ( $conflict_plugins as $plugin ) {
         <?php
     }
 }
+
+function scm_tab( $input, $check ) {
+    if ( $input === $check ) {
+        echo 'nav-tab nav-tab-active';
+    } else {
+        echo 'nav-tab';
+    }
+}
+
+$tab = isset( $_GET['tab'])  ? $_GET['tab'] : null;
+
 ?>
 
-<form action="options.php" method="post">
-    <?php settings_fields( 'scm_setting_group_1' ); ?>
-    <?php do_settings_sections( 'scm_setting_page_1' );  ?>
-    <hr />
-    <?php submit_button(); ?>
-</form>
+<nav class="nav-tab-wrapper">
+    <a href="?page=cache-master-settings" class="<?php scm_tab( $tab, null ); ?>">
+        <?php _e( 'Basic', 'cache-master' ); ?>
+    </a>
+    <a href="?page=cache-master-settings&tab=preferences" class="<?php scm_tab( $tab, 'preferences' ); ?>">
+        <?php _e( 'Preferences', 'cache-master' ); ?>
+    </a>
+    <a href="?page=cache-master-settings&tab=benchmark" class="<?php scm_tab( $tab, 'benchmark' ); ?>">
+        <?php _e( 'Benchmark', 'cache-master' ); ?>
+    </a>
+</nav>
+
+<div class="tab-content">
+    <?php if ( null === $tab ) : ?>
+        <form action="options.php" method="post">
+            <?php settings_fields( 'scm_setting_group_1' ); ?>
+            <?php do_settings_sections( 'scm_setting_page_1' );  ?>
+            <hr />
+            <?php submit_button(); ?>
+        </form>
+    <?php endif; ?>
+
+    <?php if ( 'preferences' === $tab ) : ?>
+        <form action="options.php" method="post">
+            <?php settings_fields( 'scm_setting_group_6' ); ?>
+            <?php do_settings_sections( 'scm_setting_page_6' );  ?>
+            <hr />
+            <?php submit_button(); ?>
+        </form>
+    <?php endif; ?>
+
+    <?php if ( 'benchmark' === $tab ) : ?>
+        <h2><?php _e( 'Benchmark', 'cache-master' ); ?></h2>
+        <p><?php _e( 'Benchmark information consists of memory usage, SQL query number, page generation time and page caching status.', 'cache-master' ); ?></p>
+        <form action="options.php" method="post">
+            <?php settings_fields( 'scm_setting_group_5' ); ?>
+            <?php do_settings_sections( 'scm_setting_page_5' );  ?>
+            <hr />
+            <?php submit_button(); ?>
+        </form>
+    <?php endif; ?>
+</div>
+
+
+

@@ -32,4 +32,4 @@ $option_benchmark_footer_text = get_option( 'scm_option_benchmark_footer_text', 
 		<label>
 	</div>	
 </div>
-<p><em><?php echo __( 'Display the benchmark information including memory usage, SQL query number, and page generation time in the footer area.', 'cache-master' ); ?></em></p>
+<p><em><?php echo __( 'Display the benchmark information in the footer area.', 'cache-master' ); ?></em></p>

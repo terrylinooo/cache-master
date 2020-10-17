@@ -105,6 +105,17 @@ function scm_stats_page() {
 }
 
 /**
+ * Output the banchmark setting page.
+ *
+ * @return void
+ */
+function scm_benchmark_settings_page() {
+	scm_show_settings_header();
+	echo scm_load_view( 'page_benchmark_settings' );
+	scm_show_settings_footer();
+}
+
+/**
  * Output the about page.
  *
  * @return void
