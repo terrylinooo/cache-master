@@ -7,7 +7,7 @@
  *
  * @package Cache Master
  * @since 1.0.0
- * @version 1.5.1
+ * @version 1.5.0
  */
 
 if ( ! defined( 'SCM_INC' ) ) {
@@ -62,6 +62,7 @@ class Cache_Master {
 
 		// Ignore all .php files.
 		if ( '.php' === substr( $uri, -4 ) ) {
+			
 			return;
 		}
 
@@ -736,7 +737,7 @@ class Cache_Master {
 		}
 
 		if ( isset( $_SERVER['REQUEST_URI'] ) ) {
-			$path = $_SERVER['REQUEST_URI'];
+			$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 		}
 
 		return $path;
