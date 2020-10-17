@@ -33,5 +33,5 @@ if ( $option_ttl > 86400 ) {
 		<input type="text" name="scm_option_ttl" value="<?php echo esc_attr( $option_ttl ); ?>">
 	</div>
 </div>
-<p><em><?php echo __( 'Please fill in a number between 300-86400. (in seconds)', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Please fill in a number between 300-86400. (in seconds)', 'cache-master' ); ?></em></p>
 

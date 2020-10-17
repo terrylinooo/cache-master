@@ -21,16 +21,16 @@ $option_post_homepage = get_option( 'scm_option_post_homepage', 'yes' );
 		<input type="radio" name="scm_option_post_homepage" id="cache-master-post-homepage-option-yes" value="yes" 
 			<?php checked( $option_post_homepage, 'yes' ); ?>>
 		<label for="cache-master-post-homepage-option-yes">
-			<?php echo __( 'Yes', 'cache-master' ); ?><br />
+			<?php _e( 'Yes', 'cache-master' ); ?><br />
 		<label>
 	</div>
 	<div class="scm-option-item">
 		<input type="radio" name="scm_option_post_homepage" id="cache-master-post-homepage-option-no" value="no" 
 			<?php checked( $option_post_homepage, 'no' ); ?>>
 		<label for="cache-master-post-homepage-option-no">
-			<?php echo __( 'No', 'cache-master' ); ?>
+			<?php _e( 'No', 'cache-master' ); ?>
 		<label>
 	</div>	
 </div>
-<p><em><?php echo __( 'Would you like to cache the homepage of your site?', 'cache-master' ); ?></em></p>
-<p><em><?php echo __( 'Once you change this option, all cache data will be cleared.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Would you like to cache the homepage of your site?', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Once you change this option, all cache data will be cleared.', 'cache-master' ); ?></em></p>

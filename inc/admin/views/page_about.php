@@ -28,10 +28,10 @@ if ( ! defined( 'SCM_INC' ) ) {
 				<li><a href="https://terryl.in"><img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/icon_terryl.png"></a></li>
 			</ul>
 		</div>
-		<p><?php echo __( 'If you have any issues, or found any bugs, please report them in the following URL.', 'cache-master' ); ?></p>
+		<p><?php _e( 'If you have any issues, or found any bugs, please report them in the following URL.', 'cache-master' ); ?></p>
 		<div class="report-area">
-			<span><a href="https://github.com/terrylinooo/simple-cache" target="_blank"><?php echo __( 'Core', 'cache-master' ); ?></a></span>
-			<span><a href="https://github.com/terrylinooo/cache-master" target="_blank"><?php echo __( 'Plugin', 'cache-master' ); ?></a></span>
+			<span><a href="https://github.com/terrylinooo/simple-cache" target="_blank"><?php _e( 'Core', 'cache-master' ); ?></a></span>
+			<span><a href="https://github.com/terrylinooo/cache-master" target="_blank"><?php _e( 'Plugin', 'cache-master' ); ?></a></span>
 		</div>
 	</div>
 </div>

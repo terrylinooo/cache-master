@@ -26,15 +26,15 @@ $option_expert_mode = get_option( 'scm_option_expert_mode_status', 'enable' );
 		<input type="radio" name="scm_option_expert_mode_status" id="cache-master-uninstall-option-enable" value="enable" 
 			<?php checked( $option_expert_mode, 'enable' ); ?>>
 		<label for="cache-master-expert-mode-option-enable">
-			<?php echo __( 'Enable', 'cache-master' ); ?><br />
+			<?php _e( 'Enable', 'cache-master' ); ?><br />
 		<label>
 	</div>
 	<div class="scm-option-item">
 		<input type="radio" name="scm_option_expert_mode_status" id="cache-master-uninstall-option-disable" value="disable" 
 			<?php checked( $option_expert_mode, 'disable' ); ?>>
 		<label for="cache-master-expert-mode-option-disable">
-			<?php echo __( 'Disable', 'cache-master' ); ?>
+			<?php _e( 'Disable', 'cache-master' ); ?>
 		<label>
 	</div>	
 </div>
-<p><em><?php echo __( 'This option only works when you have put the custom PHP code in wp-config.php', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'This option only works when you have put the custom PHP code in wp-config.php', 'cache-master' ); ?></em></p>

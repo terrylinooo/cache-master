@@ -34,5 +34,5 @@ $option_list = array(
 	</div>
 	<?php endforeach; ?>
 </div>
-<p><em><?php echo __( 'What post type do you like to cache?', 'cache-master' ); ?></em></p>
-<p><em><?php echo __( 'Once you change this option, all cache data will be cleared.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'What post type do you like to cache?', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Once you change this option, all cache data will be cleared.', 'cache-master' ); ?></em></p>

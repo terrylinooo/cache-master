@@ -21,15 +21,16 @@ $option_benchmark_footer_text = get_option( 'scm_option_benchmark_footer_text', 
 		<input type="radio" name="scm_option_benchmark_footer_text" id="cache-master-benchmark-footer-text-option-yes" value="yes" 
 			<?php checked( $option_benchmark_footer_text, 'yes' ); ?>>
 		<label for="cache-master-benchmark-footer-text-option-yes">
-			<?php echo __( 'Yes', 'cache-master' ); ?><br />
+			<?php _e( 'Yes', 'cache-master' ); ?><br />
 		<label>
 	</div>
 	<div class="scm-option-item">
 		<input type="radio" name="scm_option_benchmark_footer_text" id="cache-master-benchmark-footer-text-option-no" value="no" 
 			<?php checked( $option_benchmark_footer_text, 'no' ); ?>>
 		<label for="cache-master-benchmark-footer-text-option-no">
-			<?php echo __( 'No', 'cache-master' ); ?>
+			<?php _e( 'No', 'cache-master' ); ?>
 		<label>
 	</div>	
 </div>
-<p><em><?php echo __( 'Display the benchmark information in the footer area.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Display the benchmark information in the footer area.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Once you change this option, all cache data will be cleared.', 'cache-master' ); ?></em></p>

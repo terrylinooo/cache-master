@@ -46,7 +46,7 @@ foreach ( array_keys( $option_list ) as $v ) {
             <?php endforeach; ?>
         </select>
     </div>
-    <p><em><?php echo __( 'Choose a driver to cache your posts and pages.', 'cache-master' ); ?></em></p>
+    <p><em><?php _e( 'Choose a driver to cache your posts and pages.', 'cache-master' ); ?></em></p>
 </div>
 <div>
     <div class="driver-status-container">

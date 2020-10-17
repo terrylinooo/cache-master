@@ -217,7 +217,7 @@ class Cache_Master {
 			$this->log( $this->data_type, $this->cache_key, $content );
 		}
 
-		if ( 'yes' === get_option( 'scm_option_benchmark_footer_text')  || $this->is_active_cache_master_widget() ) {
+		if ( 'yes' === get_option( 'scm_option_benchmark_footer_text') || $this->is_active_cache_master_widget() ) {
 
 			ob_get_clean();
 			ob_start();
@@ -230,13 +230,11 @@ class Cache_Master {
 				);
 			}
 
-			if ( $this->is_active_cache_master_widget() ) {
-				$content = str_replace(
-					'</body>',
-					"\n" . $this->json_string() . "\n" . '</body>',
-					$content
-				);
-			}
+			$content = str_replace(
+				'</body>',
+				"\n" . $this->json_string() . "\n" . '</body>',
+				$content
+			);
 
 			echo $content;
 		}

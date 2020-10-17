@@ -21,15 +21,15 @@ $option_statistics_status = get_option( 'scm_option_statistics_status', 'disable
 		<input type="radio" name="scm_option_statistics_status" id="cache-master-statistics-option-enable" value="enable" 
 			<?php checked( $option_statistics_status, 'enable' ); ?>>
 		<label for="cache-master-statistics-option-enable">
-			<?php echo __( 'Enable', 'cache-master' ); ?><br />
+			<?php _e( 'Enable', 'cache-master' ); ?><br />
 		<label>
 	</div>
 	<div class="scm-option-item">
 		<input type="radio" name="scm_option_statistics_status" id="cache-master-statistics-option-disable" value="disable" 
 			<?php checked( $option_statistics_status, 'disable' ); ?>>
 		<label for="cache-master-statistics-option-disable">
-			<?php echo __( 'Disable', 'cache-master' ); ?>
+			<?php _e( 'Disable', 'cache-master' ); ?>
 		<label>
 	</div>	
 </div>
-<p><em><?php echo __( 'Record the caching information.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Record the caching information.', 'cache-master' ); ?></em></p>

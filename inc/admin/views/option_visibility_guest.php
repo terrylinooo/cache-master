@@ -21,8 +21,8 @@ $option_visibility_guest = get_option( 'scm_option_visibility_guest', 'yes' );
 		<input type="radio" name="scm_option_visibility_guest" id="cache-master-visibility-guest-option-yes" value="yes" 
 			<?php checked( $option_visibility_guest, 'yes' ); ?>>
 		<label for="cache-master-visibility-guest-option-yes">
-			<?php echo __( 'Yes', 'cache-master' ); ?><br />
+			<?php _e( 'Yes', 'cache-master' ); ?><br />
 		<label>
 	</div>
 </div>
-<p><em><?php echo __( 'Always show cached pages to guests.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Always show cached pages to guests.', 'cache-master' ); ?></em></p>
