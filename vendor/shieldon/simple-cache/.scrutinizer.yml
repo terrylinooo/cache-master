@@ -11,6 +11,8 @@ tools:
   external_code_coverage: false
 
 build:
+  services:
+    mongo: 4
   environment:
     php:
       version: 7.2.5
@@ -21,11 +23,13 @@ build:
         - APCu
         - apcu_bc
         - xdebug
+        - mongodb-1.5.0
       ini:
         'apc.enable_cli': 'On'
     mysql: true
     redis: true
     memcached: true
+    mongodb: true
   nodes:
     analysis:
       tests:

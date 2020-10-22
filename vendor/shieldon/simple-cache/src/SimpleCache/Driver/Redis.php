@@ -30,7 +30,7 @@ class Redis extends CacheProvider
     /**
      * The Redis instance.
      *
-     * @var Redis|null
+     * @var \Redis|null
      */
     protected $redis = null;
 
@@ -162,6 +162,10 @@ class Redis extends CacheProvider
             'ttl'       => $ttl,
             'value'     => $value
         ];
+
+        if (empty($ttl)) {
+            $ttl = null;
+        }
 
         $result = $this->redis->set(
             $this->getKeyName($key),

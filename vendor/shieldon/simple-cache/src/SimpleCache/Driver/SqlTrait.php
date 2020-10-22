@@ -24,7 +24,7 @@ Trait SqlTrait
     /**
      * The PDO instance.
      *
-     * @var PDO
+     * @var \PDO
      */
     protected $db;
     
@@ -98,7 +98,7 @@ Trait SqlTrait
             'cache_value' => serialize([
                 'timestamp' => $timestamp,
                 'ttl'       => $ttl,
-                'value'     => $value
+                'value'     => $value,
             ]),
         ];
 

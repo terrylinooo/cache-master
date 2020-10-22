@@ -14,7 +14,9 @@ namespace Shieldon\SimpleCache\Driver;
 
 use Shieldon\SimpleCache\CacheProvider;
 use Shieldon\SimpleCache\Exception\CacheArgumentException;
+use Shieldon\SimpleCache\Exception\CacheException;
 use PDO;
+use PDOException;
 use Exception;
 use function file_put_contents;
 
@@ -40,7 +42,8 @@ class Mysql extends CacheProvider
             'user'    => null,
             'pass'    => null,
             'dbname'  => null,
-            'charset' => 'utf8'
+            'table'   => 'cache_data',
+            'charset' => 'utf8',
         ];
 
         foreach (array_keys($config) as $key) {
