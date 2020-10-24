@@ -110,38 +110,53 @@ function scm_get_stats_dir( $cache_type = 'post' ) {
  * @return \Shieldon\SimpleCache\Cache
  */
 function scm_driver_factory( $type ) {
-	if ( 'mysql' === $type ) {
-		
-		$setting = array(
-			'host'    => DB_HOST,
-			'dbname'  => DB_NAME,
-			'user'    => DB_USER,
-			'pass'    => DB_PASSWORD,
-			'charset' => DB_CHARSET,
-		);
 
-	} elseif ( 'sqlite' === $type || 'file' === $type ) {
 
-		$setting = array(
-			'storage' => scm_get_upload_dir() . '/' . $type . '_driver',
-		);
+	switch ( $type ) {
+		case 'mysql':
+			$setting = array(
+				'host'    => DB_HOST,
+				'dbname'  => DB_NAME,
+				'user'    => DB_USER,
+				'pass'    => DB_PASSWORD,
+				'charset' => DB_CHARSET,
+			);
+			break;
 
-	} elseif ( 'redis' === $type ) {
+		case 'file':
+		case 'sqlite':
+			$setting = array(
+				'storage' => scm_get_upload_dir() . '/' . $type . '_driver',
+			);
+			break;
 
-		$setting = array(
-			'host' => '127.0.0.1',
-			'port' =>  6379,
-		);
+		case 'redis':
+			$setting = array(
+				'host' => '127.0.0.1',
+				'port' =>  6379,
+			);
+			break;
 
-	} elseif ( 'memcache' === $type || 'memcached' === $type ) {
+		case 'mongo':
+			$setting = array(
+				'host' => '127.0.0.1',
+				'port' =>  27017,
+			);
+			break;
 
-		$setting = array(
-			'host' => '127.0.0.1',
-			'port' =>  11211,
-		);
-	} else {
-		// apc, apcu, wincache
-		$setting = array();
+		case 'memcache':
+		case 'memcached':
+			$setting = array(
+				'host' => '127.0.0.1',
+				'port' =>  11211,
+			);
+			break;
+
+		case 'apc':
+		case 'apcu':
+		case 'wincache':
+			$setting = array();
+			break;
 	}
 
 	$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );

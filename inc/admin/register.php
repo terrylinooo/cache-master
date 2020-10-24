@@ -32,6 +32,7 @@ function scm_activation() {
 	add_option( 'scm_option_benchmark_footer_text', 'no' );
 	add_option( 'scm_option_benchmark_widget_display', 'both' );
 	add_option( 'scm_option_benchmark_footer_text_display', 'text' );
+	add_option( 'scm_option_excluded_list', '' );
 
 	$post_types = array(
 		'home' => 'yes',
@@ -48,6 +49,32 @@ function scm_activation() {
 
 	add_option( 'scm_option_post_types', $post_types );
 	add_option( 'scm_option_post_archives', $post_archives );
+
+	/**
+	 * Support to WooCommerce post types and taxonomies.
+	 *
+	 * @see https://docs.woocommerce.com/document/installed-taxonomies-post-types/
+	 */
+	$woocommerce_post_types = array(
+		'product' => 'no',
+
+		//'shop_order'  => 'no',
+		//'shop_coupon' => 'no',
+	);
+
+	$woocommerce_taxonomies = array(
+		'product_tag' => 'no',
+		'product_cat' => 'no',
+
+		//'product_variation'  => 'no',
+		//'product_visibility' => 'no',
+		//'shop_order_status'  => 'no',
+		//'shop_order_refund'  => 'no',
+	);
+
+	add_option( 'scm_option_woocommerce_status', 'disable' );
+	add_option( 'scm_option_woocommerce_post_types', $woocommerce_post_types );
+	add_option( 'scm_option_woocommerce_taxonomies', $woocommerce_taxonomies );
 
 	scm_setup_security_files();
 }

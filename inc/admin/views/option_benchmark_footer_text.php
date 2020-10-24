@@ -33,4 +33,3 @@ $option_benchmark_footer_text = get_option( 'scm_option_benchmark_footer_text', 
 	</div>	
 </div>
 <p><em><?php _e( 'Display the benchmark information in the footer area.', 'cache-master' ); ?></em></p>
-<p><em><?php _e( 'Once you change this option, all cache data will be cleared.', 'cache-master' ); ?></em></p>

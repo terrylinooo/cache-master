@@ -43,14 +43,17 @@ function scm_load_view( $template_path, $data = array() ) {
  */
 function scm_get_cache_type_list( $get_key = false ) {
 	$list = array(
-		'homepage'      => __( 'Homepage', 'cache-master' ),
-		'post'          => __( 'Post', 'cache-master' ),
-		'page'          => __( 'Page', 'cache-master' ),
-		'category'      => __( 'Archive', 'cache-master' ) . ' - ' . __( 'Category', 'cache-master' ),
-		'tag'           => __( 'Archive', 'cache-master' ) . ' - ' . __( 'Tag', 'cache-master' ),
-		'date'          => __( 'Archive', 'cache-master' ) . ' - ' . __( 'Date', 'cache-master' ),
-		'author'        => __( 'Archive', 'cache-master' ) . ' - ' . __( 'Author', 'cache-master' ),
-		'uncategorised' => __( 'Uncategorised', 'cache-master' ),
+		'homepage'         => __( 'Homepage', 'cache-master' ),
+		'post'             => __( 'Post', 'cache-master' ),
+		'page'             => __( 'Page', 'cache-master' ),
+		'product'          => __( 'Product', 'cache-master' )   . ' <small class="scm-badge">WooCommerce</small>',
+		'category'         => __( 'Category', 'cache-master' ) . ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>',
+		'tag'              => __( 'Tag', 'cache-master' ) . ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>',
+		'date'             => __( 'Date', 'cache-master' ) . ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>',
+		'author'           => __( 'Author', 'cache-master' ) . ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>',
+		'custom_post_type' => __( 'Custom post type', 'cache-master' ),
+		'custom_taxonomy'  => __( 'Custom taxonomy', 'cache-master' ) . ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>',
+		'uncategorised'    => __( 'Uncategorised', 'cache-master' ),
 	);
 
 	if ( $get_key ) {
@@ -127,6 +130,25 @@ function scm_test_driver( $type = '' ) {
 			try {
 				$redis = new \Redis();
 				$redis->connect( '127.0.0.1', 6379 );
+				return true;
+			} catch( \RedisException $e ) {
+
+			}
+		}
+
+	} elseif ( 'mongo' === $type ) {
+		if ( extension_loaded( 'mongodb' ) ) {
+			try {
+				$command = 'mongodb://127.0.0.1:27017/test';
+
+				$mongo = new \MongoDB\Driver\Manager( $command );
+
+				$filter = ['_id' => 'test_key',];
+				$option = [];
+		
+				$query = new \MongoDB\Driver\Query( $filter, $option );
+				$cursor = $mongo->executeQuery( 'test.cache_data', $query );
+		
 				return true;
 			} catch( \RedisException $e ) {
 
@@ -224,29 +246,26 @@ if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
  * @return array
  */
 function scm_search_expert_mode_code_snippet( $string ) {
-    static $result;
+ 
+	$wp_config_file = ABSPATH . 'wp-config.php';
 
-    if ( empty( $result ) ) {
-        $wp_config_file = ABSPATH . 'wp-config.php';
+	$file    = fopen( $wp_config_file, 'r' );
+	$found1  = false;
+	$target1 = 'expert-mode.php';
+	$found2  = false;
+	$target2 = $string;
 
-        $file    = fopen( $wp_config_file, 'r' );
-        $found1  = false;
-        $target1 = 'expert-mode.php';
-        $found2  = false;
-        $target2 = $string;
-    
-        while ( $line = fgets( $file ) ) { 
-            if ( strpos( $line, $target1 ) !== false ) { 
-                $found1 = true;
-            }
-            if ( strpos( $line, $target2 ) !== false ) { 
-                $found2 = true;
-            }
-        }
-        fclose($file);
+	while ( $line = fgets( $file ) ) { 
+		if ( strpos( $line, $target1 ) !== false ) { 
+			$found1 = true;
+		}
+		if ( strpos( $line, $target2 ) !== false ) { 
+			$found2 = true;
+		}
+	}
+	fclose($file);
 
-        $result = array( $found1, $found2 );
-    }
+	$result = array( $found1, $found2 );
 
     return $result;
 }

@@ -33,4 +33,3 @@ $option_post_homepage = get_option( 'scm_option_post_homepage', 'yes' );
 	</div>	
 </div>
 <p><em><?php _e( 'Would you like to cache the homepage of your site?', 'cache-master' ); ?></em></p>
-<p><em><?php _e( 'Once you change this option, all cache data will be cleared.', 'cache-master' ); ?></em></p>

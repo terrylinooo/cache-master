@@ -24,6 +24,7 @@ $option_list = array(
     'wincache'  => __( 'WinCache', 'cache-master' ),
     'mysql'     => __( 'MySQL', 'cache-master' ),
     'sqlite'    => __( 'SQLite', 'cache-master' ),
+    'mongo'     => __( 'MongoDB', 'cache-master' ),
 );
 
 $driver_status = array();

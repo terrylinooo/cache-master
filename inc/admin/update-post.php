@@ -25,11 +25,10 @@ function scm_update_post( $post_ID, $post_after, $post_before ) {
 	$option_caching_status = get_option( 'scm_option_caching_status', 'disable' );
 
 	if ( 'enable' === $option_caching_status ) {
-		$post_url = get_permalink( $post_ID );
-		$cache_key = md5( parse_url( $post_url, PHP_URL_PATH ) );
-
+		$post_url    = get_permalink( $post_ID );
+		$cache_key   = md5( parse_url( $post_url, PHP_URL_PATH ) );
 		$driver_type = get_option( 'scm_option_driver' );
-		$driver = scm_driver_factory( $driver_type );
+		$driver      = scm_driver_factory( $driver_type );
 
 		$driver->delete( $cache_key );
 	}

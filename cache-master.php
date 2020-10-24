@@ -3,7 +3,7 @@
  * Plugin Name: Cache Master
  * Plugin URI:  https://github.com/terrylinooo/cache-master
  * Description: A wordpress cache plugin.
- * Version:     1.5.2
+ * Version:     1.6.0
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -47,8 +47,8 @@ define( 'SCM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SCM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SCM_PLUGIN_PATH', __FILE__ );
 define( 'SCM_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SCM_PLUGIN_VERSION', '1.5.2' );
-define( 'SCM_CORE_VERSION', '1.1.0' );
+define( 'SCM_PLUGIN_VERSION', '1.6.0' );
+define( 'SCM_CORE_VERSION', '1.2.0' );
 define( 'SCM_PLUGIN_TEXT_DOMAIN', 'cache-master' );
 
 /**
@@ -79,11 +79,15 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 				'register',       // Event: activate and uninstall plugin.
 				'setting',        // Plugin settings.
 				'menu',           // Display menu link and render setting page.
-				'setting-update', // Event: update settings.
-				'post-update',    // Event: update posts.
+				'update-setting', // Event: update settings.
+				'update-post',    // Event: update posts.
 				'functions',      // Helper functions used in admin scope.
-				'admin-bar',      
+				'admin-bar',      // Add a "Clear Cache" button in admin bar.
 			);
+
+			if ( 'yes' === get_option( 'scm_option_woocommerce_status' ) ) {
+				$required_files[] = 'update-woocommerce';
+			}
 
 			foreach ( $required_files as $file ) {
 				require_once SCM_PLUGIN_DIR . 'inc/admin/' . $file . '.php';

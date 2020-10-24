@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 1.5.1
+Stable tag: 1.6.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -24,9 +24,10 @@ First release date: October, 1, 2020
 == Features ==
 
 * Extremely light-weight and high-performace.
-* Support up to 8 cache drivers such as Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL and SQLite.
+* Support up to 10 cache drivers such as File, Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL, SQLite and MongoDB.
 * Detailed cache statistics, easy to manage.
-* Benchmark information in the footer area or a widget.
+* Support to WooCommerce plugin.
+* Display benchmark information in the footer area or a widget.
 
 Notice: 
 
@@ -45,12 +46,17 @@ If you find your website doesn't work with Cache Master, please report an issue 
 
 == Screenshots ==
 
-1. Main setting page.
-2. Debug message (Normal mode)
-3. Debug message (Expert mode)
-4. Main setting page. (Bottom part)
-5. Expert Mode setting page.
-6. Cache statistics setting page.
+1. Setting page - Basic.
+2. Setting page - Advanced.
+3. Setting page - Perferences.
+4. Setting page - Benchmark.
+5. Setting page - WooCommerce.
+6. Setting page - Exclusion.
+7. Setting page - Expert mode.
+8. Setting page - Cache statistics.
+9. About author.
+10. Debug message (Normal mode)
+11. Debug message (Expert mode)
 
 == Copyright ==
 
@@ -105,8 +111,7 @@ GNU General Public License for more details.
 
 = 1.4.1
 
-
-* Add feature - Automatic installation of Expert Mode code.
+* Add feature - Automatic installation of Expert Mode code. (Removed in later versions)
 
 = 1.5.1
 
@@ -117,3 +122,11 @@ GNU General Public License for more details.
 = 1.5.2
 
 * Add a Clear Cache button on admin bar.
+
+= 1.6.0
+
+* Add support to WooCommerce plguin.
+* Add setting page - WooCommerce.
+* Add setting page - Exclusion.
+* Add setting page - Advanced.
+* Fix some small issues.
