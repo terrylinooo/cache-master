@@ -54,8 +54,8 @@ function scm_get_cache_type_list( $get_key = false ) {
 		'date'             => __( 'Date', 'cache-master' )        . $archive_note,
 		'author'           => __( 'Author', 'cache-master' )      . $archive_note,
 		'product'          => __( 'Product', 'cache-master' )     . $woocommerce_note,
-		'product_tag'      => __( 'Product tag', 'cache-master' ) . $woocommerce_note,
-		'product_category' => __( 'Product tag', 'cache-master' ) . $woocommerce_note,
+		'product_tag'      => __( 'Product tag', 'cache-master' ) . $woocommerce_note . $archive_note,
+		'product_category' => __( 'Product category', 'cache-master' ) . $woocommerce_note . $archive_note,
 		'uncategorised'    => __( 'Uncategorised', 'cache-master' ),
 	);
 

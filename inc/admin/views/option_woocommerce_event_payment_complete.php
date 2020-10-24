@@ -12,7 +12,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
 
-$option_woocommerce_event_payment_complete = get_option( 'scm_option_woocommerce_event_payment-complete', 'no' );
+$option_woocommerce_event_payment_complete = get_option( 'scm_option_woocommerce_event_payment_complete', 'no' );
 
 ?>
 
@@ -25,7 +25,7 @@ $option_woocommerce_event_payment_complete = get_option( 'scm_option_woocommerce
 		<label>
 	</div>
 	<div class="scm-option-item">
-		<input type="radio" name="scm_option_option_woocommerce_event_payment_complete" id="cache-master-woocommerce-event-payment-complete-option-no" value="no" 
+		<input type="radio" name="scm_option_woocommerce_event_payment_complete" id="cache-master-woocommerce-event-payment-complete-option-no" value="no" 
 			<?php checked( $option_woocommerce_event_payment_complete, 'no' ); ?>>
 		<label for="cache-master-woocommerce-event-payment-complete-option-no">
 			<?php _e( 'No', 'cache-master' ); ?>

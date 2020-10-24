@@ -97,10 +97,11 @@
 .table-stats-wrapper {
   border: 1px #dddddd solid;
   width: 100%;
+  background-color: #f8f8f8;
 }
 .table-stats-wrapper td {
   vertical-align: top;
-  padding: 20px;
+  padding: 10px !important;
 }
 .table-stats-wrapper td h2 {
   margin: 0;
@@ -108,8 +109,17 @@
 .table-stats-wrapper td .form-table th {
   width: auto;
 }
-.table-stats-wrapper .stats-l, .table-stats-wrapper .stats-r {
-  width: 50%;
+.table-stats-wrapper td label {
+  display: none;
+}
+.table-stats-wrapper .stats-l {
+  width: 70%;
+}
+.table-stats-wrapper .stats-l table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+.table-stats-wrapper .stats-r {
+  width: 30%;
 }
 @media screen and (max-width: 782px) {
   .table-stats-wrapper .stats-l, .table-stats-wrapper .stats-r {
@@ -124,17 +134,22 @@
 
 .table-stats {
   width: 100%;
-  border: 1px #dddddd solid;
+  border: 1px #cccccc solid;
   background-color: #f5f5f5;
 }
 .table-stats th {
   background-color: #dddddd;
   text-align: center;
-  padding: 5px;
+  padding: 10px;
 }
 .table-stats td {
   text-align: center;
   padding: 10px;
+}
+@media screen and (max-width: 782px) {
+  .table-stats {
+    width: calc(100% - 20px);
+  }
 }
 
 .table-statistics {
@@ -235,8 +250,8 @@
 }
 
 .scm-total-size {
-  border-top: 1px #dddddd dashed;
   font-weight: 600;
+  background-color: #fffce7;
 }
 
 .scm-badge {

@@ -115,10 +115,13 @@
 .table-stats-wrapper {
 	border: 1px #dddddd solid;
 	width: 100%;
+	background-color: #f8f8f8;
+
+
 
 	td {
 		vertical-align: top;
-		padding: 20px;
+		padding: 10px !important;
 
 		h2 {
 			margin: 0;
@@ -127,10 +130,27 @@
 		.form-table th {
 			width: auto;
 		}
+
+		label {
+			display: none;
+		}
+	}
+
+	.stats-l {
+		width: 70%;
+		table {
+			tr:nth-child(even) {
+				background-color: #ffffff;
+			}
+		}
+	}
+
+	.stats-r {
+		width: 30%;
 	}
 
 	.stats-l, .stats-r {
-		width: 50%;
+		
 
 		@media screen and (max-width: 782px) { 
 			width: 100%;
@@ -147,18 +167,22 @@
 
 .table-stats {
 	width: 100%;
-	border: 1px #dddddd solid;
+	border: 1px #cccccc solid;
 	background-color: #f5f5f5;
 
 	th {
 		background-color: #dddddd;
 		text-align: center;
-		padding: 5px;
+		padding: 10px;
 	}
 
 	td {
 		text-align: center;
 		padding: 10px;
+	}
+
+	@media screen and (max-width: 782px) { 
+		width: calc(100% - 20px);
 	}
 }
 
@@ -286,8 +310,8 @@
 }
 
 .scm-total-size {
-	border-top: 1px #dddddd dashed;
 	font-weight: 600;
+	background-color: #fffce7;
 }
 
 .scm-badge {

@@ -26,8 +26,8 @@ function scm_settings() {
 		// Settings - Basic (Page 1)
 		1 => array(
 			'caching_status',
-			'option_driver',
-			'option_ttl',
+			'driver',
+			'ttl',
 			'visibility_login_user',
 			'visibility_guest',
 			'uninstall',
@@ -83,6 +83,12 @@ function scm_settings() {
 			'excluded_list',
 		),
 	);
+
+	foreach ( $register_groups as $index => $options ) {
+		foreach ( $options as $option ) {
+			register_setting( 'scm_setting_group_' . $index, 'scm_option_' . $option );
+		}
+	}
 
 	$register_sections = array(
 
@@ -268,7 +274,7 @@ function scm_settings() {
 			'group_id' => 3,
 			'settings' => array(
 				array(
-					'title'    => __( 'Statistics', 'cache-master' ),
+					'title'    => __( 'Enable', 'cache-master' ),
 					'callback' => 'scm_cb_statistics_status',
 				),
 			),
@@ -319,10 +325,6 @@ function scm_settings() {
 			),
 		),
 	);
-
-	foreach ( $register_groups as $index => $option ) {
-		register_setting( 'scm_setting_group_' . $index, 'scm_option_' . $option );
-	}
 
 	$section_id = 0;
 	$setting_id = 0;

@@ -23,7 +23,7 @@ if ( ! defined( 'SCM_INC' ) ) {
     </div>
     <?php if ( 'enable' === get_option( 'scm_option_statistics_status' ) ) : ?>
         <?php foreach ( scm_get_cache_type_list() as $k => $v ) : ?>
-        <div class="scm-option-item">
+        <div class="scm-option-item scm-cache-type-list" data-type="<?php echo $k; ?>">
             <input type="radio" name="scm_option_clear_cache" id="cache-master-clear-cache-<?php echo $k; ?>-option-disable" value="<?php echo $k; ?>">
             <label for="cache-master-clear-cache-<?php echo $k; ?>-option-enable">
 			<?php echo $v; ?><br />

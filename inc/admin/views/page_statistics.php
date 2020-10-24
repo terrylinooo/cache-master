@@ -42,28 +42,26 @@ $total_rows = 0;
 
 <div id="scm-statistic-page">
 	
-	<form action="options.php" method="post">
-		<?php settings_fields( 'scm_setting_group_3' ); ?>
-		<?php do_settings_sections( 'scm_setting_page_3' );  ?>
-		<hr />
-		<?php submit_button(); ?>
-	</form>
-
 	<?php if ( 'enable' === get_option( 'scm_option_statistics_status' ) ) : ?>
+	
 	<div class="scm-content-wrapper">
+		
 		<table class="table-stats-wrapper">
 			<tr>
 				<td class="stats-l">
-					<table class="table-stats">
+					<form action="options.php" method="post">
+					<table class="table-stats" cellpadding="0" cellspacing="0">
 						<tr>
-							<th><?php _e( 'Cache type', 'cache-master' ); ?></th>
+							<th><?php _e( 'Clear Cache', 'cache-master' ); ?></th>
+							<th><?php _e( 'Cache Type', 'cache-master' ); ?></th>
 							<th><?php _e( 'Rows', 'cache-master' ); ?></th>
-							<th><?php _e( 'Total size', 'cache-master' ); ?> (MB)</th>
+							<th><?php _e( 'Total Size', 'cache-master' ); ?> (MB)</th>
 						<tr>
 						<?php foreach( scm_get_cache_type_list() as $key => $value ) : ?>
 							<?php $stats_data = scm_get_stats( $key ); ?>
 							<tr>
-								<td><?php echo $value; ?></td>
+								<td id="option-item-<?php echo $key; ?>"></td>
+								<td style="text-align: left;"><?php echo $value; ?></td>
 								<td><?php echo $stats_data['nums']; ?></td>
 								<td>
 									<?php
@@ -83,30 +81,62 @@ $total_rows = 0;
 							</tr>
 						<?php endforeach; ?>
 						<tr>
-							<td></td>
+							<td class="scm-total-size">
+								<input type="radio" name="scm_option_clear_cache" id="cache-master-clear-cache-all-option-enable" value="all" >
+							</td>
+							<td class="scm-total-size" style="text-align: left;"><?php _e( 'All', 'cache-master' ); ?></td>
 							<td class="scm-total-size"><?php echo $total_rows; ?></td>
 							<td class="scm-total-size"><?php echo $total_size; ?></td>
+
 						</tr>
 					</table>
-				</td>
-				<td class="stats-r">
-					<form action="options.php" method="post">
-					<?php settings_fields( 'scm_setting_group_4' ); ?>
-					<?php do_settings_sections( 'scm_setting_page_4' );  ?>
-					<hr />
+					</form>
 					<?php submit_button( __( 'Confirm Clearing Cache', 'cache-master' ) ); ?>
+				</td>
+				<td class="stats-l">
+					<form action="options.php" method="post">
+						<?php settings_fields( 'scm_setting_group_3' ); ?>
+						<?php do_settings_sections( 'scm_setting_page_3' );  ?>
+						<hr />
+						<?php submit_button(); ?>
+					</form>
 				</td>
 			</tr>
 		</table>
 	</div>
-
-	<?php else: ?>
-		<form action="options.php" method="post">
+	<div style="display: none">
 		<?php settings_fields( 'scm_setting_group_4' ); ?>
 		<?php do_settings_sections( 'scm_setting_page_4' );  ?>
-		<hr />
-		<?php submit_button( __( 'Confirm Clearing Cache', 'cache-master' ) ); ?>
-	</form>
+	</div>
+
+	<?php else: ?>
+
+		<form action="options.php" method="post">
+			<?php settings_fields( 'scm_setting_group_3' ); ?>
+			<?php do_settings_sections( 'scm_setting_page_3' );  ?>
+			<hr />
+			<?php submit_button(); ?>
+		</form>
+		<form action="options.php" method="post">
+			<?php settings_fields( 'scm_setting_group_4' ); ?>
+			<?php do_settings_sections( 'scm_setting_page_4' );  ?>
+			<hr />
+			<?php submit_button( __( 'Confirm Clearing Cache', 'cache-master' ) ); ?>
+		</form>
 
 	<?php endif; ?>
+
+	
 </div>
+
+<script>
+	(function($) {
+		$(function() {
+			$('.scm-cache-type-list').each(function() {
+				var type = $(this).attr('data-type');
+				var html = $(this).html();
+				$('#option-item-' + type).html(html);
+			});
+		});
+	})(jQuery);
+</script>
