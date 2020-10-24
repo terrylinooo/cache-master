@@ -65,6 +65,17 @@ class Cache_Master {
 			return;
 		}
 
+		if ( 'yes' === get_option( 'scm_option_exclusion_status' ) ) {
+			$ignored_urls_string = get_option( 'scm_option_excluded_list_filtered' );
+			$ignored_urls_array  = explode( "\n", $ignored_urls_string );
+
+			foreach ( $ignored_urls_array as $ignored_url ) {
+				if ( strpos( $uri, $ignored_url ) === 0 ) {
+					return;
+				}
+			}
+		}
+
 		$this->cache_key = md5( $uri );
 
 		add_action( 'plugins_loaded', array( $this, 'ob_start' ), 5 );
@@ -107,6 +118,9 @@ class Cache_Master {
 			return;
 		}
 
+		$is_singular = false;
+		$is_tax      = false;
+
 		if ( is_front_page() ) {
 			$this->is_cache  = true;
 			$this->data_type = 'homepage';
@@ -118,31 +132,65 @@ class Cache_Master {
 		
 		} else {
 
-			$types = array(
-				'post' => 'is_single',
-				'page' => 'is_page',
-			);
+			$is_singular = is_singular();
+			$is_tax      = is_tax();
 
-			foreach( $types as $type => $wp_function ) {
-				if ( isset( $post_types[ $type ] ) && $wp_function() ) {
-					$this->is_cache  = true;
-					$this->data_type = $type;
-					return;
+			if ( $is_singular ) {
+				$types = array(
+					'post' => 'is_single',
+					'page' => 'is_page',
+				);
+	
+				foreach( $types as $type => $wp_function ) {
+					if ( isset( $post_types[ $type ] ) && $wp_function() ) {
+						$this->is_cache  = true;
+						$this->data_type = $type;
+						return;
+					}
+				}
+			} elseif ( $is_tax ) {
+				$archives = array(
+					'category' => 'is_category',
+					'tag'      => 'is_tag',
+					'date'     => 'is_date',
+					'author'   => 'is_author',
+				);
+	
+				foreach( $archives as $type => $wp_function ) {
+					if ( isset( $post_archives[ $type ] ) && $wp_function() ) {
+						$this->is_cache  = true;
+						$this->data_type = $type;
+						return;
+					}
 				}
 			}
+		}
 
-			$archives = array(
-				'category' => 'is_category',
-				'tag'      => 'is_tag',
-				'date'     => 'is_date',
-				'author'   => 'is_author',
-			);
+		// Support to WooCommerce plugin.
+		$woocommerce_support       = get_option( 'scm_option_woocommerce_status' );
+		$woocommerce_post_types    = get_option( 'scm_option_woocommerce_post_types' );
+		$woocommerce_post_archives = get_option( 'scm_option_woocommerce_post_archives' );
 
-			foreach( $archives as $type => $wp_function ) {
-				if ( isset( $post_archives[ $type ] ) && $wp_function() ) {
+		if ( 'yes' === $woocommerce_support ) {
+
+			if ( $is_singular ) {
+				if ( isset( $woocommerce_post_types[ 'product' ] ) && is_singular( 'product' ) ) {
 					$this->is_cache  = true;
-					$this->data_type = $type;
+					$this->data_type = 'product';
 					return;
+				}
+			} elseif ( $is_tax ) {
+				$woocommerce_archives = array(
+					'product_category',
+					'product_tag',
+				);
+	
+				foreach( $woocommerce_archives as $type ) {
+					if ( isset( $woocommerce_post_archives[ $type ] ) && is_tax( $type ) ) {
+						$this->is_cache  = true;
+						$this->data_type = $type;
+						return;
+					}
 				}
 			}
 		}

@@ -16,371 +16,337 @@ add_action( 'admin_init', 'scm_settings' );
 
  /**
   * Add settings.
-  * Page ID count: 4
-  * Section ID count: 12
-  * Option ID count: 16
   *
   * @return void
   */
 function scm_settings() {
 
-	// Settings - Basic (Page 1)
-	register_setting( 'scm_setting_group_1', 'scm_option_caching_status' );
-	register_setting( 'scm_setting_group_1', 'scm_option_driver' );
-	register_setting( 'scm_setting_group_1', 'scm_option_ttl' );
-	register_setting( 'scm_setting_group_1', 'scm_option_visibility_login_user' );
-	register_setting( 'scm_setting_group_1', 'scm_option_visibility_guest' );
-	register_setting( 'scm_setting_group_1', 'scm_option_uninstall' );
+	$register_groups = array(
 
-	// Settings - Perferences (Page 6)
-	register_setting( 'scm_setting_group_6', 'scm_option_post_types' );
-	register_setting( 'scm_setting_group_6', 'scm_option_post_homepage' );
-	register_setting( 'scm_setting_group_6', 'scm_option_post_archives' );
+		// Settings - Basic (Page 1)
+		1 => array(
+			'caching_status',
+			'option_driver',
+			'option_ttl',
+			'visibility_login_user',
+			'visibility_guest',
+			'uninstall',
+		),
 
-	// Settings - Advanced (Page 7)
-	register_setting( 'scm_setting_group_7', 'scm_option_advanced_driver_memcached' );
-	register_setting( 'scm_setting_group_7', 'scm_option_advanced_driver_redis' );
-	register_setting( 'scm_setting_group_7', 'scm_option_advanced_driver_mongodb' );
+		// Expert mode (Page 2)
+		2 => array(
+			'expert_mode_status',
+		),
 
-	// Settings - WooCommerce (Page 8)
-	register_setting( 'scm_setting_group_8', 'scm_option_woocommerce_status' );
-	register_setting( 'scm_setting_group_8', 'scm_option_woocommerce_post_types' );
-	register_setting( 'scm_setting_group_8', 'scm_option_woocommerce_post_archives' );
-	register_setting( 'scm_setting_group_8', 'scm_option_woocommerce_event_payment_complete' );
+		// Statistics (Page 3, 4 mixed)
+		3 => array(
+			'statistics_status',
+		),
 
-	// Settings - Exclusion (Page 9)
-	register_setting( 'scm_setting_group_9', 'scm_option_exclusion_status' );
-	register_setting( 'scm_setting_group_9', 'scm_option_excluded_list' );
+		4 => array(
+			'clear_cache',
+		),
 
-	// Expert mode (Page 2)
-	register_setting( 'scm_setting_group_2', 'scm_option_expert_mode_status' );
+		// Benchmark (Page 5)
+		5 => array(
+			'benchmark_widget',
+			'benchmark_footer_text',
+			'benchmark_widget_display',
+			'benchmark_footer_text_display',
+		),
 
-	// Statistics (Page 3, 4 mixed)
-	register_setting( 'scm_setting_group_3', 'scm_option_statistics_status' );
-	register_setting( 'scm_setting_group_4', 'scm_option_clear_cache' );
+		// Settings - Perferences (Page 6)
+		6 => array(
+			'post_types',
+			'post_homepage',
+			'post_archives',
+		),
 
-	// Benchmark (Page 5)
-	register_setting( 'scm_setting_group_5', 'scm_option_benchmark_widget' );
-	register_setting( 'scm_setting_group_5', 'scm_option_benchmark_footer_text' );
-	register_setting( 'scm_setting_group_5', 'scm_option_benchmark_widget_display' );
-	register_setting( 'scm_setting_group_5', 'scm_option_benchmark_footer_text_display' );
+		// Settings - Advanced (Page 7)
+		7 => array(
+			'advanced_driver_memcached',
+			'advanced_driver_redis',
+			'advanced_driver_mongodb',
+		),
 
-	// Options page
+		// Settings - WooCommerce (Page 8)
+		8 => array(
+			'woocommerce_status',
+			'woocommerce_post_types',
+			'woocommerce_post_archives',
+			'woocommerce_event_payment_complete',
+		),
 
-	// Settings - Basic
-
-	add_settings_section( // Section 1
-		'scm_setting_section_1',
-		__( 'Driver', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_1'
+		// Settings - Exclusion (Page 9)
+		9 => array(
+			'exclusion_status',
+			'excluded_list',
+		),
 	);
 
-	add_settings_section( // Section 5
-		'scm_setting_section_5',
-		__( 'Visibilty', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_1'
+	$register_sections = array(
+
+		// Settings - Basic
+		array(
+			'title'    => __( 'Driver', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 1,
+			'settings' => array(
+				array(
+					'title'    => __( 'Caching Status', 'cache-master' ),
+					'callback' => 'scm_cb_caching_status',
+				),
+				array(
+					'title'    => __( 'Cache Driver', 'cache-master' ),
+					'callback' => 'scm_cb_driver',
+				),
+				array(
+					'title'    => __( 'Time to Live', 'cache-master' ),
+					'callback' => 'scm_cb_ttl',
+				),
+			),
+		),
+
+		array(
+			'title'    => __( 'Visibilty', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 1,
+			'settings' => array(
+				array(
+					'title'    => __( 'Guests', 'cache-master' ),
+					'callback' => 'scm_cb_visibility_guest',
+				),
+				array(
+					'title'    => __( 'Logged-in Users', 'cache-master' ),
+					'callback' => 'scm_cb_visibility_loggin_user',
+				),
+			),
+		),
+
+		array(
+			'title'    => __( 'Others', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 1,
+			'settings' => array(
+				array(
+					'title'    => __( 'Uninstall', 'cache-master' ),
+					'callback' => 'scm_cb_uninstall_option',
+				),
+			),
+		),
+
+		// Settings - Perferences
+
+		array(
+			'title'    => __( 'Pages', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 6,
+			'settings' => array(
+				array(
+					'title'    => __( 'Post Types', 'cache-master' ),
+					'callback' => 'scm_cb_post_types',
+				),
+				array(
+					'title'    => __( 'Homepage', 'cache-master' ),
+					'callback' => 'scm_cb_post_homepage',
+				),
+				array(
+					'title'    => __( 'Archive Pages', 'cache-master' ),
+					'callback' => 'scm_cb_post_archives',
+				),
+			),
+		),
+
+		// Settings - Advanced
+		array(
+			'title'    => __( 'Driver', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 7,
+			'settings' => array(
+				array(
+					'title'    => __( 'Redis', 'cache-master' ),
+					'callback' => 'scm_cb_advanced_cache_driver_redis',
+				),
+				array(
+					'title'    => __( 'Memcached', 'cache-master' ),
+					'callback' => 'scm_cb_advanced_cache_driver_memcached',
+				),
+				array(
+					'title'    => __( 'MongoDB', 'cache-master' ),
+					'callback' => 'scm_cb_advanced_cache_driver_mongodb',
+				),
+			),
+		),
+
+		// Settings - WooCommerce
+		array(
+			'title'    => __( 'Support', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 8,
+			'settings' => array(
+				array(
+					'title'    => __( 'Enable', 'cache-master' ),
+					'callback' => 'scm_cb_option_woocommerce_status',
+				),
+			),
+		),
+
+		array(
+			'title'    => __( 'Pages', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 8,
+			'settings' => array(
+				array(
+					'title'    => __( 'Post Types', 'cache-master' ),
+					'callback' => 'scm_cb_option_woocommerce_post_types',
+				),
+				array(
+					'title'    => __( 'Archive Pages', 'cache-master' ),
+					'callback' => 'scm_cb_option_woocommerce_post_archives',
+				),
+			),
+		),
+
+		array(
+			'title'    => __( 'Events', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 8,
+			'settings' => array(
+				array(
+					'title'    => __( 'Payment Complete', 'cache-master' ),
+					'callback' => 'scm_cb_option_woocommerce_event_payment_complete',
+				),
+			),
+		),
+
+		// Settings - Exclusion
+		array(
+			'title'    => '',
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 9,
+			'settings' => array(
+				array(
+					'title'    => __( 'Enable', 'cache-master' ),
+					'callback' => 'scm_cb_option_exclusion_status',
+				),
+				array(
+					'title'    => __( 'Excluded List', 'cache-master' ),
+					'callback' => 'scm_cb_option_excluded_list',
+				),
+			),
+		),
+
+		// Expert mode.
+		array(
+			'title'    => __( 'Expert Mode', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 2,
+			'settings' => array(
+				array(
+					'title'    => __( 'Status', 'cache-master' ),
+					'callback' => 'scm_cb_expert_mode_status',
+				),
+			),
+		),
+
+		array(
+			'title'    => '',
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 2,
+			'settings' => array(
+				array(
+					'title'    => '',
+					'callback' => '',
+				),
+			),
+		),
+
+		// Statistics
+		array(
+			'title'    => __( 'Statistics', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 3,
+			'settings' => array(
+				array(
+					'title'    => __( 'Statistics', 'cache-master' ),
+					'callback' => 'scm_cb_statistics_status',
+				),
+			),
+		),
+
+		array(
+			'title'    => __( 'Clear Cache', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 4,
+			'settings' => array(
+				array(
+					'title'    => '',
+					'callback' => 'scm_cb_clear_cache',
+				),
+			),
+		),
+
+		// Benchmark settings.
+		array(
+			'title'    => __( 'Widget', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 5,
+			'settings' => array(
+				array(
+					'title'    => __( 'Enable', 'cache-master' ),
+					'callback' => 'scm_cb_benchmark_widget',
+				),
+				array(
+					'title'    => __( 'Display', 'cache-master' ),
+					'callback' => 'scm_cb_benchmark_widget_display',
+				),
+			),
+		),
+
+		array(
+			'title'    => __( 'Footer Text', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 5,
+			'settings' => array(
+				array(
+					'title'    => __( 'Enable', 'cache-master' ),
+					'callback' => 'scm_cb_benchmark_footer_text',
+				),
+				array(
+					'title'    => __( 'Display', 'cache-master' ),
+					'callback' => 'scm_cb_benchmark_footer_text_display',
+				),
+			),
+		),
 	);
 
-	add_settings_section( // Section 3
-		'scm_setting_section_3',
-		__( 'Others', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_1'
-	);
+	foreach ( $register_groups as $index => $option ) {
+		register_setting( 'scm_setting_group_' . $index, 'scm_option_' . $option );
+	}
 
-	add_settings_field(
-		'scm_option_id_5',
-		__( 'Caching Status', 'cache-master' ),
-		'scm_cb_caching_status',
-		'scm_setting_page_1',
-		'scm_setting_section_1'
-	);
+	$section_id = 0;
+	$setting_id = 0;
 
-	add_settings_field(
-		'scm_option_id_1',
-		__( 'Cache Driver', 'cache-master' ),
-		'scm_cb_driver',
-		'scm_setting_page_1',
-		'scm_setting_section_1'
-	);
+	foreach ( $register_sections as $section ) {
+		$section_id++;
+		add_settings_section(
+			'scm_setting_section_' . $section_id,
+			$section['title'],
+			$section['callback'],
+			'scm_setting_page_' . $section['group_id']
+		);
 
-	add_settings_field(
-		'scm_option_id_2',
-		__( 'Time to Live', 'cache-master' ),
-		'scm_cb_ttl',
-		'scm_setting_page_1',
-		'scm_setting_section_1'
-	);
-
-	add_settings_field(
-		'scm_option_id_3',
-		__( 'Uninstall', 'cache-master' ),
-		'scm_cb_uninstall_option',
-		'scm_setting_page_1',
-		'scm_setting_section_3'
-	);
-
-	add_settings_field(
-		'scm_option_id_9',
-		__( 'Guests', 'cache-master' ),
-		'scm_cb_visibility_guest',
-		'scm_setting_page_1',
-		'scm_setting_section_5'
-	);
-
-	add_settings_field(
-		'scm_option_id_10',
-		__( 'Logged-in Users', 'cache-master' ),
-		'scm_cb_visibility_loggin_user',
-		'scm_setting_page_1',
-		'scm_setting_section_5'
-	);
-
-	// Settings - Perferences
-
-	add_settings_section( // Section 2
-		'scm_setting_section_2',
-		__( 'Pages', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_6'
-	);
-
-	add_settings_field(
-		'scm_option_id_4',
-		__( 'Post Types', 'cache-master' ),
-		'scm_cb_post_types',
-		'scm_setting_page_6',
-		'scm_setting_section_2'
-	);
-
-	add_settings_field(
-		'scm_option_id_7',
-		__( 'Homepage', 'cache-master' ),
-		'scm_cb_post_homepage',
-		'scm_setting_page_6',
-		'scm_setting_section_2'
-	);
-
-	add_settings_field(
-		'scm_option_id_8',
-		__( 'Archive Pages', 'cache-master' ),
-		'scm_cb_post_archives',
-		'scm_setting_page_6',
-		'scm_setting_section_2'
-	);
-
-	// Settings - Advanced
-
-	add_settings_section( // Section 10
-		'scm_setting_section_10',
-		__( 'Driver', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_7'
-	);
-
-	add_settings_field(
-		'scm_option_id_17',
-		__( 'Redis', 'cache-master' ),
-		'scm_cb_advanced_cache_driver_redis',
-		'scm_setting_page_7',
-		'scm_setting_section_10'
-	);
-
-	add_settings_field(
-		'scm_option_id_18',
-		__( 'Memcached', 'cache-master' ),
-		'scm_cb_advanced_cache_driver_memcached',
-		'scm_setting_page_7',
-		'scm_setting_section_10'
-	);
-
-	add_settings_field(
-		'scm_option_id_19',
-		__( 'MongoDB', 'cache-master' ),
-		'scm_cb_advanced_cache_driver_mongodb',
-		'scm_setting_page_7',
-		'scm_setting_section_10'
-	);
-
-	// Settings - WooCommerce
-
-	add_settings_section( // Section 11
-		'scm_setting_section_11',
-		__( 'Support', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_8'
-	);
-
-	add_settings_section( // Section 12
-		'scm_setting_section_12',
-		__( 'Pages', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_8'
-	);
-
-	add_settings_section( // Section 13
-		'scm_setting_section_13',
-		__( 'Events', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_8'
-	);
-
-	add_settings_field(
-		'scm_option_id_20',
-		__( 'Enable', 'cache-master' ),
-		'scm_cb_option_woocommerce_status',
-		'scm_setting_page_8',
-		'scm_setting_section_11'
-	);
-
-	add_settings_field(
-		'scm_option_id_21',
-		__( 'Post Types', 'cache-master' ),
-		'scm_cb_option_woocommerce_post_types',
-		'scm_setting_page_8',
-		'scm_setting_section_12'
-	);
-
-	add_settings_field(
-		'scm_option_id_22',
-		__( 'Archive Pages', 'cache-master' ),
-		'scm_cb_option_woocommerce_post_archives',
-		'scm_setting_page_8',
-		'scm_setting_section_12'
-	);
-
-	add_settings_field(
-		'scm_option_id_23',
-		__( 'Payment Complete', 'cache-master' ),
-		'scm_cb_option_woocommerce_event_payment_complete',
-		'scm_setting_page_8',
-		'scm_setting_section_13'
-	);
-
-	// Settings - Exclusion
-
-	add_settings_section( // Section 14
-		'scm_setting_section_14',
-		'',
-		'scm_cb_setting_section',
-		'scm_setting_page_9'
-	);
-
-	add_settings_field(
-		'scm_option_id_25',
-		__( 'Enable', 'cache-master' ),
-		'scm_cb_option_exclusion_status',
-		'scm_setting_page_9',
-		'scm_setting_section_14'
-	);
-
-	add_settings_field(
-		'scm_option_id_26',
-		__( 'Excluded List', 'cache-master' ),
-		'scm_cb_option_excluded_list',
-		'scm_setting_page_9',
-		'scm_setting_section_14'
-	);
-
-	// Expert mode.
-
-	add_settings_section( // Section 4
-		'scm_setting_section_4',
-		__( 'Expert Mode', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_2'
-	);
-
-	add_settings_field(
-		'scm_option_id_6',
-		__( 'Status', 'cache-master' ),
-		'scm_cb_expert_mode_status',
-		'scm_setting_page_2',
-		'scm_setting_section_4'
-	);
-
-	// Statistics
-
-	add_settings_section( // Section 6
-		'scm_setting_section_6',
-		__( 'Statistics', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_3'
-	);
-
-	add_settings_field(
-		'scm_option_id_11',
-		__( 'Statistics', 'cache-master' ),
-		'scm_cb_statistics_status',
-		'scm_setting_page_3',
-		'scm_setting_section_6'
-	);
-
-	add_settings_section( // Section 7
-		'scm_setting_section_7',
-		__( 'Clear Cache', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_4'
-	);
-
-	add_settings_field(
-		'scm_option_id_16',
-		'',
-		'scm_cb_clear_cache',
-		'scm_setting_page_4',
-		'scm_setting_section_7'
-	);
-
-	// Benchmark settings.
-
-	add_settings_section( // Section 8
-		'scm_setting_section_8',
-		__( 'Widget', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_5'
-	);
-
-	add_settings_section( // Section 9
-		'scm_setting_section_9',
-		__( 'Footer Text', 'cache-master' ),
-		'scm_cb_setting_section',
-		'scm_setting_page_5'
-	);
-
-	add_settings_field(
-		'scm_option_id_12',
-		__( 'Enable', 'cache-master' ),
-		'scm_cb_benchmark_widget',
-		'scm_setting_page_5',
-		'scm_setting_section_8'
-	);
-
-	add_settings_field(
-		'scm_option_id_14',
-		__( 'Display', 'cache-master' ),
-		'scm_cb_benchmark_widget_display',
-		'scm_setting_page_5',
-		'scm_setting_section_8'
-	);
-
-	add_settings_field(
-		'scm_option_id_13',
-		__( 'Enable', 'cache-master' ),
-		'scm_cb_benchmark_footer_text',
-		'scm_setting_page_5',
-		'scm_setting_section_9'
-	);
-
-	add_settings_field(
-		'scm_option_id_15',
-		__( 'Display', 'cache-master' ),
-		'scm_cb_benchmark_footer_text_display',
-		'scm_setting_page_5',
-		'scm_setting_section_9'
-	);
-
+		foreach ( $section['settings'] as $setting ) {
+			$setting_id++;
+			add_settings_field(
+				'scm_option_id_' . $setting_id,
+				$setting['title'],
+				$setting['callback'],
+				'scm_setting_page_' . $section['group_id'],
+				'scm_setting_section_' . $section_id
+			);
+		}
+	}
 }
 
 function scm_cb_setting_section() {

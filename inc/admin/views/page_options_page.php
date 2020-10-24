@@ -12,24 +12,16 @@ if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
 
-$conflict_plugins = array(
-    //'clearfy/clearfy.php',
-);
+$tab = isset( $_GET['tab'])  ? $_GET['tab'] : null;
 
-foreach ( $conflict_plugins as $plugin ) {
-    if ( is_plugin_active( $plugin ) ) {
-        ?>
-
-        <div class="notice notice-warning is-dismissible">
-            <p>
-                <?php  echo sprintf( __( 'Cache Master cannot work with the plugin "%s" becasue of output buffer conflicts.', 'cache-master' ), $plugin ); ?>
-            </p>
-        </div>
-
-        <?php
-    }
-}
-
+/**
+ * This functon is similar to `checked()` and I use it with Tabs.
+ *
+ * @param mixed $input The value what to check.
+ * @param mixed $check The target value.
+ *
+ * @return void
+ */
 function scm_tab( $input, $check ) {
     if ( $input === $check ) {
         echo 'nav-tab nav-tab-active';
@@ -38,7 +30,25 @@ function scm_tab( $input, $check ) {
     }
 }
 
-$tab = isset( $_GET['tab'])  ? $_GET['tab'] : null;
+$conflict_plugins = array(
+    //'clearfy/clearfy.php',
+);
+
+if ( ! empty( $conflict_plugins ) ) {
+    foreach ( $conflict_plugins as $plugin ) {
+        if ( is_plugin_active( $plugin ) ) {
+            ?>
+    
+            <div class="notice notice-warning is-dismissible">
+                <p>
+                    <?php  echo sprintf( __( 'Cache Master cannot work with the plugin "%s" becasue of output buffer conflicts.', 'cache-master' ), $plugin ); ?>
+                </p>
+            </div>
+    
+            <?php
+        }
+    }
+}
 
 ?>
 
@@ -105,12 +115,31 @@ $tab = isset( $_GET['tab'])  ? $_GET['tab'] : null;
     <?php endif; ?>
 
     <?php if ( 'woocommerce' === $tab ) : ?>
+        <?php $is_woocommerce_active = true; ?>
+
+        <?php if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) : ?>
+            <?php $is_woocommerce_active = false; ?>
+        <?php endif; ?>
+
+        <?php if ( ! $is_woocommerce_active ) : ?>
+            <div class="notice notice-warning is-dismissible">
+                <p>
+                    <?php _e( 'WooCommerce is not actived.', 'cache-master' ); ?>
+                </p>
+            </div>
+        <?php endif; ?>
+
         <form action="options.php" method="post">
             <?php settings_fields( 'scm_setting_group_8' ); ?>
             <?php do_settings_sections( 'scm_setting_page_8' );  ?>
             <hr />
             <p><em><?php _e( 'Once you make changes in this page, all cache data will be cleared.', 'cache-master' ); ?></em></p>
-            <?php submit_button(); ?>
+            
+            <?php if ( $is_woocommerce_active ) : ?>
+                <?php submit_button(); ?>
+            <?php else: ?>
+                <p class="submit"><input type="button" class="button button-primary disabled" value="<?php esc_attr_e( 'Save Changes' ); ?>"></p>
+            <?php endif; ?>
         </form>
     <?php endif; ?>
 

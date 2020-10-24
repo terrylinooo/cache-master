@@ -19,7 +19,7 @@ add_action( 'woocommerce_payment_complete', 'scm_payment_complete' );
  *
  * @return void
  */
-function so_payment_complete( $order_id ){
+function scm_payment_complete( $order_id ){
     $order = wc_get_order( $order_id );
     $items = $order->get_items();
 

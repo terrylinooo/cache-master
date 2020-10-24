@@ -42,17 +42,20 @@ function scm_load_view( $template_path, $data = array() ) {
  * @return array
  */
 function scm_get_cache_type_list( $get_key = false ) {
+	$archive_note     = ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>';
+	$woocommerce_note = ' <small class="scm-badge">' . __( 'WooCommerce', 'cache-master' ) . '</small>';
+
 	$list = array(
 		'homepage'         => __( 'Homepage', 'cache-master' ),
 		'post'             => __( 'Post', 'cache-master' ),
 		'page'             => __( 'Page', 'cache-master' ),
-		'product'          => __( 'Product', 'cache-master' )   . ' <small class="scm-badge">WooCommerce</small>',
-		'category'         => __( 'Category', 'cache-master' ) . ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>',
-		'tag'              => __( 'Tag', 'cache-master' ) . ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>',
-		'date'             => __( 'Date', 'cache-master' ) . ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>',
-		'author'           => __( 'Author', 'cache-master' ) . ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>',
-		'custom_post_type' => __( 'Custom post type', 'cache-master' ),
-		'custom_taxonomy'  => __( 'Custom taxonomy', 'cache-master' ) . ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>',
+		'category'         => __( 'Category', 'cache-master' )    . $archive_note,
+		'tag'              => __( 'Tag', 'cache-master' )         . $archive_note,
+		'date'             => __( 'Date', 'cache-master' )        . $archive_note,
+		'author'           => __( 'Author', 'cache-master' )      . $archive_note,
+		'product'          => __( 'Product', 'cache-master' )     . $woocommerce_note,
+		'product_tag'      => __( 'Product tag', 'cache-master' ) . $woocommerce_note,
+		'product_category' => __( 'Product tag', 'cache-master' ) . $woocommerce_note,
 		'uncategorised'    => __( 'Uncategorised', 'cache-master' ),
 	);
 
