@@ -35,6 +35,7 @@ $register_clear_cache_action = array(
 	'scm_option_benchmark_widget_display',
 	'scm_option_benchmark_footer_text',
 	'scm_option_benchmark_footer_text_display',
+	'scm_option_html_debug_comment',
 );
 
 foreach ( $register_clear_cache_action as $option ) {

@@ -44,7 +44,7 @@ if ( ! empty( $conflict_plugins ) ) {
                     <?php  echo sprintf( __( 'Cache Master cannot work with the plugin "%s" becasue of output buffer conflicts.', 'cache-master' ), $plugin ); ?>
                 </p>
             </div>
-    
+
             <?php
         }
     }
@@ -67,6 +67,7 @@ if ( ! empty( $conflict_plugins ) ) {
     </a>
     <a href="?page=cache-master-settings&tab=woocommerce" class="<?php scm_tab( $tab, 'woocommerce' ); ?>">
         <?php _e( 'WooCommerce', 'cache-master' ); ?>
+        <img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/icon_beta.png">
     </a>
     <a href="?page=cache-master-settings&tab=exclusion" class="<?php scm_tab( $tab, 'exclusion' ); ?>">
         <?php _e( 'Exclusion', 'cache-master' ); ?>
@@ -94,7 +95,7 @@ if ( ! empty( $conflict_plugins ) ) {
     <?php endif; ?>
 
     <?php if ( 'benchmark' === $tab ) : ?>
-        <p><?php _e( 'Benchmark information consists of memory usage, SQL query number, page generation time and page caching status.', 'cache-master' ); ?></p>
+        <p><em><?php _e( 'Benchmark information consists of memory usage, SQL query number, page generation time and page caching status.', 'cache-master' ); ?></em></p>
         <form action="options.php" method="post">
             <?php settings_fields( 'scm_setting_group_5' ); ?>
             <?php do_settings_sections( 'scm_setting_page_5' );  ?>
@@ -105,7 +106,7 @@ if ( ! empty( $conflict_plugins ) ) {
     <?php endif; ?>
 
     <?php if ( 'advanced' === $tab ) : ?>
-        <p><?php _e( 'Skip those settings unless you want to make changes to default settings.', 'cache-master' ); ?></p>
+        <p><em><?php _e( 'Skip those settings unless you want to make changes to default settings.', 'cache-master' ); ?></em></p>
         <form action="options.php" method="post">
             <?php settings_fields( 'scm_setting_group_7' ); ?>
             <?php do_settings_sections( 'scm_setting_page_7' );  ?>
@@ -130,6 +131,7 @@ if ( ! empty( $conflict_plugins ) ) {
         <?php endif; ?>
 
         <form action="options.php" method="post">
+            <p><em><?php _e( 'This feature is still under beta testing, do not use it in production.', 'cache-master' ); ?></em></p>
             <?php settings_fields( 'scm_setting_group_8' ); ?>
             <?php do_settings_sections( 'scm_setting_page_8' );  ?>
             <hr />

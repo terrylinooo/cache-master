@@ -216,16 +216,14 @@ function scm_search_expert_mode_code_snippet( $string ) {
 }
 
 /**
- * Check if can inject Expert Mode code block automatically.
+ * Check if PHP code for Expert Mode is ready or not.
  *
  * @return bool
  */
-function scm_is_available_inject_code() {
+function scm_is_expert_mode_code_ready() {
     $result = scm_search_expert_mode_code_snippet( scm_get_upload_dir() );
-    if ( ! $result[0] && ! $result[1] ) {
-        if ( is_writable( ABSPATH . 'wp-config.php' ) ) {
-            return true;
-        }
+    if ( $result[0] && $result[1] ) {
+        return true;
     }
     return false;
 }

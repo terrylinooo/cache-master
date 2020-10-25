@@ -30,6 +30,7 @@ function scm_settings() {
 			'ttl',
 			'visibility_login_user',
 			'visibility_guest',
+			'html_debug_comment',
 			'uninstall',
 		),
 
@@ -134,6 +135,10 @@ function scm_settings() {
 			'callback' => 'scm_cb_setting_section',
 			'group_id' => 1,
 			'settings' => array(
+				array(
+					'title'    => __( 'Debug Comment', 'cache-master' ),
+					'callback' => 'scm_cb_html_debug_comment_option',
+				),
 				array(
 					'title'    => __( 'Uninstall', 'cache-master' ),
 					'callback' => 'scm_cb_uninstall_option',
@@ -578,4 +583,13 @@ function scm_cb_option_exclusion_status() {
  */
 function scm_cb_option_excluded_list() {
 	echo scm_load_view( 'option_excluded_list' );
+}
+
+/**
+ * Setting block - HTML debug comment.
+ *
+ * @return void
+ */
+function scm_cb_html_debug_comment_option() {
+	echo scm_load_view( 'option_html_debug_comment' );
 }

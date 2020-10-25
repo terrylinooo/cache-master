@@ -260,7 +260,8 @@ function scm_get_svg_icon( $type ) {
 }
 
 /**
- * The variable stack for JavaScript.
+ * The variable stack for JavaScript snippet.
+ * 
  * This function is also used in expert mode.
  *
  * @param string      $key      The key of the field.
@@ -283,7 +284,8 @@ function scm_variable_stack( $key, $value = '', $poistion = 'before' ) {
 }
 
 /**
- * Get JSON string of the performance report.
+ * Create JavaScript snippet used for performance report.
+ *
  * This function is also used in expert mode.
  *
  * @return void

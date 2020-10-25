@@ -34,3 +34,4 @@ $option_woocommerce_status = get_option( 'scm_option_woocommerce_status', 'no' )
 </div>
 <p><em><?php _e( 'Support to WooCommerce plugin.', 'cache-master' ); ?></em></p>
 <p><em><?php _e( 'The following settings work only when this option is enable.', 'cache-master' ); ?></em></p>
+<p><em class="scm-msg scm-msg-notice"><?php _e( "When a user's shopping cart is not empty, Cache Master will stop outputting cache.", 'cache-master' ); ?></em></p>

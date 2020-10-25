@@ -12,7 +12,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
 
-$option_driver_type = get_option( 'scm_option_driver', 'local' );
+$option_driver_type = get_option( 'scm_option_driver', 'file' );
 
 $option_list = array(
     'file'      => __( 'File', 'cache-master' ),
