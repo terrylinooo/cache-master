@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
+define( 'SCM_INC', true );
+
 /**
  * Use the "Expert Mode", see explanation in setting page.
  *
@@ -76,16 +78,17 @@ function scm_run_expert_mode( $args ) {
 	}
 
 	// The cache type.
-	$type = $args['cache_driver_type'];
+	$type = $config['cache_driver'];
 
 	// The cache key.
 	$key = md5( $request_path );
 
 	// Start "reading-cache" procedure.
 	if ( strpos( $request_path, $site_path ) === 0 ) {
-		
+
 		// Composer autoloader.
 		include_once( $plugin_dir . '/vendor/autoload.php' );
+		include_once( $plugin_dir . '/inc/helpers.php' );
 
 		switch ( $type )  {
 			case 'mysql':
@@ -137,9 +140,9 @@ function scm_run_expert_mode( $args ) {
 				}
 			}
 		}
-		
+
 		$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
-	   
+
 		$cached_content = $driver->get( $key );
 
 		$memory_usage = memory_get_usage();
@@ -148,13 +151,15 @@ function scm_run_expert_mode( $args ) {
 		
 		if ( ! empty( $cached_content ) ) {
 
+			$date = date( 'Y-m-d H:i:s' );
+
 			$microtime_after = microtime(true);
 
 			$page_speed = round( $microtime_after - $microtime_before, 3 );
 		   
 			$debug_message .= "\n" . '....... ' . 'After' . ' .......' . "\n\n";
 
-			$debug_message .= sprintf( 'Now: %s', date( 'Y-m-d H:i:s' ) ) . "\n";
+			$debug_message .= sprintf( 'Now: %s', $date ) . "\n";
 			$debug_message .= sprintf( 'Memory usage: %s MB', $memory_usage ) . "\n";
 			$debug_message .= sprintf( 'SQL queries: %s', $sql_queries ) . "\n";
 			$debug_message .= sprintf( 'Page generated in %s seconds.', $page_speed ) . "\n\n";
@@ -162,6 +167,18 @@ function scm_run_expert_mode( $args ) {
 			$debug_message .= "\n//-->";
 
 			$cached_content .= $debug_message;
+
+			scm_variable_stack( 'now',  $date, 'after' );
+			scm_variable_stack( 'memory_usage',  $memory_usage, 'after' );
+			scm_variable_stack( 'sql_queries',  $sql_queries, 'after' );
+			scm_variable_stack( 'page_generation_time',  $page_speed, 'after' );
+
+			// This line must be at after debug_message.
+			$cached_content = str_replace(
+				'</body>',
+				"\n" . scm_javascript() . "\n" . '</body>',
+				$cached_content
+			);
 
 			// Outpue cache.
 			echo $cached_content;

@@ -261,6 +261,7 @@ function scm_get_svg_icon( $type ) {
 
 /**
  * The variable stack for JavaScript.
+ * This function is also used in expert mode.
  *
  * @param string      $key      The key of the field.
  * @param string|inx  $value    The value of the field.
@@ -283,6 +284,7 @@ function scm_variable_stack( $key, $value = '', $poistion = 'before' ) {
 
 /**
  * Get JSON string of the performance report.
+ * This function is also used in expert mode.
  *
  * @return void
  */
@@ -298,13 +300,13 @@ function scm_javascript() {
 			var scm_text_page_generation_time = "";
 
 			if ("before" in scm_report) {
-				scm_text_cache_status = "' . __( 'No', 'cache-master' ) . '";
+				scm_text_cache_status = "No";
 				scm_text_memory_usage = scm_report["before"]["memory_usage"];
 				scm_text_sql_queries = scm_report["before"]["sql_queries"];
 				scm_text_page_generation_time = scm_report["before"]["page_generation_time"];
 			}
 			if ("after" in scm_report) {
-				scm_text_cache_status = "' . __( 'Yes', 'cache-master' ) . '";
+				scm_text_cache_status = "Yes";
 				scm_text_memory_usage = scm_report["after"]["memory_usage"];
 				scm_text_sql_queries = scm_report["after"]["sql_queries"];
 				scm_text_page_generation_time = scm_report["after"]["page_generation_time"];
