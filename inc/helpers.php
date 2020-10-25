@@ -74,6 +74,53 @@ function scm_get_upload_dir() {
 }
 
 /**
+ * Get configuration file's path.
+ *
+ * @return void
+ */
+function scm_get_config_path() {
+	return scm_get_upload_dir() . '/config.json';
+}
+
+/**
+ * Get configuration data.
+ *
+ * @return array
+ */
+function scm_get_config_data() {
+	$file = scm_get_config_path();
+
+	if ( file_exists( $file ) ) {
+		$content = file_get_contents( $file );
+		return json_decode( $content, true );
+	}
+	return scm_get_default_config();
+}
+
+/**
+ * Get default configuation.
+ *
+ * @return void
+ */
+function scm_get_default_config() {
+
+	return array(
+		'cache_driver'             => 'file',
+		'driver_advanced_settings' => array(),
+		'site_url'                 => rtrim( get_site_url(), '/' ),
+	
+		'woocommerce' => array(
+			'enable' => false,
+		),
+
+		'exclusion' => array(
+			'enable'        => false,
+			'excluded_list' => array(),
+		),
+	);
+}
+
+/**
  * Set channel Id.
  *
  * @return void
@@ -111,6 +158,7 @@ function scm_get_stats_dir( $cache_type = 'post' ) {
  */
 function scm_driver_factory( $type ) {
 
+	$advanced_settings = array();
 
 	switch ( $type ) {
 		case 'mysql':
@@ -135,6 +183,8 @@ function scm_driver_factory( $type ) {
 				'host' => '127.0.0.1',
 				'port' =>  6379,
 			);
+
+			$advanced_settings = get_option( 'scm_option_advanced_driver_redis' );
 			break;
 
 		case 'mongo':
@@ -142,6 +192,8 @@ function scm_driver_factory( $type ) {
 				'host' => '127.0.0.1',
 				'port' =>  27017,
 			);
+
+			$advanced_settings = get_option( 'scm_option_advanced_driver_mongodb' );
 			break;
 
 		case 'memcache':
@@ -150,6 +202,8 @@ function scm_driver_factory( $type ) {
 				'host' => '127.0.0.1',
 				'port' =>  11211,
 			);
+
+			$advanced_settings = get_option( 'scm_option_advanced_driver_memcached' );
 			break;
 
 		case 'apc':
@@ -157,6 +211,16 @@ function scm_driver_factory( $type ) {
 		case 'wincache':
 			$setting = array();
 			break;
+	}
+
+	if ( ! empty( $advanced_settings ) ) {
+		$setting = $advanced_settings;
+
+		foreach ( $setting as $k => $v ) {
+			if ( is_numeric( $v ) ) {
+				$setting[ $k ] = (int) $v;
+			}
+		}
 	}
 
 	$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
@@ -194,3 +258,70 @@ function scm_get_svg_icon( $type ) {
 
 	return $svg;
 }
+
+/**
+ * The variable stack for JavaScript.
+ *
+ * @param string      $key      The key of the field.
+ * @param string|inx  $value    The value of the field.
+ * @param string      $poistion The position.
+ *
+ * @return void
+ */
+function scm_variable_stack( $key, $value = '', $poistion = 'before' ) {
+	static $vars = array();
+
+	if ( is_null( $key ) ) {
+		$output = $vars;
+		$vars   = array();
+
+		return json_encode($output);
+	}
+
+	$vars[ $poistion ][ $key ] = $value;
+}
+
+/**
+ * Get JSON string of the performance report.
+ *
+ * @return void
+ */
+function scm_javascript() {
+	$script = '
+		<script id="cache-master-plugin">
+			var cache_master = \'' . scm_variable_stack( null ) . '\';
+			var scm_report   = JSON.parse(cache_master);
+
+			var scm_text_cache_status = "";
+			var scm_text_memory_usage = "";
+			var scm_text_sql_queries  = "";
+			var scm_text_page_generation_time = "";
+
+			if ("before" in scm_report) {
+				scm_text_cache_status = "' . __( 'No', 'cache-master' ) . '";
+				scm_text_memory_usage = scm_report["before"]["memory_usage"];
+				scm_text_sql_queries = scm_report["before"]["sql_queries"];
+				scm_text_page_generation_time = scm_report["before"]["page_generation_time"];
+			}
+			if ("after" in scm_report) {
+				scm_text_cache_status = "' . __( 'Yes', 'cache-master' ) . '";
+				scm_text_memory_usage = scm_report["after"]["memory_usage"];
+				scm_text_sql_queries = scm_report["after"]["sql_queries"];
+				scm_text_page_generation_time = scm_report["after"]["page_generation_time"];
+			}
+
+			(function($) {
+				$(function() {
+					$(".scm-field-cache-status").html(scm_text_cache_status);
+					$(".scm-field-memory-usage").html(scm_text_memory_usage);
+					$(".scm-field-sql-queries").html(scm_text_sql_queries);
+					$(".scm-field-page-generation-time").html(scm_text_page_generation_time);
+					$(".cache-master-benchmark-report").attr("style", "");
+				});
+			})(jQuery);
+		</script>
+	';
+
+	return preg_replace( '/\s+/', ' ', $script );
+}
+

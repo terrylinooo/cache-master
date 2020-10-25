@@ -32,15 +32,7 @@ function scm_run_expert_mode( $args ) {
 
 	$plugin_dir        = rtrim( $args['plugin_dir'], '/' );
 	$plugin_upload_dir = rtrim( $args['plugin_upload_dir'], '/' );
-	$site_url          = rtrim( $args['site_url'], '/' ) . '/';
-	$site_path         = parse_url( $site_url, PHP_URL_PATH );
-	$request_uri       = $_SERVER['REQUEST_URI'];
-
-	// The cache type.
-	$type = $args['cache_driver_type'];
-
-	// The cache key.
-	$key = md5( $request_uri );
+	
 
 	// Make sure that Cache Master exists.
 	if ( ! file_exists( $plugin_dir . '/cache-master.php' ) ) {
@@ -48,12 +40,49 @@ function scm_run_expert_mode( $args ) {
 	}
 
 	// Make the "expert mode" is enable.
-	if ( ! file_exists( $plugin_upload_dir . '/expert.lock') ) {
+	if ( ! file_exists( $plugin_upload_dir . '/expert.lock' ) ) {
 		return;
 	}
 
+	if ( ! file_exists( $plugin_upload_dir . '/config.json' ) ) {
+		return;
+	}
+
+	// Read configuration data.
+	$content = file_get_contents( $plugin_upload_dir . '/config.json' );
+	$config  = json_decode( $content, true );
+
+	$site_url     = rtrim( $config['site_url'], '/' ) . '/';
+	$site_path    = parse_url( $site_url, PHP_URL_PATH );
+	$request_path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+
+	// Ignore excluded list...
+	if ( true === $config['exclusion']['enable'] ) {
+		foreach ( $config['exclusion']['excluded_list'] as $ignored_url ) {
+			if ( strpos( $request_path, $ignored_url ) === 0 ) {
+				return;
+			}
+		}
+	}
+
+	// Check if WooCommerce support is enable.
+	if ( true === $config['woocommerce']['enable'] ) {		
+		if ( isset( $_POST['add-to-cart'] ) && is_numeric( $_POST['add-to-cart'] ) ) {
+			return;
+		}
+		if ( ! empty( $_COOKIE['woocommerce_items_in_cart'] ) ) {
+			return;
+		}
+	}
+
+	// The cache type.
+	$type = $args['cache_driver_type'];
+
+	// The cache key.
+	$key = md5( $request_path );
+
 	// Start "reading-cache" procedure.
-	if ( strpos( $request_uri, $site_path ) === 0 ) {
+	if ( strpos( $request_path, $site_path ) === 0 ) {
 		
 		// Composer autoloader.
 		include_once( $plugin_dir . '/vendor/autoload.php' );
@@ -83,6 +112,7 @@ function scm_run_expert_mode( $args ) {
 					'host' => '127.0.0.1',
 					'port' =>  6379,
 				);
+
 				break;
 
 			case 'memcache':
@@ -96,6 +126,16 @@ function scm_run_expert_mode( $args ) {
 			default:
 				// apc, apcu, wincache
 				$setting = array();
+		}
+
+		if ( ! empty( $config['driver_advanced_settings'] ) ) {
+			$setting = $config['driver_advanced_settings'];
+	
+			foreach ( $setting as $k => $v ) {
+				if ( is_numeric( $v ) ) {
+					$setting[ $k ] = (int) $v;
+				}
+			}
 		}
 		
 		$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );

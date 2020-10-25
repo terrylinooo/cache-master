@@ -32,6 +32,12 @@ $option_default_list = array(
     'collection' => 'cache_data',
 );
 
+$is_driver_setting_correct = false;
+
+if ( scm_test_driver( 'mongo' ) ) {
+    $is_driver_setting_correct = true;
+}
+
 ?>
 
 <?php if ( extension_loaded( 'mongodb' ) ) : ?>
@@ -64,7 +70,9 @@ $option_default_list = array(
 
         </div>
         <p><em><?php _e( 'Change the settings carefully, make sure you know what you do.', 'cache-master' ); ?></em></p>
-
+        <?php if ( ! $is_driver_setting_correct ) : ?>
+        <p><em class="scm-msg scm-msg-error"><?php _e( 'The settings you set are not working, please recheck your settings.', 'cache-master' ); ?></em></p>
+        <?php endif; ?>
     <?php else: ?>
 
         <div>
@@ -86,7 +94,7 @@ $option_default_list = array(
             </div>
             <?php endforeach; ?>
         </div>
-        <p><em style="color: #009900"><?php _e( 'This option is not available to change, becasue you are using this driver.', 'cache-master' ); ?></em></p>
+        <p><em class="scm-msg scm-msg-info"><?php _e( 'This option is not available to change, becasue you are using this driver.', 'cache-master' ); ?></em></p>
 
     <?php endif; ?>
 
@@ -104,6 +112,6 @@ $option_default_list = array(
         </div>
         <?php endforeach; ?>
     </div>
-    <p><em style="color: #990000"><?php echo sprintf( __( 'PHP extension "%s" is not installed on your system.', 'cache-master' ), 'mongodb' ); ?></em></p>
+    <p><em class="scm-msg scm-msg-error"><?php echo sprintf( __( 'PHP extension "%s" is not installed on your system.', 'cache-master' ), 'mongodb' ); ?></em></p>
 
 <?php endif ;?>

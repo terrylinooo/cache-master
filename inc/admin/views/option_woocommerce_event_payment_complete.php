@@ -32,4 +32,4 @@ $option_woocommerce_event_payment_complete = get_option( 'scm_option_woocommerce
 		<label>
 	</div>	
 </div>
-<p><em><?php _e( 'Clear all cache of the product pages after a user has successfully completed a purchase.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Clear the product page cache referred to the order after a user has successfully completed a purchase.', 'cache-master' ); ?></em></p>

@@ -19,8 +19,6 @@ $register_general_action = array(
 	'scm_option_driver',
 	'scm_option_expert_mode_status',
 	'scm_option_clear_cache',
-	'scm_option_exclusion_status',
-	'scm_option_excluded_list',
 );
 
 foreach ( $register_general_action as $option ) {
@@ -37,15 +35,32 @@ $register_clear_cache_action = array(
 	'scm_option_benchmark_widget_display',
 	'scm_option_benchmark_footer_text',
 	'scm_option_benchmark_footer_text_display',
-	'scm_option_woocommerce_status',
-	'scm_option_woocommerce_post_archives',
-	'scm_option_woocommerce_post_types',
-	'scm_option_woocommerce_status',
 );
 
 foreach ( $register_clear_cache_action as $option ) {
 	// `scm_clear_all_cache` is defined in functions.php
 	add_action( 'update_option_' . $option, 'scm_clear_all_cache' );
+}
+
+// Update WooCommerce settings.
+$register_woocommerce_action = array(
+	'scm_option_woocommerce_status',
+	'scm_option_woocommerce_post_archives',
+	'scm_option_woocommerce_post_types',
+);
+
+foreach ( $register_woocommerce_action as $option ) {
+	add_action( 'update_option_' . $option, 'scm_update_woocommerce' );
+}
+
+// Update exclusion settings.
+$register_exclusion_action = array(
+	'scm_option_exclusion_status',
+	'scm_option_excluded_list',
+);
+
+foreach ( $register_exclusion_action as $option ) {
+	add_action( 'update_option_' . $option, 'scm_update_exclusion' );
 }
 
 /**
@@ -65,6 +80,21 @@ function scm_update_scm_option_driver() {
 
 	$driver = scm_driver_factory( $driver_type );
 	$driver->rebuild();
+
+	$advanced_settings = array();
+
+	if ( 'memcached' === $driver_type ) {
+		$advanced_settings = get_option( 'scm_option_advanced_driver_memcached' );
+	} elseif ( 'redis' === $driver_type ) {
+		$advanced_settings = get_option( 'scm_option_advanced_driver_redis' );
+	} elseif ( 'mongo' === $driver_type ) {
+		$advanced_settings = get_option( 'scm_option_advanced_driver_mongodb' );
+	}
+
+	$setting['cache_driver']             = $driver_type;
+	$setting['driver_advanced_settings'] = $advanced_settings;
+
+	scm_update_config( $setting );
 }
 
 /**
@@ -145,34 +175,23 @@ function scm_update_scm_option_clear_cache() {
 }
 
 /**
- * Delete the JSON file is the exclusion status is not "yes"
+ * The update for:
+ * - scm_option_exclusion_status
+ * - scm_option_excluded_list
  *
  * @return void
  */
-function scm_update_scm_option_exclusion_status() {
+function scm_update_exclusion() {
 	$status = get_option( 'scm_option_exclusion_status' );
 
-	$file = rtrim( scm_get_upload_dir(), '/' ) . '/excluded_list.json';
-	
 	if ( 'no' === $status ) {
-		if ( file_exists( $file ) ) {
-			@unlink( $file );
-		}
+		$setting['exclusion']['enable'] = false;
 	}
 
 	if ( 'yes' === $status ) {
-		if ( ! file_exists( $file ) ) {
-			scm_update_scm_option_excluded_list();
-		}
+		$setting['exclusion']['enable'] = true;
 	}
-}
 
-/**
- * Create a exluded list in a JSON file that can be used in Expert Mode.
- *
- * @return void
- */
-function scm_update_scm_option_excluded_list() {
 	$exluded_list = get_option( 'scm_option_excluded_list' );
 
 	$exluded_list_arr = explode( "\n", $exluded_list );
@@ -187,9 +206,34 @@ function scm_update_scm_option_excluded_list() {
 
 	$content = implode( "\n", $exluded_list_tmp );
 
-	update_option( 'scm_option_excluded_list_filtered', $content );
+	if ( $exluded_list !== $content ) {
+		update_option( 'scm_option_excluded_list_filtered', $content );
+	}
 
-	$file = rtrim( scm_get_upload_dir(), '/' ) . '/excluded_list.json';
+	$setting['exclusion']['excluded_list'] = $exluded_list_tmp;
 
-	@file_put_contents( $file, json_encode( $exluded_list_tmp ) );
+	scm_update_config( $setting );
+}
+
+/**
+ * The update for:
+ * - scm_option_woocommerce_status
+ * - scm_option_woocommerce_post_archives
+ * - scm_option_woocommerce_post_types
+ *
+ * @return void
+ */
+function scm_update_woocommerce() {
+	$status     = get_option( 'scm_option_woocommerce_status' );
+
+	if ( 'no' === $status ) {
+		$setting['woocommerce']['enable'] = false;
+	}
+
+	if ( 'yes' === $status ) {
+		$setting['woocommerce']['enable'] = true;
+	}
+
+	scm_update_config( $setting );
+	scm_clear_all_cache();
 }

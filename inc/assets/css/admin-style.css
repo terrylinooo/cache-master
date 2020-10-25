@@ -284,3 +284,17 @@
   border-bottom: 2px #ffffff solid !important;
   box-shadow: none !important;
 }
+
+.scm-msg {
+  padding: 5px;
+  margin: 10px 0;
+  display: inline-block;
+}
+.scm-msg.scm-msg-error {
+  border: 1px #990000 solid;
+  color: #990000;
+}
+.scm-msg.scm-msg-info {
+  border: 1px #009900 solid;
+  color: #009900;
+}

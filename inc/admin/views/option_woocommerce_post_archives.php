@@ -16,8 +16,8 @@ if ( ! defined( 'SCM_INC' ) ) {
 $option_post_archives = get_option( 'scm_option_woocommerce_post_archives' );
 
 $option_list = array(
-	'product_category' => __( 'Product category', 'cache-master' ),
-    'product_tag'      => __( 'Product tag', 'cache-master' ),
+	'product_cat' => __( 'Product category', 'cache-master' ),
+    'product_tag' => __( 'Product tag', 'cache-master' ),
 );
 
 ?>

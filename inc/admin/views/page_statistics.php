@@ -90,10 +90,11 @@ $total_rows = 0;
 
 						</tr>
 					</table>
-					</form>
+					<div id="show-form-clear-cache"></div>
 					<?php submit_button( __( 'Confirm Clearing Cache', 'cache-master' ) ); ?>
+					</form>
 				</td>
-				<td class="stats-l">
+				<td class="stats-r">
 					<form action="options.php" method="post">
 						<?php settings_fields( 'scm_setting_group_3' ); ?>
 						<?php do_settings_sections( 'scm_setting_page_3' );  ?>
@@ -104,7 +105,7 @@ $total_rows = 0;
 			</tr>
 		</table>
 	</div>
-	<div style="display: none">
+	<div id="hidden-form-clear-cache" style="display: none">
 		<?php settings_fields( 'scm_setting_group_4' ); ?>
 		<?php do_settings_sections( 'scm_setting_page_4' );  ?>
 	</div>
@@ -136,6 +137,10 @@ $total_rows = 0;
 				var type = $(this).attr('data-type');
 				var html = $(this).html();
 				$('#option-item-' + type).html(html);
+			});
+
+			$('#hidden-form-clear-cache').find('input[type=hidden]').each(function() {
+				$(this).appendTo('#show-form-clear-cache');
 			});
 		});
 	})(jQuery);

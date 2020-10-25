@@ -49,13 +49,13 @@ function scm_get_cache_type_list( $get_key = false ) {
 		'homepage'         => __( 'Homepage', 'cache-master' ),
 		'post'             => __( 'Post', 'cache-master' ),
 		'page'             => __( 'Page', 'cache-master' ),
-		'category'         => __( 'Category', 'cache-master' )    . $archive_note,
-		'tag'              => __( 'Tag', 'cache-master' )         . $archive_note,
-		'date'             => __( 'Date', 'cache-master' )        . $archive_note,
-		'author'           => __( 'Author', 'cache-master' )      . $archive_note,
-		'product'          => __( 'Product', 'cache-master' )     . $woocommerce_note,
-		'product_tag'      => __( 'Product tag', 'cache-master' ) . $woocommerce_note . $archive_note,
-		'product_category' => __( 'Product category', 'cache-master' ) . $woocommerce_note . $archive_note,
+		'category'         => __( 'Category', 'cache-master' )         . $archive_note,
+		'tag'              => __( 'Tag', 'cache-master' )              . $archive_note,
+		'date'             => __( 'Date', 'cache-master' )             . $archive_note,
+		'author'           => __( 'Author', 'cache-master' )           . $archive_note,
+		'product'          => __( 'Product', 'cache-master' )          . $woocommerce_note,
+		'product_tag'      => __( 'Product tag', 'cache-master' )      . $woocommerce_note . $archive_note,
+		'product_cat'      => __( 'Product category', 'cache-master' ) . $woocommerce_note . $archive_note,
 		'uncategorised'    => __( 'Uncategorised', 'cache-master' ),
 	);
 
@@ -75,135 +75,79 @@ function scm_get_cache_type_list( $get_key = false ) {
  */
 function scm_test_driver( $type = '' ) {
 
-	if ( 'mysql' === $type ) {
-		if ( class_exists( 'PDO' ) ) {
-			$db = array(
+	$advanced_settings = array();
+
+	switch ( $type ) {
+		case 'mysql':
+			$setting = array(
 				'host'    => DB_HOST,
 				'dbname'  => DB_NAME,
 				'user'    => DB_USER,
 				'pass'    => DB_PASSWORD,
 				'charset' => DB_CHARSET,
 			);
+			break;
 
-			try {
-				new \PDO(
-					'mysql:host=' . $db['host'] . ';dbname=' . $db['dbname'] . ';charset=' . $db['charset'],
-					$db['user'],
-					$db['pass']
-				);
-				return true;
-			} catch( \PDOException $e ) {
+		case 'file':
+		case 'sqlite':
+			$setting = array(
+				'storage' => scm_get_upload_dir() . '/' . $type . '_driver',
+			);
+			break;
 
+		case 'redis':
+			$setting = array(
+				'host' => '127.0.0.1',
+				'port' =>  6379,
+			);
+
+			$advanced_settings = get_option( 'scm_option_advanced_driver_redis' );
+			break;
+
+		case 'mongo':
+			$setting = array(
+				'host' => '127.0.0.1',
+				'port' =>  27017,
+			);
+
+			$advanced_settings = get_option( 'scm_option_advanced_driver_mongodb' );
+			break;
+
+		case 'memcache':
+		case 'memcached':
+			$setting = array(
+				'host' => '127.0.0.1',
+				'port' =>  11211,
+			);
+
+			$advanced_settings = get_option( 'scm_option_advanced_driver_memcached' );
+			break;
+
+		case 'apc':
+		case 'apcu':
+		case 'wincache':
+			$setting = array();
+			break;
+	}
+
+	if ( ! empty( $advanced_settings ) ) {
+		$setting = $advanced_settings;
+
+		foreach ( $setting as $k => $v ) {
+			if ( is_numeric( $v ) ) {
+				$setting[ $k ] = (int) $v;
 			}
-		}
-	} elseif ( 'sqlite' === $type ) {
-
-		$sqlite_dir = scm_get_upload_dir() . '/sqlite_driver';
-		$sqlite_file_path = $sqlite_dir . '/cache_data.sqlite3';
-
-		if ( ! file_exists( $sqlite_file_path ) ) {
-			if ( ! is_dir( $sqlite_dir ) ) {
-				wp_mkdir_p( $sqlite_dir );
-			}
-		}
-
-		if ( class_exists( 'PDO' ) ) {
-			try {
-				new \PDO( 'sqlite:' . $sqlite_file_path );
-				return true;
-			} catch( \PDOException $e ) {
-
-			}
-		}
-
-	} elseif ( 'file' === $type ) {
-
-		$file_dir = scm_get_upload_dir() . '/file_driver';
-
-		if ( ! is_dir( $file_dir ) ) {
-			wp_mkdir_p( $file_dir );
-		}
-
-		if ( wp_is_writable( $file_dir ) ) {
-			return true;
-		}
-
-	} elseif ( 'redis' === $type ) {
-		if ( extension_loaded( 'redis' ) ) {
-			try {
-				$redis = new \Redis();
-				$redis->connect( '127.0.0.1', 6379 );
-				return true;
-			} catch( \RedisException $e ) {
-
-			}
-		}
-
-	} elseif ( 'mongo' === $type ) {
-		if ( extension_loaded( 'mongodb' ) ) {
-			try {
-				$command = 'mongodb://127.0.0.1:27017/test';
-
-				$mongo = new \MongoDB\Driver\Manager( $command );
-
-				$filter = ['_id' => 'test_key',];
-				$option = [];
-		
-				$query = new \MongoDB\Driver\Query( $filter, $option );
-				$cursor = $mongo->executeQuery( 'test.cache_data', $query );
-		
-				return true;
-			} catch( \RedisException $e ) {
-
-			}
-		}
-
-	} elseif ( 'apc' === $type ) {
-		if ( function_exists( 'apc_fetch' ) ) {
-			return true;
-		}
-
-	} elseif ( 'apcu' === $type ) {
-		if ( function_exists( 'apcu_fetch' ) ) {
-			return true;
-		}
-
-	} elseif ( 'memcache' === $type ) {
-		if ( extension_loaded( 'memcache' ) ) {
-			try {
-				$memcache = new \Memcache();
-				$memcache->addServer(
-					'127.0.0.1',
-					11211,
-					true,
-					1
-				);
-				return true;
-			} catch ( \Exception $e ) {
-				
-			}
-		}
-
-	} elseif ( 'memcached' === $type ) {
-		if (extension_loaded('memcached')) {
-			try {
-				$memcached = new \Memcached();
-				$memcached->addServer(
-					'127.0.0.1',
-					11211,
-					1
-				);
-				return true;
-			} catch ( \Exception $e ) {
-				
-			}
-		}
-
-	} elseif ( 'wincache' === $type ) {
-		if ( function_exists( 'wincache_ucache_get' ) ) {
-			return true;
 		}
 	}
+
+	try {
+		$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
+		$driver->set( 'foo', 'bar', 300 );
+		if ( 'bar' === $driver->get( 'foo' ) ) {
+			$driver->delete( 'foo' );
+			return true;
+		}
+	} catch( \Exception $e ) {}
 
 	return false;
 }
@@ -228,8 +172,6 @@ if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
     scm_run_expert_mode( array(
         'plugin_dir'        => '<?php echo rtrim( SCM_PLUGIN_DIR, '/' ); ?>',
         'plugin_upload_dir' => '<?php echo rtrim( scm_get_upload_dir(), '/' ); ?>',
-        'site_url'          => '<?php echo rtrim( get_site_url(), '/' ); ?>',
-        'cache_driver_type' => '<?php echo get_option( 'scm_option_driver' ); ?>',
     ) );
 
     /* END - Blog ID: <?php echo get_current_blog_id(); ?> */
@@ -319,4 +261,34 @@ function scm_clear_all_cache() {
 	}
 
 	return $i;
+}
+
+/**
+ * Save the settings into a JSON file.
+ *
+ * @param array $settings The setting.
+ *
+ * @return void
+ */
+function scm_update_config( $setting ) {
+
+	$config  = get_option( 'scm_config', array() );
+	$default = scm_get_default_config();
+
+	foreach ( $default as $key => $value ) {
+		if ( isset( $setting[ $key ] ) ) {
+			$config[ $key ] = $setting[ $key ];
+		}
+
+		if ( ! isset( $config[ $key ] ) ) {
+			$config[ $key ] = $value;
+		}
+	}
+
+	update_option( 'scm_config', $config );
+
+	$file = scm_get_config_path();
+	$content = json_encode( $config, JSON_PRETTY_PRINT );
+
+    @file_put_contents( $file, $content );
 }
