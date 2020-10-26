@@ -45,10 +45,25 @@ class Cache_Master {
 	public $data_type = '';
 
 	/**
+	 * Configuation from JSON file.
+	 *
+	 * @var array
+	 */
+	public $config = array();
+
+	/**
+	 * Is ignored or not?
+	 *
+	 * @var boolean
+	 */
+	public $ignore = true;
+
+	/**
 	 * Constructer.
 	 */
 	public function __construct() {
 		$this->driver = scm_driver_factory( get_option( 'scm_option_driver' ) );
+		$this->config = scm_get_config_data();
 	}
 
 	/**
@@ -65,29 +80,7 @@ class Cache_Master {
 			return;
 		}
 
-		// BEGIN - Ignore outputting cache.
-
-		$uri    = $this->get_request_uri();
-		$config = scm_get_config_data();
-
-		if ( true === $config['exclusion']['enable'] ) {
-			foreach ( $config['exclusion']['excluded_list'] as $ignored_url ) {
-				if ( strpos( $uri, $ignored_url ) === 0 ) {
-					return;
-				}
-			}
-		}
-
-		if ( true === $config['woocommerce']['enable'] ) {		
-			if ( isset( $_POST['add-to-cart'] ) && is_numeric( $_POST['add-to-cart'] ) ) {
-				return;
-			}
-			if ( ! empty( $_COOKIE['woocommerce_items_in_cart'] ) ) {
-				return;
-			}
-		}
-
-		// END - Ignore outputting cache.
+		$uri = $this->get_request_uri();
 
 		$this->cache_key = md5( $uri );
 
@@ -223,7 +216,7 @@ class Cache_Master {
 	 */
 	public function ob_start() {
 
-		if ( $this->is_cache_visible() ) {
+		if ( $this->is_cache_visible() && ! $this->is_ignore() ) {
 
 			$cached_content = $this->driver->get( $this->cache_key );
 
@@ -273,7 +266,7 @@ class Cache_Master {
 		$cache_content = $content;
 		$debug_message = $this->debug_message( 'ob_stop' );
 
-		if ( $this->is_cache ) {
+		if ( $this->is_cache && ! $this->is_ignore() ) {
 			$ttl = (int) get_option( 'scm_option_ttl' );
 
 			$cache_content .= $debug_message;
@@ -680,8 +673,14 @@ class Cache_Master {
 				<div class="scm-td">
 					<span class="scm-img scm-img-1" title="' . esc_attr( __( 'Cache status powered by Cache Master plugin', 'cache-master' ) ) . '">' . scm_get_svg_icon( 'status' ) . '</span>
 					<span class="scm-text">' .  __( 'Cache status', 'cache-master' ) . ': </span>
-					<span class="scm-value">
-						<span class="scm-field-cache-status">-</span>
+					<span class="scm-value">';
+
+					if ( $this->ignore ) {
+						$html .= '<span>' . __( 'Ignore', 'cache-master' ) . '</span>';
+					} else {
+						$html .= '<span class="scm-field-cache-status">-</span>';
+					}
+		$html .= '
 					</span>
 				</div>
 				<div class="scm-td">
@@ -708,5 +707,38 @@ class Cache_Master {
 			</div>';
 		
 		return $html;
+	}
+
+	/**
+	 * Check if current page should be ignored or not.
+	 *
+	 * @return bool
+	 */
+	private function is_ignore() {
+		$uri = $this->get_request_uri();
+
+		if ( true === $this->config['exclusion']['enable'] ) {
+			foreach ( $this->config['exclusion']['excluded_list'] as $ignored_url ) {
+				if ( strpos( $uri, $ignored_url ) === 0 ) {
+					return true;
+				}
+			}
+		}
+
+		if ( true === $this->config['woocommerce']['enable'] ) {	
+			if ( isset( $_POST['add-to-cart'] ) && is_numeric( $_POST['add-to-cart'] ) ) {
+				return true;
+			}
+			if ( ! empty( $_COOKIE['woocommerce_items_in_cart'] ) ) {
+				return true;
+			}
+			if ( isset( $_GET['wc-ajax'] ) ) {
+				return true;
+			}
+		}
+
+		$this->ignore = false;
+
+		return false;
 	}
 }

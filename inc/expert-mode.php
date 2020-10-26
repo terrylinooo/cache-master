@@ -86,6 +86,9 @@ function scm_run_expert_mode( $args ) {
 		if ( ! empty( $_COOKIE['woocommerce_items_in_cart'] ) ) {
 			return;
 		}
+		if ( isset( $_GET['wc-ajax'] ) ) {
+			return;
+		}
 	}
 
 	// The cache key.
