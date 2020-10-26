@@ -98,29 +98,6 @@ function scm_get_config_data() {
 }
 
 /**
- * Get default configuation.
- *
- * @return void
- */
-function scm_get_default_config() {
-
-	return array(
-		'cache_driver'             => 'file',
-		'driver_advanced_settings' => array(),
-		'site_url'                 => rtrim( get_site_url(), '/' ),
-	
-		'woocommerce' => array(
-			'enable' => false,
-		),
-
-		'exclusion' => array(
-			'enable'        => false,
-			'excluded_list' => array(),
-		),
-	);
-}
-
-/**
  * Set channel Id.
  *
  * @return void
@@ -257,6 +234,32 @@ function scm_get_svg_icon( $type ) {
 	}
 
 	return $svg;
+}
+
+/**
+ * Get default configuation.
+ * 
+ * This function is also used in expert mode.
+ *
+ * @return void
+ */
+function scm_get_default_config() {
+
+	return array(
+		'cache_driver'             => 'file',
+		'html_debug_comment'       => true,
+		'driver_advanced_settings' => array(),
+		'site_url'                 => '',
+	
+		'woocommerce' => array(
+			'enable' => false,
+		),
+
+		'exclusion' => array(
+			'enable'        => false,
+			'excluded_list' => array(),
+		),
+	);
 }
 
 /**

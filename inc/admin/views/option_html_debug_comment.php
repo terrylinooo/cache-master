@@ -18,14 +18,14 @@ $option_html_debug_comment = get_option( 'scm_option_html_debug_comment', 'yes' 
 
 <div>
 	<div class="scm-option-item">
-		<input type="radio" name="scm_option_html_debug_comment" id="cache-master-html-debug-comment-option-enable" value="enable" 
+		<input type="radio" name="scm_option_html_debug_comment" id="cache-master-html-debug-comment-option-enable" value="yes" 
 			<?php checked( $option_html_debug_comment, 'yes' ); ?>>
 		<label for="cache-master-html-debug-comment-option-enable">
 			<?php _e( 'Yes', 'cache-master' ); ?><br />
 		<label>
 	</div>
 	<div class="scm-option-item">
-		<input type="radio" name="scm_option_html_debug_comment" id="cache-master-html-debug-comment-option-disable" value="disable" 
+		<input type="radio" name="scm_option_html_debug_comment" id="cache-master-html-debug-comment-option-disable" value="no" 
 			<?php checked( $option_html_debug_comment, 'no' ); ?>>
 		<label for="cache-master-html-debug-comment-option-disable">
 			<?php _e( 'No', 'cache-master' ); ?>

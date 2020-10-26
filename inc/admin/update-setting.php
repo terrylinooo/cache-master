@@ -19,6 +19,7 @@ $register_general_action = array(
 	'scm_option_driver',
 	'scm_option_expert_mode_status',
 	'scm_option_clear_cache',
+	'scm_option_html_debug_comment',
 );
 
 foreach ( $register_general_action as $option ) {
@@ -35,7 +36,6 @@ $register_clear_cache_action = array(
 	'scm_option_benchmark_widget_display',
 	'scm_option_benchmark_footer_text',
 	'scm_option_benchmark_footer_text_display',
-	'scm_option_html_debug_comment',
 );
 
 foreach ( $register_clear_cache_action as $option ) {
@@ -124,6 +124,26 @@ function scm_update_scm_option_expert_mode_status() {
 			unlink( $checkpoint );
 		}
 	}
+}
+
+/**
+ * Update configuration file when changing Debug Comment option.
+ *
+ * @return void
+ */
+function scm_update_scm_option_html_debug_comment() {
+	$status = get_option( 'scm_option_html_debug_comment', true );
+
+	if ( 'no' === $status ) {
+		$setting['html_debug_comment'] = false;
+	}
+
+	if ( 'yes' === $status ) {
+		$setting['html_debug_comment'] = true;
+	}
+
+	scm_update_config( $setting );
+	scm_clear_all_cache();
 }
 
 /**
@@ -225,7 +245,7 @@ function scm_update_exclusion() {
  * @return void
  */
 function scm_update_woocommerce() {
-	$status     = get_option( 'scm_option_woocommerce_status' );
+	$status = get_option( 'scm_option_woocommerce_status' );
 
 	if ( 'no' === $status ) {
 		$setting['woocommerce']['enable'] = false;

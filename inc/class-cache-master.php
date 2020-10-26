@@ -467,6 +467,16 @@ class Cache_Master {
 		$timer_stop   = $this->wp_timer_stop();
 		$memory_usage = $this->get_memory_usage();
 		$date         = $this->get_date();
+		$stage        = ( $position === 'ob_start' ) ? 'after' : 'before';
+
+		scm_variable_stack( 'now',  $date, $stage );
+		scm_variable_stack( 'memory_usage',  $memory_usage, $stage );
+		scm_variable_stack( 'sql_queries',  $sql_queries, $stage );
+		scm_variable_stack( 'page_generation_time',  $timer_stop, $stage );
+
+		if ( 'no' === get_option( 'scm_option_html_debug_comment' ) ) {
+			return '';
+		}
 
 		switch ( $position ) {
 			case 'ob_start':
@@ -478,11 +488,6 @@ class Cache_Master {
 				$this->msg( sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $timer_stop ) );
 				$this->msg();
 				$this->msg( '//-->' );
-
-				scm_variable_stack( 'now',  $date, 'after' );
-				scm_variable_stack( 'memory_usage',  $memory_usage, 'after' );
-				scm_variable_stack( 'sql_queries',  $sql_queries, 'after' );
-				scm_variable_stack( 'page_generation_time',  $timer_stop, 'after' );
 				break;
 
 			case 'ob_stop':
@@ -499,11 +504,6 @@ class Cache_Master {
 				$this->msg( sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $memory_usage ) );
 				$this->msg( sprintf( __( 'SQL queries: %s', 'cache-master' ), $sql_queries ) );
 				$this->msg( sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $timer_stop ) );
-
-				scm_variable_stack( 'time_to_cache',  $date, 'before' );
-				scm_variable_stack( 'memory_usage',  $memory_usage, 'before' );
-				scm_variable_stack( 'sql_queries',  $sql_queries, 'before' );
-				scm_variable_stack( 'page_generation_time',  $timer_stop, 'before' );
 				break;
 		}
 
@@ -646,29 +646,6 @@ class Cache_Master {
 			return mb_strlen( $content, '8bit' );
 		}
 		return strlen( $content );
-	}
-
-	/**
-	 * Get widget status.
-	 *
-	 * @return void
-	 */
-	private function is_active_cache_master_widget() {
-
-		static $status;
-
-		if ( isset( $status ) ) {
-			return $status;
-		}
-
-		$status = false;
-
-		if ( 'yes' === get_option( 'scm_option_benchmark_widget' ) ) {
-			if ( is_active_widget( false, false, 'scm_benchmark', true ) ) {
-				$status = true;
-			}
-		}
-		return $status;
 	}
 
 	/**

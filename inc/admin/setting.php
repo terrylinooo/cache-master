@@ -137,7 +137,7 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Debug Comment', 'cache-master' ),
-					'callback' => 'scm_cb_html_debug_comment_option',
+					'callback' => 'scm_cb_html_debug_comment',
 				),
 				array(
 					'title'    => __( 'Uninstall', 'cache-master' ),
@@ -590,6 +590,6 @@ function scm_cb_option_excluded_list() {
  *
  * @return void
  */
-function scm_cb_html_debug_comment_option() {
+function scm_cb_html_debug_comment() {
 	echo scm_load_view( 'option_html_debug_comment' );
 }

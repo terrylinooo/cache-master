@@ -283,6 +283,10 @@ function scm_update_config( $setting ) {
 		}
 	}
 
+	if ( empty( $config['site_url'] ) ) {
+		$config['site_url'] = rtrim( get_site_url(), '/' );
+	}
+
 	update_option( 'scm_config', $config );
 
 	$file = scm_get_config_path();

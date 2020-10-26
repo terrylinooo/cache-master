@@ -34,7 +34,6 @@ function scm_run_expert_mode( $args ) {
 
 	$plugin_dir        = rtrim( $args['plugin_dir'], '/' );
 	$plugin_upload_dir = rtrim( $args['plugin_upload_dir'], '/' );
-	
 
 	// Make sure that Cache Master exists.
 	if ( ! file_exists( $plugin_dir . '/cache-master.php' ) ) {
@@ -54,13 +53,25 @@ function scm_run_expert_mode( $args ) {
 	$content = file_get_contents( $plugin_upload_dir . '/config.json' );
 	$config  = json_decode( $content, true );
 
-	$site_url     = rtrim( $config['site_url'], '/' ) . '/';
-	$site_path    = parse_url( $site_url, PHP_URL_PATH );
+	$site_path = '/';
+
+	if ( ! empty( $config['site_url'] ) ) {
+		$site_url  = rtrim( $config['site_url'], '/' ) . '/';
+		$site_path = parse_url( $site_url, PHP_URL_PATH );
+	}
+
 	$request_path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
+	$driver_type       = $config['cache_driver']               ?? 'file';
+	$is_exclusion      = $config['exclusion']['enable']        ?? false;
+	$excluded_list     = $config['exclusion']['excluded_list'] ?? array();
+	$is_woocommerce    = $config['woocommerce']['enable']      ?? false;
+	$advanced_settings = $config['driver_advanced_settings']   ?? array();
+	$debug_comment     = $config['html_debug_comment']         ?? true;
+
 	// Ignore excluded list...
-	if ( true === $config['exclusion']['enable'] ) {
-		foreach ( $config['exclusion']['excluded_list'] as $ignored_url ) {
+	if ( $is_exclusion ) {
+		foreach ( $excluded_list as $ignored_url ) {
 			if ( strpos( $request_path, $ignored_url ) === 0 ) {
 				return;
 			}
@@ -68,7 +79,7 @@ function scm_run_expert_mode( $args ) {
 	}
 
 	// Check if WooCommerce support is enable.
-	if ( true === $config['woocommerce']['enable'] ) {		
+	if ( $is_woocommerce ) {		
 		if ( isset( $_POST['add-to-cart'] ) && is_numeric( $_POST['add-to-cart'] ) ) {
 			return;
 		}
@@ -76,9 +87,6 @@ function scm_run_expert_mode( $args ) {
 			return;
 		}
 	}
-
-	// The cache type.
-	$type = $config['cache_driver'];
 
 	// The cache key.
 	$key = md5( $request_path );
@@ -90,7 +98,7 @@ function scm_run_expert_mode( $args ) {
 		include_once( $plugin_dir . '/vendor/autoload.php' );
 		include_once( $plugin_dir . '/inc/helpers.php' );
 
-		switch ( $type )  {
+		switch ( $driver_type )  {
 			case 'mysql':
 				$setting = array(
 					'host'    => DB_HOST,
@@ -106,7 +114,7 @@ function scm_run_expert_mode( $args ) {
 			case 'sqlite':
 			case 'file':
 				$setting = array(
-					'storage' => $plugin_upload_dir . '/' . $type . '_driver',
+					'storage' => $plugin_upload_dir . '/' . $driver_type . '_driver',
 				);
 				break;
 
@@ -131,8 +139,8 @@ function scm_run_expert_mode( $args ) {
 				$setting = array();
 		}
 
-		if ( ! empty( $config['driver_advanced_settings'] ) ) {
-			$setting = $config['driver_advanced_settings'];
+		if ( ! empty( $advanced_settings ) ) {
+			$setting = $advanced_settings;
 	
 			foreach ( $setting as $k => $v ) {
 				if ( is_numeric( $v ) ) {
@@ -141,7 +149,7 @@ function scm_run_expert_mode( $args ) {
 			}
 		}
 
-		$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
+		$driver = new \Shieldon\SimpleCache\Cache( $driver_type, $setting );
 
 		$cached_content = $driver->get( $key );
 
@@ -150,30 +158,29 @@ function scm_run_expert_mode( $args ) {
 		$memory_usage = round( $memory_usage, 4 );
 		
 		if ( ! empty( $cached_content ) ) {
-
-			$date = date( 'Y-m-d H:i:s' );
-
+			$date            = date( 'Y-m-d H:i:s' );
 			$microtime_after = microtime(true);
+			$page_speed      = round( $microtime_after - $microtime_before, 3 );
 
-			$page_speed = round( $microtime_after - $microtime_before, 3 );
-		   
-			$debug_message .= "\n" . '....... ' . 'After' . ' .......' . "\n\n";
+			if ( $debug_comment ) {
+				$debug_message  = '';
+				$debug_message .= "\n" . '....... ' . 'After' . ' .......' . "\n\n";
+				$debug_message .= sprintf( 'Now: %s', $date ) . "\n";
+				$debug_message .= sprintf( 'Memory usage: %s MB', $memory_usage ) . "\n";
+				$debug_message .= sprintf( 'SQL queries: %s', $sql_queries ) . "\n";
+				$debug_message .= sprintf( 'Page generated in %s seconds.', $page_speed ) . "\n\n";
+				$debug_message .= '(Running as Expert Mode)' . "\n";
+				$debug_message .= "\n//-->";
 
-			$debug_message .= sprintf( 'Now: %s', $date ) . "\n";
-			$debug_message .= sprintf( 'Memory usage: %s MB', $memory_usage ) . "\n";
-			$debug_message .= sprintf( 'SQL queries: %s', $sql_queries ) . "\n";
-			$debug_message .= sprintf( 'Page generated in %s seconds.', $page_speed ) . "\n\n";
-			$debug_message .= '(Running as Expert Mode)' . "\n";
-			$debug_message .= "\n//-->";
-
-			$cached_content .= $debug_message;
+				$cached_content .= $debug_message;
+			}
 
 			scm_variable_stack( 'now',  $date, 'after' );
 			scm_variable_stack( 'memory_usage',  $memory_usage, 'after' );
 			scm_variable_stack( 'sql_queries',  $sql_queries, 'after' );
 			scm_variable_stack( 'page_generation_time',  $page_speed, 'after' );
 
-			// This line must be at after debug_message.
+			// This line must be at after scm_variable_stack.
 			$cached_content = str_replace(
 				'</body>',
 				"\n" . scm_javascript() . "\n" . '</body>',
