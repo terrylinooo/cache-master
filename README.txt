@@ -123,8 +123,9 @@ GNU General Public License for more details.
 
 = 2.0.0 (10/27/2020)
 
-* Support to WooCommerce plguin.
+* Support to WooCommerce plugin.
 * Add setting pages - WooCommerce, Exclusion,  Advanced settings.
+* Add an option - HTML debug comment.
 * Improve cache statistic page.
 * Update translation strings for zh_TW, zh_CN.
 * Fix issues.

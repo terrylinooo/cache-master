@@ -27,33 +27,61 @@ Cache Master is an extremely light-weight and high-performace cache plugin that 
 
 ## Screenshots
 
-![WordPress Cache Plugin](./inc/assets/images/screenshot-1.png)
+![WordPress Cache Plugin](./inc/assets/images/screenshots/screenshot-1.png)
 
-Main setting page.
+Setting page - Basic.
 
-![Cache Plugin for WordPress](./inc/assets/images/screenshot-4.png)
+![Cache Plugin for WordPress](./inc/assets/images/screenshots/screenshot-2.png)
 
-Main setting page (bottom)
+Setting page - Basic (Bottom).
 
-![Best WordPress Cache Plugin](./inc/assets/images/screenshot-5.png)
+![Best WordPress Cache Plugin](./inc/assets/images/screenshots/screenshot-3.png)
 
-Expert Mode setting page.
+Setting page - Advanced.
 
-![Simplest WordPress Cache Plugin](./inc/assets/images/screenshot-6.png)
+![Simplest WordPress Cache Plugin](./inc/assets/images/screenshots/screenshot-4.png)
 
-Cache statistics setting page.
+Setting page - Perferences.
+
+![Best WordPress Cache Plugin](./inc/assets/images/screenshots/screenshot-5.png)
+
+Setting page - Benchmark.
+
+![MySQL WordPress Cache Plugin](./inc/assets/images/screenshots/screenshot-6.png)
+
+Setting page - WooCommerce.
+
+![NoSQL WordPress Cache Plugin](./inc/assets/images/screenshots/screenshot-7.png)
+
+Setting page - Exclusion.
+
+![Memcache WordPress Cache Plugin](./inc/assets/images/screenshots/screenshot-8.png)
+
+Setting page - Expert mode.
+
+![Memcached WordPress Cache Plugin](./inc/assets/images/screenshots/screenshot-9.png)
+
+Setting page - Cache statistics.
+
+![Redis WordPress Cache Plugin](./inc/assets/images/screenshots/screenshot-10.png)
+
+Setting page - About author.
+
+![MongoDB WordPress Cache Plugin](./inc/assets/images/screenshots/screenshot-11.png)
+
+Front page - Benchmark (footer text)
 
 #### Debug message
 
 A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching.
 
 (1)
-![WordPress cache plugin](./inc/assets/images/screenshot-2.png)
+![WordPress cache plugin](./inc/assets/images/screenshots/screenshot-12.png)
 
 Normal mode.
 
 (2)
-![WordPress cache plugin](./inc/assets/images/screenshot-3.png)
+![WordPress cache plugin](./inc/assets/images/screenshots/screenshot-13.png)
 
 Expert mode.
 
