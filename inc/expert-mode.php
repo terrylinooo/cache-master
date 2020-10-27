@@ -62,11 +62,10 @@ function scm_run_expert_mode( $args ) {
 
 	$request_path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
-	$driver_type       = $config['cache_driver']               ?? 'file';
-	$is_woocommerce    = $config['woocommerce']['enable']      ?? false;
-	$advanced_settings = $config['driver_advanced_settings']   ?? array();
-	$debug_comment     = $config['html_debug_comment']         ?? true;
-
+	$driver_type          = $config['cache_driver']                      ?? 'file';
+	$is_woocommerce       = $config['woocommerce']['enable']             ?? false;
+	$advanced_settings    = $config['driver_advanced_settings']          ?? array();
+	$debug_comment        = $config['html_debug_comment']                ?? true;
 	$is_exclusion         = $config['exclusion']['enable']               ?? false;
 	$excluded_list        = $config['exclusion']['excluded_list']        ?? array();
 	$excluded_get_vars    = $config['exclusion']['excluded_get_vars']    ?? array();

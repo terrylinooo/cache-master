@@ -256,8 +256,11 @@ function scm_get_default_config() {
 		),
 
 		'exclusion' => array(
-			'enable'        => false,
-			'excluded_list' => array(),
+			'enable'             => false,
+			'excluded_list'      => array(),
+			'excluded_get_vars'  => array(),
+			'excluded_post_vars' => array(),
+			'excluded_cookie'    => array(),
 		),
 	);
 }
