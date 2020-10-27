@@ -268,7 +268,7 @@ function scm_get_default_config() {
  * This function is also used in expert mode.
  *
  * @param string      $key      The key of the field.
- * @param string|inx  $value    The value of the field.
+ * @param string|int  $value    The value of the field.
  * @param string      $poistion The position.
  *
  * @return void
@@ -324,6 +324,7 @@ function scm_javascript() {
 					$(".scm-field-sql-queries").html(scm_text_sql_queries);
 					$(".scm-field-page-generation-time").html(scm_text_page_generation_time);
 					$(".cache-master-benchmark-report").attr("style", "");
+					$(".cache-master-plugin-widget-wrapper").attr("style", "");
 				});
 			})(jQuery);
 		</script>

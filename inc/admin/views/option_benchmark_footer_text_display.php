@@ -42,5 +42,5 @@ $option_benchmark_footer_text_display = get_option( 'scm_option_benchmark_footer
 <p><em><?php _e( 'Would you like to use text or icon as the label name when display benchmark results?', 'cache-master' ); ?></em></p>
 <p><em><?php _e( 'Example', 'cache-master' ); ?>:</em></p>
 <div class="scm-option-example">
-    <img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/sample-benchmark-footer-3.png">
+    <img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/sample-benchmark-footer.png">
 </div>

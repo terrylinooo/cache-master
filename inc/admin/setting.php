@@ -82,6 +82,9 @@ function scm_settings() {
 		9 => array(
 			'exclusion_status',
 			'excluded_list',
+			'excluded_get_vars',
+			'excluded_post_vars',
+			'excluded_cookie_vars',
 		),
 	);
 
@@ -101,15 +104,21 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Caching Status', 'cache-master' ),
-					'callback' => 'scm_cb_caching_status',
+					'callback' => function() {
+						echo scm_load_view( 'option_caching_status' );
+					},
 				),
 				array(
 					'title'    => __( 'Cache Driver', 'cache-master' ),
-					'callback' => 'scm_cb_driver',
+					'callback' => function() {
+						echo scm_load_view( 'option_driver' );
+					},
 				),
 				array(
 					'title'    => __( 'Time to Live', 'cache-master' ),
-					'callback' => 'scm_cb_ttl',
+					'callback' => function() {
+						echo scm_load_view( 'option_ttl' );
+					},
 				),
 			),
 		),
@@ -121,11 +130,15 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Guests', 'cache-master' ),
-					'callback' => 'scm_cb_visibility_guest',
+					'callback' => function() {
+						echo scm_load_view( 'option_visibility_guest' );
+					},
 				),
 				array(
 					'title'    => __( 'Logged-in Users', 'cache-master' ),
-					'callback' => 'scm_cb_visibility_loggin_user',
+					'callback' => function() {
+						echo scm_load_view( 'option_visibility_login_user' );
+					},
 				),
 			),
 		),
@@ -137,11 +150,15 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Debug Comment', 'cache-master' ),
-					'callback' => 'scm_cb_html_debug_comment',
+					'callback' => function() {
+						echo scm_load_view( 'option_html_debug_comment' );
+					},
 				),
 				array(
 					'title'    => __( 'Uninstall', 'cache-master' ),
-					'callback' => 'scm_cb_uninstall_option',
+					'callback' => function() {
+						echo scm_load_view( 'option_uninstall' );
+					},
 				),
 			),
 		),
@@ -155,15 +172,21 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Post Types', 'cache-master' ),
-					'callback' => 'scm_cb_post_types',
+					'callback' => function() {
+						echo scm_load_view( 'option_post_types' );
+					},
 				),
 				array(
 					'title'    => __( 'Homepage', 'cache-master' ),
-					'callback' => 'scm_cb_post_homepage',
+					'callback' => function() {
+						echo scm_load_view( 'option_post_homepage' );
+					},
 				),
 				array(
 					'title'    => __( 'Archive Pages', 'cache-master' ),
-					'callback' => 'scm_cb_post_archives',
+					'callback' => function() {
+						echo scm_load_view( 'option_post_archives' );
+					},
 				),
 			),
 		),
@@ -176,15 +199,21 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Redis', 'cache-master' ),
-					'callback' => 'scm_cb_advanced_cache_driver_redis',
+					'callback' => function() {
+						echo scm_load_view( 'option_advanced_cache_driver_redis' );
+					},
 				),
 				array(
 					'title'    => __( 'Memcached', 'cache-master' ),
-					'callback' => 'scm_cb_advanced_cache_driver_memcached',
+					'callback' => function() {
+						echo scm_load_view( 'option_advanced_cache_driver_memcached' );
+					},
 				),
 				array(
 					'title'    => __( 'MongoDB', 'cache-master' ),
-					'callback' => 'scm_cb_advanced_cache_driver_mongodb',
+					'callback' => function() {
+						echo scm_load_view( 'option_advanced_cache_driver_mongodb' );
+					},
 				),
 			),
 		),
@@ -197,7 +226,9 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Enable', 'cache-master' ),
-					'callback' => 'scm_cb_option_woocommerce_status',
+					'callback' => function() {
+						echo scm_load_view( 'option_woocommerce_status' );
+					},
 				),
 			),
 		),
@@ -209,11 +240,15 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Post Types', 'cache-master' ),
-					'callback' => 'scm_cb_option_woocommerce_post_types',
+					'callback' => function() {
+						echo scm_load_view( 'option_woocommerce_post_types' );
+					},
 				),
 				array(
 					'title'    => __( 'Archive Pages', 'cache-master' ),
-					'callback' => 'scm_cb_option_woocommerce_post_archives',
+					'callback' => function() {
+						echo scm_load_view( 'option_woocommerce_post_archives' );
+					},
 				),
 			),
 		),
@@ -225,7 +260,9 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Payment Complete', 'cache-master' ),
-					'callback' => 'scm_cb_option_woocommerce_event_payment_complete',
+					'callback' => function() {
+						echo scm_load_view( 'option_woocommerce_event_payment_complete' );
+					},
 				),
 			),
 		),
@@ -238,11 +275,33 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Enable', 'cache-master' ),
-					'callback' => 'scm_cb_option_exclusion_status',
+					'callback' => function() {
+						echo scm_load_view( 'option_exclusion_status' );
+					},
 				),
 				array(
-					'title'    => __( 'Excluded List', 'cache-master' ),
-					'callback' => 'scm_cb_option_excluded_list',
+					'title'    => __( 'Excluded URL Path List', 'cache-master' ),
+					'callback' => function() {
+						echo scm_load_view( 'option_excluded_list' );
+					},
+				),
+				array(
+					'title'    => __( 'Excluded $_GET Variables', 'cache-master' ),
+					'callback' => function() {
+						echo scm_load_view( 'option_excluded_get_vars' );
+					},
+				),
+				array(
+					'title'    => __( 'Excluded $_POST Variables', 'cache-master' ),
+					'callback' => function() {
+						echo scm_load_view( 'option_excluded_post_vars' );
+					},
+				),
+				array(
+					'title'    => __( 'Excluded $_COOKIE Variables', 'cache-master' ),
+					'callback' => function() {
+						echo scm_load_view( 'option_excluded_cookie_vars' );
+					},
 				),
 			),
 		),
@@ -255,19 +314,9 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Status', 'cache-master' ),
-					'callback' => 'scm_cb_expert_mode_status',
-				),
-			),
-		),
-
-		array(
-			'title'    => '',
-			'callback' => 'scm_cb_setting_section',
-			'group_id' => 2,
-			'settings' => array(
-				array(
-					'title'    => '',
-					'callback' => '',
+					'callback' => function() {
+						echo scm_load_view( 'option_expert_mode_status' );
+					},
 				),
 			),
 		),
@@ -281,6 +330,9 @@ function scm_settings() {
 				array(
 					'title'    => __( 'Enable', 'cache-master' ),
 					'callback' => 'scm_cb_statistics_status',
+					'callback' => function() {
+						echo scm_load_view( 'option_statistics_status' );
+					},
 				),
 			),
 		),
@@ -292,28 +344,14 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => '',
-					'callback' => 'scm_cb_clear_cache',
+					'callback' => function() {
+						echo scm_load_view( 'option_clear_cache' );
+					},
 				),
 			),
 		),
 
 		// Benchmark settings.
-		array(
-			'title'    => __( 'Widget', 'cache-master' ),
-			'callback' => 'scm_cb_setting_section',
-			'group_id' => 5,
-			'settings' => array(
-				array(
-					'title'    => __( 'Enable', 'cache-master' ),
-					'callback' => 'scm_cb_benchmark_widget',
-				),
-				array(
-					'title'    => __( 'Display', 'cache-master' ),
-					'callback' => 'scm_cb_benchmark_widget_display',
-				),
-			),
-		),
-
 		array(
 			'title'    => __( 'Footer Text', 'cache-master' ),
 			'callback' => 'scm_cb_setting_section',
@@ -321,11 +359,35 @@ function scm_settings() {
 			'settings' => array(
 				array(
 					'title'    => __( 'Enable', 'cache-master' ),
-					'callback' => 'scm_cb_benchmark_footer_text',
+					'callback' => function() {
+						echo scm_load_view( 'option_benchmark_footer_text' );
+					},
 				),
 				array(
 					'title'    => __( 'Display', 'cache-master' ),
-					'callback' => 'scm_cb_benchmark_footer_text_display',
+					'callback' => function() {
+						echo scm_load_view( 'option_benchmark_footer_text_display' );
+					},
+				),
+			),
+		),
+
+		array(
+			'title'    => __( 'Widget', 'cache-master' ),
+			'callback' => 'scm_cb_setting_section',
+			'group_id' => 5,
+			'settings' => array(
+				array(
+					'title'    => __( 'Enable', 'cache-master' ),
+					'callback' => function() {
+						echo scm_load_view( 'option_benchmark_widget' );
+					},
+				),
+				array(
+					'title'    => __( 'Display', 'cache-master' ),
+					'callback' => function() {
+						echo scm_load_view( 'option_benchmark_widget_display' );
+					},
 				),
 			),
 		),
@@ -358,238 +420,4 @@ function scm_settings() {
 
 function scm_cb_setting_section() {
 	echo __( '', 'cache-master' );
-}
-
-/**
- * Setting block - Choose a data driver for cache functionality.
- *
- * @return void
- */
-function scm_cb_driver() {
-	echo scm_load_view( 'option_driver' );
-}
-
-/**
- * Setting block - TTL
- *
- * @return void
- */
-function scm_cb_ttl() {
-	echo scm_load_view( 'option_ttl' );
-}
-
-/**
- * Setting block - Uninstalling option.
- *
- * @return void
- */
-function scm_cb_uninstall_option() {
-	echo scm_load_view( 'option_uninstall' );
-}
-
-/**
- * Setting block - Supported post types.
- *
- * @return void
- */
-function scm_cb_post_types() {
-	echo scm_load_view( 'option_post_types' );
-}
-
-/**
- * Setting block - Cacing status.
- *
- * @return void
- */
-function scm_cb_caching_status() {
-	echo scm_load_view( 'option_caching_status' );
-}
-
-/**
- * Setting block - Expert mode.
- *
- * @return void
- */
-function scm_cb_expert_mode_status() {
-	echo scm_load_view( 'option_expert_mode_status' );
-}
-
-/**
- * Setting block - Homepage
- *
- * @return void
- */
-function scm_cb_post_homepage() {
-	echo scm_load_view( 'option_post_homepage' );
-}
-
-/**
- * Setting block - Archives.
- *
- * @return void
- */
-function scm_cb_post_archives() {
-	echo scm_load_view( 'option_post_archives' );
-}
-
-/**
- * Setting block - The visibility of cache for guests
- *
- * @return void
- */
-function scm_cb_visibility_guest() {
-	echo scm_load_view( 'option_visibility_guest' );
-}
-
-/**
- * Setting block - The visibility of cache for logged-in users.
- *
- * @return void
- */
-function scm_cb_visibility_loggin_user() {
-	echo scm_load_view( 'option_visibility_login_user' );
-}
-
-/**
- * Setting block - Statistic status.
- *
- * @return void
- */
-function scm_cb_statistics_status() {
-	echo scm_load_view( 'option_statistics_status' );
-}
-
-/**
- * Setting block - Clear cache
- *
- * @return void
- */
-function scm_cb_clear_cache() {
-	echo scm_load_view( 'option_clear_cache' );
-}
-
-/**
- * Setting block - Widget
- *
- * @return void
- */
-function scm_cb_benchmark_widget() {
-	echo scm_load_view( 'option_benchmark_widget' );
-}
-
-/**
- * Setting block -Footer text
- *
- * @return void
- */
-function scm_cb_benchmark_footer_text() {
-	echo scm_load_view( 'option_benchmark_footer_text' );
-}
-
-/**
- * Setting block - Widget
- *
- * @return void
- */
-function scm_cb_benchmark_widget_display() {
-	echo scm_load_view( 'option_benchmark_widget_display' );
-}
-
-/**
- * Setting block -Footer text
- *
- * @return void
- */
-function scm_cb_benchmark_footer_text_display() {
-	echo scm_load_view( 'option_benchmark_footer_text_display' );
-}
-
-/**
- * Setting block - Redis drver advanced settings.
- *
- * @return void
- */
-function scm_cb_advanced_cache_driver_redis() {
-	echo scm_load_view( 'option_advanced_cache_driver_redis' );
-}
-
-/**
- * Setting block - Memcached drver advanced settings.
- *
- * @return void
- */
-function scm_cb_advanced_cache_driver_memcached() {
-	echo scm_load_view( 'option_advanced_cache_driver_memcached' );
-}
-
-/**
- * Setting block - MongoDB drver advanced settings.
- *
- * @return void
- */
-function scm_cb_advanced_cache_driver_mongodb() {
-	echo scm_load_view( 'option_advanced_cache_driver_mongodb' );
-}
-
-/**
- * Setting block - WooCommerce - Status
- *
- * @return void
- */
-function scm_cb_option_woocommerce_status() {
-	echo scm_load_view( 'option_woocommerce_status' );
-}
-
-/**
- * Setting block - WooCommerce - Post types.
- *
- * @return void
- */
-function scm_cb_option_woocommerce_post_types() {
-	echo scm_load_view( 'option_woocommerce_post_types' );
-}
-
-/**
- * Setting block - WooCommerce - Post archives.
- *
- * @return void
- */
-function scm_cb_option_woocommerce_post_archives() {
-	echo scm_load_view( 'option_woocommerce_post_archives' );
-}
-
-/**
- * Setting block - WooCommerce - Event - Purchase completed.
- *
- * @return void
- */
-function scm_cb_option_woocommerce_event_payment_complete() {
-	echo scm_load_view( 'option_woocommerce_event_payment_complete' );
-}
-
-/**
- * Setting block - Exclusion - Status
- *
- * @return void
- */
-function scm_cb_option_exclusion_status() {
-	echo scm_load_view( 'option_exclusion_status' );
-}
-
-/**
- * Setting block - WooCommerce - Event - Excluded list.
- *
- * @return void
- */
-function scm_cb_option_excluded_list() {
-	echo scm_load_view( 'option_excluded_list' );
-}
-
-/**
- * Setting block - HTML debug comment.
- *
- * @return void
- */
-function scm_cb_html_debug_comment() {
-	echo scm_load_view( 'option_html_debug_comment' );
 }

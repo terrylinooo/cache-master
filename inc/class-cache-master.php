@@ -52,13 +52,6 @@ class Cache_Master {
 	public $config = array();
 
 	/**
-	 * Is ignored or not?
-	 *
-	 * @var boolean
-	 */
-	public $ignore = true;
-
-	/**
 	 * Constructer.
 	 */
 	public function __construct() {
@@ -75,8 +68,15 @@ class Cache_Master {
 
 		$uri = $this->get_request_uri();
 
+		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ) );
+		add_action( 'login_enqueue_scripts', array( $this, 'front_enqueue_styles' ) );
+
 		// Ignore all .php files.
 		if ( '.php' === substr( $uri, -4 ) ) {
+			return;
+		}
+
+		if ( $this->is_ignore() ) {
 			return;
 		}
 
@@ -87,8 +87,6 @@ class Cache_Master {
 		add_action( 'plugins_loaded', array( $this, 'ob_start' ), 5 );
 		add_action( 'shutdown', array( $this, 'ob_stop' ), 0 );
 		add_action( 'wp', array( $this, 'get_post_data' ), 0 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_styles' ) );
-		add_action( 'login_enqueue_scripts', array( $this, 'front_enqueue_styles' ) );
 	}
 
 	/**
@@ -216,7 +214,7 @@ class Cache_Master {
 	 */
 	public function ob_start() {
 
-		if ( $this->is_cache_visible() && ! $this->is_ignore() ) {
+		if ( $this->is_cache_visible() ) {
 
 			$cached_content = $this->driver->get( $this->cache_key );
 
@@ -234,11 +232,6 @@ class Cache_Master {
 				echo $cached_content;
 				exit;
 			}
-		}
-
-		// Logged-in users will not trigger the cache.
-		if ( is_user_logged_in() ) {
-			return;
 		}
 
 		$this->wp_ob_start();
@@ -266,7 +259,7 @@ class Cache_Master {
 		$cache_content = $content;
 		$debug_message = $this->debug_message( 'ob_stop' );
 
-		if ( $this->is_cache && ! $this->is_ignore() ) {
+		if ( $this->is_cache ) {
 			$ttl = (int) get_option( 'scm_option_ttl' );
 
 			$cache_content .= $debug_message;
@@ -282,7 +275,6 @@ class Cache_Master {
 		);
 
 		echo $content;
-		
 	}
 
 	/**
@@ -673,14 +665,8 @@ class Cache_Master {
 				<div class="scm-td">
 					<span class="scm-img scm-img-1" title="' . esc_attr( __( 'Cache status powered by Cache Master plugin', 'cache-master' ) ) . '">' . scm_get_svg_icon( 'status' ) . '</span>
 					<span class="scm-text">' .  __( 'Cache status', 'cache-master' ) . ': </span>
-					<span class="scm-value">';
-
-					if ( $this->ignore ) {
-						$html .= '<span>' . __( 'Ignore', 'cache-master' ) . '</span>';
-					} else {
-						$html .= '<span class="scm-field-cache-status">-</span>';
-					}
-		$html .= '
+					<span class="scm-value">
+						<span class="scm-field-cache-status">-</span>
 					</span>
 				</div>
 				<div class="scm-td">
@@ -723,6 +709,22 @@ class Cache_Master {
 					return true;
 				}
 			}
+			foreach ( $this->config['exclusion']['excluded_get_vars'] as $var ) {
+				if ( isset( $_GET[ $var ] ) ) {
+					
+					return true;
+				}
+			}
+			foreach ( $this->config['exclusion']['excluded_post_vars'] as $var ) {
+				if ( isset( $_POST[ $var ] ) ) {
+					return true;
+				}
+			}
+			foreach ( $this->config['exclusion']['excluded_cookie_vars'] as $var ) {
+				if ( isset( $_COOKIE[ $var ] ) ) {
+					return true;
+				}
+			}
 		}
 
 		if ( true === $this->config['woocommerce']['enable'] ) {	
@@ -736,8 +738,6 @@ class Cache_Master {
 				return true;
 			}
 		}
-
-		$this->ignore = false;
 
 		return false;
 	}

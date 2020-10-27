@@ -19,26 +19,41 @@ $option_uninstall = get_option( 'scm_option_uninstall' );
 
 if ( 'yes' === $option_uninstall ) {
 
-	delete_option( 'scm_option_driver' );
-	delete_option( 'scm_option_ttl' );
-	delete_option( 'scm_option_post_types' );
-	delete_option( 'scm_option_uninstall' );
-	delete_option( 'scm_option_caching_status' );
-	delete_option( 'scm_option_expert_mode_status' );
-	delete_option( 'scm_option_post_homepage' );
-	delete_option( 'scm_option_post_archives' );
-	delete_option( 'scm_option_visibility_login_user');
-	delete_option( 'scm_option_visibility_guest');
-	delete_option( 'scm_option_statistics_status' );
-	delete_option( 'scm_option_clear_cache' );
-	delete_option( 'scm_option_benchmark_widget' );
-	delete_option( 'scm_option_benchmark_footer_text' );
-	delete_option( 'scm_option_benchmark_widget_display' );
-	delete_option( 'scm_option_benchmark_footer_text_display' );
-	delete_option( 'scm_option_excluded_list' );
-	delete_option( 'scm_option_woocommerce_status' );
-	delete_option( 'scm_option_woocommerce_post_types' );
-	delete_option( 'scm_option_woocommerce_post_taxonomies' );
+	$options = array(
+		'driver',
+		'ttl',
+		'uninstall',
+		'caching_status',
+		'expert_mode_status',
+		'post_homepage',
+		'visibility_login_user',
+		'visibility_guest',
+		'statistics_status',
+		'clear_cache',
+		'benchmark_widget',
+		'benchmark_footer_text',
+		'benchmark_widget_display',
+		'benchmark_footer_text_display',
+		'excluded_list',
+		'excluded_list_filtered',
+		'excluded_get_vars',
+		'excluded_post_vars',
+		'excluded_cookie_vars',
+		'advanced_driver_memcached',
+		'advanced_driver_redis',
+		'advanced_driver_mongodb',
+		'html_debug_comment',
+		'post_types',
+		'post_archives',
+		'woocommerce_status',
+		'woocommerce_post_types',
+		'woocommerce_taxonomies',
+		'woocommerce_event_payment_complete',
+	);
+
+	foreach ( $options as $option ) {
+		delete_option( $option );
+	}
 
 	delete_option( 'scm_last_reset_time' );
 	delete_option( 'scm_version' );

@@ -35,7 +35,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 	</div>
 	<p><?php echo sprintf( __( 'Once you have done things right, if you are using Chome, %s or right click and select "View Source" to vew the HTML source code.', 'cache-master' ), '<code>Ctrl + U</code>' ); ?></p>
 	<div>
-		<img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/screenshot-11.png">	
+		<img src="<?php echo SCM_PLUGIN_URL; ?>inc/assets/images/sample-expert-mode.png">	
 	</div>
 	<p><?php _e( 'You should see the result like this.', 'cache-master' ); ?></p>
 </div>

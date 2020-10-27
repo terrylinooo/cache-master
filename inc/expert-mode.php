@@ -40,7 +40,7 @@ function scm_run_expert_mode( $args ) {
 		return;
 	}
 
-	// Make the "expert mode" is enable.
+	// Make the "expert mode" is enabled.
 	if ( ! file_exists( $plugin_upload_dir . '/expert.lock' ) ) {
 		return;
 	}
@@ -63,11 +63,15 @@ function scm_run_expert_mode( $args ) {
 	$request_path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 
 	$driver_type       = $config['cache_driver']               ?? 'file';
-	$is_exclusion      = $config['exclusion']['enable']        ?? false;
-	$excluded_list     = $config['exclusion']['excluded_list'] ?? array();
 	$is_woocommerce    = $config['woocommerce']['enable']      ?? false;
 	$advanced_settings = $config['driver_advanced_settings']   ?? array();
 	$debug_comment     = $config['html_debug_comment']         ?? true;
+
+	$is_exclusion         = $config['exclusion']['enable']               ?? false;
+	$excluded_list        = $config['exclusion']['excluded_list']        ?? array();
+	$excluded_get_vars    = $config['exclusion']['excluded_get_vars']    ?? array();
+	$excluded_post_vars   = $config['exclusion']['excluded_post_vars']   ?? array();
+	$excluded_cookie_vars = $config['exclusion']['excluded_cookie_vars'] ?? array();
 
 	// Ignore excluded list...
 	if ( $is_exclusion ) {
@@ -76,9 +80,25 @@ function scm_run_expert_mode( $args ) {
 				return;
 			}
 		}
+
+		foreach ( $excluded_get_vars as $var ) {
+			if ( isset( $_GET[ $var ] ) ) {
+				return true;
+			}
+		}
+		foreach ( $excluded_post_vars as $var ) {
+			if ( isset( $_POST[ $var ] ) ) {
+				return true;
+			}
+		}
+		foreach ( $excluded_cookie_vars as $var ) {
+			if ( isset( $_COOKIE[ $var ] ) ) {
+				return true;
+			}
+		}
 	}
 
-	// Check if WooCommerce support is enable.
+	// Check if WooCommerce support is enabled.
 	if ( $is_woocommerce ) {		
 		if ( isset( $_POST['add-to-cart'] ) && is_numeric( $_POST['add-to-cart'] ) ) {
 			return;

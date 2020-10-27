@@ -58,6 +58,9 @@ foreach ( $register_woocommerce_action as $option ) {
 $register_exclusion_action = array(
 	'scm_option_exclusion_status',
 	'scm_option_excluded_list',
+	'scm_option_excluded_get_vars',
+	'scm_option_excluded_post_vars',
+	'scm_option_excluded_cookie_vars',
 );
 
 foreach ( $register_exclusion_action as $option ) {
@@ -213,6 +216,7 @@ function scm_update_exclusion() {
 		$setting['exclusion']['enable'] = true;
 	}
 
+	// Excluded list.
 	$exluded_list = get_option( 'scm_option_excluded_list' );
 
 	$exluded_list_arr = explode( "\n", $exluded_list );
@@ -232,6 +236,33 @@ function scm_update_exclusion() {
 	}
 
 	$setting['exclusion']['excluded_list'] = $exluded_list_tmp;
+
+	// Excluded GET, POST and COOKIE variables.
+	$check_list = array(
+		'get',
+		'post',
+		'cookie',
+	);
+
+	foreach ( $check_list as $list ) {
+		$exluded_variables = get_option( 'scm_option_excluded_' . $list . '_vars', array() );
+
+		$exluded_variables_arr = explode( "\n", $exluded_variables );
+		$exluded_variables_tmp = array();
+	
+		foreach ( $exluded_variables_arr as $item ) {
+			$str = trim( $item );
+			if( preg_match( "/^[a-zA-Z0-9_\-]+$/", $str ) ) {
+				$exluded_variables_tmp[] = $str;
+			}
+		}
+
+		$setting['exclusion']['excluded_' . $list . '_vars'] = array();
+
+		if ( ! empty( $exluded_variables_tmp ) ) {
+			$setting['exclusion']['excluded_' . $list . '_vars'] = $exluded_variables_tmp;
+		}
+	}
 
 	scm_update_config( $setting );
 }

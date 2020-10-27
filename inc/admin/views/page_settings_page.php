@@ -95,12 +95,15 @@ if ( ! empty( $conflict_plugins ) ) {
     <?php endif; ?>
 
     <?php if ( 'benchmark' === $tab ) : ?>
-        <p><em><?php _e( 'Benchmark information consists of memory usage, SQL query number, page generation time and page caching status.', 'cache-master' ); ?></em></p>
+        <p>
+            <em><?php _e( 'Benchmark information consists of memory usage, SQL query number, page generation time and page caching status.', 'cache-master' ); ?></em><br />
+        </p>
         <form action="options.php" method="post">
             <?php settings_fields( 'scm_setting_group_5' ); ?>
             <?php do_settings_sections( 'scm_setting_page_5' );  ?>
             <hr />
             <p><em><?php _e( 'Once you make changes in this page, all cache data will be cleared.', 'cache-master' ); ?></em></p>
+            <em class="scm-msg scm-msg-notice"><?php _e( 'Excluded pages or pages contain JavaScript errors will not display benchmark information.', 'cache-master' ); ?></em>
             <?php submit_button(); ?>
         </form>
     <?php endif; ?>
@@ -131,7 +134,6 @@ if ( ! empty( $conflict_plugins ) ) {
         <?php endif; ?>
 
         <form action="options.php" method="post">
-            <p><em><?php _e( 'This feature is still under beta testing, do not use it in production.', 'cache-master' ); ?></em></p>
             <?php settings_fields( 'scm_setting_group_8' ); ?>
             <?php do_settings_sections( 'scm_setting_page_8' );  ?>
             <hr />

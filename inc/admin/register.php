@@ -18,21 +18,6 @@ if ( ! defined( 'SCM_INC' ) ) {
  * @return void
  */
 function scm_activation() {
-	add_option( 'scm_option_driver', 'file' );
-	add_option( 'scm_option_ttl', '86400' );
-	add_option( 'scm_option_uninstall', 'yes' );
-	add_option( 'scm_option_caching_status', 'disable' );
-	add_option( 'scm_option_expert_mode_status', 'disable' );
-	add_option( 'scm_option_post_homepage', 'yes' );
-	add_option( 'scm_option_visibility_login_user', 'no' );
-	add_option( 'scm_option_visibility_guest', 'yes' );
-	add_option( 'scm_option_statistics_status', 'disable' );
-	add_option( 'scm_option_clear_cache', 'no' );
-	add_option( 'scm_option_benchmark_widget', 'no' );
-	add_option( 'scm_option_benchmark_footer_text', 'no' );
-	add_option( 'scm_option_benchmark_widget_display', 'both' );
-	add_option( 'scm_option_benchmark_footer_text_display', 'text' );
-	add_option( 'scm_option_excluded_list', '' );
 
 	$post_types = array(
 		'home' => 'yes',
@@ -47,9 +32,6 @@ function scm_activation() {
 		'author'   => 'yes',
 	);
 
-	add_option( 'scm_option_post_types', $post_types );
-	add_option( 'scm_option_post_archives', $post_archives );
-
 	/**
 	 * Support to WooCommerce post types and taxonomies.
 	 *
@@ -57,7 +39,6 @@ function scm_activation() {
 	 */
 	$woocommerce_post_types = array(
 		'product' => 'no',
-
 		//'shop_order'  => 'no',
 		//'shop_coupon' => 'no',
 	);
@@ -65,16 +46,47 @@ function scm_activation() {
 	$woocommerce_taxonomies = array(
 		'product_tag' => 'no',
 		'product_cat' => 'no',
-
 		//'product_variation'  => 'no',
 		//'product_visibility' => 'no',
 		//'shop_order_status'  => 'no',
 		//'shop_order_refund'  => 'no',
 	);
 
-	add_option( 'scm_option_woocommerce_status', 'disable' );
-	add_option( 'scm_option_woocommerce_post_types', $woocommerce_post_types );
-	add_option( 'scm_option_woocommerce_taxonomies', $woocommerce_taxonomies );
+	$options = array(
+		'driver'                             => 'file',
+		'ttl'                                => '86400',
+		'uninstall'                          => 'yes',
+		'caching_status'                     => 'disable',
+		'expert_mode_status'                 => 'disable',
+		'post_homepage'                      => 'yes',
+		'visibility_login_user'              => 'no',
+		'visibility_guest'                   => 'yes',
+		'statistics_status'                  => 'disable',
+		'clear_cache'                        => 'no',
+		'benchmark_widget'                   => 'no',
+		'benchmark_footer_text'              => 'no',
+		'benchmark_widget_display'           => 'both',
+		'benchmark_footer_text_display'      => 'text',
+		'excluded_list'                      => '',
+		'excluded_list_filtered'             => '',
+		'excluded_get_variables'             => '',
+		'excluded_post_variables'            => '',
+		'excluded_cookie_variables'          => '',
+		'advanced_driver_memcached'          => array(),
+		'advanced_driver_redis'              => array(),
+		'advanced_driver_mongodb'            => array(),
+		'html_debug_comment'                 => 'yes',
+		'post_types'                         => $post_types,
+		'post_archives'                      => $post_archives,
+		'woocommerce_status'                 => 'no',
+		'woocommerce_post_types'             => $woocommerce_post_types,
+		'woocommerce_taxonomies'             => $woocommerce_taxonomies,
+		'woocommerce_event_payment_complete' => 'no',
+	);
+
+	foreach ( $options as $key => $value ) {
+		add_option( 'scm_option_' . $key, $value );
+	}
 
 	scm_setup_security_files();
 }

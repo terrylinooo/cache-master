@@ -78,7 +78,7 @@ function scm_option() {
  */
 function scm_options_page() {
 	scm_show_settings_header();
-	echo scm_load_view( 'page_options_page' );
+	echo scm_load_view( 'page_settings_page' );
 	scm_show_settings_footer();
 }
 

@@ -32,4 +32,4 @@ $option_exclusion_status = get_option( 'scm_option_exclusion_status', 'no' );
 		<label>
 	</div>	
 </div>
-<p><em><?php _e( 'The following settings work only when this option is enable.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'The following settings work only when this option is enabled.', 'cache-master' ); ?></em></p>

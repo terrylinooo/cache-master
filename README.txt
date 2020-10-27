@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 1.6.0
+Stable tag: 2.0.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -27,7 +27,7 @@ First release date: October, 1, 2020
 * Support up to 10 cache drivers such as File, Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL, SQLite and MongoDB.
 * Detailed cache statistics, easy to manage.
 * Support to WooCommerce plugin.
-* Display benchmark information in the footer area or a widget.
+* More...
 
 Notice: 
 
@@ -47,16 +47,18 @@ If you find your website doesn't work with Cache Master, please report an issue 
 == Screenshots ==
 
 1. Setting page - Basic.
-2. Setting page - Advanced.
-3. Setting page - Perferences.
-4. Setting page - Benchmark.
-5. Setting page - WooCommerce.
-6. Setting page - Exclusion.
-7. Setting page - Expert mode.
-8. Setting page - Cache statistics.
-9. About author.
-10. Debug message (Normal mode)
-11. Debug message (Expert mode)
+2. Setting page - Basic (Bottom).
+3. Setting page - Advanced.
+4. Setting page - Perferences.
+5. Setting page - Benchmark.
+6. Setting page - WooCommerce.
+7. Setting page - Exclusion.
+8. Setting page - Expert mode.
+9. Setting page - Cache statistics.
+10. Setting page - About author.
+11. Front page - Benchmark (footer text)
+12. Debug message (Normal mode)
+13. Debug message (Expert mode)
 
 == Copyright ==
 
@@ -75,58 +77,54 @@ GNU General Public License for more details.
 
 == Changelog ==
 
-= 1.1.0
+= 1.0.0 (10/01/2020)
 
 * First release on WordPress plugin directory.
 
-= 1.1.1
-
-* Fix incorrect setting link.
-
-= 1.2.0
+= 1.2.0 (10/06/2020)
 
 * Add "Expert Mode".
 
-= 1.2.1
+= 1.2.1 (10/07/2020)
 
 * Improve debug message.
 * New setting option for Expert Mode.
 * Add warning message if a user use a plugin having conflicts with Cache Master.
 
-= 1.2.2
+= 1.2.2 (10/07/2020)
 
 * Improve debug message - Add SQL query numbers.
 
-= 1.3.0
+= 1.3.0 (10/08/2020)
 
 * Add setting option - Visibility of cache for logged-in users.
 * Add setting option - Archive pages: category, tag, date and author.
 * Add setting option - Homepage.
 * Fix some small issues.
 
-= 1.4.0
+= 1.4.0 (10/09/2020)
 
 * Add setting page - Cache statistics.
 * Improve code - Prevent conflicts with others plugins.
 
-= 1.4.1
+= 1.4.1 (10/16/2020)
 
 * Add feature - Automatic installation of Expert Mode code. (Removed in later versions)
 
-= 1.5.1
+= 1.5.1 (10/17/2020)
 
 * Add setting page - Benchmark settings.
 * Add feature - Benchmark information in widget or footer area.
 * Fix some small issues.
 
-= 1.5.2
+= 1.5.2 (10/17/2020)
 
 * Add a Clear Cache button on admin bar.
 
-= 1.6.0
+= 2.0.0 (10/27/2020)
 
-* Add support to WooCommerce plguin.
-* Add setting page - WooCommerce.
-* Add setting page - Exclusion.
-* Add setting page - Advanced.
-* Fix some small issues.
+* Support to WooCommerce plguin.
+* Add setting pages - WooCommerce, Exclusion,  Advanced settings.
+* Improve cache statistic page.
+* Update translation strings for zh_TW, zh_CN.
+* Fix issues.
