@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, memcache, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -129,3 +129,7 @@ GNU General Public License for more details.
 * Improve cache statistic page.
 * Update translation strings for zh_TW, zh_CN.
 * Fix issues.
+
+= 2.0.1 (10/27/2020)
+
+* Fix SQLite driver error after performing a new installation.

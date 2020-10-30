@@ -274,6 +274,9 @@ class Cache_Master {
 			$content
 		);
 
+		ob_end_clean();
+		ob_start();
+
 		echo $content;
 	}
 
