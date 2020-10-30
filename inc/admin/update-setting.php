@@ -22,6 +22,8 @@ $register_general_action = array(
 	'scm_option_html_debug_comment',
 );
 
+
+
 foreach ( $register_general_action as $option ) {
 	add_action( 'update_option_' . $option, 'scm_update_' . $option );
 }
@@ -83,8 +85,18 @@ function scm_update_scm_option_driver() {
 	}
 
 	$driver = scm_driver_factory( $driver_type );
-	$driver->rebuild();
 
+	$rebuld_list = array(
+		'mysql',
+		'sqlite',
+	);
+
+	foreach ( $rebuld_list as $db ) {
+		$driver = scm_driver_factory( $db );
+		$driver->rebuild();
+	}
+
+	$driver = scm_driver_factory( $driver_type );
 	$advanced_settings = array();
 
 	if ( 'memcached' === $driver_type ) {

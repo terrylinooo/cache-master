@@ -89,10 +89,27 @@ function scm_test_driver( $type = '' ) {
 			break;
 
 		case 'file':
+			$file_dir = scm_get_upload_dir() . '/file_driver';
+	
+			if ( ! is_dir( $file_dir ) ) {
+				wp_mkdir_p( $file_dir );
+			}
+
+			$setting['storage'] = $file_dir;
+			break;
+
 		case 'sqlite':
-			$setting = array(
-				'storage' => scm_get_upload_dir() . '/' . $type . '_driver',
-			);
+
+			$sqlite_dir = scm_get_upload_dir() . '/sqlite_driver';
+			$sqlite_file_path = $sqlite_dir . '/cache.sqlite3';
+	
+			if ( ! file_exists( $sqlite_file_path ) ) {
+				if ( ! is_dir( $sqlite_dir ) ) {
+					wp_mkdir_p( $sqlite_dir );
+				}
+			}
+	
+			$setting['storage'] = $sqlite_dir;
 			break;
 
 		case 'redis':
@@ -130,6 +147,7 @@ function scm_test_driver( $type = '' ) {
 			break;
 	}
 
+
 	if ( ! empty( $advanced_settings ) ) {
 		$setting = $advanced_settings;
 
@@ -141,12 +159,16 @@ function scm_test_driver( $type = '' ) {
 	}
 
 	try {
+
 		$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
+		$driver->rebuild();
 		$driver->set( 'foo', 'bar', 300 );
+
 		if ( 'bar' === $driver->get( 'foo' ) ) {
 			$driver->delete( 'foo' );
 			return true;
 		}
+
 	} catch( \Exception $e ) {}
 
 	return false;

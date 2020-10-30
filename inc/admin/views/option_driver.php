@@ -22,9 +22,10 @@ $option_list = array(
     'apc'       => __( 'APC', 'cache-master' ),
     'apcu'      => __( 'APCu', 'cache-master' ),
     'wincache'  => __( 'WinCache', 'cache-master' ),
+    'mongo'     => __( 'MongoDB', 'cache-master' ),
     'mysql'     => __( 'MySQL', 'cache-master' ),
     'sqlite'    => __( 'SQLite', 'cache-master' ),
-    'mongo'     => __( 'MongoDB', 'cache-master' ),
+    
 );
 
 $driver_status = array();

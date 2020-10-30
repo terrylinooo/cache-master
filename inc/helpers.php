@@ -136,6 +136,7 @@ function scm_get_stats_dir( $cache_type = 'post' ) {
 function scm_driver_factory( $type ) {
 
 	$advanced_settings = array();
+	$setting = array();
 
 	switch ( $type ) {
 		case 'mysql':
@@ -148,10 +149,9 @@ function scm_driver_factory( $type ) {
 			);
 			break;
 
-		case 'file':
 		case 'sqlite':
 			$setting = array(
-				'storage' => scm_get_upload_dir() . '/' . $type . '_driver',
+				'storage' => scm_get_upload_dir() . '/sqlite_driver',
 			);
 			break;
 
@@ -187,6 +187,13 @@ function scm_driver_factory( $type ) {
 		case 'apcu':
 		case 'wincache':
 			$setting = array();
+			break;
+
+		case 'file':
+		default:
+			$setting = array(
+				'storage' => scm_get_upload_dir() . '/sqlite_driver',
+			);
 			break;
 	}
 
