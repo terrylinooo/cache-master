@@ -34,6 +34,7 @@ if ( 'yes' === $option_uninstall ) {
 		'benchmark_footer_text',
 		'benchmark_widget_display',
 		'benchmark_footer_text_display',
+		'exclusion_status',
 		'excluded_list',
 		'excluded_list_filtered',
 		'excluded_get_vars',

@@ -163,6 +163,7 @@ function scm_deactivation() {
 			'benchmark_footer_text',
 			'benchmark_widget_display',
 			'benchmark_footer_text_display',
+			'exclusion_status',
 			'excluded_list',
 			'excluded_list_filtered',
 			'excluded_get_vars',
@@ -182,24 +183,6 @@ function scm_deactivation() {
 
 		foreach ( $options as $option ) {
 			delete_option( 'scm_option_' . $option );
-		}
-
-		$dir = WP_CONTENT_DIR . '/uploads/cache-master';
-
-		if ( is_dir( $dir ) ) {
-			$it = new RecursiveDirectoryIterator( $dir, RecursiveDirectoryIterator::SKIP_DOTS );
-			$files = new RecursiveIteratorIterator( $it, RecursiveIteratorIterator::CHILD_FIRST );
-
-			foreach ( $files as $file ) {
-				if ( $file->isDir() ){
-					rmdir( $file->getRealPath() );
-				} else {
-					unlink( $file->getRealPath() );
-				}
-			}
-			unset( $it, $files );
-
-			rmdir( $dir );
 		}
 	}
 }

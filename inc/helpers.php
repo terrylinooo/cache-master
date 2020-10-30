@@ -191,6 +191,7 @@ function scm_driver_factory( $type ) {
 
 		case 'file':
 		default:
+			$type    = 'file';
 			$setting = array(
 				'storage' => scm_get_upload_dir() . '/file_driver',
 			);
