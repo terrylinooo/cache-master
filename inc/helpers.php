@@ -192,7 +192,7 @@ function scm_driver_factory( $type ) {
 		case 'file':
 		default:
 			$setting = array(
-				'storage' => scm_get_upload_dir() . '/sqlite_driver',
+				'storage' => scm_get_upload_dir() . '/file_driver',
 			);
 			break;
 	}

@@ -52,7 +52,7 @@ if ( 'yes' === $option_uninstall ) {
 	);
 
 	foreach ( $options as $option ) {
-		delete_option( $option );
+		delete_option( 'scm_option_' . $option );
 	}
 
 	delete_option( 'scm_last_reset_time' );

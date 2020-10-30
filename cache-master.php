@@ -21,7 +21,9 @@ if ( ! defined( 'WPINC' ) ) {
  * Cache Master plugin uses "SCM" as the prefix on its constants.
  */
 
-define( 'SCM_INC', true );
+if ( ! defined( 'SCM_INC' ) ) {
+	define( 'SCM_INC', true );
+}
 
 /**
  * CONSTANTS - SCM stands for Shieldon Cache Master ^_^
@@ -70,6 +72,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 		require_once SCM_PLUGIN_DIR . 'vendor/autoload.php';
 
 		register_activation_hook( __FILE__, 'scm_activation' );
+		register_deactivation_hook( __FILE__, 'scm_deactivation' );
 
 		scm_load_textdomain();
 
