@@ -77,6 +77,8 @@ foreach ( $register_exclusion_action as $option ) {
 function scm_update_scm_option_driver() {
 	$driver_type = get_option( 'scm_option_driver' );
 
+	echo $driver_type;
+
 	if ( ! scm_test_driver( $driver_type ) ) {
 		update_option( 'scm_option_driver', 'file' );
 

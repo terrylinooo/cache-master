@@ -76,7 +76,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 
 		scm_load_textdomain();
 
-		if ( is_admin() ) {
+		if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 
 			$required_files = array(
 				'register',       // Event: activate and uninstall plugin.
@@ -97,8 +97,8 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			}
 
 		} else {
+		
 			require_once SCM_PLUGIN_DIR . 'inc/autoload.php';
-
 			$cm = new Cache_Master();
 			$cm->init();
 		}

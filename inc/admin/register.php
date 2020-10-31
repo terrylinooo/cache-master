@@ -89,6 +89,18 @@ function scm_activation() {
 	}
 
 	scm_setup_security_files();
+
+	$file_dir = scm_get_upload_dir() . '/file_driver';
+	
+	if ( ! is_dir( $file_dir ) ) {
+		wp_mkdir_p( $file_dir );
+	}
+
+	$sqlite_dir = scm_get_upload_dir() . '/sqlite_driver';
+	
+	if ( ! is_dir( $sqlite_dir ) ) {
+		wp_mkdir_p( $sqlite_dir );
+	}
 }
 
 /**
