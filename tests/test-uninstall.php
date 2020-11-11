@@ -26,10 +26,8 @@ class UninstallTest extends WP_UnitTestCase {
 
         $this->assertTrue( $found );
 
-        /*
 		$this->assertFalse( ( file_exists( scm_get_upload_dir() . '/file_driver' ) ) );
         $this->assertFalse( ( file_exists( scm_get_upload_dir() . '/sqlite_driver' ) ) );
         $this->assertFalse( ( file_exists( scm_get_upload_dir() ) ) );
-        */
     }
 }
