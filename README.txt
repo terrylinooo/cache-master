@@ -1,7 +1,7 @@
 === Cache Master ===
 
 Contributors: terrylin
-Tags: cache, redis, memcache, memcached, apc, apcu
+Tags: cache, redis, mongodb, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
 Stable tag: 2.0.3
@@ -34,7 +34,7 @@ Notice:
 Before you install and use this plugin, please read the following notices carefully.
 
 - Logged-in users will not trigger the caching processes.
-- A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching.
+- A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching. This message can be disabled in `Settings` page.
 
 If you find your website doesn't work with Cache Master, please report an issue on GitHub and list all plugins installed on your website. I'll find out the problem and fix it.
 
@@ -43,6 +43,12 @@ If you find your website doesn't work with Cache Master, please report an issue 
 1. Upload the plugin files to the `/wp-content/plugins/cache-master` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Go to the Cache Master menu in Plugins and set your options.
+
+== Frequently Asked Questions ==
+
+= Should I disable other cache plugin? =
+
+Cache Master cahces full page to static HTML, it is better to disable other similar cache plugins that cache HTML, too. It's okay to work with object cache plugin together.
 
 == Screenshots ==
 
@@ -60,38 +66,23 @@ If you find your website doesn't work with Cache Master, please report an issue 
 12. Debug message (Normal mode)
 13. Debug message (Expert mode)
 
-== Copyright ==
-
-Cache Master, Copyright 2020 TerryL.in
-Cache Master is distributed under the terms of the GNU GPL
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
 == Changelog ==
 
-= 1.0.0 (10/01/2020)
+= 1.0.0 (10/01/2020) =
 
 * First release on WordPress plugin directory.
 
-= 1.2.0 (10/06/2020)
+= 1.2.0 (10/06/2020) =
 
 * Add "Expert Mode".
 
-= 1.2.1 (10/07/2020)
+= 1.2.1 (10/07/2020) =
 
 * Improve debug message.
 * New setting option for Expert Mode.
 * Add warning message if a user use a plugin having conflicts with Cache Master.
 
-= 1.2.2 (10/07/2020)
+= 1.2.2 (10/07/2020) =
 
 * Improve debug message - Add SQL query numbers.
 
@@ -102,26 +93,26 @@ GNU General Public License for more details.
 * Add setting option - Homepage.
 * Fix some small issues.
 
-= 1.4.0 (10/09/2020)
+= 1.4.0 (10/09/2020) =
 
 * Add setting page - Cache statistics.
 * Improve code - Prevent conflicts with others plugins.
 
-= 1.4.1 (10/16/2020)
+= 1.4.1 (10/16/2020) =
 
 * Add feature - Automatic installation of Expert Mode code. (Removed in later versions)
 
-= 1.5.1 (10/17/2020)
+= 1.5.1 (10/17/2020) =
 
 * Add setting page - Benchmark settings.
 * Add feature - Benchmark information in widget or footer area.
 * Fix some small issues.
 
-= 1.5.2 (10/17/2020)
+= 1.5.2 (10/17/2020) =
 
 * Add a Clear Cache button on admin bar.
 
-= 2.0.0 (10/27/2020)
+= 2.0.0 (10/27/2020) =
 
 * Support to WooCommerce plugin.
 * Add setting pages - WooCommerce, Exclusion,  Advanced settings.
@@ -130,10 +121,10 @@ GNU General Public License for more details.
 * Update translation strings for zh_TW, zh_CN.
 * Fix issues.
 
-= 2.0.1 (10/27/2020)
+= 2.0.1 (10/27/2020) =
 
 * Fix SQLite driver error after performing a new installation.
 
-= 2.0.3 (10/31/2020)
+= 2.0.3 (10/31/2020) =
 
 * Support to WP-CLI

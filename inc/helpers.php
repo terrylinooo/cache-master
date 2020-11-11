@@ -112,7 +112,7 @@ function scm_set_blog_id() {
  * @return string
  */
 function scm_get_blog_id() {
-	return get_option( 'scm_blog_id' );
+	return get_option( 'scm_blog_id', 1 );
 }
 
 /**
@@ -208,7 +208,19 @@ function scm_driver_factory( $type ) {
 		}
 	}
 
-	$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
+	try {
+
+		$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
+
+	} catch( \Exception $e ) {
+
+		if ( in_array( $type, array( 'file', 'sqlite' ) ) && ! file_exists( $setting['storage'] ) ) {
+			wp_mkdir_p( $setting['storage'] );
+
+			// Let's try again.
+			$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
+		}
+	}
 
 	return $driver;
 }

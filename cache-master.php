@@ -97,7 +97,6 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			}
 
 		} else {
-		
 			require_once SCM_PLUGIN_DIR . 'inc/autoload.php';
 			$cm = new Cache_Master();
 			$cm->init();
