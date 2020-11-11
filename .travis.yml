@@ -52,7 +52,7 @@ before_script:
       bash bin/install-wp-tests.sh wordpress_unittest shieldon taiwan localhost $WP_VERSION false
       composer update
     fi
-  - bash bin/copy-plugin.sh
+  - ln -s $(pwd) /tmp/wordpress/wp-content/plugins/cache-master
 
 script:
   - |
