@@ -11,23 +11,23 @@
 class UninstallTest extends WP_UnitTestCase {
 
 	/**
-     * Uninstall plugin.
+	 * Uninstall plugin.
 	 *
 	 * @return void
 	 */
-    public function testUninstallPlugin() {
+	public function testUninstallPlugin() {
 
-        // Activate plugin again, create folders, and then we test uninstalling.
-        do_action( 'activate_' . SCM_PLUGIN_NAME );
+		// Activate plugin again, create folders, and then we test uninstalling.
+		do_action( 'activate_' . SCM_PLUGIN_NAME );
 
-        update_option( 'scm_option_uninstall', 'yes' );
+		update_option( 'scm_option_uninstall', 'yes' );
 
-        $found = uninstall_plugin( 'cache-master/cache-master.php' );
+		$found = uninstall_plugin( 'cache-master/cache-master.php' );
 
-        $this->assertTrue( $found );
+		$this->assertTrue( $found );
 
 		$this->assertFalse( ( file_exists( scm_get_upload_dir() . '/file_driver' ) ) );
-        $this->assertFalse( ( file_exists( scm_get_upload_dir() . '/sqlite_driver' ) ) );
-        $this->assertFalse( ( file_exists( scm_get_upload_dir() ) ) );
-    }
+		$this->assertFalse( ( file_exists( scm_get_upload_dir() . '/sqlite_driver' ) ) );
+		$this->assertFalse( ( file_exists( scm_get_upload_dir() ) ) );
+	}
 }
