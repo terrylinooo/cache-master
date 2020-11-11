@@ -1,5 +1,7 @@
 # Cache Master - WordPress Cache Plugin
 
+[![Build Status](https://travis-ci.org/terrylinooo/cache-master.svg?branch=master)](https://travis-ci.org/terrylinooo/cache-master) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 ![WordPress Cache Plugin](./inc/assets/images/banner-772x250.png)
 
 Cache Master is an extremely light-weight and high-performace cache plugin that speeds up your WordPress sites on the fly. The core is driven by Shieldon [Simple Cache](https://github.com/terrylinooo/simple-cache), a PSR-16 simple cache library.
@@ -8,8 +10,7 @@ Cache Master is an extremely light-weight and high-performace cache plugin that 
 
 * PHP version > 7.1.0
 * WordPress version > 4.7
-* Tested up to 5.5.1
-
+* Tested up to 5.5.3
 
 ## Features
 
