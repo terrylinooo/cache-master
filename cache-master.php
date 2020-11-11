@@ -59,6 +59,9 @@ define( 'SCM_PLUGIN_TEXT_DOMAIN', 'cache-master' );
 
 // The minimum supported version of PHP.
 if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
+	echo "\n";
+	echo 'a';
+	echo "\n";
 
 	// Loaded in front, back and ajax call.
 	if ( 'yes' === get_option( 'scm_option_benchmark_widget' ) ) {
@@ -97,6 +100,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 			}
 
 		} else {
+
 			require_once SCM_PLUGIN_DIR . 'inc/autoload.php';
 			$cm = new Cache_Master();
 			$cm->init();

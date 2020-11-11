@@ -17,7 +17,7 @@ class UninstallTest extends WP_UnitTestCase {
 	 */
     public function testUninstallPlugin() {
 
-        // Activate plugin again, create folders.
+        // Activate plugin again, create folders, and then we test uninstalling.
         do_action( 'activate_' . SCM_PLUGIN_NAME );
 
         update_option( 'scm_option_uninstall', 'yes' );

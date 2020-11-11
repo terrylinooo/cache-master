@@ -34,6 +34,8 @@ jobs:
       env: WP_VERSION=4.7
 
 before_script:
+  - composer self-update
+  - composer install --no-interaction --prefer-source --dev
   - mysql -u root -e 'CREATE DATABASE wordpress_unittest;'
   - mysql -u root -e "CREATE USER 'shieldon'@'localhost' IDENTIFIED BY 'taiwan';"
   - mysql -u root -e "GRANT ALL ON shieldon_unittest.* TO 'shieldon'@'localhost';"

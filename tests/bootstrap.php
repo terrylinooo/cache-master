@@ -5,6 +5,10 @@
  * @package Sample_Plugin
  */
 
+if ( ! defined( 'WP_CLI' ) ) {
+	define( 'WP_CLI', true );
+}
+
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
 
 if ( ! defined( 'WP_CLI' ) ) {
