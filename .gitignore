@@ -6,3 +6,7 @@ bin
 build_release.sh
 composer.lock
 .vscode
+vendor
+!vendor/psr
+!vendor/shieldon
+!vendor/autoload.php

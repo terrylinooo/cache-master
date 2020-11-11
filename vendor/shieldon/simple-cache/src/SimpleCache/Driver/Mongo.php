@@ -267,6 +267,26 @@ class Mongo extends CacheProvider
     }
 
     /**
+     * Fetch all cache items.
+     *
+     * @return array
+     */
+    protected function getAll(): array
+    {
+        $list = [];
+
+        $query = new MongoQuery([]);
+        $cursor = $this->mongo->executeQuery($this->getCollectionName(), $query);
+
+        foreach ($cursor as $document) {
+            $key = str_replace('sc_', '', $document->_id);
+            $value = unserialize($document->content);
+            $list[$key] = $value;
+        }
+        return $list;
+    }
+
+    /**
      * Perform the write operation and return the result.
      * 
      * @param object $bulk The \MongoDB\Driver\BulkWrite instance.
@@ -299,7 +319,7 @@ class Mongo extends CacheProvider
      */
     private function getKeyName(string $key): string
     {
-        return 'sc_' . md5($key);
+        return 'sc_' . $key;
     }
 
     /**

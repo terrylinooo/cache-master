@@ -17,8 +17,6 @@ use Shieldon\SimpleCache\Exception\CacheException;
 use Memcached as MemcachedServer;
 use Exception;
 use function array_keys;
-use function unserialize;
-use function serialize;
 
 /**
  * A cache driver class provided by libMemcached
@@ -105,7 +103,7 @@ class Memcached extends CacheProvider
         if (empty($content)) {
             return [];
         }
-        $data = unserialize($content);
+        $data = $content;
 
         return $data;
     }
@@ -130,7 +128,7 @@ class Memcached extends CacheProvider
 
         $result = $this->memcached->set(
             $key,
-            serialize($contents),
+            $contents,
             $ttl
         );
 
