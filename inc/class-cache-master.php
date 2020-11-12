@@ -97,6 +97,7 @@ class Cache_Master {
 	public function front_enqueue_styles() {
 		wp_register_style( 'scm-style', false );
 		wp_enqueue_style( 'scm-style' );
+		wp_enqueue_script( 'jquery' );
 		wp_add_inline_style( 'scm-style', $this->get_front_enqueue_styles() );
 	}
 
@@ -109,6 +110,7 @@ class Cache_Master {
 
 		// Logged-in users will not trigger the cache.
 		if ( is_user_logged_in() ) {
+			
 			return;
 		}
 
@@ -125,11 +127,12 @@ class Cache_Master {
 		$is_singular = false;
 		$is_archive  = false;
 
-		if ( is_front_page() ) {
+		if ( is_front_page() || is_home() ) {
 			$this->is_cache  = true;
 			$this->data_type = 'homepage';
-
+			
 			if ( 'no' === $post_homepage ) {
+				
 				$this->is_cache = false;
 			}
 			return;
@@ -243,10 +246,15 @@ class Cache_Master {
 	 * @return void
 	 */
 	public function ob_stop() {
-	
+
 		$this->wp_ob_end_flush_all();
 
 		$content = ob_get_contents();
+
+		// Make sure that the page has valid HTML content.
+		if ( empty( $content ) || strpos( $content, '</body>' ) === false ) {
+		//	return;
+		}
 
 		if ( 'yes' === get_option( 'scm_option_benchmark_footer_text') ) {
 			$content = str_replace(
@@ -643,12 +651,6 @@ class Cache_Master {
 	 */
 	private function get_request_uri()
 	{
-		static $path;
-
-		if ( isset( $path) ) {
-			return $path;
-		}
-
 		if ( isset( $_SERVER['REQUEST_URI'] ) ) {
 			$path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 		}

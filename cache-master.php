@@ -59,55 +59,81 @@ define( 'SCM_PLUGIN_TEXT_DOMAIN', 'cache-master' );
 
 // The minimum supported version of PHP.
 if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
-	echo "\n";
-	echo 'a';
-	echo "\n";
 
-	// Loaded in front, back and ajax call.
-	if ( 'yes' === get_option( 'scm_option_benchmark_widget' ) ) {
-		require_once SCM_PLUGIN_DIR . 'inc/admin/widgets.php';
-	}
-
-	// No need to load Cache Master's files when AJAX calls.
-	if ( ! wp_doing_ajax() ) {
+	// This section is for unit testing.
+	if ( defined( 'SCM_PLUGIN_UNIT_TEST' ) ) {
+		$required_files = array(
+			'register', 
+			'setting',
+			'menu',
+			'update-setting',
+			'update-post',
+			'functions',
+			'admin-bar',
+			'ajax-action',
+			'update-woocommerce',
+			'widgets',
+		);
 
 		require_once SCM_PLUGIN_DIR . 'inc/helpers.php';
 		require_once SCM_PLUGIN_DIR . 'vendor/autoload.php';
+		require_once SCM_PLUGIN_DIR . 'inc/autoload.php';
+
+		foreach ( $required_files as $file ) {
+			require_once SCM_PLUGIN_DIR . 'inc/admin/' . $file . '.php';
+		}
 
 		register_activation_hook( __FILE__, 'scm_activation' );
 		register_deactivation_hook( __FILE__, 'scm_deactivation' );
 
 		scm_load_textdomain();
 
-		if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+		$cm = new Cache_Master();
+		$cm->init();
 
-			$required_files = array(
-				'register',       // Event: activate and uninstall plugin.
-				'setting',        // Plugin settings.
-				'menu',           // Display menu link and render setting page.
-				'update-setting', // Event: update settings.
-				'update-post',    // Event: update posts.
-				'functions',      // Helper functions used in admin scope.
-				'admin-bar',      // Add a "Clear Cache" button in admin bar.
-			);
-
-			if ( 'yes' === get_option( 'scm_option_woocommerce_status' ) ) {
-				$required_files[] = 'update-woocommerce';
-			}
-
-			foreach ( $required_files as $file ) {
-				require_once SCM_PLUGIN_DIR . 'inc/admin/' . $file . '.php';
-			}
-
-		} else {
-
-			require_once SCM_PLUGIN_DIR . 'inc/autoload.php';
-			$cm = new Cache_Master();
-			$cm->init();
-		}
 	} else {
-		if ( is_admin() ) {
-			require_once SCM_PLUGIN_DIR . 'inc/admin/ajax-action.php';
+
+		// No need to load Cache Master's files when AJAX calls.
+		if ( ! wp_doing_ajax() ) {
+
+			require_once SCM_PLUGIN_DIR . 'inc/helpers.php';
+			require_once SCM_PLUGIN_DIR . 'vendor/autoload.php';
+
+			register_activation_hook( __FILE__, 'scm_activation' );
+			register_deactivation_hook( __FILE__, 'scm_deactivation' );
+
+			scm_load_textdomain();
+
+			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+
+				$required_files = array(
+					'register',       // Event: activate and uninstall plugin.
+					'setting',        // Plugin settings.
+					'menu',           // Display menu link and render setting page.
+					'update-setting', // Event: update settings.
+					'update-post',    // Event: update posts.
+					'functions',      // Helper functions used in admin scope.
+					'admin-bar',      // Add a "Clear Cache" button in admin bar.
+				);
+
+				if ( 'yes' === get_option( 'scm_option_woocommerce_status' ) ) {
+					$required_files[] = 'update-woocommerce';
+				}
+
+				foreach ( $required_files as $file ) {
+					require_once SCM_PLUGIN_DIR . 'inc/admin/' . $file . '.php';
+				}
+
+			} else {
+
+				require_once SCM_PLUGIN_DIR . 'inc/autoload.php';
+				$cm = new Cache_Master();
+				$cm->init();
+			}
+		} else {
+			if ( is_admin() ) {
+				require_once SCM_PLUGIN_DIR . 'inc/admin/ajax-action.php';
+			}
 		}
 	}
 }
