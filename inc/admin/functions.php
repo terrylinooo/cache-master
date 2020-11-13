@@ -216,21 +216,26 @@ function scm_search_expert_mode_code_snippet( $string ) {
  
 	$wp_config_file = ABSPATH . 'wp-config.php';
 
-	$file    = fopen( $wp_config_file, 'r' );
-	$found1  = false;
-	$target1 = 'expert-mode.php';
-	$found2  = false;
-	$target2 = $string;
+	$found1 = false;
+	$found2 = false;
 
-	while ( $line = fgets( $file ) ) { 
-		if ( strpos( $line, $target1 ) !== false ) { 
-			$found1 = true;
-		}
-		if ( strpos( $line, $target2 ) !== false ) { 
-			$found2 = true;
+	if ( file_exists( $wp_config_file ) ) {
+		$file    = @fopen( $wp_config_file, 'r' );
+		$target1 = 'expert-mode.php';
+		$target2 = $string;
+
+		if ( $file ) {
+			while ( $line = fgets( $file ) ) { 
+				if ( strpos( $line, $target1 ) !== false ) { 
+					$found1 = true;
+				}
+				if ( strpos( $line, $target2 ) !== false ) { 
+					$found2 = true;
+				}
+			}
+			fclose($file);
 		}
 	}
-	fclose($file);
 
 	$result = array( $found1, $found2 );
 
