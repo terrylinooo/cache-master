@@ -68,6 +68,9 @@ function scm_settings() {
 			'advanced_driver_memcached',
 			'advanced_driver_redis',
 			'advanced_driver_mongodb',
+			'advanced_driver_memcached_connection_type',
+			'advanced_driver_redis_connection_type',
+			'advanced_driver_mongodb_connection_type',
 		),
 
 		// Settings - WooCommerce (Page 8)

@@ -251,8 +251,6 @@ class Cache_Master {
 
 		$content = ob_get_contents();
 
-		var_dump($content);
-
 		// Make sure that the page has valid HTML content.
 		if ( empty( $content ) || strpos( $content, '</body>' ) === false ) {
 			return;
