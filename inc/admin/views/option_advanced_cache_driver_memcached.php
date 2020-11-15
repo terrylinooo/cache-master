@@ -160,6 +160,10 @@ if ( scm_test_driver( 'memcached' ) ) {
 
     <div>
         <?php foreach ( $option_list as $k => $v ) : ?>
+        <?php if ( 'or' === $v) : ?>
+            <hr />
+            <?php continue; ?>
+        <?php endif; ?>
         <div class="scm-option-item">
             <div class="scm-label-wrapper">
                 <label>

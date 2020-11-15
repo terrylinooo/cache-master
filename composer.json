@@ -15,7 +15,7 @@
         "shieldon/simple-cache": "^1.0"
     },
     "scripts": {
-        "test": "php bin/phpunit.phar"
+        "test": "php bin/phpunit"
     },
     "autoload-dev": {
         "psr-4": {

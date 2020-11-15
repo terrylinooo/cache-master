@@ -52,6 +52,7 @@ before_script:
       bash bin/install-wp-tests.sh wordpress_unittest shieldon taiwan localhost $WP_VERSION false
       composer update
     fi
+  - wget -O bin/phpunit https://phar.phpunit.de/phpunit-6.phar
   - ln -s $(pwd) /tmp/wordpress/wp-content/plugins/cache-master
 
 script:

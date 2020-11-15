@@ -1,5 +1,6 @@
 phpunit
 phpunit.xml.dist
+bin/phpunit
 .phpcs.xml.dist
 build_release.sh
 composer.lock
