@@ -216,6 +216,14 @@ function scm_search_expert_mode_code_snippet( $string ) {
  
 	$wp_config_file = ABSPATH . 'wp-config.php';
 
+	if ( ! file_exists( $wp_config_file ) ) {
+
+		// For some users put the wp-config.php in parent folder...
+		if ( file_exists( ABSPATH . '../wp-config.php' ) ) {
+			$wp_config_file = ABSPATH . '../wp-config.php';
+		}
+	}
+
 	$found1 = false;
 	$found2 = false;
 
