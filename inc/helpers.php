@@ -135,8 +135,9 @@ function scm_get_stats_dir( $cache_type = 'post' ) {
  */
 function scm_driver_factory( $type ) {
 
-	$advanced_settings = array();
-	$setting = array();
+	$advanced_settings        = array();
+	$advanced_connection_type = 'tcp';
+	$setting                  = array();
 
 	switch ( $type ) {
 		case 'mysql':
@@ -162,6 +163,7 @@ function scm_driver_factory( $type ) {
 			);
 
 			$advanced_settings = get_option( 'scm_option_advanced_driver_redis' );
+			$advanced_connection_type = get_option( 'scm_option_advanced_driver_redis_connection_type', 'tcp' );
 			break;
 
 		case 'mongo':
@@ -171,6 +173,7 @@ function scm_driver_factory( $type ) {
 			);
 
 			$advanced_settings = get_option( 'scm_option_advanced_driver_mongodb' );
+			$advanced_connection_type = get_option( 'scm_option_advanced_driver_mongodb_connection_type', 'tcp' );
 			break;
 
 		case 'memcache':
@@ -181,6 +184,7 @@ function scm_driver_factory( $type ) {
 			);
 
 			$advanced_settings = get_option( 'scm_option_advanced_driver_memcached' );
+			$advanced_connection_type = get_option( 'scm_option_advanced_driver_memcached_connection_type', 'tcp' );
 			break;
 
 		case 'apc':
@@ -204,6 +208,12 @@ function scm_driver_factory( $type ) {
 		foreach ( $setting as $k => $v ) {
 			if ( is_numeric( $v ) ) {
 				$setting[ $k ] = (int) $v;
+			}
+		}
+
+		if ( 'socket' !== $advanced_connection_type ) {
+			if ( ! empty( $advanced_settings['unix_socket'] ) ) {
+				unset( $setting['unix_socket'] );
 			}
 		}
 	}

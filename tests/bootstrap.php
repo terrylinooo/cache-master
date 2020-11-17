@@ -50,3 +50,16 @@ if ( is_dir( $dir ) ) {
 	rmdir( $dir );
 }
 
+function mock_post_output( $post_id ) {
+
+	$post = get_post( $post_id );
+
+	echo '<html>';
+	echo '<head>';
+	echo '<title>' . $post->post_title . '</title>';
+	echo '<body>';
+	echo $post->post_content;
+	echo '</body>';
+
+	ob_flush();
+}

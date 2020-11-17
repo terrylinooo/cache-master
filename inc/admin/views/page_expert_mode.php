@@ -12,6 +12,13 @@ if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
 
+$wp_config_file = ABSPATH . 'wp-config.php';
+
+if ( ! file_exists( $wp_config_file ) ) {
+	if ( file_exists( ABSPATH . '../wp-config.php' ) ) {
+		$wp_config_file = ABSPATH . '../wp-config.php';
+	}
+}
 
 ?>
 
@@ -25,7 +32,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 
 	<h2><?php _e( 'Code', 'cache-master' ); ?></h2>
 	<p><?php _e( 'This PHP code is generated dynamically depends on your settings.', 'cache-master' ); ?></p>
-	<p><?php echo sprintf( __( 'Please modify %s and put the following code into %s', 'cache-master' ), '<code>' . ABSPATH . 'wp-config.php</code>', '<code>wp-config.php</code>' ); ?></p>
+	<p><?php echo sprintf( __( 'Please modify %s and put the following code into %s', 'cache-master' ), '<code>' . $wp_config_file . '</code>', '<code>wp-config.php</code>' ); ?></p>
 	<div class="scm-code-block"><pre><code class="language-php"><?php echo scm_expert_mode_code_template(); ?></code></pre></div>
 
 	<h2><?php _e( 'Guide', 'cache-master' ); ?></h2>

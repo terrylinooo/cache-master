@@ -253,7 +253,7 @@ class Cache_Master {
 
 		// Make sure that the page has valid HTML content.
 		if ( empty( $content ) || strpos( $content, '</body>' ) === false ) {
-		//	return;
+			return;
 		}
 
 		if ( 'yes' === get_option( 'scm_option_benchmark_footer_text') ) {

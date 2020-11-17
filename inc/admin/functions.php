@@ -75,7 +75,9 @@ function scm_get_cache_type_list( $get_key = false ) {
  */
 function scm_test_driver( $type = '' ) {
 
-	$advanced_settings = array();
+	$advanced_settings        = array();
+	$advanced_connection_type = 'tcp';
+	$setting                  = array();
 
 	switch ( $type ) {
 		case 'mysql':
@@ -118,7 +120,8 @@ function scm_test_driver( $type = '' ) {
 				'port' =>  6379,
 			);
 
-			$advanced_settings = get_option( 'scm_option_advanced_driver_redis' );
+			$advanced_settings        = get_option( 'scm_option_advanced_driver_redis' );
+			$advanced_connection_type = get_option( 'scm_option_advanced_driver_redis_connection_type', 'tcp' );
 			break;
 
 		case 'mongo':
@@ -127,7 +130,8 @@ function scm_test_driver( $type = '' ) {
 				'port' =>  27017,
 			);
 
-			$advanced_settings = get_option( 'scm_option_advanced_driver_mongodb' );
+			$advanced_settings        = get_option( 'scm_option_advanced_driver_mongodb' );
+			$advanced_connection_type = get_option( 'scm_option_advanced_driver_mongodb_connection_type', 'tcp' );
 			break;
 
 		case 'memcache':
@@ -137,7 +141,8 @@ function scm_test_driver( $type = '' ) {
 				'port' =>  11211,
 			);
 
-			$advanced_settings = get_option( 'scm_option_advanced_driver_memcached' );
+			$advanced_settings        = get_option( 'scm_option_advanced_driver_memcached' );
+			$advanced_connection_type = get_option( 'scm_option_advanced_driver_memcached_connection_type', 'tcp' );
 			break;
 
 		case 'apc':
@@ -154,6 +159,12 @@ function scm_test_driver( $type = '' ) {
 		foreach ( $setting as $k => $v ) {
 			if ( is_numeric( $v ) ) {
 				$setting[ $k ] = (int) $v;
+			}
+		}
+
+		if ( 'socket' !== $advanced_connection_type ) {
+			if ( ! empty( $advanced_settings['unix_socket'] ) ) {
+				unset( $setting['unix_socket'] );
 			}
 		}
 	}
@@ -216,21 +227,34 @@ function scm_search_expert_mode_code_snippet( $string ) {
  
 	$wp_config_file = ABSPATH . 'wp-config.php';
 
-	$file    = fopen( $wp_config_file, 'r' );
-	$found1  = false;
-	$target1 = 'expert-mode.php';
-	$found2  = false;
-	$target2 = $string;
+	if ( ! file_exists( $wp_config_file ) ) {
 
-	while ( $line = fgets( $file ) ) { 
-		if ( strpos( $line, $target1 ) !== false ) { 
-			$found1 = true;
-		}
-		if ( strpos( $line, $target2 ) !== false ) { 
-			$found2 = true;
+		// For some users put the wp-config.php in parent folder...
+		if ( file_exists( ABSPATH . '../wp-config.php' ) ) {
+			$wp_config_file = ABSPATH . '../wp-config.php';
 		}
 	}
-	fclose($file);
+
+	$found1 = false;
+	$found2 = false;
+
+	if ( file_exists( $wp_config_file ) ) {
+		$file    = @fopen( $wp_config_file, 'r' );
+		$target1 = 'expert-mode.php';
+		$target2 = $string;
+
+		if ( $file ) {
+			while ( $line = fgets( $file ) ) { 
+				if ( strpos( $line, $target1 ) !== false ) { 
+					$found1 = true;
+				}
+				if ( strpos( $line, $target2 ) !== false ) { 
+					$found2 = true;
+				}
+			}
+			fclose($file);
+		}
+	}
 
 	$result = array( $found1, $found2 );
 

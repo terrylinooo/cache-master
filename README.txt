@@ -4,7 +4,7 @@ Contributors: terrylin
 Tags: cache, redis, mongodb, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 5.5.1
-Stable tag: 2.0.3
+Stable tag: 2.1.0
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -137,3 +137,10 @@ If there is no debug message in the source code or the cache status always shows
 = 2.0.3 (10/31/2020) =
 
 * Support to WP-CLI
+
+= 2.1.0 (11/15/2020) =
+
+* Add options - Now, you can use unix socket or TCP in Redis, MongoDB and Memcaced Drivers.
+* Update core library to 1.3.1
+* Add unit tests and run the tests before releasing new updates.
+* Fix issues.

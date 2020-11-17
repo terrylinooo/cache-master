@@ -21,14 +21,20 @@ class BroseringPagesTest extends WP_UnitTestCase {
 	}
 
 	public function testHomepage() {
+
 		$this->go_to( '/' );
 
-		$p = $this->factory->post->create( array( 'post_title' => 'Test Post' ) );
+		$post_id = $this->factory->post->create( 
+			array( 
+				'post_title'   => 'Test Post',
+				'post_content' => 'This is a test post.',
+			) 
+		);
+
+		mock_post_output( $post_id );
 
 		$cm = new Cache_Master();
 		$cm->init();
-
-		$this->go_to( '/' );
 
 		$this->assertQueryTrue ( 'is_home', 'is_front_page' );
 	}
