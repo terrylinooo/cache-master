@@ -46,9 +46,18 @@ If you find your website doesn't work with Cache Master, please report an issue 
 
 == Frequently Asked Questions ==
 
-= Should I disable other cache plugin? =
+= Should I disable other cache plugins? =
 
-Cache Master cahces full page to static HTML, it is better to disable other similar cache plugins that cache HTML, too. It's okay to work with object cache plugin together.
+Cache Master caches full webpages to static HTML files so that it is better to disable other similar cache plugins that do the same thing. It's okay to work with the object cache plugin together.
+
+= How do I kown whether or not the caching is working? =
+
+Things to be aware of, the logged-in users will not trigger the caching processes. Please use incognito mode or another browser to revisit the same webpage, and then you can check the cache status in one of the following ways:
+
+* View the source code of the webpage to check the debug message as the screenshot (L)
+* Turn on the benchmark information in the footer section, as the screenshot (K), and you can see the cache status there.
+
+If there is no debug message in the source code or the cache status always shows No, it is probably a plugin conflicting with Cache Master, causing it not working.
 
 == Screenshots ==
 
