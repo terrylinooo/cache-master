@@ -50,7 +50,7 @@ If you find your website doesn't work with Cache Master, please report an issue 
 
 Cache Master caches full webpages to static HTML files so that it is better to disable other similar cache plugins that do the same thing. It's okay to work with the object cache plugin together.
 
-= How do I kown whether or not the caching is working? =
+= How do I know whether or not the caching is working? =
 
 Things to be aware of, the logged-in users will not trigger the caching processes. Please use incognito mode or another browser to revisit the same webpage, and then you can check the cache status in one of the following ways:
 
