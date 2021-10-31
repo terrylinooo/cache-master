@@ -76,7 +76,7 @@ function scm_get_upload_dir() {
 /**
  * Get configuration file's path.
  *
- * @return void
+ * @return string
  */
 function scm_get_config_path() {
 	return scm_get_upload_dir() . '/config.json';
@@ -229,6 +229,13 @@ function scm_driver_factory( $type ) {
 
 			// Let's try again.
 			$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
+		} else {
+
+			error_log( '[Cache Master] Driver ' . $type . ' is not supported, fallback to use File driver.');
+
+			$driver = new \Shieldon\SimpleCache\Cache( 'file', array(
+				'storage' => scm_get_upload_dir() . '/file_driver',
+			) );
 		}
 	}
 
@@ -271,7 +278,7 @@ function scm_get_svg_icon( $type ) {
  * 
  * This function is also used in expert mode.
  *
- * @return void
+ * @return array
  */
 function scm_get_default_config() {
 

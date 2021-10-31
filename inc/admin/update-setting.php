@@ -77,8 +77,6 @@ foreach ( $register_exclusion_action as $option ) {
 function scm_update_scm_option_driver() {
 	$driver_type = get_option( 'scm_option_driver' );
 
-	echo $driver_type;
-
 	if ( ! scm_test_driver( $driver_type ) ) {
 		update_option( 'scm_option_driver', 'file' );
 
@@ -86,19 +84,19 @@ function scm_update_scm_option_driver() {
 		$driver_type = 'file';
 	}
 
-	$driver = scm_driver_factory( $driver_type );
-
 	$rebuld_list = array(
 		'mysql',
 		'sqlite',
 	);
 
 	foreach ( $rebuld_list as $db ) {
-		$driver = scm_driver_factory( $db );
-		$driver->rebuild();
+		$db_driver = scm_driver_factory( $db );
+
+		if ( $db_driver ) {
+			$db_driver->rebuild();
+		}
 	}
 
-	$driver = scm_driver_factory( $driver_type );
 	$advanced_settings = array();
 
 	if ( 'memcached' === $driver_type ) {
@@ -171,7 +169,12 @@ function scm_update_scm_option_html_debug_comment() {
 function scm_update_scm_option_clear_cache() {
 	$cache_type = get_option( 'scm_option_clear_cache' );
 	$driver     = scm_driver_factory( get_option( 'scm_option_driver' ) );
-	$list       = scm_get_cache_type_list( true );
+
+	if ( ! $driver) {
+		return;
+	}
+
+	$list = scm_get_cache_type_list( true );
 
 	update_option( 'scm_option_clear_cache', '' );
 

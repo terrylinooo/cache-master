@@ -32,5 +32,7 @@ function scm_payment_complete( $order_id ){
     $driver_type = get_option( 'scm_option_driver' );
     $driver      = scm_driver_factory( $driver_type );
 
-    $driver->delete( $cache_key );
+    if ( $driver ) {
+        $driver->delete( $cache_key );
+    }
 }

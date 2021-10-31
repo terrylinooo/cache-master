@@ -281,7 +281,12 @@ function scm_is_expert_mode_code_ready() {
  */
 function scm_clear_all_cache() {
 	$driver = scm_driver_factory( get_option( 'scm_option_driver' ) );
-	$list   = scm_get_cache_type_list( true );
+
+	if ( ! $driver ) {
+		return 0;
+	}
+
+	$list = scm_get_cache_type_list( true );
 
 	$driver->clear();
 

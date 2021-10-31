@@ -3,8 +3,8 @@
 Contributors: terrylin
 Tags: cache, redis, mongodb, memcached, apc, apcu
 Requires at least: 4.7
-Tested up to: 5.5.1
-Stable tag: 2.1.0
+Tested up to: 5.8.1
+Stable tag: 2.1.1
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -29,7 +29,7 @@ First release date: October, 1, 2020
 * Support to WooCommerce plugin.
 * More...
 
-Notice: 
+Notice:
 
 Before you install and use this plugin, please read the following notices carefully.
 
@@ -145,3 +145,10 @@ If there is no debug message in the source code or the cache status always shows
 * Update core library to 1.3.1
 * Add unit tests and run the tests before releasing new updates.
 * Fix issues.
+
+= 2.1.1 (10/31/2021) =
+
+* Fix type hint.
+* Driver will fall back to File driver if current driver is unavailable.
+* Test up to PHP 8.0
+* Test up to WordPress 5.8.1
