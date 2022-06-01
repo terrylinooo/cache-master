@@ -3,12 +3,12 @@
 /**
  * Class Cache_Master
  *
- * @author Terry Lin
+ * @author Terry Lin, Yannick Lin
  * @link https://terryl.in/
  *
  * @package Cache Master
  * @since 1.0.0
- * @version 1.5.0
+ * @version 1.5.1
  */
 
 if (!defined('SCM_INC')) {
