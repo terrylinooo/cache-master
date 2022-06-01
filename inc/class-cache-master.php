@@ -159,7 +159,7 @@ class Cache_Master
 
 				$custom_post_types = get_post_types($args, 'name', 'and');
 
-				$types = array_merge($array(
+				$types = array_merge(array(
 					'post',
 					'page',
 				), $custom_post_types);
