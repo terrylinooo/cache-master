@@ -1,16 +1,18 @@
 <?php
+
 /**
  * Cache Master - functions used in admin scope.
  *
- * @author Terry Lin
+ * @author Terry Lin, Yannick Lin
  * @link https://terryl.in/
  * @since 1.0.0
- * @version 1.3.0
+ * @version 1.3.1
  */
 
-if ( ! defined( 'SCM_INC' ) ) {
+if (!defined('SCM_INC')) {
 	die;
 }
+
 
 /**
  * Load view files.
@@ -19,14 +21,15 @@ if ( ! defined( 'SCM_INC' ) ) {
  * @param array  $data          Data is being passed to.
  * @return string
  */
-function scm_load_view( $template_path, $data = array() ) {
+function scm_load_view($template_path, $data = array())
+{
 	$view_file_path = SCM_PLUGIN_DIR . 'inc/admin/views/' . $template_path . '.php';
 
-	if ( ! empty( $data ) ) {
-		extract( $data );
+	if (!empty($data)) {
+		extract($data);
 	}
 
-	if ( file_exists( $view_file_path ) ) {
+	if (file_exists($view_file_path)) {
 		ob_start();
 		require $view_file_path;
 		$result = ob_get_contents();
@@ -41,30 +44,64 @@ function scm_load_view( $template_path, $data = array() ) {
  *
  * @return array
  */
-function scm_get_cache_type_list( $get_key = false ) {
-	$archive_note     = ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>';
-	$woocommerce_note = ' <small class="scm-badge">' . __( 'WooCommerce', 'cache-master' ) . '</small>';
+function scm_get_cache_type_list($get_key = false)
+{
+	$archive_note     = ' <small class="scm-badge">' . __('Archive', 'cache-master') . '</small>';
+	$woocommerce_note = ' <small class="scm-badge">' . __('WooCommerce', 'cache-master') . '</small>';
 
-	$list = array(
-		'homepage'         => __( 'Homepage', 'cache-master' ),
-		'post'             => __( 'Post', 'cache-master' ),
-		'page'             => __( 'Page', 'cache-master' ),
-		'category'         => __( 'Category', 'cache-master' )         . $archive_note,
-		'tag'              => __( 'Tag', 'cache-master' )              . $archive_note,
-		'date'             => __( 'Date', 'cache-master' )             . $archive_note,
-		'author'           => __( 'Author', 'cache-master' )           . $archive_note,
-		'product'          => __( 'Product', 'cache-master' )          . $woocommerce_note,
-		'product_tag'      => __( 'Product tag', 'cache-master' )      . $woocommerce_note . $archive_note,
-		'product_cat'      => __( 'Product category', 'cache-master' ) . $woocommerce_note . $archive_note,
-		'uncategorised'    => __( 'Uncategorised', 'cache-master' ),
+	$list = array();
+
+	// Homepage
+	$list = array_merge($list, array(
+		'homepage'         => __('Homepage', 'cache-master')
+	));
+
+	// Page and Post, as the most common Post Type
+	$list = array_merge($list, array(
+		'post'             => __('Post', 'cache-master'),
+		'page'             => __('Page', 'cache-master')
+	));
+
+	// Custom Post Type
+	$args = array(
+		'public'   => true,
+		'_builtin' => false
 	);
+	$custom_post_types = get_post_types($args, 'objects', 'and');
 
-	if ( $get_key ) {
-		return array_keys( $list );
+	foreach ($custom_post_types as $post_type) {
+		$list = array_merge($list, array(
+			$post_type->name => $post_type->labels->singular_name
+		));
+	}
+
+	// Archives
+	$list = array_merge($list, array(
+		'category'         => __('Category', 'cache-master')         . $archive_note,
+		'tag'              => __('Tag', 'cache-master')              . $archive_note,
+		'date'             => __('Date', 'cache-master')             . $archive_note,
+		'author'           => __('Author', 'cache-master')           . $archive_note
+	));
+
+	// WooCommerce related
+	$list = array_merge($list, array(
+		'product'          => __('Product', 'cache-master')          . $woocommerce_note,
+		'product_tag'      => __('Product tag', 'cache-master')      . $woocommerce_note . $archive_note,
+		'product_cat'      => __('Product category', 'cache-master') . $woocommerce_note . $archive_note
+	));
+
+	// Misc.
+	$list = array_merge($list, array(
+		'uncategorised'    => __('Uncategorised', 'cache-master')
+	));
+
+	if ($get_key) {
+		return array_keys($list);
 	}
 
 	return $list;
 }
+
 
 /**
  * Test if specific data driver is available or not.
@@ -73,13 +110,14 @@ function scm_get_cache_type_list( $get_key = false ) {
  *
  * @return bool
  */
-function scm_test_driver( $type = '' ) {
+function scm_test_driver($type = '')
+{
 
 	$advanced_settings        = array();
 	$advanced_connection_type = 'tcp';
 	$setting                  = array();
 
-	switch ( $type ) {
+	switch ($type) {
 		case 'mysql':
 			$setting = array(
 				'host'    => DB_HOST,
@@ -92,9 +130,9 @@ function scm_test_driver( $type = '' ) {
 
 		case 'file':
 			$file_dir = scm_get_upload_dir() . '/file_driver';
-	
-			if ( ! is_dir( $file_dir ) ) {
-				wp_mkdir_p( $file_dir );
+
+			if (!is_dir($file_dir)) {
+				wp_mkdir_p($file_dir);
 			}
 
 			$setting['storage'] = $file_dir;
@@ -104,13 +142,13 @@ function scm_test_driver( $type = '' ) {
 
 			$sqlite_dir = scm_get_upload_dir() . '/sqlite_driver';
 			$sqlite_file_path = $sqlite_dir . '/cache.sqlite3';
-	
-			if ( ! file_exists( $sqlite_file_path ) ) {
-				if ( ! is_dir( $sqlite_dir ) ) {
-					wp_mkdir_p( $sqlite_dir );
+
+			if (!file_exists($sqlite_file_path)) {
+				if (!is_dir($sqlite_dir)) {
+					wp_mkdir_p($sqlite_dir);
 				}
 			}
-	
+
 			$setting['storage'] = $sqlite_dir;
 			break;
 
@@ -120,8 +158,8 @@ function scm_test_driver( $type = '' ) {
 				'port' =>  6379,
 			);
 
-			$advanced_settings        = get_option( 'scm_option_advanced_driver_redis' );
-			$advanced_connection_type = get_option( 'scm_option_advanced_driver_redis_connection_type', 'tcp' );
+			$advanced_settings        = get_option('scm_option_advanced_driver_redis');
+			$advanced_connection_type = get_option('scm_option_advanced_driver_redis_connection_type', 'tcp');
 			break;
 
 		case 'mongo':
@@ -130,8 +168,8 @@ function scm_test_driver( $type = '' ) {
 				'port' =>  27017,
 			);
 
-			$advanced_settings        = get_option( 'scm_option_advanced_driver_mongodb' );
-			$advanced_connection_type = get_option( 'scm_option_advanced_driver_mongodb_connection_type', 'tcp' );
+			$advanced_settings        = get_option('scm_option_advanced_driver_mongodb');
+			$advanced_connection_type = get_option('scm_option_advanced_driver_mongodb_connection_type', 'tcp');
 			break;
 
 		case 'memcache':
@@ -141,8 +179,8 @@ function scm_test_driver( $type = '' ) {
 				'port' =>  11211,
 			);
 
-			$advanced_settings        = get_option( 'scm_option_advanced_driver_memcached' );
-			$advanced_connection_type = get_option( 'scm_option_advanced_driver_memcached_connection_type', 'tcp' );
+			$advanced_settings        = get_option('scm_option_advanced_driver_memcached');
+			$advanced_connection_type = get_option('scm_option_advanced_driver_memcached_connection_type', 'tcp');
 			break;
 
 		case 'apc':
@@ -152,69 +190,71 @@ function scm_test_driver( $type = '' ) {
 			break;
 	}
 
-
-	if ( ! empty( $advanced_settings ) ) {
+	if (!empty($advanced_settings)) {
 		$setting = $advanced_settings;
 
-		foreach ( $setting as $k => $v ) {
-			if ( is_numeric( $v ) ) {
-				$setting[ $k ] = (int) $v;
+		foreach ($setting as $k => $v) {
+			if (is_numeric($v)) {
+				$setting[$k] = (int) $v;
 			}
 		}
 
-		if ( 'socket' !== $advanced_connection_type ) {
-			if ( ! empty( $advanced_settings['unix_socket'] ) ) {
-				unset( $setting['unix_socket'] );
+		if ('socket' !== $advanced_connection_type) {
+			if (!empty($advanced_settings['unix_socket'])) {
+				unset($setting['unix_socket']);
 			}
 		}
 	}
 
 	try {
 
-		$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
+		$driver = new \Shieldon\SimpleCache\Cache($type, $setting);
 		$driver->rebuild();
-		$driver->set( 'foo', 'bar', 300 );
+		$driver->set('foo', 'bar', 300);
 
-		if ( 'bar' === $driver->get( 'foo' ) ) {
-			$driver->delete( 'foo' );
+		if ('bar' === $driver->get('foo')) {
+			$driver->delete('foo');
 			return true;
 		}
-
-	} catch( \Exception $e ) {}
+	} catch (\Exception $e) {
+	}
 
 	return false;
 }
+
 
 /**
  * Get the Expert Mode code snippet.
  *
  * @return string
  */
-function scm_expert_mode_code_template() {
+function scm_expert_mode_code_template()
+{
 	ob_start();
 
-	?>
-// BEGIN - Cache Master
+?>
+	// BEGIN - Cache Master
 
-if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
+	if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
 
-    include_once( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' );
+	include_once( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' );
 
-    /* BEGIN - Blog ID: <?php echo get_current_blog_id(); ?> */
+	/* BEGIN - Blog ID: <?php echo get_current_blog_id(); ?> */
 
-    scm_run_expert_mode( array(
-        'plugin_dir'        => '<?php echo rtrim( SCM_PLUGIN_DIR, '/' ); ?>',
-        'plugin_upload_dir' => '<?php echo rtrim( scm_get_upload_dir(), '/' ); ?>',
-    ) );
+	scm_run_expert_mode( array(
+	'plugin_dir' => '<?php echo rtrim(SCM_PLUGIN_DIR, '/'); ?>',
+	'plugin_upload_dir' => '<?php echo rtrim(scm_get_upload_dir(), '/'); ?>',
+	) );
 
-    /* END - Blog ID: <?php echo get_current_blog_id(); ?> */
-}
+	/* END - Blog ID: <?php echo get_current_blog_id(); ?> */
+	}
 
-// END - Cache Master
+	// END - Cache Master
 <?php
 
 	return ob_get_clean();
 }
+
 
 /**
  * Check if the Expert Mode code snippet exists or not.
@@ -223,14 +263,15 @@ if ( file_exists( '<?php echo SCM_PLUGIN_DIR; ?>inc/expert-mode.php' ) ) {
  *
  * @return array
  */
-function scm_search_expert_mode_code_snippet( $string ) {
- 
+function scm_search_expert_mode_code_snippet($string)
+{
+
 	$wp_config_file = ABSPATH . 'wp-config.php';
 
-	if ( ! file_exists( $wp_config_file ) ) {
+	if (!file_exists($wp_config_file)) {
 
 		// For some users put the wp-config.php in parent folder...
-		if ( file_exists( ABSPATH . '../wp-config.php' ) ) {
+		if (file_exists(ABSPATH . '../wp-config.php')) {
 			$wp_config_file = ABSPATH . '../wp-config.php';
 		}
 	}
@@ -238,17 +279,17 @@ function scm_search_expert_mode_code_snippet( $string ) {
 	$found1 = false;
 	$found2 = false;
 
-	if ( file_exists( $wp_config_file ) ) {
-		$file    = @fopen( $wp_config_file, 'r' );
+	if (file_exists($wp_config_file)) {
+		$file    = @fopen($wp_config_file, 'r');
 		$target1 = 'expert-mode.php';
 		$target2 = $string;
 
-		if ( $file ) {
-			while ( $line = fgets( $file ) ) { 
-				if ( strpos( $line, $target1 ) !== false ) { 
+		if ($file) {
+			while ($line = fgets($file)) {
+				if (strpos($line, $target1) !== false) {
 					$found1 = true;
 				}
-				if ( strpos( $line, $target2 ) !== false ) { 
+				if (strpos($line, $target2) !== false) {
 					$found2 = true;
 				}
 			}
@@ -256,53 +297,57 @@ function scm_search_expert_mode_code_snippet( $string ) {
 		}
 	}
 
-	$result = array( $found1, $found2 );
+	$result = array($found1, $found2);
 
-    return $result;
+	return $result;
 }
+
 
 /**
  * Check if PHP code for Expert Mode is ready or not.
  *
  * @return bool
  */
-function scm_is_expert_mode_code_ready() {
-    $result = scm_search_expert_mode_code_snippet( scm_get_upload_dir() );
-    if ( $result[0] && $result[1] ) {
-        return true;
-    }
-    return false;
+function scm_is_expert_mode_code_ready()
+{
+	$result = scm_search_expert_mode_code_snippet(scm_get_upload_dir());
+	if ($result[0] && $result[1]) {
+		return true;
+	}
+	return false;
 }
+
 
 /**
  * Clear all cache.
  *
  * @return int
  */
-function scm_clear_all_cache() {
-	$driver = scm_driver_factory( get_option( 'scm_option_driver' ) );
+function scm_clear_all_cache()
+{
+	$driver = scm_driver_factory(get_option('scm_option_driver'));
 
-	if ( ! $driver ) {
+	if (!$driver) {
 		return 0;
 	}
 
-	$list = scm_get_cache_type_list( true );
+	$list = scm_get_cache_type_list(true);
 
 	$driver->clear();
 
 	$i = 0;
 
-	foreach ( $list as $cache_type ) {
-		$dir = scm_get_stats_dir( $cache_type );
+	foreach ($list as $cache_type) {
+		$dir = scm_get_stats_dir($cache_type);
 
-		if ( is_dir( $dir ) ) {
-			foreach ( new DirectoryIterator( $dir ) as $file ) {
-				if ( $file->isFile() && $file->getExtension() === 'json' ) {
+		if (is_dir($dir)) {
+			foreach (new DirectoryIterator($dir) as $file) {
+				if ($file->isFile() && $file->getExtension() === 'json') {
 					$filename = $file->getFilename();
-					$key      = strstr( $filename, '.', true );
+					$key      = strstr($filename, '.', true);
 
-					$driver->delete( $key );
-					unlink( $file->getPathname() );
+					$driver->delete($key);
+					unlink($file->getPathname());
 					$i++;
 				}
 			}
@@ -312,6 +357,7 @@ function scm_clear_all_cache() {
 	return $i;
 }
 
+
 /**
  * Save the settings into a JSON file.
  *
@@ -319,29 +365,30 @@ function scm_clear_all_cache() {
  *
  * @return void
  */
-function scm_update_config( $setting ) {
+function scm_update_config($setting)
+{
 
-	$config  = get_option( 'scm_config', array() );
+	$config  = get_option('scm_config', array());
 	$default = scm_get_default_config();
 
-	foreach ( $default as $key => $value ) {
-		if ( isset( $setting[ $key ] ) ) {
-			$config[ $key ] = $setting[ $key ];
+	foreach ($default as $key => $value) {
+		if (isset($setting[$key])) {
+			$config[$key] = $setting[$key];
 		}
 
-		if ( ! isset( $config[ $key ] ) ) {
-			$config[ $key ] = $value;
+		if (!isset($config[$key])) {
+			$config[$key] = $value;
 		}
 	}
 
-	if ( empty( $config['site_url'] ) ) {
-		$config['site_url'] = rtrim( get_site_url(), '/' );
+	if (empty($config['site_url'])) {
+		$config['site_url'] = rtrim(get_site_url(), '/');
 	}
 
-	update_option( 'scm_config', $config );
+	update_option('scm_config', $config);
 
 	$file = scm_get_config_path();
-	$content = json_encode( $config, JSON_PRETTY_PRINT );
+	$content = json_encode($config, JSON_PRETTY_PRINT);
 
-    @file_put_contents( $file, $content );
+	@file_put_contents($file, $content);
 }
