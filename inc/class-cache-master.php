@@ -3,7 +3,7 @@
 /**
  * Class Cache_Master
  *
- * @author Terry Lin
+ * @author Terry Lin, Yannick Lin
  * @link https://terryl.in/
  *
  * @package Cache Master

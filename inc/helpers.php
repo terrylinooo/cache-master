@@ -3,11 +3,10 @@
 /**
  * Cache Master helper functions.
  *
+ * @author Terry Lin, Yannick Lin
+ * @link https://terryl.in/
+ *
  * @package   Cache Master
- * @author    Terry Lin <terrylinooo>
- * @license   GPLv3 (or later)
- * @link      https://terryl.in
- * @copyright 2020 Terry Lin
  * @since 2.1.0
  * @version 2.1.3
  */
