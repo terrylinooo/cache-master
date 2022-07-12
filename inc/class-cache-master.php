@@ -145,15 +145,22 @@ class Cache_Master
 			}
 			return;
 		} else {
-
 			$is_singular = is_singular();
 			$is_archive  = is_archive();
 
 			if ($is_singular) {
-				$types = array(
+
+				$args = array(
+					'public'   => true,
+					'_builtin' => false
+				);
+
+				$custom_post_types = get_post_types($args, 'name', 'and');
+
+				$types = array_merge(array(
 					'post',
 					'page',
-				);
+				), $custom_post_types);
 
 				foreach ($types as $type) {
 					if (isset($post_types[$type]) && is_singular($type)) {
@@ -187,7 +194,6 @@ class Cache_Master
 		$woocommerce_post_archives = get_option('scm_option_woocommerce_post_archives');
 
 		if ('yes' === $woocommerce_support) {
-
 			if ($is_singular) {
 				if (isset($woocommerce_post_types['product']) && is_singular('product')) {
 					$this->is_cache  = true;
@@ -551,7 +557,7 @@ class Cache_Master
 
 	/**
 	 * Create a clean output buffering for Cahce Master.
-	 * This method makes Cache Master become the first level of output 
+	 * This method makes Cache Master become the first level of output
 	 * buffering.
 	 *
 	 * @return void
@@ -567,7 +573,7 @@ class Cache_Master
 
 
 	/**
-	 * Same as WordPress function wp_ob_end_flush_all, but leave the 
+	 * Same as WordPress function wp_ob_end_flush_all, but leave the
 	 * Cache Master level for the final output buffering.
 	 *
 	 * @return string
