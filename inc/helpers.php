@@ -388,12 +388,23 @@ function scm_javascript()
 				scm_text_page_generation_time = scm_report["after"]["page_generation_time"];
 			}
 
-			document.querySelector(".scm-field-cache-status").textContent = scm_text_cache_status;
-			document.querySelector(".scm-field-memory-usage").textContent = scm_text_memory_usage;
-			document.querySelector(".scm-field-sql-queries").textContent = scm_text_sql_queries;
-			document.querySelector(".scm-field-page-generation-time").textContent = scm_text_page_generation_time;
-			document.querySelector(".cache-master-benchmark-report").setAttribute("style", "");
-			document.querySelector(".cache-master-plugin-widget-wrapper").setAttribute("style", "");
+			let scm_field_cache_status = document.querySelector(".scm-field-cache-status");
+			if (null != scm_field_cache_status) { scm_field_cache_status.textContent = scm_text_cache_status; }
+
+			let scm_field_memory_usage = document.querySelector(".scm-field-memory-usage");
+			if (null != scm_field_memory_usage) { scm_field_memory_usage.textContent = scm_text_memory_usage; }
+
+			let scm_field_sql_queries = document.querySelector(".scm-field-sql-queries");
+			if (null != scm_field_sql_queries) { scm_field_sql_queries.textContent = scm_text_sql_queries; }
+
+			let scm_field_page_generation_time = document.querySelector(".scm-field-page-generation-time");
+			if (null != scm_field_page_generation_time) { scm_field_page_generation_time.textContent = scm_text_page_generation_time; }
+
+			let cache_master_benchmark_report = document.querySelector(".cache-master-benchmark-report");
+			if (null != cache_master_benchmark_report) { cache_master_benchmark_report.setAttribute("style", ""); }
+
+			let cache_master_plugin_widget_wrapper = document.querySelector(".cache-master-plugin-widget-wrapper");
+			if (null != cache_master_plugin_widget_wrapper) { cache_master_plugin_widget_wrapper.setAttribute("style", "") }
 		</script>
 	';
 
