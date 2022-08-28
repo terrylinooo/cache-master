@@ -26,8 +26,8 @@ $option_list = array(
 		<input type="checkbox" name="scm_option_woocommerce_post_types[<?php echo $k; ?>]" id="cache-master-post-type-option-<?php echo $k; ?>" value="yes"
 			<?php if ( isset( $option_post_types[ $k ] ) ) : ?>
 				<?php checked( $option_post_types[ $k ], 'yes' ); ?>
-            <?php endif; ?>
-        >
+			<?php endif; ?>
+		>
 		<label for="cache-master-post-type-option-<?php echo $k; ?>">
 			<?php echo $v; ?><br />
 		<label>

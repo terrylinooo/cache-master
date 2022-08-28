@@ -91,13 +91,13 @@ function scm_activation() {
 	scm_setup_security_files();
 
 	$file_dir = scm_get_upload_dir() . '/file_driver';
-	
+
 	if ( ! is_dir( $file_dir ) ) {
 		wp_mkdir_p( $file_dir );
 	}
 
 	$sqlite_dir = scm_get_upload_dir() . '/sqlite_driver';
-	
+
 	if ( ! is_dir( $sqlite_dir ) ) {
 		wp_mkdir_p( $sqlite_dir );
 	}
@@ -140,8 +140,8 @@ function scm_setup_security_files() {
 
 		foreach ( $files as $file ) {
 			if (
-				wp_mkdir_p( $file['base'] ) && 
-				! file_exists( trailingslashit( $file['base'] ) . $file['file'] ) 
+				wp_mkdir_p( $file['base'] ) &&
+				! file_exists( trailingslashit( $file['base'] ) . $file['file'] )
 			) {
 				@file_put_contents( trailingslashit( $file['base'] ) . $file['file'], $file['content'] );
 			}

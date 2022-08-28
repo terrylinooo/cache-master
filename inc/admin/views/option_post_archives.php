@@ -17,9 +17,9 @@ $option_post_archives = get_option( 'scm_option_post_archives');
 
 $option_list = array(
 	'category' => __( 'Category', 'cache-master' ),
-    'tag'      => __( 'Tag', 'cache-master' ),
-    'date'     => __( 'Date', 'cache-master' ),
-    'author'   => __( 'Author', 'cache-master' ),
+	'tag'      => __( 'Tag', 'cache-master' ),
+	'date'     => __( 'Date', 'cache-master' ),
+	'author'   => __( 'Author', 'cache-master' ),
 );
 
 ?>
@@ -39,4 +39,3 @@ $option_list = array(
 	<?php endforeach; ?>
 </div>
 <p><em><?php _e( 'What type of archive page do you like to cache?', 'cache-master' ); ?></em></p>
-

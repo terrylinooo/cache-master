@@ -41,11 +41,11 @@ $total_rows = 0;
 ?>
 
 <div id="scm-statistic-page">
-	
+
 	<?php if ( 'enable' === get_option( 'scm_option_statistics_status' ) ) : ?>
-	
+
 	<div class="scm-content-wrapper">
-		
+	
 		<table class="table-stats-wrapper">
 			<tr>
 				<td class="stats-l">
@@ -57,7 +57,7 @@ $total_rows = 0;
 							<th><?php _e( 'Rows', 'cache-master' ); ?></th>
 							<th><?php _e( 'Total Size', 'cache-master' ); ?> (MB)</th>
 						<tr>
-						<?php foreach( scm_get_cache_type_list() as $key => $value ) : ?>
+						<?php foreach ( scm_get_cache_type_list() as $key => $value ) : ?>
 							<?php $stats_data = scm_get_stats( $key ); ?>
 							<tr>
 								<td id="option-item-<?php echo $key; ?>"></td>
@@ -66,16 +66,17 @@ $total_rows = 0;
 								<td>
 									<?php
 
-										$size = round( $stats_data['size'] / ( 1024 * 1024 ), 2);
+									$size = round( $stats_data['size'] / ( 1024 * 1024 ), 2 );
 
-										if ( $size > 100 ) {
-											echo '<span class="scm-warning">' . $size . '</span>';
-										} else {
-											echo '<span class="scm-info">' . $size . '</span>';
-										}
+									if ( $size > 100 ) {
+										echo '<span class="scm-warning">' . $size . '</span>';
+									} else {
+										echo '<span class="scm-info">' . $size . '</span>';
+									}
 
-										$total_size += $size;
-										$total_rows += $stats_data['nums'];
+									$total_size += $size;
+									$total_rows += $stats_data['nums'];
+
 									?>
 								</td>
 							</tr>
@@ -110,7 +111,7 @@ $total_rows = 0;
 		<?php do_settings_sections( 'scm_setting_page_4' );  ?>
 	</div>
 
-	<?php else: ?>
+	<?php else : ?>
 
 		<form action="options.php" method="post">
 			<?php settings_fields( 'scm_setting_group_3' ); ?>
@@ -126,8 +127,6 @@ $total_rows = 0;
 		</form>
 
 	<?php endif; ?>
-
-	
 </div>
 
 <script>

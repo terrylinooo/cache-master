@@ -13,7 +13,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
 
- /**
+/**
  * Load plugin textdomain.
  *
  * @return void
@@ -57,7 +57,7 @@ function scm_is_dir_hash() {
  */
 function scm_set_dir_hash() {
 	$scm_dir_hash = wp_hash( date( 'ymdhis' ) . wp_rand( 1, 86400 ) );
-	$scm_dir_hash = substr( $scm_dir_hash, 0, 8);
+	$scm_dir_hash = substr( $scm_dir_hash, 0, 8 );
 
 	update_option( 'scm_dir_hash', $scm_dir_hash );
 
@@ -159,7 +159,7 @@ function scm_driver_factory( $type ) {
 		case 'redis':
 			$setting = array(
 				'host' => '127.0.0.1',
-				'port' =>  6379,
+				'port' => 6379,
 			);
 
 			$advanced_settings = get_option( 'scm_option_advanced_driver_redis' );
@@ -169,7 +169,7 @@ function scm_driver_factory( $type ) {
 		case 'mongo':
 			$setting = array(
 				'host' => '127.0.0.1',
-				'port' =>  27017,
+				'port' => 27017,
 			);
 
 			$advanced_settings = get_option( 'scm_option_advanced_driver_mongodb' );
@@ -180,7 +180,7 @@ function scm_driver_factory( $type ) {
 		case 'memcached':
 			$setting = array(
 				'host' => '127.0.0.1',
-				'port' =>  11211,
+				'port' => 11211,
 			);
 
 			$advanced_settings = get_option( 'scm_option_advanced_driver_memcached' );
@@ -222,7 +222,7 @@ function scm_driver_factory( $type ) {
 
 		$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
 
-	} catch( \Exception $e ) {
+	} catch ( \Exception $e ) {
 
 		if ( in_array( $type, array( 'file', 'sqlite' ) ) && ! file_exists( $setting['storage'] ) ) {
 			wp_mkdir_p( $setting['storage'] );
@@ -233,9 +233,12 @@ function scm_driver_factory( $type ) {
 
 			error_log( '[Cache Master] Driver ' . $type . ' is not supported, fallback to use File driver.');
 
-			$driver = new \Shieldon\SimpleCache\Cache( 'file', array(
-				'storage' => scm_get_upload_dir() . '/file_driver',
-			) );
+			$driver = new \Shieldon\SimpleCache\Cache(
+				'file',
+				array(
+					'storage' => scm_get_upload_dir() . '/file_driver',
+				)
+			);
 		}
 	}
 
@@ -246,7 +249,7 @@ function scm_driver_factory( $type ) {
  * Get a SVG icon.
  *
  * @param string $type The icon type.
- * 
+ *
  * Font Awesome Free 5.15.1
  *
  * @return string
@@ -275,7 +278,7 @@ function scm_get_svg_icon( $type ) {
 
 /**
  * Get default configuation.
- * 
+ *
  * This function is also used in expert mode.
  *
  * @return array
@@ -287,12 +290,11 @@ function scm_get_default_config() {
 		'html_debug_comment'       => true,
 		'driver_advanced_settings' => array(),
 		'site_url'                 => '',
-	
-		'woocommerce' => array(
+		'woocommerce'              => array(
 			'enable' => false,
 		),
 
-		'exclusion' => array(
+		'exclusion'                => array(
 			'enable'             => false,
 			'excluded_list'      => array(),
 			'excluded_get_vars'  => array(),
@@ -304,7 +306,7 @@ function scm_get_default_config() {
 
 /**
  * The variable stack for JavaScript snippet.
- * 
+ *
  * This function is also used in expert mode.
  *
  * @param string      $key      The key of the field.
@@ -320,7 +322,7 @@ function scm_variable_stack( $key, $value = '', $poistion = 'before' ) {
 		$output = $vars;
 		$vars   = array();
 
-		return json_encode($output);
+		return json_encode( $output );
 	}
 
 	$vars[ $poistion ][ $key ] = $value;

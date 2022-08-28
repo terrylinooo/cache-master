@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Cache Master
  * Plugin URI:  https://github.com/terrylinooo/cache-master
- * Description: A wordpress cache plugin.
- * Version:     2.1.1
+ * Description: A WordPress cache plugin.
+ * Version:     2.1.2
  * Author:      Terry Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -35,9 +35,9 @@ if ( ! defined( 'SCM_INC' ) ) {
  * SCM_PLUGIN_LANGUAGE_PACK : Translation Language pack.
  * SCM_PLUGIN_VERSION       : SCM plugin version number
  * SCM_PLUGIN_TEXT_DOMAIN   : SCM plugin text domain
- * 
+ *
  * Expected values:
- * 
+ *
  * SCM_PLUGIN_DIR           : {absolute_path}/wp-content/plugins/cache-master/
  * SCM_PLUGIN_URL           : {protocal}://{domain_name}/wp-content/plugins/cache-master/
  * SCM_PLUGIN_PATH          : {absolute_path}/wp-content/plugins/cache-master/cache-master.php
@@ -49,7 +49,7 @@ define( 'SCM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SCM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SCM_PLUGIN_PATH', __FILE__ );
 define( 'SCM_PLUGIN_LANGUAGE_PACK', dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-define( 'SCM_PLUGIN_VERSION', '2.1.1' );
+define( 'SCM_PLUGIN_VERSION', '2.1.2' );
 define( 'SCM_CORE_VERSION', '1.3.1' );
 define( 'SCM_PLUGIN_TEXT_DOMAIN', 'cache-master' );
 
@@ -63,7 +63,7 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 	// This section is for unit testing.
 	if ( defined( 'SCM_PLUGIN_UNIT_TEST' ) ) {
 		$required_files = array(
-			'register', 
+			'register',
 			'setting',
 			'menu',
 			'update-setting',
@@ -123,7 +123,6 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 				foreach ( $required_files as $file ) {
 					require_once SCM_PLUGIN_DIR . 'inc/admin/' . $file . '.php';
 				}
-
 			} else {
 
 				require_once SCM_PLUGIN_DIR . 'inc/autoload.php';
@@ -141,6 +140,6 @@ if ( version_compare( phpversion(), '7.1.0', '>=' ) ) {
 /**
  * Cache Master is open sourced at:
  * https://github.com/terrylinooo/cache-master
- * 
+ *
  * If you have found any bug or have any suggestion, please let me know.
  */

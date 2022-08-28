@@ -13,7 +13,7 @@ class ActivationTest extends WP_UnitTestCase {
 	/**
 	 * Activate plugin.
 	 *
-	 * Dirctories for File and SQLite driver are supposed to be created when 
+	 * Dirctories for File and SQLite driver are supposed to be created when
 	 * activating plugin.
 	 *
 	 * @return void

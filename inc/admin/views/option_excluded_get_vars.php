@@ -23,7 +23,3 @@ $option_excluded_get_vars = get_option( 'scm_option_excluded_get_vars', '' );
 </div>
 <p><em><?php _e( 'Any request contains those variables, even its value is empty, Caster Master will ignore.', 'cache-master' ); ?></em></p>
 <p><em><?php _e( 'A variable key per line.', 'cache-master' ); ?></em></p>
-
-
-
-
