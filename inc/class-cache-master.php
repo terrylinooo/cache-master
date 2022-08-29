@@ -157,7 +157,7 @@ class Cache_Master
 					'_builtin' => false
 				);
 
-				$custom_post_types = get_post_types($args, 'name', 'and');
+				$custom_post_types = array_keys(get_post_types($args, 'name', 'and'));
 
 				$types = array_merge(array(
 					'post',
