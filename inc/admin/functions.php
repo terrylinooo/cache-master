@@ -83,6 +83,10 @@ function scm_get_cache_type_list($get_key = false)
 		'author'           => __('Author', 'cache-master')           . $archive_note
 	));
 
+
+	// TODO!! Add Custom_POST_Type Archives
+
+
 	// WooCommerce related
 	$list = array_merge($list, array(
 		'product'          => __('Product', 'cache-master')          . $woocommerce_note,

@@ -180,6 +180,9 @@ class Cache_Master
 					'author'   => 'is_author',
 				);
 
+
+				// TODO!! Add Custom_POST_Type Archives
+
 				foreach ($archives as $type => $wp_function) {
 					if (isset($post_archives[$type]) && $wp_function()) {
 						$this->is_cache  = true;
