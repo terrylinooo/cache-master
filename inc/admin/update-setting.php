@@ -119,7 +119,7 @@ function scm_update_scm_option_driver() {
  * @return void
  */
 function scm_check_permalink_structure() {
-	if ( '' === get_option( 'permalink_structure') ) {
+	if ( '' === get_option( 'permalink_structure' ) ) {
 		update_option( 'option_caching_status', 'disable' );
 	}
 }
@@ -170,7 +170,7 @@ function scm_update_scm_option_clear_cache() {
 	$cache_type = get_option( 'scm_option_clear_cache' );
 	$driver     = scm_driver_factory( get_option( 'scm_option_driver' ) );
 
-	if ( ! $driver) {
+	if ( ! $driver ) {
 		return;
 	}
 
@@ -189,7 +189,7 @@ function scm_update_scm_option_clear_cache() {
 					if ( $file->isFile() && $file->getExtension() === 'json' ) {
 						$filename = $file->getFilename();
 						$key      = strstr( $filename, '.', true );
-	
+
 						$driver->delete( $key );
 						unlink( $file->getPathname() );
 					}
@@ -199,13 +199,13 @@ function scm_update_scm_option_clear_cache() {
 	} else {
 		if ( in_array( $cache_type, $list ) ) {
 			$dir = scm_get_stats_dir( $cache_type );
-	
+
 			if ( is_dir( $dir ) ) {
 				foreach ( new DirectoryIterator( $dir ) as $file ) {
 					if ( $file->isFile() && $file->getExtension() === 'json' ) {
 						$filename = $file->getFilename();
 						$key      = strstr( $filename, '.', true );
-	
+
 						$driver->delete( $key );
 						unlink( $file->getPathname() );
 					}
@@ -262,22 +262,22 @@ function scm_update_exclusion() {
 	);
 
 	foreach ( $check_list as $list ) {
-		$exluded_variables = get_option( 'scm_option_excluded_' . $list . '_vars', array() );
+		$exluded_variables = get_option( 'scm_option_excluded_' . $list . '_vars', '' );
 
 		$exluded_variables_arr = explode( "\n", $exluded_variables );
 		$exluded_variables_tmp = array();
-	
+
 		foreach ( $exluded_variables_arr as $item ) {
 			$str = trim( $item );
-			if( preg_match( "/^[a-zA-Z0-9_\-]+$/", $str ) ) {
+			if ( preg_match( '/^[a-zA-Z0-9_\-]+$/', $str ) ) {
 				$exluded_variables_tmp[] = $str;
 			}
 		}
 
-		$setting['exclusion']['excluded_' . $list . '_vars'] = array();
+		$setting['exclusion'][ 'excluded_' . $list . '_vars' ] = array();
 
 		if ( ! empty( $exluded_variables_tmp ) ) {
-			$setting['exclusion']['excluded_' . $list . '_vars'] = $exluded_variables_tmp;
+			$setting['exclusion'][ 'excluded_' . $list . '_vars' ] = $exluded_variables_tmp;
 		}
 	}
 

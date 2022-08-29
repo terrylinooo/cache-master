@@ -422,5 +422,5 @@ function scm_settings() {
 }
 
 function scm_cb_setting_section() {
-	echo __( '', 'cache-master' );
+	echo '';
 }

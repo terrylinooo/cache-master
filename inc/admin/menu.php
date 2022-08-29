@@ -139,7 +139,7 @@ function scm_plugin_action_links( $links, $file ) {
 		return $links;
 	}
 
-	if ( $file === SCM_PLUGIN_NAME ) {
+	if ( SCM_PLUGIN_NAME === $file ) {
 		$links[] = '<a href="' . admin_url( 'admin.php?page=cache-master-settings' ) . '">' . __( 'Settings', 'cache-master' ) . '</a>';
 		return $links;
 	}
@@ -158,7 +158,7 @@ function scm_plugin_extend_links( $links, $file ) {
 		return $links;
 	}
 
-	if ( $file === SCM_PLUGIN_NAME ) {
+	if ( SCM_PLUGIN_NAME === $file ) {
 		$links[] = '<a href="https://github.com/terrylinooo/cache-master" target="_blank">' . __( 'Source code', 'cache-master' ) . '</a>';
 	}
 	return $links;
@@ -174,7 +174,7 @@ function scm_admin_enqueue_styles( $hook_suffix ) {
 	}
 	wp_enqueue_style( 'custom-wp-admin-css', SCM_PLUGIN_URL . 'inc/assets/css/admin-style.css', array(), SCM_PLUGIN_VERSION, 'all' );
 	wp_enqueue_style( 'code-highlight', SCM_PLUGIN_URL . 'inc/assets/highlight/default.css', array(), SCM_PLUGIN_VERSION, 'all' );
-	wp_enqueue_style ( 'wp-jquery-ui-dialog' );
+	wp_enqueue_style( 'wp-jquery-ui-dialog' );
 }
 
 /**
@@ -207,7 +207,7 @@ function scm_show_settings_header() {
 	echo '</div>';
 	echo '<div class="wrap scm-wrap">';
 
-	if ( '' === get_option( 'permalink_structure') ) {
+	if ( '' === get_option( 'permalink_structure' ) ) {
 		$url_html = '<a href="' . get_bloginfo( 'url' ) . '/wp-admin/options-permalink.php">' . __( 'Permalink Setting', 'seo-search-permalink' ) . '</a>';
 		echo '<div class="notice notice-error is-dismissible"><p>';
 		echo __( 'Cache Master supports only static URL structure.', 'cache-master' ) . ' ';

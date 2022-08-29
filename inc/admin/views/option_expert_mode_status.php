@@ -40,6 +40,6 @@ $option_expert_mode = get_option( 'scm_option_expert_mode_status', 'enable' );
 <p><em><?php _e( 'This option only works when you have put the custom PHP code in wp-config.php', 'cache-master' ); ?></em></p>
 <?php if ( scm_is_expert_mode_code_ready() ) : ?>
 	<p><em class="scm-msg scm-msg-info"><?php _e( 'PHP code for Expert Mode found.', 'cache-master' ); ?></em></p>
-<?php else: ?>
+<?php else : ?>
 	<p><em class="scm-msg scm-msg-error"><?php _e( 'Could not find PHP code for Expert Mode.', 'cache-master' ); ?></em></p>
 <?php endif; ?>

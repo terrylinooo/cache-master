@@ -26,7 +26,7 @@ function scm_load_view($template_path, $data = array())
 	$view_file_path = SCM_PLUGIN_DIR . 'inc/admin/views/' . $template_path . '.php';
 
 	if (!empty($data)) {
-		extract($data);
+		extract($data); // phpcs:ignore
 	}
 
 	if (file_exists($view_file_path)) {
@@ -139,8 +139,7 @@ function scm_test_driver($type = '')
 			break;
 
 		case 'sqlite':
-
-			$sqlite_dir = scm_get_upload_dir() . '/sqlite_driver';
+			$sqlite_dir       = scm_get_upload_dir() . '/sqlite_driver';
 			$sqlite_file_path = $sqlite_dir . '/cache.sqlite3';
 
 			if (!file_exists($sqlite_file_path)) {
@@ -155,7 +154,7 @@ function scm_test_driver($type = '')
 		case 'redis':
 			$setting = array(
 				'host' => '127.0.0.1',
-				'port' =>  6379,
+				'port' => 6379,
 			);
 
 			$advanced_settings        = get_option('scm_option_advanced_driver_redis');
@@ -165,7 +164,7 @@ function scm_test_driver($type = '')
 		case 'mongo':
 			$setting = array(
 				'host' => '127.0.0.1',
-				'port' =>  27017,
+				'port' => 27017,
 			);
 
 			$advanced_settings        = get_option('scm_option_advanced_driver_mongodb');
@@ -176,7 +175,7 @@ function scm_test_driver($type = '')
 		case 'memcached':
 			$setting = array(
 				'host' => '127.0.0.1',
-				'port' =>  11211,
+				'port' => 11211,
 			);
 
 			$advanced_settings        = get_option('scm_option_advanced_driver_memcached');
@@ -217,6 +216,7 @@ function scm_test_driver($type = '')
 			return true;
 		}
 	} catch (\Exception $e) {
+		// Nothing here.
 	}
 
 	return false;
@@ -251,7 +251,6 @@ function scm_expert_mode_code_template()
 
 	// END - Cache Master
 <?php
-
 	return ob_get_clean();
 }
 
@@ -265,7 +264,6 @@ function scm_expert_mode_code_template()
  */
 function scm_search_expert_mode_code_snippet($string)
 {
-
 	$wp_config_file = ABSPATH . 'wp-config.php';
 
 	if (!file_exists($wp_config_file)) {

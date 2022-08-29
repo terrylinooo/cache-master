@@ -24,7 +24,3 @@ $option_excluded_list = get_option( 'scm_option_excluded_list_filtered', '' );
 <p><em><?php _e( 'Please enter the <strong>begin with</strong> URLs you want them excluded from Cache Master.', 'cache-master' ); ?></em></p>
 <p><em><?php _e( 'A URL per line.', 'cache-master' ); ?></em></p>
 <p><em><?php _e( 'For example, use <code>/custom-type/</code> instead of <code>www.example.com/custom-type/1/</code> for a web page.', 'cache-master' ); ?></em></p>
-
-
-
-

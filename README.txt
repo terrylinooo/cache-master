@@ -3,8 +3,8 @@
 Contributors: terrylin
 Tags: cache, redis, mongodb, memcached, apc, apcu
 Requires at least: 4.7
-Tested up to: 5.8.1
-Stable tag: 2.1.1
+Tested up to: 6.0.1
+Stable tag: 2.1.2
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -152,3 +152,10 @@ If there is no debug message in the source code or the cache status always shows
 * Driver will fall back to File driver if current driver is unavailable.
 * Test up to PHP 8.0
 * Test up to WordPress 5.8.1
+
+= 2.1.2 (8/28/2022) =
+
+* Fix a type hint issue that occurs a PHP 8 fatal error.
+* Test up to PHP 8.0
+* Test up to WordPress 6.0.1
+* Fix coding style to fit the WordPress coding standard.
