@@ -202,6 +202,7 @@ class Cache_Master
 						$this->data_type = $type;
 						return;
 					}
+				}
 			}
 		}
 
