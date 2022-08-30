@@ -197,9 +197,11 @@ class Cache_Master
 				$cpt_archives = get_post_types($args, 'objects', 'and');
 
 				foreach ($cpt_archives as $cpt_archive) {
-					if (isset($post_archives[("archive_" . $cpt_archive->name)]) && is_post_type_archive($cpt_archive->name)) {
+					$datatype = "archive_" . $cpt_archive->name;
+
+					if (isset($post_archives[$datatype]) && is_post_type_archive($cpt_archive->name)) {
 						$this->is_cache  = true;
-						$this->data_type = $type;
+						$this->data_type = $datatype;
 						return;
 					}
 				}

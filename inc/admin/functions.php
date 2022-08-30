@@ -91,9 +91,9 @@ function scm_get_cache_type_list($get_key = false)
 	);
 	$cpt_archives = get_post_types($args, 'objects', 'and');
 
-	foreach ($cpt_archives as $post_type) {
+	foreach ($cpt_archives as $cpt_archive) {
 		$list = array_merge($list, array(
-			("archive_" . $post_type->name) => ('Archive for ' . $post_type->labels->singular_name . $archive_note)
+			("archive_" . $cpt_archive->name) => ('Archive for ' . $cpt_archive->labels->singular_name . $archive_note)
 		));
 	}
 
