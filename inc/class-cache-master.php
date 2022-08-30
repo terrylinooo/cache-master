@@ -188,7 +188,7 @@ class Cache_Master
 
 				foreach ($cpt_archives as $post_type) {
 					$archives = array_merge($archives, array(
-						("archive_" . $post_type->name) => ('is_post_type_archive("' . $post_type->labels->singular_name . '")')
+						("archive_" . $post_type->name) => ('is_post_type_archive("' . $post_type->name . '")')
 					));
 				}
 
