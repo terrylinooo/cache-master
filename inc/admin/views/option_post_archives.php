@@ -24,9 +24,19 @@ $option_list = array(
 );
 
 
+// Custom Post Type Archives
+$args = array(
+	'public'   => true,
+	'has_archive' => true,
+	'_builtin' => false
+);
+$cpt_archives = get_post_types($args, 'objects', 'and');
 
-// TODO!! Add Custom_POST_Type Archives
-
+foreach ($cpt_archives as $post_type) {
+	$option_list = array_merge($option_list, array(
+		("archive_" . $post_type->name) => ('Archive for ' . $post_type->labels->singular_name)
+	));
+}
 
 ?>
 

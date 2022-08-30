@@ -180,8 +180,19 @@ class Cache_Master
 					'author'   => 'is_author',
 				);
 
+				// Custom Post Type Archives
+				$args = array(
+					'public'   => true,
+					'has_archive' => true,
+					'_builtin' => false
+				);
+				$cpt_archives = get_post_types($args, 'objects', 'and');
 
-				// TODO!! Add Custom_POST_Type Archives
+				foreach ($cpt_archives as $post_type) {
+					$archives = array_merge($archives, array(
+						("archive_" . $post_type->name) => ('is_post_type_archive("' . $post_type->labels->singular_name . '")')
+					));
+				}
 
 				foreach ($archives as $type => $wp_function) {
 					if (isset($post_archives[$type]) && $wp_function()) {
