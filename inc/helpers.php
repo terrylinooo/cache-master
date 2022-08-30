@@ -15,7 +15,6 @@ if (!defined('SCM_INC')) {
 	die;
 }
 
-
 /**
  * Load plugin textdomain.
  *
@@ -25,7 +24,6 @@ function scm_load_textdomain()
 {
 	load_plugin_textdomain(SCM_PLUGIN_TEXT_DOMAIN, false, SCM_PLUGIN_LANGUAGE_PACK);
 }
-
 
 /**
  * Get driver hash.
@@ -42,7 +40,6 @@ function scm_get_dir_hash()
 	return $hash;
 }
 
-
 /**
  * Check driver hash exists or not.
  *
@@ -57,7 +54,6 @@ function scm_is_dir_hash()
 	}
 	return true;
 }
-
 
 /**
  * Set driver hash.
@@ -74,7 +70,6 @@ function scm_set_dir_hash()
 	return $scm_dir_hash;
 }
 
-
 /**
  * Get upload dir.
  *
@@ -85,7 +80,6 @@ function scm_get_upload_dir()
 	return WP_CONTENT_DIR . '/uploads/cache-master/' . scm_get_blog_id() . '_' . scm_get_dir_hash();
 }
 
-
 /**
  * Get configuration file's path.
  *
@@ -95,7 +89,6 @@ function scm_get_config_path()
 {
 	return scm_get_upload_dir() . '/config.json';
 }
-
 
 /**
  * Get configuration data.
@@ -113,7 +106,6 @@ function scm_get_config_data()
 	return scm_get_default_config();
 }
 
-
 /**
  * Set channel Id.
  *
@@ -124,7 +116,6 @@ function scm_set_blog_id()
 	update_option('scm_blog_id', get_current_blog_id());
 }
 
-
 /**
  * Get channel Id.
  *
@@ -134,7 +125,6 @@ function scm_get_blog_id()
 {
 	return get_option('scm_blog_id', 1);
 }
-
 
 /**
  * Get the path of statistics directory.
@@ -147,7 +137,6 @@ function scm_get_stats_dir($cache_type = 'post')
 {
 	return scm_get_upload_dir() . '/stats/' . $cache_type;
 }
-
 
 /**
  * Get the cache driver instance.
@@ -183,7 +172,7 @@ function scm_driver_factory($type)
 		case 'redis':
 			$setting = array(
 				'host' => '127.0.0.1',
-				'port' =>  6379,
+				'port' => 6379,
 			);
 
 			$advanced_settings = get_option('scm_option_advanced_driver_redis');
@@ -193,7 +182,7 @@ function scm_driver_factory($type)
 		case 'mongo':
 			$setting = array(
 				'host' => '127.0.0.1',
-				'port' =>  27017,
+				'port' => 27017,
 			);
 
 			$advanced_settings = get_option('scm_option_advanced_driver_mongodb');
@@ -204,7 +193,7 @@ function scm_driver_factory($type)
 		case 'memcached':
 			$setting = array(
 				'host' => '127.0.0.1',
-				'port' =>  11211,
+				'port' => 11211,
 			);
 
 			$advanced_settings = get_option('scm_option_advanced_driver_memcached');
@@ -256,15 +245,17 @@ function scm_driver_factory($type)
 
 			error_log('[Cache Master] Driver ' . $type . ' is not supported, fallback to use File driver.');
 
-			$driver = new \Shieldon\SimpleCache\Cache('file', array(
-				'storage' => scm_get_upload_dir() . '/file_driver',
-			));
+			$driver = new \Shieldon\SimpleCache\Cache(
+				'file',
+				array(
+					'storage' => scm_get_upload_dir() . '/file_driver',
+				)
+			);
 		}
 	}
 
 	return $driver;
 }
-
 
 /**
  * Get a SVG icon.
@@ -298,7 +289,6 @@ function scm_get_svg_icon($type)
 	return $svg;
 }
 
-
 /**
  * Get default configuation.
  *
@@ -314,12 +304,11 @@ function scm_get_default_config()
 		'html_debug_comment'       => true,
 		'driver_advanced_settings' => array(),
 		'site_url'                 => '',
-
-		'woocommerce' => array(
+		'woocommerce'              => array(
 			'enable' => false,
 		),
 
-		'exclusion' => array(
+		'exclusion'                => array(
 			'enable'             => false,
 			'excluded_list'      => array(),
 			'excluded_get_vars'  => array(),
@@ -328,7 +317,6 @@ function scm_get_default_config()
 		),
 	);
 }
-
 
 /**
  * The variable stack for JavaScript snippet.
@@ -354,7 +342,6 @@ function scm_variable_stack($key, $value = '', $poistion = 'before')
 
 	$vars[$poistion][$key] = $value;
 }
-
 
 /**
  * Create JavaScript snippet used for performance report.

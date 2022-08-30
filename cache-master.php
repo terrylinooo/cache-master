@@ -3,8 +3,8 @@
 /**
  * Plugin Name: Cache Master
  * Plugin URI:  https://github.com/terrylinooo/cache-master
- * Description: A wordpress cache plugin.
- * Version:     2.1.3
+ * Description: A Wordpress cache plugin.
+ * Version:     2.1.4
  * Author:      Terry Lin, Yannick Lin
  * Author URI:  https://terryl.in/
  * License:     GPL 3.0
@@ -50,7 +50,7 @@ define('SCM_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('SCM_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('SCM_PLUGIN_PATH', __FILE__);
 define('SCM_PLUGIN_LANGUAGE_PACK', dirname(plugin_basename(__FILE__)) . '/languages');
-define('SCM_PLUGIN_VERSION', '2.1.1');
+define('SCM_PLUGIN_VERSION', '2.1.2');
 define('SCM_CORE_VERSION', '1.3.1');
 define('SCM_PLUGIN_TEXT_DOMAIN', 'cache-master');
 

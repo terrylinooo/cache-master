@@ -47,12 +47,12 @@ function scm_notice_after_update_post( $messages ) {
 	$option_caching_status = get_option( 'scm_option_caching_status', 'disable' );
 
 	if ( 'enable' === $option_caching_status ) {
-		$custom = '</div>';
+		$custom  = '</div>';
 		$custom .= '<div class="notice notice-warning is-dismissible"><p>';
 		$custom .= '<strong>' . __( 'Cache Master', 'cache-master' ) . '</strong>: ' . __( 'Cache has been cleared.', 'cache-master' );
 		$custom .= '</p></div>';
 		$custom .= '<div>';
-	
+
 		$messages['post'][1] = $messages['post'][1] . $custom;
 		$messages['page'][1] = $messages['page'][1] . $custom;
 	}
