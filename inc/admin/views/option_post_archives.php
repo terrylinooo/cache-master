@@ -32,9 +32,9 @@ $args = array(
 );
 $cpt_archives = get_post_types($args, 'objects', 'and');
 
-foreach ($cpt_archives as $post_type) {
+foreach ($cpt_archives as $cpt_archive) {
 	$option_list = array_merge($option_list, array(
-		("archive_" . $post_type->name) => ('Archive for ' . $post_type->labels->singular_name)
+		("archive_" . $cpt_archive->name) => ('Archive for ' . $cpt_archive->labels->singular_name)
 	));
 }
 
