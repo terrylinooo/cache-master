@@ -1,17 +1,14 @@
 <?php
-
 /**
  * Cache Master helper functions.
  *
- * @author Terry Lin, Yannick Lin
- * @link https://terryl.in/
- *
  * @package   Cache Master
- * @since 2.1.0
- * @version 2.1.3
+ * @author    Terry Lin <terrylinooo>, Yannick Lin <yannicklin>
+ * @license   GPLv3 (or later)
+ * @link      https://terryl.in
  */
 
-if (!defined('SCM_INC')) {
+if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
 
@@ -20,9 +17,8 @@ if (!defined('SCM_INC')) {
  *
  * @return void
  */
-function scm_load_textdomain()
-{
-	load_plugin_textdomain(SCM_PLUGIN_TEXT_DOMAIN, false, SCM_PLUGIN_LANGUAGE_PACK);
+function scm_load_textdomain() {
+	load_plugin_textdomain( SCM_PLUGIN_TEXT_DOMAIN, false, SCM_PLUGIN_LANGUAGE_PACK ); 
 }
 
 /**
@@ -30,11 +26,10 @@ function scm_load_textdomain()
  *
  * @return string
  */
-function scm_get_dir_hash()
-{
-	$hash = get_option('scm_dir_hash');
+function scm_get_dir_hash() {
+	$hash = get_option( 'scm_dir_hash' );
 
-	if (empty($hash)) {
+	if ( empty( $hash ) ) {
 		return scm_set_dir_hash();
 	}
 	return $hash;
@@ -45,11 +40,10 @@ function scm_get_dir_hash()
  *
  * @return bool
  */
-function scm_is_dir_hash()
-{
-	$hash = get_option('scm_dir_hash');
+function scm_is_dir_hash() {
+	$hash = get_option( 'scm_dir_hash' );
 
-	if (empty($hash)) {
+	if ( empty( $hash ) ) {
 		return false;
 	}
 	return true;
@@ -60,12 +54,11 @@ function scm_is_dir_hash()
  *
  * @return string
  */
-function scm_set_dir_hash()
-{
-	$scm_dir_hash = wp_hash(date('ymdhis') . wp_rand(1, 86400));
-	$scm_dir_hash = substr($scm_dir_hash, 0, 8);
+function scm_set_dir_hash() {
+	$scm_dir_hash = wp_hash( date( 'ymdhis' ) . wp_rand( 1, 86400 ) );
+	$scm_dir_hash = substr( $scm_dir_hash, 0, 8 );
 
-	update_option('scm_dir_hash', $scm_dir_hash);
+	update_option( 'scm_dir_hash', $scm_dir_hash );
 
 	return $scm_dir_hash;
 }
@@ -75,8 +68,7 @@ function scm_set_dir_hash()
  *
  * @return string
  */
-function scm_get_upload_dir()
-{
+function scm_get_upload_dir() {
 	return WP_CONTENT_DIR . '/uploads/cache-master/' . scm_get_blog_id() . '_' . scm_get_dir_hash();
 }
 
@@ -85,8 +77,7 @@ function scm_get_upload_dir()
  *
  * @return string
  */
-function scm_get_config_path()
-{
+function scm_get_config_path() {
 	return scm_get_upload_dir() . '/config.json';
 }
 
@@ -95,13 +86,12 @@ function scm_get_config_path()
  *
  * @return array
  */
-function scm_get_config_data()
-{
+function scm_get_config_data() {
 	$file = scm_get_config_path();
 
-	if (file_exists($file)) {
-		$content = file_get_contents($file);
-		return json_decode($content, true);
+	if ( file_exists( $file ) ) {
+		$content = file_get_contents( $file );
+		return json_decode( $content, true );
 	}
 	return scm_get_default_config();
 }
@@ -111,9 +101,8 @@ function scm_get_config_data()
  *
  * @return void
  */
-function scm_set_blog_id()
-{
-	update_option('scm_blog_id', get_current_blog_id());
+function scm_set_blog_id() {
+	update_option( 'scm_blog_id', get_current_blog_id() );
 }
 
 /**
@@ -121,9 +110,8 @@ function scm_set_blog_id()
  *
  * @return string
  */
-function scm_get_blog_id()
-{
-	return get_option('scm_blog_id', 1);
+function scm_get_blog_id() {
+	return get_option( 'scm_blog_id', 1 );
 }
 
 /**
@@ -133,8 +121,7 @@ function scm_get_blog_id()
  *
  * @return string
  */
-function scm_get_stats_dir($cache_type = 'post')
-{
+function scm_get_stats_dir( $cache_type = 'post' ) {
 	return scm_get_upload_dir() . '/stats/' . $cache_type;
 }
 
@@ -145,14 +132,13 @@ function scm_get_stats_dir($cache_type = 'post')
  *
  * @return \Shieldon\SimpleCache\Cache
  */
-function scm_driver_factory($type)
-{
+function scm_driver_factory( $type ) {
 
 	$advanced_settings        = array();
 	$advanced_connection_type = 'tcp';
 	$setting                  = array();
 
-	switch ($type) {
+	switch ( $type ) {
 		case 'mysql':
 			$setting = array(
 				'host'    => DB_HOST,
@@ -175,8 +161,8 @@ function scm_driver_factory($type)
 				'port' => 6379,
 			);
 
-			$advanced_settings = get_option('scm_option_advanced_driver_redis');
-			$advanced_connection_type = get_option('scm_option_advanced_driver_redis_connection_type', 'tcp');
+			$advanced_settings = get_option( 'scm_option_advanced_driver_redis' );
+			$advanced_connection_type = get_option( 'scm_option_advanced_driver_redis_connection_type', 'tcp' );
 			break;
 
 		case 'mongo':
@@ -185,8 +171,8 @@ function scm_driver_factory($type)
 				'port' => 27017,
 			);
 
-			$advanced_settings = get_option('scm_option_advanced_driver_mongodb');
-			$advanced_connection_type = get_option('scm_option_advanced_driver_mongodb_connection_type', 'tcp');
+			$advanced_settings = get_option( 'scm_option_advanced_driver_mongodb' );
+			$advanced_connection_type = get_option( 'scm_option_advanced_driver_mongodb_connection_type', 'tcp' );
 			break;
 
 		case 'memcache':
@@ -196,8 +182,8 @@ function scm_driver_factory($type)
 				'port' => 11211,
 			);
 
-			$advanced_settings = get_option('scm_option_advanced_driver_memcached');
-			$advanced_connection_type = get_option('scm_option_advanced_driver_memcached_connection_type', 'tcp');
+			$advanced_settings = get_option( 'scm_option_advanced_driver_memcached' );
+			$advanced_connection_type = get_option( 'scm_option_advanced_driver_memcached_connection_type', 'tcp' );
 			break;
 
 		case 'apc':
@@ -215,35 +201,36 @@ function scm_driver_factory($type)
 			break;
 	}
 
-	if (!empty($advanced_settings)) {
+	if ( ! empty( $advanced_settings ) ) {
 		$setting = $advanced_settings;
 
-		foreach ($setting as $k => $v) {
-			if (is_numeric($v)) {
-				$setting[$k] = (int) $v;
+		foreach ( $setting as $k => $v ) {
+			if ( is_numeric( $v ) ) {
+				$setting[ $k ] = (int) $v;
 			}
 		}
 
-		if ('socket' !== $advanced_connection_type) {
-			if (!empty($advanced_settings['unix_socket'])) {
-				unset($setting['unix_socket']);
+		if ( 'socket' !== $advanced_connection_type ) {
+			if ( ! empty( $advanced_settings['unix_socket'] ) ) {
+				unset( $setting['unix_socket'] );
 			}
 		}
 	}
 
 	try {
 
-		$driver = new \Shieldon\SimpleCache\Cache($type, $setting);
-	} catch (\Exception $e) {
+		$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
 
-		if (in_array($type, array('file', 'sqlite')) && !file_exists($setting['storage'])) {
-			wp_mkdir_p($setting['storage']);
+	} catch ( \Exception $e ) {
+
+		if ( in_array( $type, array( 'file', 'sqlite' ) ) && ! file_exists( $setting['storage'] ) ) {
+			wp_mkdir_p( $setting['storage'] );
 
 			// Let's try again.
-			$driver = new \Shieldon\SimpleCache\Cache($type, $setting);
+			$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
 		} else {
 
-			error_log('[Cache Master] Driver ' . $type . ' is not supported, fallback to use File driver.');
+			error_log( '[Cache Master] Driver ' . $type . ' is not supported, fallback to use File driver.');
 
 			$driver = new \Shieldon\SimpleCache\Cache(
 				'file',
@@ -266,9 +253,8 @@ function scm_driver_factory($type)
  *
  * @return string
  */
-function scm_get_svg_icon($type)
-{
-	switch ($type) {
+function scm_get_svg_icon( $type ) {
+	switch ( $type ) {
 		case 'status':
 			$svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 562'><path d='M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z'/></svg>";
 			break;
@@ -296,8 +282,7 @@ function scm_get_svg_icon($type)
  *
  * @return array
  */
-function scm_get_default_config()
-{
+function scm_get_default_config() {
 
 	return array(
 		'cache_driver'             => 'file',
@@ -329,18 +314,17 @@ function scm_get_default_config()
  *
  * @return void
  */
-function scm_variable_stack($key, $value = '', $poistion = 'before')
-{
+function scm_variable_stack( $key, $value = '', $poistion = 'before' ) {
 	static $vars = array();
 
-	if (is_null($key)) {
+	if ( is_null( $key ) ) {
 		$output = $vars;
 		$vars   = array();
 
-		return json_encode($output);
+		return json_encode( $output );
 	}
 
-	$vars[$poistion][$key] = $value;
+	$vars[ $poistion ][ $key ] = $value;
 }
 
 /**
@@ -356,12 +340,10 @@ function scm_javascript()
 		<script id="cache-master-plugin">
 			var cache_master = \'' . scm_variable_stack(null) . '\';
 			var scm_report   = JSON.parse(cache_master);
-
 			var scm_text_cache_status = "";
 			var scm_text_memory_usage = "";
 			var scm_text_sql_queries  = "";
 			var scm_text_page_generation_time = "";
-
 			if ("before" in scm_report) {
 				scm_text_cache_status = "No";
 				scm_text_memory_usage = scm_report["before"]["memory_usage"];
@@ -374,22 +356,16 @@ function scm_javascript()
 				scm_text_sql_queries = scm_report["after"]["sql_queries"];
 				scm_text_page_generation_time = scm_report["after"]["page_generation_time"];
 			}
-
 			let scm_field_cache_status = document.querySelector(".scm-field-cache-status");
 			if (null != scm_field_cache_status) { scm_field_cache_status.textContent = scm_text_cache_status; }
-
 			let scm_field_memory_usage = document.querySelector(".scm-field-memory-usage");
 			if (null != scm_field_memory_usage) { scm_field_memory_usage.textContent = scm_text_memory_usage; }
-
 			let scm_field_sql_queries = document.querySelector(".scm-field-sql-queries");
 			if (null != scm_field_sql_queries) { scm_field_sql_queries.textContent = scm_text_sql_queries; }
-
 			let scm_field_page_generation_time = document.querySelector(".scm-field-page-generation-time");
 			if (null != scm_field_page_generation_time) { scm_field_page_generation_time.textContent = scm_text_page_generation_time; }
-
 			let cache_master_benchmark_report = document.querySelector(".cache-master-benchmark-report");
 			if (null != cache_master_benchmark_report) { cache_master_benchmark_report.setAttribute("style", ""); }
-
 			let cache_master_plugin_widget_wrapper = document.querySelector(".cache-master-plugin-widget-wrapper");
 			if (null != cache_master_plugin_widget_wrapper) { cache_master_plugin_widget_wrapper.setAttribute("style", "") }
 		</script>
