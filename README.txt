@@ -1,6 +1,6 @@
 === Cache Master ===
 
-Contributors: terrylin
+Contributors: terrylin, yannicklin
 Tags: cache, redis, mongodb, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 6.0.1

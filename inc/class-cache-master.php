@@ -2,7 +2,7 @@
 /**
  * Class Cache_Master
  *
- * @author Terry Lin
+ * @author Terry Lin, Yannick Lin
  * @link https://terryl.in/
  *
  * @package Cache Master
@@ -97,7 +97,6 @@ class Cache_Master {
 	public function front_enqueue_styles() {
 		wp_register_style( 'scm-style', false );
 		wp_enqueue_style( 'scm-style' );
-		wp_enqueue_script( 'jquery' );
 		wp_add_inline_style( 'scm-style', $this->get_front_enqueue_styles() );
 	}
 
@@ -142,32 +141,58 @@ class Cache_Master {
 			$is_singular = is_singular();
 			$is_archive  = is_archive();
 
-			if ( $is_singular ) {
-				$types = array(
+			if ($is_singular) {
+
+				$args = array(
+					'public'   => true,
+					'_builtin' => false
+				);
+
+				$custom_post_types = array_keys(get_post_types($args, 'name', 'and'));
+
+				$types = array_merge(array(
 					'post',
 					'page',
-				);
-	
-				foreach( $types as $type ) {
-					if ( isset( $post_types[ $type ] ) && is_singular( $type ) ) {
-						
+				), $custom_post_types);
+
+				foreach ($types as $type) {
+					if (isset($post_types[$type]) && is_singular($type)) {
+
 						$this->is_cache  = true;
 						$this->data_type = $type;
 						return;
 					}
 				}
-			} elseif ( $is_archive ) {
+			} elseif ($is_archive) {
 				$archives = array(
 					'category' => 'is_category',
 					'tag'      => 'is_tag',
 					'date'     => 'is_date',
 					'author'   => 'is_author',
 				);
-	
-				foreach( $archives as $type => $wp_function ) {
-					if ( isset( $post_archives[ $type ] ) && $wp_function() ) {
+
+				foreach ($archives as $type => $wp_function) {
+					if (isset($post_archives[$type]) && $wp_function()) {
 						$this->is_cache  = true;
 						$this->data_type = $type;
+						return;
+					}
+				}
+
+				// Custom Post Type Archives
+				$args = array(
+					'public'   => true,
+					'has_archive' => true,
+					'_builtin' => false
+				);
+				$cpt_archives = get_post_types($args, 'objects', 'and');
+
+				foreach ($cpt_archives as $cpt_archive) {
+					$datatype = "archive_" . $cpt_archive->name;
+
+					if (isset($post_archives[$datatype]) && is_post_type_archive($cpt_archive->name)) {
+						$this->is_cache  = true;
+						$this->data_type = $datatype;
 						return;
 					}
 				}
@@ -221,7 +246,7 @@ class Cache_Master {
 
 			$cached_content = $this->driver->get( $this->cache_key );
 
-			if ( ! empty( $cached_content ) ) {
+			if (!empty($cached_content) && ('yes' === get_option('scm_option_html_debug_comment'))) {
 
 				$cached_content .= $this->debug_message( 'ob_start' );
 
@@ -276,11 +301,13 @@ class Cache_Master {
 			$this->log( $this->data_type, $this->cache_key, $cache_content );
 		}
 
-		$content = str_replace(
-			'</body>',
-			"\n" . scm_javascript() . "\n" . '</body>',
-			$content
-		);
+		if ('yes' === get_option('scm_option_html_debug_comment')) {
+			$content = str_replace(
+				'</body>',
+				"\n" . scm_javascript() . "\n" . '</body>',
+				$content
+			);
+		}
 
 		ob_end_clean();
 		ob_start();

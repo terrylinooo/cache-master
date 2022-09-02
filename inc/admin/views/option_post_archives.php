@@ -2,7 +2,7 @@
 /**
  * Cache Master - Post Archives
  *
- * @author Terry Lin
+ * @author Terry Lin, Yannick Lin
  * @link https://terryl.in/
  * @since 1.3.0
  * @version 1.3.0
@@ -22,6 +22,19 @@ $option_list = array(
 	'author'   => __( 'Author', 'cache-master' ),
 );
 
+// Custom Post Type Archives
+$args = array(
+	'public'   => true,
+	'has_archive' => true,
+	'_builtin' => false
+);
+$cpt_archives = get_post_types($args, 'objects', 'and');
+
+foreach ($cpt_archives as $cpt_archive) {
+	$option_list = array_merge($option_list, array(
+		("archive_" . $cpt_archive->name) => ('Archive for ' . $cpt_archive->labels->singular_name)
+	));
+}
 ?>
 
 <div>

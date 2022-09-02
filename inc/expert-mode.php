@@ -1,12 +1,11 @@
 <?php
 /**
- * Cache Master helper functions.
+ * Cache Master helper functions on Expert Mode
  *
  * @package   Cache Master
- * @author    Terry Lin <terrylinooo>
+ * @author    Terry Lin <terrylinooo>, Yannick Lin <yannicklin>
  * @license   GPLv3 (or later)
  * @link      https://terryl.in
- * @copyright 2020 Terry Lin
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -179,23 +178,21 @@ function scm_run_expert_mode( $args ) {
 		$memory_usage = $memory_usage / ( 1024 * 1024 );
 		$memory_usage = round( $memory_usage, 4 );
 		
-		if ( ! empty( $cached_content ) ) {
+		if ( ! empty( $cached_content ) && $debug_comment ) {
 			$date            = date( 'Y-m-d H:i:s' );
 			$microtime_after = microtime(true);
 			$page_speed      = round( $microtime_after - $microtime_before, 3 );
 
-			if ( $debug_comment ) {
-				$debug_message  = '';
-				$debug_message .= "\n" . '....... ' . 'After' . ' .......' . "\n\n";
-				$debug_message .= sprintf( 'Now: %s', $date ) . "\n";
-				$debug_message .= sprintf( 'Memory usage: %s MB', $memory_usage ) . "\n";
-				$debug_message .= sprintf( 'SQL queries: %s', $sql_queries ) . "\n";
-				$debug_message .= sprintf( 'Page generated in %s seconds.', $page_speed ) . "\n\n";
-				$debug_message .= '(Running as Expert Mode)' . "\n";
-				$debug_message .= "\n//-->";
+			$debug_message  = '';
+			$debug_message .= "\n" . '....... ' . 'After' . ' .......' . "\n\n";
+			$debug_message .= sprintf( 'Now: %s', $date ) . "\n";
+			$debug_message .= sprintf( 'Memory usage: %s MB', $memory_usage ) . "\n";
+			$debug_message .= sprintf( 'SQL queries: %s', $sql_queries ) . "\n";
+			$debug_message .= sprintf( 'Page generated in %s seconds.', $page_speed ) . "\n\n";
+			$debug_message .= '(Running as Expert Mode)' . "\n";
+			$debug_message .= "\n//-->";
 
-				$cached_content .= $debug_message;
-			}
+			$cached_content .= $debug_message;
 
 			scm_variable_stack( 'now',  $date, 'after' );
 			scm_variable_stack( 'memory_usage',  $memory_usage, 'after' );

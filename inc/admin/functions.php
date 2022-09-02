@@ -2,7 +2,7 @@
 /**
  * Cache Master - functions used in admin scope.
  *
- * @author Terry Lin
+ * @author Terry Lin, Yannick Lin
  * @link https://terryl.in/
  * @since 1.0.0
  * @version 1.3.0
@@ -45,19 +45,65 @@ function scm_get_cache_type_list( $get_key = false ) {
 	$archive_note     = ' <small class="scm-badge">' . __( 'Archive', 'cache-master' ) . '</small>';
 	$woocommerce_note = ' <small class="scm-badge">' . __( 'WooCommerce', 'cache-master' ) . '</small>';
 
-	$list = array(
-		'homepage'      => __( 'Homepage', 'cache-master' ),
-		'post'          => __( 'Post', 'cache-master' ),
-		'page'          => __( 'Page', 'cache-master' ),
-		'category'      => __( 'Category', 'cache-master' ) . $archive_note,
-		'tag'           => __( 'Tag', 'cache-master' ) . $archive_note,
-		'date'          => __( 'Date', 'cache-master' ) . $archive_note,
-		'author'        => __( 'Author', 'cache-master' ) . $archive_note,
-		'product'       => __( 'Product', 'cache-master' ) . $woocommerce_note,
-		'product_tag'   => __( 'Product tag', 'cache-master' ) . $woocommerce_note . $archive_note,
-		'product_cat'   => __( 'Product category', 'cache-master' ) . $woocommerce_note . $archive_note,
-		'uncategorised' => __( 'Uncategorised', 'cache-master' ),
+	$list = array();
+
+	// Homepage
+	$list = array_merge($list, array(
+		'homepage'         => __('Homepage', 'cache-master')
+	));
+
+	// Page and Post, as the most common Post Type
+	$list = array_merge($list, array(
+		'post'             => __('Post', 'cache-master'),
+		'page'             => __('Page', 'cache-master')
+	));
+
+	// Custom Post Type
+	$args = array(
+		'public'   => true,
+		'_builtin' => false
 	);
+	$custom_post_types = get_post_types($args, 'objects', 'and');
+
+	foreach ($custom_post_types as $post_type) {
+		$list = array_merge($list, array(
+			$post_type->name => $post_type->labels->singular_name
+		));
+	}
+
+	// Archives
+	$list = array_merge($list, array(
+		'category'         => __('Category', 'cache-master')         . $archive_note,
+		'tag'              => __('Tag', 'cache-master')              . $archive_note,
+		'date'             => __('Date', 'cache-master')             . $archive_note,
+		'author'           => __('Author', 'cache-master')           . $archive_note
+	));
+
+	// Custom Post Type Archives
+	$args = array(
+		'public'   => true,
+		'has_archive' => true,
+		'_builtin' => false
+	);
+	$cpt_archives = get_post_types($args, 'objects', 'and');
+
+	foreach ($cpt_archives as $cpt_archive) {
+		$list = array_merge($list, array(
+			("archive_" . $cpt_archive->name) => ('Archive for ' . $cpt_archive->labels->singular_name . $archive_note)
+		));
+	}
+
+	// WooCommerce related
+	$list = array_merge($list, array(
+		'product'          => __('Product', 'cache-master')          . $woocommerce_note,
+		'product_tag'      => __('Product tag', 'cache-master')      . $woocommerce_note . $archive_note,
+		'product_cat'      => __('Product category', 'cache-master') . $woocommerce_note . $archive_note
+	));
+
+	// Misc.
+	$list = array_merge($list, array(
+		'uncategorised'    => __('Uncategorised', 'cache-master')
+	));
 
 	if ( $get_key ) {
 		return array_keys( $list );

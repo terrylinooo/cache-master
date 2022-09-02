@@ -2,7 +2,7 @@
 /**
  * Cache Master - Update setting.
  *
- * @author Terry Lin
+ * @author Terry Lin, Yannick Lin
  * @link https://terryl.in/
  * @since 1.0.0
  * @version 1.3.0
@@ -235,6 +235,7 @@ function scm_update_exclusion() {
 
 	// Excluded list.
 	$exluded_list = get_option( 'scm_option_excluded_list' );
+	$exluded_list_filtered = get_option('scm_option_excluded_list_filtered');
 
 	$exluded_list_arr = explode( "\n", $exluded_list );
 	$exluded_list_tmp = array();
@@ -246,9 +247,13 @@ function scm_update_exclusion() {
 		$exluded_list_tmp[] = $str;
 	}
 
-	$content = implode( "\n", $exluded_list_tmp );
+	if (1 < count($exluded_list_tmp)) {
+		$content = implode("\n", $exluded_list_tmp);
+	} else {
+		$content = implode("", $exluded_list_tmp);
+	}
 
-	if ( $exluded_list !== $content ) {
+	if ( $exluded_list_filtered !== $content ) {
 		update_option( 'scm_option_excluded_list_filtered', $content );
 	}
 

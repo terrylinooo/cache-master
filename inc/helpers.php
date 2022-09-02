@@ -3,10 +3,9 @@
  * Cache Master helper functions.
  *
  * @package   Cache Master
- * @author    Terry Lin <terrylinooo>
+ * @author    Terry Lin <terrylinooo>, Yannick Lin <yannicklin>
  * @license   GPLv3 (or later)
  * @link      https://terryl.in
- * @copyright 2020 Terry Lin
  */
 
 if ( ! defined( 'SCM_INC' ) ) {
@@ -335,17 +334,16 @@ function scm_variable_stack( $key, $value = '', $poistion = 'before' ) {
  *
  * @return void
  */
-function scm_javascript() {
+function scm_javascript()
+{
 	$script = '
 		<script id="cache-master-plugin">
-			var cache_master = \'' . scm_variable_stack( null ) . '\';
+			var cache_master = \'' . scm_variable_stack(null) . '\';
 			var scm_report   = JSON.parse(cache_master);
-
 			var scm_text_cache_status = "";
 			var scm_text_memory_usage = "";
 			var scm_text_sql_queries  = "";
 			var scm_text_page_generation_time = "";
-
 			if ("before" in scm_report) {
 				scm_text_cache_status = "No";
 				scm_text_memory_usage = scm_report["before"]["memory_usage"];
@@ -358,20 +356,20 @@ function scm_javascript() {
 				scm_text_sql_queries = scm_report["after"]["sql_queries"];
 				scm_text_page_generation_time = scm_report["after"]["page_generation_time"];
 			}
-
-			(function($) {
-				$(function() {
-					$(".scm-field-cache-status").html(scm_text_cache_status);
-					$(".scm-field-memory-usage").html(scm_text_memory_usage);
-					$(".scm-field-sql-queries").html(scm_text_sql_queries);
-					$(".scm-field-page-generation-time").html(scm_text_page_generation_time);
-					$(".cache-master-benchmark-report").attr("style", "");
-					$(".cache-master-plugin-widget-wrapper").attr("style", "");
-				});
-			})(jQuery);
+			let scm_field_cache_status = document.querySelector(".scm-field-cache-status");
+			if (null != scm_field_cache_status) { scm_field_cache_status.textContent = scm_text_cache_status; }
+			let scm_field_memory_usage = document.querySelector(".scm-field-memory-usage");
+			if (null != scm_field_memory_usage) { scm_field_memory_usage.textContent = scm_text_memory_usage; }
+			let scm_field_sql_queries = document.querySelector(".scm-field-sql-queries");
+			if (null != scm_field_sql_queries) { scm_field_sql_queries.textContent = scm_text_sql_queries; }
+			let scm_field_page_generation_time = document.querySelector(".scm-field-page-generation-time");
+			if (null != scm_field_page_generation_time) { scm_field_page_generation_time.textContent = scm_text_page_generation_time; }
+			let cache_master_benchmark_report = document.querySelector(".cache-master-benchmark-report");
+			if (null != cache_master_benchmark_report) { cache_master_benchmark_report.setAttribute("style", ""); }
+			let cache_master_plugin_widget_wrapper = document.querySelector(".cache-master-plugin-widget-wrapper");
+			if (null != cache_master_plugin_widget_wrapper) { cache_master_plugin_widget_wrapper.setAttribute("style", "") }
 		</script>
 	';
 
-	return preg_replace( '/\s+/', ' ', $script );
+	return preg_replace('/\s+/', ' ', $script);
 }
-
