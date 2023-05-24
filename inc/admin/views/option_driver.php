@@ -59,7 +59,11 @@ foreach ( array_keys( $option_list ) as $v ) {
 					<td style="width: 80%"><?php echo $v; ?></td>
 					<td style="width: 20%">
 						<?php if ( $driver_status[ $k ] ) : ?>
-							<span class="dashicons dashicons-marker" style="color: #23b900"></span>
+							<?php if ( $option_driver_type == $k ) : ?>
+ 								<span class="dashicons dashicons-yes-alt" style="color: #23b900"></span>
+			 				<?php else : ?>
+ 								<span class="dashicons dashicons-marker" style="color: #23b900"></span>
+ 							<?php endif; ?>
 						<?php else : ?>
 							<span class="dashicons dashicons-marker" style="color: #c60900"></span>
 
