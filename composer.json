@@ -21,9 +21,5 @@
         "psr-4": {
             "WpUnit\\": "tests/src"
         }
-    },
-    "require-dev": {
-        "yoast/phpunit-polyfills": "1.0.1",
-        "phpunit/phpunit": "^9.6"
     }
 }
