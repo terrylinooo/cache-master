@@ -143,6 +143,7 @@ function scm_setup_security_files() {
 				wp_mkdir_p( $file['base'] ) &&
 				! file_exists( trailingslashit( $file['base'] ) . $file['file'] )
 			) {
+				// phpcs:ignore
 				@file_put_contents( trailingslashit( $file['base'] ) . $file['file'], $file['content'] );
 			}
 		}

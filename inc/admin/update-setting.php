@@ -197,7 +197,7 @@ function scm_update_scm_option_clear_cache() {
 			}
 		}
 	} else {
-		if ( in_array( $cache_type, $list ) ) {
+		if ( in_array( $cache_type, $list, true ) ) {
 			$dir = scm_get_stats_dir( $cache_type );
 
 			if ( is_dir( $dir ) ) {

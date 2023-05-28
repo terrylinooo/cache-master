@@ -20,20 +20,21 @@ if ( ! defined( 'SCM_INC' ) ) {
  * @return string
  */
 function scm_load_view( $template_path, $data = array() ) {
+	$template_path  = str_replace( '_', '-', $template_path );
 	$view_file_path = SCM_PLUGIN_DIR . 'inc/admin/views/' . $template_path . '.php';
 
-	if ( ! empty( $data ) ) {
-		extract( $data ); // phpcs:ignore
-	}
-
 	if ( file_exists( $view_file_path ) ) {
+		if ( ! empty( $data ) ) {
+			extract( $data ); // phpcs:ignore
+		}
+
 		ob_start();
-		require $view_file_path;
+		include $view_file_path;
 		$result = ob_get_contents();
 		ob_end_clean();
 		return $result;
 	}
-	return null;
+	return '';
 }
 
 /**
@@ -337,8 +338,9 @@ function scm_update_config( $setting ) {
 
 	update_option( 'scm_config', $config );
 
-	$file = scm_get_config_path();
+	$file    = scm_get_config_path();
 	$content = json_encode( $config, JSON_PRETTY_PRINT );
 
+	// phpcs:ignore
 	@file_put_contents( $file, $content );
 }

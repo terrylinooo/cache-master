@@ -4,19 +4,23 @@
 
 ![WordPress Cache Plugin](./inc/assets/images/banner-772x250.png)
 
-Cache Master is an extremely light-weight and high-performace cache plugin that speeds up your WordPress sites on the fly. The core is driven by Shieldon [Simple Cache](https://github.com/terrylinooo/simple-cache), a PSR-16 simple cache library.
+Cache Master is an extremely lightweight, high-performance cache plugin that speeds up your WordPress sites on the fly. The core of Cache Master is driven by Shieldon [Simple Cache](https://github.com/terrylinooo/simple-cache), a PSR-16 simple cache library.
+
 
 ## Requirement
 
 * PHP version > 7.1.0
 * WordPress version > 4.7
-* Tested up to 5.5.3
+* Tested up to WordPress 6.2.2
+* Tested up to PHP 8.2.5
 
 ## Features
 
-* Extremely light-weight and high-performace.
-* Support up to 8 cache drivers such as Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL and SQLite.
-* Detailed cache statistics, easy to manage.
+* Extremely lightweight and high-performance.
+* Support up to 10 cache drivers such as File, Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL, SQLite, and MongoDB.
+* Provide detailed cache statistics, easy to manage.
+* Compatible with the WooCommerce plugin.
+* And more...
 
 ## Download
 
@@ -72,9 +76,13 @@ Setting page - About author.
 
 Front page - Benchmark (footer text)
 
+#### Translation
+
+- Japanese (ja_JP) by [Colocal](https://colocal.com).
+
 #### Debug message
 
-A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching.
+A debug message will be appended to the end of the page's source code: `<!-- This page is cached by the Cache Master plugin. //-->`. This is intended for debugging purposes only, confirming that the page is being cached. This message can be disabled in the Settings page.
 
 (1)
 ![WordPress cache plugin](./inc/assets/images/screenshots/screenshot-12.png)
@@ -88,10 +96,8 @@ Expert mode.
 
 ### Notice
 
-If you find your website doesn't work with Cache Master, please report an issue on GitHub and list all plugins installed on your website. I'll find out the problem and fix it.
-
+If you encounter issues with your website when using Cache Master, please report the problem on GitHub and list all plugins installed on your website. I'll investigate the problem and provide a fix.
 
 ### License
 
 Cache Master is developed by [Terry Lin](https://terryl.in) and released under the terms of the GNU General Public License v3.
-

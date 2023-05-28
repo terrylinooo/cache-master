@@ -12,7 +12,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
 
-$option_post_types = get_option( 'scm_option_post_types');
+$option_post_types = get_option( 'scm_option_post_types' );
 
 $option_list = array(
 	'post' => __( 'Post', 'cache-master' ),
@@ -35,4 +35,4 @@ $option_list = array(
 	</div>
 	<?php endforeach; ?>
 </div>
-<p><em><?php _e( 'What post type do you like to cache?', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'What type of post would you like to cache?', 'cache-master' ); ?></em></p>

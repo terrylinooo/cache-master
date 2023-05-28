@@ -9,3 +9,4 @@ vendor
 !vendor/psr
 !vendor/shieldon
 !vendor/autoload.php
+.phpunit.result.cache

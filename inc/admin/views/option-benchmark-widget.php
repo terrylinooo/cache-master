@@ -32,4 +32,4 @@ $option_benchmark_widget = get_option( 'scm_option_benchmark_widget', 'no' );
 		<label>
 	</div>	
 </div>
-<p><em><?php _e( 'Register a widget that can show the benchmark information.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Register a widget that can display the benchmark information.', 'cache-master' ); ?></em></p>

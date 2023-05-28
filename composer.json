@@ -15,11 +15,15 @@
         "shieldon/simple-cache": "^1.0"
     },
     "scripts": {
-        "test": "php bin/phpunit"
+        "test": "php vendor/bin/phpunit"
     },
     "autoload-dev": {
         "psr-4": {
             "WpUnit\\": "tests/src"
         }
+    },
+    "require-dev": {
+        "yoast/phpunit-polyfills": "1.0.1",
+        "phpunit/phpunit": "^9.6"
     }
 }

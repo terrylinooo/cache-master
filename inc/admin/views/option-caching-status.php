@@ -32,4 +32,4 @@ $option_caching_status = get_option( 'scm_option_caching_status', 'disable' );
 		<label>
 	</div>	
 </div>
-<p><em><?php _e( 'Once you make this option disable, Cache Master will stop working and all cache  will be cleared.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Once you disable this option, Cache Master will stop working and all cache will be cleared.', 'cache-master' ); ?></em></p>

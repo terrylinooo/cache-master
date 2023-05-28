@@ -19,7 +19,7 @@ if ( ! defined( 'SCM_INC' ) ) {
  * @return void
  */
 function scm_load_textdomain() {
-	load_plugin_textdomain( SCM_PLUGIN_TEXT_DOMAIN, false, SCM_PLUGIN_LANGUAGE_PACK ); 
+	load_plugin_textdomain( SCM_PLUGIN_TEXT_DOMAIN, false, SCM_PLUGIN_LANGUAGE_PACK );
 }
 
 /**
@@ -56,7 +56,7 @@ function scm_is_dir_hash() {
  * @return string
  */
 function scm_set_dir_hash() {
-	$scm_dir_hash = wp_hash( date( 'ymdhis' ) . wp_rand( 1, 86400 ) );
+	$scm_dir_hash = wp_hash( gmdate( 'ymdhis' ) . wp_rand( 1, 86400 ) );
 	$scm_dir_hash = substr( $scm_dir_hash, 0, 8 );
 
 	update_option( 'scm_dir_hash', $scm_dir_hash );
@@ -162,7 +162,7 @@ function scm_driver_factory( $type ) {
 				'port' => 6379,
 			);
 
-			$advanced_settings = get_option( 'scm_option_advanced_driver_redis' );
+			$advanced_settings        = get_option( 'scm_option_advanced_driver_redis' );
 			$advanced_connection_type = get_option( 'scm_option_advanced_driver_redis_connection_type', 'tcp' );
 			break;
 
@@ -172,7 +172,7 @@ function scm_driver_factory( $type ) {
 				'port' => 27017,
 			);
 
-			$advanced_settings = get_option( 'scm_option_advanced_driver_mongodb' );
+			$advanced_settings        = get_option( 'scm_option_advanced_driver_mongodb' );
 			$advanced_connection_type = get_option( 'scm_option_advanced_driver_mongodb_connection_type', 'tcp' );
 			break;
 
@@ -183,7 +183,7 @@ function scm_driver_factory( $type ) {
 				'port' => 11211,
 			);
 
-			$advanced_settings = get_option( 'scm_option_advanced_driver_memcached' );
+			$advanced_settings        = get_option( 'scm_option_advanced_driver_memcached' );
 			$advanced_connection_type = get_option( 'scm_option_advanced_driver_memcached_connection_type', 'tcp' );
 			break;
 
@@ -224,14 +224,14 @@ function scm_driver_factory( $type ) {
 
 	} catch ( \Exception $e ) {
 
-		if ( in_array( $type, array( 'file', 'sqlite' ) ) && ! file_exists( $setting['storage'] ) ) {
+		if ( in_array( $type, array( 'file', 'sqlite' ), true ) && ! file_exists( $setting['storage'] ) ) {
 			wp_mkdir_p( $setting['storage'] );
 
 			// Let's try again.
 			$driver = new \Shieldon\SimpleCache\Cache( $type, $setting );
 		} else {
 
-			error_log( '[Cache Master] Driver ' . $type . ' is not supported, fallback to use File driver.');
+			error_log( sprintf( '[Cache Master] Driver %s is not supported, fallback to use File driver.', $type ) );
 
 			$driver = new \Shieldon\SimpleCache\Cache(
 				'file',

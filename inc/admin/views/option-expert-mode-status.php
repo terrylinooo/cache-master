@@ -17,8 +17,17 @@ $option_expert_mode = get_option( 'scm_option_expert_mode_status', 'enable' );
 ?>
 
 <div class="scm-expert-mode-intro">
-	<p><?php _e( 'Because Cache Master works after all plguins installed, it can only save a maximum of 20-25 percent memory.', 'cache-master' ); ?> <code>:(</code></p><br />
-	<p><?php echo sprintf( __( 'However, if you modify %s to let Cache Master output cache before everything initialized, it can save up to a maximum of <strong>95</strong> percent memory - even more.', 'cache-master' ), '<strong>wp-config.php</strong>' ); ?><code>:)</code></p>
+	<p><?php _e( 'Because Cache Master works after all plugins are installed, it can only save a maximum of 20-25 percent memory.', 'cache-master' ); ?> <code>:(</code></p><br />
+	<p>
+		<?php
+		echo sprintf(
+			// translators: %s is a placeholder for a file name.
+			__( 'However, if you modify %s to let Cache Master output cache before everything initialized, it can save up to a maximum of <strong>95</strong> percent memory - possibly even more.', 'cache-master' ),
+			'<strong>wp-config.php</strong>'
+		);
+		?>
+		<code>:)</code>
+		</p>
 </div>
 <br /><br />
 <div>

@@ -12,8 +12,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
 
-
-$option_post_archives = get_option( 'scm_option_post_archives');
+$option_post_archives = get_option( 'scm_option_post_archives' );
 
 $option_list = array(
 	'category' => __( 'Category', 'cache-master' ),

@@ -38,6 +38,7 @@ function scm_ajax_clear_cache_callback() {
 	$rows = scm_clear_all_cache();
 
 	if ( $rows > 0 ) {
+		// translators: %s is the number of rows.
 		echo sprintf( __( '%s rows has been deleted.', 'cache-master' ), $rows );
 	} else {
 		echo __( 'There is no cache on your site currently.', 'cache-master' );

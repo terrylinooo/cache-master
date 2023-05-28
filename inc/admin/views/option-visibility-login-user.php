@@ -36,4 +36,4 @@ $option_visibility_login_user = get_option( 'scm_option_visibility_login_user', 
 <br />
 <p><strong><?php _e( 'Note', 'cache-master' ); ?></strong></p>
 <p><em><?php _e( 'Logged-in users will not trigger the caching processes to avoid displaying admin bar to everyone.', 'cache-master' ); ?></em></p>
-<p><em><?php _e( 'Logged-in users always see cached pages when Expert Mode is working, because of outputting cache at a very early stage when running as Expert Mode.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Logged-in users always see cached pages when Expert Mode is working because of outputting cache at a very early stage when running in Expert Mode.', 'cache-master' ); ?></em></p>

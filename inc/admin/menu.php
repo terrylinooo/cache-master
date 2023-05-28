@@ -195,7 +195,7 @@ function scm_admin_enqueue_scripts( $hook_suffix ) {
  * @return void
  */
 function scm_show_settings_header() {
-	$git_url_core = 'https://github.com/terrylinooo/simple-cache';
+	$git_url_core   = 'https://github.com/terrylinooo/simple-cache';
 	$git_url_plugin = 'https://github.com/terrylinooo/cache-master';
 
 	echo '<div class="cache-master-info-bar">';
@@ -211,7 +211,8 @@ function scm_show_settings_header() {
 		$url_html = '<a href="' . get_bloginfo( 'url' ) . '/wp-admin/options-permalink.php">' . __( 'Permalink Setting', 'seo-search-permalink' ) . '</a>';
 		echo '<div class="notice notice-error is-dismissible"><p>';
 		echo __( 'Cache Master supports only static URL structure.', 'cache-master' ) . ' ';
-		printf( __( 'You have to go to %s page and change the permalink settings.', 'cache-master' ), $url_html );
+		// translators: %s: permalink setting url.
+		printf( __( 'You need to go to the %s page and change the permalink settings.', 'cache-master' ), $url_html );
 		echo '</p></div>';
 	}
 }

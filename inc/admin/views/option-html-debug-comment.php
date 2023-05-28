@@ -32,4 +32,4 @@ $option_html_debug_comment = get_option( 'scm_option_html_debug_comment', 'yes' 
 		<label>
 	</div>	
 </div>
-<p><em><?php _e( 'Insert a HTML debug comment in the source code. This is for debug purpose only, to let us know that the page is caching.', 'cache-master' ); ?></em></p>
+<p><em><?php _e( 'Insert an HTML debug comment in the source code. This is for debug purposes only, to let us know that the page is being cached.', 'cache-master' ); ?></em></p>

@@ -12,7 +12,7 @@ if ( ! defined( 'SCM_INC' ) ) {
 	die;
 }
 
-$tab = isset( $_GET['tab'])  ? $_GET['tab'] : null;
+$tab = isset( $_GET['tab'] ) ? $_GET['tab'] : null;
 
 /**
  * This functon is similar to `checked()` and I use it with Tabs.
@@ -40,6 +40,7 @@ if ( ! empty( $conflict_plugins ) ) {
 			?>
 			<div class="notice notice-warning is-dismissible">
 				<p>
+					<?php // translators: %s is the plugin name. ?>
 					<?php echo sprintf( __( 'Cache Master cannot work with the plugin "%s" becasue of output buffer conflicts.', 'cache-master' ), $plugin ); ?>
 				</p>
 			</div>
@@ -47,6 +48,7 @@ if ( ! empty( $conflict_plugins ) ) {
 		}
 	}
 }
+
 ?>
 
 <nav class="nav-tab-wrapper">
@@ -72,19 +74,22 @@ if ( ! empty( $conflict_plugins ) ) {
 </nav>
 
 <div class="tab-content">
+
+
 	<?php if ( null === $tab ) : ?>
 		<form action="options.php" method="post">
 			<?php settings_fields( 'scm_setting_group_1' ); ?>
-			<?php do_settings_sections( 'scm_setting_page_1' );  ?>
+			<?php do_settings_sections( 'scm_setting_page_1' ); ?>
 			<hr />
 			<?php submit_button(); ?>
 		</form>
+
 	<?php endif; ?>
 
 	<?php if ( 'preferences' === $tab ) : ?>
 		<form action="options.php" method="post">
 			<?php settings_fields( 'scm_setting_group_6' ); ?>
-			<?php do_settings_sections( 'scm_setting_page_6' );  ?>
+			<?php do_settings_sections( 'scm_setting_page_6' ); ?>
 			<hr />
 			<p><em><?php _e( 'Once you make changes in this page, all cache data will be cleared.', 'cache-master' ); ?></em></p>
 			<?php submit_button(); ?>
@@ -97,7 +102,7 @@ if ( ! empty( $conflict_plugins ) ) {
 		</p>
 		<form action="options.php" method="post">
 			<?php settings_fields( 'scm_setting_group_5' ); ?>
-			<?php do_settings_sections( 'scm_setting_page_5' );  ?>
+			<?php do_settings_sections( 'scm_setting_page_5' ); ?>
 			<hr />
 			<p><em><?php _e( 'Once you make changes in this page, all cache data will be cleared.', 'cache-master' ); ?></em></p>
 			<em class="scm-msg scm-msg-notice"><?php _e( 'Excluded pages or pages contain JavaScript errors will not display benchmark information.', 'cache-master' ); ?></em>
@@ -109,7 +114,7 @@ if ( ! empty( $conflict_plugins ) ) {
 		<p><em><?php _e( 'Skip those settings unless you want to make changes to default settings.', 'cache-master' ); ?></em></p>
 		<form action="options.php" method="post">
 			<?php settings_fields( 'scm_setting_group_7' ); ?>
-			<?php do_settings_sections( 'scm_setting_page_7' );  ?>
+			<?php do_settings_sections( 'scm_setting_page_7' ); ?>
 			<hr />
 			<?php submit_button(); ?>
 		</form>
@@ -132,7 +137,7 @@ if ( ! empty( $conflict_plugins ) ) {
 
 		<form action="options.php" method="post">
 			<?php settings_fields( 'scm_setting_group_8' ); ?>
-			<?php do_settings_sections( 'scm_setting_page_8' );  ?>
+			<?php do_settings_sections( 'scm_setting_page_8' ); ?>
 			<hr />
 			<p><em><?php _e( 'Once you make changes in this page, all cache data will be cleared.', 'cache-master' ); ?></em></p>
 
@@ -147,7 +152,7 @@ if ( ! empty( $conflict_plugins ) ) {
 	<?php if ( 'exclusion' === $tab ) : ?>
 		<form action="options.php" method="post">
 			<?php settings_fields( 'scm_setting_group_9' ); ?>
-			<?php do_settings_sections( 'scm_setting_page_9' );  ?>
+			<?php do_settings_sections( 'scm_setting_page_9' ); ?>
 			<hr />
 			<?php submit_button(); ?>
 		</form>

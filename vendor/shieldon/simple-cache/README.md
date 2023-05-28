@@ -1,43 +1,43 @@
 # PSR-16 Simple Cache
 
 | GitHub Action | Travis CI |  Scrutinizer CI | Code Coverage | Code Quality |
-| --- | --- | --- | --- | --- |
+| ------------- | --------- | --------------- | ------------- | ------------ |
 | ![build](https://github.com/terrylinooo/simple-cache/workflows/build/badge.svg?branch=master) | [![Build Status](https://travis-ci.org/terrylinooo/simple-cache.svg?branch=master)](https://travis-ci.org/terrylinooo/simple-cache) | [![Build Status](https://scrutinizer-ci.com/g/terrylinooo/simple-cache/badges/build.png?b=master)](https://scrutinizer-ci.com/g/terrylinooo/simple-cache/build-status/master) |  [![codecov](https://scrutinizer-ci.com/g/terrylinooo/simple-cache/badges/coverage.png?b=master)](https://codecov.io/gh/terrylinooo/simple-cache) |  [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/terrylinooo/simple-cache/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/terrylinooo/simple-cache/?branch=master)
 
-PSR-16 simple cache drivers for PHP.
+Caching, a common performance-boosting technique, is a staple feature in many frameworks and libraries. This interoperability allows libraries to utilize existing caching implementations rather than creating their own. PSR-6 has addressed this issue, but its formal and verbose nature complicates simple use cases. PSR-16 is a simpler approach seeks to create a streamlined standard interface for common situations, ensuring compatibility with PSR-6 in a straightforward manner.
 
 ***Showcase***
 
-Simple Cache is used in [Cache Master](https://github.com/terrylinooo/cache-master), a [WordPress Cache Plugin](https://wordpress.org/plugins/cache-master/), and works great. Check it out if you are running WordPress sites, it will not let you down.
+Simple Cache is utilized in [Cache Master](https://github.com/terrylinooo/cache-master), a [WordPress Cache Plugin](https://wordpress.org/plugins/cache-master/), and it performs excellently. Check it out if you're running WordPress sites; it won't let you down.
 
 #### Built-in drivers:
 
 The required parameters are marked by an asterisk (*)
 
-| Driver name | `($driver)`| PHP modules | `($config)`
-| --- | --- | --- | --- |
-| File | `file` | - | `*storage` |
-| Redis | `redis` | redis |  `host`, `port`, `user`, `pass`, `unix_socket` |
-| MongoDB | `mongo` | mongodb | `host`, `port`, `user`, `pass`, `dbname`, `collection`, `unix_socket` |
-| MySQL | `mysql` | pdo_mysql | `host`, `port`, `*user`, `*pass`, `*dbname`, `table`, `charset` |
-| SQLite | `sqlite` | pdo_sqlite | `*storage` |
-| APC | `apc` | apc | - |
-| APCu | `apcu` | apcu | - |
-| Memcache | `memcache` | memcache | `host`, `port`, `unix_socket` |
-| LibMemcached | `memcached` | memcached | `host`, `port`, `unix_socket` |
-| WinCache | `wincache` | wincache | - |
+| Driver name  | `($driver)` | PHP modules | `($config)`                                                           |
+| ------------ | ----------- | ----------- | --------------------------------------------------------------------- |
+| File         | `file`      | -           | `*storage`                                                            |
+| Redis        | `redis`     | redis       | `host`, `port`, `user`, `pass`, `unix_socket`                         |
+| MongoDB      | `mongo`     | mongodb     | `host`, `port`, `user`, `pass`, `dbname`, `collection`, `unix_socket` |
+| MySQL        | `mysql`     | pdo_mysql   | `host`, `port`, `*user`, `*pass`, `*dbname`, `table`, `charset`       |
+| SQLite       | `sqlite`    | pdo_sqlite  | `*storage`                                                            |
+| APC          | `apc`       | apc         | -                                                                     |
+| APCu         | `apcu`      | apcu        | -                                                                     |
+| Memcache     | `memcache`  | memcache    | `host`, `port`, `unix_socket`                                         |
+| LibMemcached | `memcached` | memcached   | `host`, `port`, `unix_socket`                                         |
+| WinCache     | `wincache`  | wincache    | -                                                                     |
 
 Note: 
 
 - **WinCache** is excluded from unit testing since it's only used on Windows, and the testing processes are done on Linux environment.
 - `unix_socket` is empty by default, accepting the absolute path of the unix domain socket file. If it is set, `host` and `port` will be ignored.
 
-This command will show a list of the installed PHP modules.
+The following command displays a list of installed PHP modules.
 
 ```bash
 php -m
 ```
-Before you use, make sure you have the required PHP modules installed on the system.
+Before using, make sure the required PHP modules are installed on your system.
 
 ---
 
@@ -381,7 +381,7 @@ if ($cache->clear()) {
 public function clearExpiredItems(): array
 ```
 
-This method will return a list of the removed cache keys.
+This method returns a list of deleted cache keys.
 
 *Note*: **Redis** and **Memcache**, **Memcached** drivers will always return an empty array. See *Garbage Collection* section below.
 
@@ -411,9 +411,9 @@ var_dump($expiredItems);
 
 ## Build Data Schema
 
-For the first time of the use of the MySQL and SQLite drivers, the data schema is needed to build.
+The data schema needs to be built for the initial use of MySQL and SQLite drivers.
 
-You can use this API to make it.
+This API can be utilized for this purpose.
 
 ```php
 $cache->rebuild();
@@ -444,9 +444,10 @@ CREATE TABLE IF NOT EXISTS cache_data (
 
 ## Garbage Collection
 
-For built-in drivers, you can enable the garbage collection to clear expired cache from your system automatically.
+For built-in drivers, enabling garbage collection will automatically clear expired cache from your system.
 
-Use those parameters:
+Use the following parameters:
+
 ```php
 $config = [
     'gc_enable'      => true,
@@ -454,8 +455,10 @@ $config = [
     'gc_probability' => 1, // default
 ];
 ```
-It means there will be a `1%` chance of performing the garbage collection.
-Do not use it as 100% chance becasue it will fetch all keys and check them one by one, totally unnecessary. 
+
+This implies a 1% probability of executing garbage collection.
+Avoid setting it to 100% as it will unnecessarily fetch and check all keys one by one.
+
 
 Example:
 ```php
@@ -469,23 +472,59 @@ You can just use the `gc_enable` to enable garbage collection.
 
 ### Note
 
-For **Redis** and **Memcache**, **Memcached** drivers, there is no need to use this method becasue that the expired items will be cleared automatically.
+For the **Redis**, **Memcache**, and **Memcached** drivers, this method isn't necessary as expired items are automatically cleared.
 
+---
 
+##  Contributing
+
+Thank you for your interest in contributing to our project! We welcome contributions from everyone. Before getting started, please take a moment to review the guidelines below:
+
+### Guidelines
+
+- Fork the repository and create your branch from master.
+- Make sure your code follows our coding style and conventions.
+- Keep your code concise, well-documented, and modular.
+- Write clear commit messages that describe the purpose of your changes.
+- Test your changes thoroughly to ensure they don't introduce any new issues.
+- Make sure your code builds successfully without any errors or warnings.
+- Update relevant documentation, including README files if necessary.
+- Submit a pull request (PR) to the master branch of the original repository.
+
+### Code Testing
+
+We utilize a Docker image that includes various dependencies for our code testing. The image is based on `/tests/Fixture/docker/Dockerfile` and is preconfigured with the following components:
+
+- Redis
+- MongoDB
+- MySQL
+- PHP
+- Memcached
+- APCu
+
+Follow the steps below to run the tests:
+
+- Make sure you have Docker installed on your machine. If not, you can download and install it from the official Docker website.
+- Navigate to the project directory and build the Docker image by running the following command:
+    ```
+    composer test:docker:build
+    ```
+- Once the Docker image is built, you can run the tests by executing the following command:
+    ```
+    composer test:docker:run
+    ```
+- Observe the test results and make note of any failures or errors. The output will be displayed in the terminal.
 
 ---
 
 ## Author
 
-- [Terry L.](https://terryl.in/) from Tainan, Taiwan.
+- [Terry L.](https://terryl.in/) and contributers, such as [Jimmy](https://colocal.com) and others.
 
-#### The story about this library
+#### The Origin of this Library
 
-This PHP library was born for the [12th Iornman Game](https://ithelp.ithome.com.tw/2020-12th-ironman) contest hosted by [ITHelp](https://ithelp.ithome.com.tw/), an IT community in Taiwan. I named my topic as "*Road to PHP Master - The Best Practice in Open Souce Code.*", written in traditional Chinese. [Read here](https://ithelp.ithome.com.tw/users/20111119/ironman/3269), if you're interested.
+This PHP library was created for the [12th Ironman Game](https://ithelp.ithome.com.tw/2020-12th-ironman) competition, hosted by ITHelp, a Taiwanese IT community. My chosen topic was "Road to PHP Master - The Best Practice in Open Source Code", composed in traditional Chinese. You can read it [here](https://ithelp.ithome.com.tw/users/20111119/ironman/3269) if you're interested.
 
 ## License
 
 MIT
-
-
-

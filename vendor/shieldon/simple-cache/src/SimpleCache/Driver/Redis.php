@@ -27,6 +27,8 @@ use function is_bool;
  */
 class Redis extends CacheProvider
 {
+    protected $type = 'redis';
+
     /**
      * The Redis instance.
      *
@@ -38,7 +40,7 @@ class Redis extends CacheProvider
      * Constructor.
      *
      * @param array $setting The settings.
-     * 
+     *
      * @throws CacheException
      */
     public function __construct(array $setting = [])
@@ -66,9 +68,9 @@ class Redis extends CacheProvider
      * Connect to Redis server.
      *
      * @param array $config The settings.
-     * 
+     *
      * @return void
-     * 
+     *
      * @throws CacheException
      */
     protected function connect(array $config): void
@@ -103,25 +105,22 @@ class Redis extends CacheProvider
 
     /**
      * Redis authentication.
-     * @codeCoverageIgnore
      *
      * @param array $config The user / pass data.
-     * 
      * @return void
+     * @codeCoverageIgnore
      */
     protected function auth(array $config = []): void
     {
-        if ($this->getVersion() >= 6) {
-            if (!empty($config['user']) && !empty($config['pass'])) {
+        if (!empty($config['pass'])) {
+            if ($this->getVersion() >= 6 && !empty($config['user'])) {
                 $this->redis->auth([
                     $config['user'],
                     $config['pass'],
                 ]);
+                return;
             }
-            return;
-        }
 
-        if (!empty($config['pass'])) {
             $this->redis->auth($config['pass']);
         }
     }
@@ -129,7 +128,7 @@ class Redis extends CacheProvider
     /**
      * Get Redis version number.
      */
-    protected function getVersion(): int
+    public function getVersion(): int
     {
         $info = $this->redis->info();
 
@@ -170,7 +169,7 @@ class Redis extends CacheProvider
         $contents = [
             'timestamp' => $timestamp,
             'ttl'       => $ttl,
-            'value'     => $value
+            'value'     => $value,
         ];
 
         if (empty($ttl)) {
@@ -190,7 +189,7 @@ class Redis extends CacheProvider
      * Delete a cache by an extended Cache Driver.
      *
      * @param string $key The key of a cache.
-     * 
+     *
      * @return bool
      */
     protected function doDelete(string $key): bool
@@ -200,7 +199,7 @@ class Redis extends CacheProvider
 
     /**
      * Delete all caches by an extended Cache Driver.
-     * 
+     *
      * @return bool
      */
     protected function doClear(): bool
@@ -250,4 +249,3 @@ class Redis extends CacheProvider
         return 'sc:' . $key;
     }
 }
-

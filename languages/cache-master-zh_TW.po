@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Cache Master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 06:45+0000\n"
-"PO-Revision-Date: 2020-10-27 07:33+0000\n"
+"PO-Revision-Date: 2023-05-28 17:25+0000\n"
 "Last-Translator: Terry Lin <contact@terryl.in>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
@@ -14,635 +14,142 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.3.1; wp-5.5.1"
 
-#: inc/class-cache-master.php:469
-msgid "After"
-msgstr "快取後"
-
-#: inc/class-cache-master.php:470
-#, php-format
-msgid "Now: %s"
-msgstr "現在時間：%s"
-
-#: inc/class-cache-master.php:471 inc/class-cache-master.php:489
-#, php-format
-msgid "Memory usage: %s MB"
-msgstr "記憶體使用量：%s MB"
-
-#: inc/class-cache-master.php:472 inc/class-cache-master.php:490
-#, php-format
-msgid "SQL queries: %s"
-msgstr "資料庫查詢次數：%s"
-
-#: inc/class-cache-master.php:473 inc/class-cache-master.php:491
-#, php-format
-msgid "Page generated in %s seconds."
-msgstr "頁面在 %s 秒內產生。"
-
-#: inc/class-cache-master.php:485
-msgid "This page is cached by Cache Master plugin."
-msgstr "此頁面由Cache Master外掛進行快取。"
-
-#: inc/class-cache-master.php:486
-msgid "Before"
-msgstr "快取前"
-
-#: inc/class-cache-master.php:487
-#, php-format
-msgid "Time to cache: %s"
-msgstr "快取的時間：%s"
-
-#: inc/class-cache-master.php:488
-#, php-format
-msgid "Expires at: %s"
-msgstr "過期於：%s"
-
-#: inc/class-cache-master.php:666
-#: inc/admin/classes/class-scm-benchmark-widget.php:54
-msgid "Cache status powered by Cache Master plugin"
-msgstr "快取狀態由 Cache Master 外掛提供"
-
-#: inc/class-cache-master.php:667
-#: inc/admin/classes/class-scm-benchmark-widget.php:55
-msgid "Cache status"
-msgstr "快取狀態"
-
-#: inc/class-cache-master.php:673 inc/class-cache-master.php:674
-#: inc/admin/classes/class-scm-benchmark-widget.php:63
-#: inc/admin/classes/class-scm-benchmark-widget.php:64
-msgid "Memory usage"
-msgstr "記憶體使用量"
-
-#: inc/class-cache-master.php:680 inc/class-cache-master.php:681
-#: inc/admin/classes/class-scm-benchmark-widget.php:72
-#: inc/admin/classes/class-scm-benchmark-widget.php:73
-msgid "SQL queries"
-msgstr "資料庫查詢次數"
-
-#: inc/class-cache-master.php:687 inc/class-cache-master.php:688
-#: inc/admin/classes/class-scm-benchmark-widget.php:81
-#: inc/admin/classes/class-scm-benchmark-widget.php:82
-msgid "Page generation time"
-msgstr "頁面產生時間"
-
-#: inc/class-cache-master.php:690
-#: inc/admin/classes/class-scm-benchmark-widget.php:85
-msgid "sec"
-msgstr "秒"
-
-#: inc/admin/admin-bar.php:28 inc/admin/setting.php:341
-#: inc/admin/views/page_statistics.php:55
-msgid "Clear Cache"
-msgstr "清除快取"
-
-#: inc/admin/ajax-action.php:29
-msgid "Token has been rejected."
-msgstr "令牌已被拒絕。"
-
-#: inc/admin/ajax-action.php:34
-msgid "Access denied."
-msgstr "連線禁止。"
-
-#: inc/admin/ajax-action.php:41
+#. %s is the number of rows.
+#: inc/admin/ajax-action.php:42
 #, php-format
 msgid "%s rows has been deleted."
 msgstr "%s 筆資料已被刪除。"
 
-#: inc/admin/ajax-action.php:43
-msgid "There is no cache on your site currently."
-msgstr "目前在你的網站上沒有快取資料。"
+#: inc/admin/views/option-excluded-list.php:25
+msgid "A URL per line."
+msgstr "一行一個網址。"
 
-#: inc/admin/functions.php:45
-msgid "Archive"
-msgstr "彙整"
+#: inc/admin/views/option-excluded-cookie-vars.php:25
+#: inc/admin/views/option-excluded-get-vars.php:25
+#: inc/admin/views/option-excluded-post-vars.php:25
+msgid "A variable key per line."
+msgstr "一行一個變數鍵名。"
 
-#: inc/admin/functions.php:46 inc/admin/views/page_settings_page.php:69
-msgid "WooCommerce"
-msgstr "WooCommerce"
-
-#: inc/admin/functions.php:49 inc/admin/setting.php:180
-msgid "Homepage"
-msgstr "首頁"
-
-#: inc/admin/functions.php:50 inc/admin/views/option_post_types.php:18
-msgid "Post"
-msgstr "文章"
-
-#: inc/admin/functions.php:51 inc/admin/views/option_post_types.php:19
-msgid "Page"
-msgstr "頁面"
-
-#: inc/admin/functions.php:52 inc/admin/views/option_post_archives.php:19
-msgid "Category"
-msgstr "分類"
-
-#: inc/admin/functions.php:53 inc/admin/views/option_post_archives.php:20
-msgid "Tag"
-msgstr "標籤"
-
-#: inc/admin/functions.php:54 inc/admin/views/option_post_archives.php:21
-msgid "Date"
-msgstr "日期"
-
-#: inc/admin/functions.php:55 inc/admin/views/option_post_archives.php:22
-msgid "Author"
-msgstr "作者"
-
-#: inc/admin/functions.php:56
-#: inc/admin/views/option_woocommerce_post_types.php:18
-msgid "Product"
-msgstr "商品"
-
-#: inc/admin/functions.php:57
-#: inc/admin/views/option_woocommerce_post_archives.php:20
-msgid "Product tag"
-msgstr "商品標簽"
-
-#: inc/admin/functions.php:58
-#: inc/admin/views/option_woocommerce_post_archives.php:19
-msgid "Product category"
-msgstr "商品分類"
-
-#: inc/admin/functions.php:59
-msgid "Uncategorised"
-msgstr "未分類"
-
-#. Name of the plugin
-#: inc/admin/menu.php:29 inc/admin/menu.php:30 inc/admin/update-post.php:50
-#: inc/admin/classes/class-scm-benchmark-widget.php:105
-msgid "Cache Master"
-msgstr "Cache Master"
-
-#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:143
-msgid "Settings"
-msgstr "設定"
-
-#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:311
-msgid "Expert Mode"
-msgstr "專家模式"
-
-#: inc/admin/menu.php:57 inc/admin/menu.php:58 inc/admin/setting.php:326
-msgid "Statistics"
-msgstr "統計"
+#. Description of the plugin
+#, fuzzy
+#| msgid "A wordpress cache plugin."
+msgid "A WordPress cache plugin."
+msgstr "WordPress 快取外掛"
 
 #: inc/admin/menu.php:66 inc/admin/menu.php:67
 msgid "About"
 msgstr "關於"
 
-#: inc/admin/menu.php:162
-msgid "Source code"
-msgstr "原始碼"
+#: inc/admin/ajax-action.php:34
+msgid "Access denied."
+msgstr "連線禁止。"
 
-#: inc/admin/menu.php:213
-msgid "Cache Master supports only static URL structure."
-msgstr "Cache Master只支援靜態網址結構。"
+#: inc/admin/views/page-settings-page.php:59
+msgid "Advanced"
+msgstr "進階"
 
-#: inc/admin/menu.php:214
-#, php-format
-msgid "You have to go to %s page and change the permalink settings."
-msgstr "你必須到 %s 頁面改變固定連結設定。"
+#: inc/class-cache-master.php:480
+msgid "After"
+msgstr "快取後"
 
-#: inc/admin/setting.php:101 inc/admin/setting.php:196
-msgid "Driver"
-msgstr "驅動程式"
+#: inc/admin/views/option-clear-cache.php:21
+#: inc/admin/views/page-statistics.php:88
+msgid "All"
+msgstr "全部"
 
-#: inc/admin/setting.php:106
-msgid "Caching Status"
-msgstr "快取運行狀態"
+#: inc/admin/views/option-visibility-guest.php:28
+msgid "Always show cached pages to guests."
+msgstr "總是顯示快取網頁給訪客。"
 
-#: inc/admin/setting.php:112
-msgid "Cache Driver"
-msgstr "快取驅動程式"
+#: inc/admin/views/option-excluded-cookie-vars.php:24
+#: inc/admin/views/option-excluded-get-vars.php:24
+#: inc/admin/views/option-excluded-post-vars.php:24
+msgid ""
+"Any request containing those variables, even if its value is empty, will be "
+"ignored by Caster Master."
+msgstr "含有這些變數的任何請求，即便為空值，Cache Master 也會略過處理。"
 
-#: inc/admin/setting.php:118
-msgid "Time to Live"
-msgstr "存活時間"
+#: inc/admin/views/option-driver.php:22
+msgid "APC"
+msgstr "APC"
 
-#: inc/admin/setting.php:127
-msgid "Visibilty"
-msgstr "可見度"
+#: inc/admin/views/option-driver.php:23
+msgid "APCu"
+msgstr "APCu"
 
-#: inc/admin/setting.php:132
-msgid "Guests"
-msgstr "訪客"
+#: inc/admin/functions.php:46
+msgid "Archive"
+msgstr "彙整"
 
-#: inc/admin/setting.php:138
-msgid "Logged-in Users"
-msgstr "已登入使用者"
-
-#: inc/admin/setting.php:147
-msgid "Others"
-msgstr "其它"
-
-#: inc/admin/setting.php:152
-msgid "Debug Comment"
-msgstr "偵錯註解"
-
-#: inc/admin/setting.php:158
-msgid "Uninstall"
-msgstr "反安裝"
-
-#: inc/admin/setting.php:169 inc/admin/setting.php:237
-msgid "Pages"
-msgstr "頁面"
-
-#: inc/admin/setting.php:174 inc/admin/setting.php:242
-msgid "Post Types"
-msgstr "文章類型"
-
-#: inc/admin/setting.php:186 inc/admin/setting.php:248
+#: inc/admin/setting.php:189 inc/admin/setting.php:251
 msgid "Archive Pages"
 msgstr "彙整頁面"
 
-#: inc/admin/setting.php:201 inc/admin/views/option_driver.php:19
-msgid "Redis"
-msgstr "Redis"
+#: inc/admin/functions.php:56 inc/admin/views/option-post-archives.php:21
+msgid "Author"
+msgstr "作者"
 
-#: inc/admin/setting.php:207 inc/admin/views/option_driver.php:21
-msgid "Memcached"
-msgstr "Memcached"
+#: inc/admin/views/page-settings-page.php:56
+msgid "Basic"
+msgstr "基本設定"
 
-#: inc/admin/setting.php:213 inc/admin/views/option_driver.php:27
-msgid "MongoDB"
-msgstr "MongoDB"
+#: inc/admin/views/option-expert-mode-status.php:20
+#, fuzzy
+#| msgid ""
+#| "Because Cache Master works after all plguins installed, it can only save "
+#| "a maximum of 20-25 percent memory."
+msgid ""
+"Because Cache Master works after all plugins are installed, it can only save "
+"a maximum of 20-25 percent memory."
+msgstr "因為Cache Master在所有外掛載入後運作，最多只能節省 20-25 百分比的記憶體。"
 
-#: inc/admin/setting.php:223
-msgid "Support"
-msgstr "支援"
+#: inc/class-cache-master.php:497
+msgid "Before"
+msgstr "快取前"
 
-#: inc/admin/setting.php:228 inc/admin/setting.php:277
-#: inc/admin/setting.php:331 inc/admin/setting.php:361
-#: inc/admin/setting.php:381 inc/admin/views/option_caching_status.php:24
-#: inc/admin/views/option_expert_mode_status.php:29
-#: inc/admin/views/option_statistics_status.php:24
-msgid "Enable"
-msgstr "啟用"
+#: inc/admin/views/page-settings-page.php:65
+msgid "Benchmark"
+msgstr "基準分析"
 
-#: inc/admin/setting.php:257
-msgid "Events"
-msgstr "事件"
-
-#: inc/admin/setting.php:262
-msgid "Payment Complete"
-msgstr "付款完成"
-
-#: inc/admin/setting.php:283
-msgid "Excluded URL Path List"
-msgstr "排除網址路徑列表"
-
-#: inc/admin/setting.php:289
-msgid "Excluded $_GET Variables"
-msgstr "排除 $_GET 變數"
-
-#: inc/admin/setting.php:295
-msgid "Excluded $_POST Variables"
-msgstr "排除 $_POST 變數"
-
-#: inc/admin/setting.php:301
-msgid "Excluded $_COOKIE Variables"
-msgstr "排除 $_COOKIE 變數"
-
-#: inc/admin/setting.php:316
-msgid "Status"
-msgstr "狀態"
-
-#: inc/admin/setting.php:356
-msgid "Footer Text"
-msgstr "底部文字"
-
-#: inc/admin/setting.php:367 inc/admin/setting.php:387
-msgid "Display"
-msgstr "顯示"
-
-#: inc/admin/setting.php:376
-msgid "Widget"
-msgstr "小工具"
-
-#: inc/admin/update-post.php:50
-msgid "Cache has been cleared."
-msgstr "快取已被清除。"
-
-#: inc/admin/classes/class-scm-benchmark-widget.php:29
-msgid "Display the benchmark report before and after caching by Cache Master."
-msgstr "顯示經由 Cache Master 快取前後的基準分析報告。"
+#: inc/admin/views/page-settings-page.php:101
+msgid ""
+"Benchmark information consists of memory usage, SQL query number, page "
+"generation time and page caching status."
+msgstr "基準分析資訊由記憶體使用量、資料庫讀取次數、頁面產生耗費時間及頁面快取狀態所組成。"
 
 #: inc/admin/classes/class-scm-benchmark-widget.php:33
 msgid "Benchmark Report"
 msgstr "資準分析報告"
 
-#: inc/admin/views/option_advanced_cache_driver_memcached.php:18
-#: inc/admin/views/option_advanced_cache_driver_mongodb.php:18
-#: inc/admin/views/option_advanced_cache_driver_redis.php:18
-msgid "Host"
-msgstr "主機"
-
-#: inc/admin/views/option_advanced_cache_driver_memcached.php:19
-#: inc/admin/views/option_advanced_cache_driver_mongodb.php:19
-#: inc/admin/views/option_advanced_cache_driver_redis.php:19
-msgid "Port"
-msgstr "通訊阜"
-
-#: inc/admin/views/option_advanced_cache_driver_memcached.php:62
-#: inc/admin/views/option_advanced_cache_driver_mongodb.php:72
-#: inc/admin/views/option_advanced_cache_driver_redis.php:67
-msgid "Change the settings carefully, make sure you know what you do."
-msgstr "仔細地變更設定，確定您知道您在做什麼。"
-
-#: inc/admin/views/option_advanced_cache_driver_memcached.php:64
-#: inc/admin/views/option_advanced_cache_driver_mongodb.php:74
-#: inc/admin/views/option_advanced_cache_driver_redis.php:69
-msgid "The settings you set are not working, please recheck your settings."
-msgstr "您設定的設定值無法正常運作，請再檢查一次您的設定值。"
-
-#: inc/admin/views/option_advanced_cache_driver_memcached.php:88
-#: inc/admin/views/option_advanced_cache_driver_mongodb.php:97
-#: inc/admin/views/option_advanced_cache_driver_redis.php:93
-msgid ""
-"This option is not available to change, becasue you are using this driver."
-msgstr "此選項不能變更，因為您正使用這個驅動程式。"
-
-#: inc/admin/views/option_advanced_cache_driver_memcached.php:106
-#: inc/admin/views/option_advanced_cache_driver_mongodb.php:115
-#: inc/admin/views/option_advanced_cache_driver_redis.php:111
-#, php-format
-msgid "PHP extension \"%s\" is not installed on your system."
-msgstr "PHP 擴充套件 \"%s\" 未被安裝到您的系統上。"
-
-#: inc/admin/views/option_advanced_cache_driver_mongodb.php:20
-#: inc/admin/views/option_advanced_cache_driver_redis.php:20
-msgid "User"
-msgstr "使用者"
-
-#: inc/admin/views/option_advanced_cache_driver_mongodb.php:21
-#: inc/admin/views/option_advanced_cache_driver_redis.php:21
-msgid "Password"
-msgstr "密碼"
-
-#: inc/admin/views/option_advanced_cache_driver_mongodb.php:22
-msgid "Database"
-msgstr "資料庫"
-
-#: inc/admin/views/option_advanced_cache_driver_mongodb.php:23
-msgid "Collection"
-msgstr "集合"
-
-#: inc/admin/views/option_benchmark_footer_text.php:24
-#: inc/admin/views/option_benchmark_widget.php:24
-#: inc/admin/views/option_exclusion_status.php:24
-#: inc/admin/views/option_html_debug_comment.php:24
-#: inc/admin/views/option_post_homepage.php:24
-#: inc/admin/views/option_visibility_guest.php:24
-#: inc/admin/views/option_visibility_login_user.php:24
-#: inc/admin/views/option_woocommerce_event_payment_complete.php:24
-#: inc/admin/views/option_woocommerce_status.php:24
-msgid "Yes"
-msgstr "是"
-
-#: inc/admin/views/option_benchmark_footer_text.php:31
-#: inc/admin/views/option_benchmark_widget.php:31
-#: inc/admin/views/option_exclusion_status.php:31
-#: inc/admin/views/option_html_debug_comment.php:31
-#: inc/admin/views/option_post_homepage.php:31
-#: inc/admin/views/option_visibility_login_user.php:31
-#: inc/admin/views/option_woocommerce_event_payment_complete.php:31
-#: inc/admin/views/option_woocommerce_status.php:31
-msgid "No"
-msgstr "否"
-
-#: inc/admin/views/option_benchmark_footer_text.php:35
-msgid "Display the benchmark information in the footer area."
-msgstr "在底部區域顯示基準分析資訊。"
-
-#: inc/admin/views/option_benchmark_footer_text_display.php:24
-#: inc/admin/views/option_benchmark_widget_display.php:24
-msgid "Text"
-msgstr "文字"
-
-#: inc/admin/views/option_benchmark_footer_text_display.php:31
-#: inc/admin/views/option_benchmark_widget_display.php:31
-msgid "Icon"
-msgstr "圖示"
-
-#: inc/admin/views/option_benchmark_footer_text_display.php:38
-#: inc/admin/views/option_benchmark_widget_display.php:38
+#: inc/admin/views/option-benchmark-footer-text-display.php:38
+#: inc/admin/views/option-benchmark-widget-display.php:38
 msgid "Both"
 msgstr "兩者皆是"
 
-#: inc/admin/views/option_benchmark_footer_text_display.php:42
-#: inc/admin/views/option_benchmark_widget_display.php:42
-msgid ""
-"Would you like to use text or icon as the label name when display benchmark "
-"results?"
-msgstr "你想要使用文字還是圖示作為顯示基準分析結果的標籤名稱？"
+#: inc/admin/setting.php:115
+msgid "Cache Driver"
+msgstr "快取驅動程式"
 
-#: inc/admin/views/option_benchmark_footer_text_display.php:43
-#: inc/admin/views/option_benchmark_widget_display.php:43
-msgid "Example"
-msgstr "例子"
+#: inc/admin/update-post.php:52
+msgid "Cache has been cleared."
+msgstr "快取已被清除。"
 
-#: inc/admin/views/option_benchmark_widget.php:35
-msgid "Register a widget that can show the benchmark information."
-msgstr "註冊一個可顯示基準分析資訊的小工具。"
+#. Name of the plugin
+#: inc/admin/menu.php:29 inc/admin/menu.php:30 inc/admin/update-post.php:52
+#: inc/admin/classes/class-scm-benchmark-widget.php:105
+msgid "Cache Master"
+msgstr "Cache Master"
 
-#: inc/admin/views/option_caching_status.php:31
-#: inc/admin/views/option_expert_mode_status.php:36
-#: inc/admin/views/option_statistics_status.php:31
-msgid "Disable"
-msgstr "停用"
-
-#: inc/admin/views/option_caching_status.php:35
-msgid ""
-"Once you make this option disable, Cache Master will stop working and all "
-"cache  will be cleared."
-msgstr "每當你使這個選項停用，Cache Master會停止運作，所有快取將被清除。"
-
-#: inc/admin/views/option_clear_cache.php:21
-#: inc/admin/views/page_statistics.php:87
-msgid "All"
-msgstr "全部"
-
-#: inc/admin/views/option_clear_cache.php:33
-msgid "Clear cache data of a specific cache type, or just clear all of them."
-msgstr "清除特定快取類型的快取資料，或就把它們全部清除。"
-
-#: inc/admin/views/option_driver.php:18
-msgid "File"
-msgstr "檔案"
-
-#: inc/admin/views/option_driver.php:20
-msgid "Memcache"
-msgstr "Memcache"
-
-#: inc/admin/views/option_driver.php:22
-msgid "APC"
-msgstr "APC"
-
-#: inc/admin/views/option_driver.php:23
-msgid "APCu"
-msgstr "APCu"
-
-#: inc/admin/views/option_driver.php:24
-msgid "WinCache"
-msgstr "WinCache"
-
-#: inc/admin/views/option_driver.php:25
-msgid "MySQL"
-msgstr "MySQL"
-
-#: inc/admin/views/option_driver.php:26
-msgid "SQLite"
-msgstr "SQLite"
-
-#: inc/admin/views/option_driver.php:50
-msgid "Choose a driver to cache your posts and pages."
-msgstr "選擇驅動程式來快取你的文章和頁面。"
-
-#: inc/admin/views/option_excluded_cookie_vars.php:24
-#: inc/admin/views/option_excluded_get_vars.php:24
-#: inc/admin/views/option_excluded_post_vars.php:24
-msgid ""
-"Any request contains those variables, even its value is empty, Caster Master "
-"will ignore."
-msgstr "任何請求有這些變數時，即使值為空，Cache Master 會略過。"
-
-#: inc/admin/views/option_excluded_cookie_vars.php:25
-#: inc/admin/views/option_excluded_get_vars.php:25
-#: inc/admin/views/option_excluded_post_vars.php:25
-msgid "A variable key per line."
-msgstr "一行一個變數鍵名。"
-
-#: inc/admin/views/option_excluded_list.php:24
-msgid ""
-"Please enter the <strong>begin with</strong> URLs you want them excluded "
-"from Cache Master."
-msgstr "請輸入您想把它們從 Cache Master 排除的 <strong>開頭</strong> 網址。"
-
-#: inc/admin/views/option_excluded_list.php:25
-msgid "A URL per line."
-msgstr "一行一個網址。"
-
-#: inc/admin/views/option_excluded_list.php:26
-msgid ""
-"For example, use <code>/custom-type/</code> instead of <code>www.example."
-"com/custom-type/1/</code> for a web page."
-msgstr ""
-"舉例，對於網頁來說，使用 <code>/custom-type/</code> 而不是 <code>www.example.com/custom-"
-"type/1/</code>。"
-
-#: inc/admin/views/option_exclusion_status.php:35
-#: inc/admin/views/option_woocommerce_status.php:36
-msgid "The following settings work only when this option is enabled."
-msgstr "以下的設定只會在此選項被啟用時運作。"
-
-#: inc/admin/views/option_expert_mode_status.php:20
-msgid ""
-"Because Cache Master works after all plguins installed, it can only save a "
-"maximum of 20-25 percent memory."
-msgstr "因為Cache Master在所有外掛載入後運作，最多只能節省 20-25 百分比的記憶體。"
-
-#: inc/admin/views/option_expert_mode_status.php:21
+#. %s is the plugin name.
+#: inc/admin/views/page-settings-page.php:44
 #, php-format
 msgid ""
-"However, if you modify %s to let Cache Master output cache before everything "
-"initialized, it can save up to a maximum of <strong>95</strong> percent "
-"memory - even more."
-msgstr ""
-"不過呢，如果你修改 %s 讓Cache Master能在所有東西完成初始化之前輸出快取，可以節省上看 <strong>95</strong> "
-"百分比的記憶體，甚至更多。"
+"Cache Master cannot work with the plugin \"%s\" becasue of output buffer "
+"conflicts."
+msgstr "Cache Master無法和此外掛「%s」一同運作，因為緩衝區輸出衝突的關係。"
 
-#: inc/admin/views/option_expert_mode_status.php:40
-msgid ""
-"This option only works when you have put the custom PHP code in wp-config.php"
-msgstr "這個選項只在你有放客製的 PHP 程式碼在 wp-config.php 裡才會運作。"
-
-#: inc/admin/views/option_expert_mode_status.php:42
-msgid "PHP code for Expert Mode found."
-msgstr "專家模式的 PHP 程式碼已找到。"
-
-#: inc/admin/views/option_expert_mode_status.php:44
-msgid "Could not find PHP code for Expert Mode."
-msgstr "尚未發現專家模式的 PHP 程式碼。"
-
-#: inc/admin/views/option_html_debug_comment.php:35
-msgid ""
-"Insert a HTML debug comment in the source code. This is for debug purpose "
-"only, to let us know that the page is caching."
-msgstr "在原始碼中插入一個 HTML 偵錯註解。這個只為偵錯用途，讓我們知道頁面正被快取中。"
-
-#: inc/admin/views/option_post_archives.php:41
-#: inc/admin/views/option_woocommerce_post_archives.php:39
-msgid "What type of archive page do you like to cache?"
-msgstr "什麼類型的彙整頁面要被快取？"
-
-#: inc/admin/views/option_post_homepage.php:35
-msgid "Would you like to cache the homepage of your site?"
-msgstr "你想要快取你的網站首頁嗎？"
-
-#: inc/admin/views/option_post_types.php:38
-#: inc/admin/views/option_woocommerce_post_types.php:37
-msgid "What post type do you like to cache?"
-msgstr "你想快取何種文章類型？"
-
-#: inc/admin/views/option_statistics_status.php:35
-msgid "Record the caching information."
-msgstr "記錄快取的資訊。"
-
-#: inc/admin/views/option_ttl.php:36
-msgid "Please fill in a number between 300-86400. (in seconds)"
-msgstr "請填入在 300 至 86400 之間的數字。（以秒計）"
-
-#: inc/admin/views/option_uninstall.php:24
-msgid "Remove Cache Master generated data."
-msgstr "移除Cache Master產生的資料。"
-
-#: inc/admin/views/option_uninstall.php:31
-msgid "Keep Cache Master generated data."
-msgstr "保持Cache Master產生的資料。"
-
-#: inc/admin/views/option_uninstall.php:35
-msgid "This option only works when you uninstall this plugin."
-msgstr "這個選項只在你反安裝這個外掛時運作。"
-
-#: inc/admin/views/option_visibility_guest.php:28
-msgid "Always show cached pages to guests."
-msgstr "總是顯示快取網頁給訪客。"
-
-#: inc/admin/views/option_visibility_login_user.php:35
-msgid "Would you like to show cached pages to logged-in users as well?"
-msgstr "你也想要顯示快取網頁給已登入的使用者嗎？"
-
-#: inc/admin/views/option_visibility_login_user.php:37
-msgid "Note"
-msgstr "注意"
-
-#: inc/admin/views/option_visibility_login_user.php:38
-msgid ""
-"Logged-in users will not trigger the caching processes to avoid displaying "
-"admin bar to everyone."
-msgstr "已登入的使用者不會觸發快取的程序以避免管理選單列給所有人看到。"
-
-#: inc/admin/views/option_visibility_login_user.php:39
-msgid ""
-"Logged-in users always see cached pages when Expert Mode is working, because "
-"of outputting cache at a very early stage when running as Expert Mode."
-msgstr "已登入的使用者在「專家模式」運行時，總是看到快取網頁，因為在「專家模式」時，輸出快取是在非常早期階段的關係。"
-
-#: inc/admin/views/option_woocommerce_event_payment_complete.php:35
-msgid ""
-"Clear the product page cache referred to the order after a user has "
-"successfully completed a purchase."
-msgstr "在使用者成功完成購買之後，清除和訂單關聯的商品頁面快取。"
-
-#: inc/admin/views/option_woocommerce_status.php:35
-msgid "Support to WooCommerce plugin."
-msgstr "支援 WooCommerce 外掛。"
-
-#: inc/admin/views/option_woocommerce_status.php:37
-msgid ""
-"When a user's shopping cart is not empty, Cache Master will stop outputting "
-"cache."
-msgstr "當使用者的購物車不是空的時候，Cache Master 會停止輸出快取。"
-
-#: inc/admin/views/page_about.php:21
+#. %1$s: Terry L. %2$s: Taiwan
+#: inc/admin/views/page-about.php:24
 #, php-format
 msgid ""
 "Cache Master is brought to you by <a href=\"%1$s\">Terry L.</a> from <a "
@@ -650,136 +157,701 @@ msgid ""
 msgstr ""
 "來自<a href=\"%2$s\">台灣</a>的<a href=\"%1$s\">Terry L.</a> 帶給您 Cache Master。"
 
-#: inc/admin/views/page_about.php:31
+#: inc/admin/menu.php:213
+msgid "Cache Master supports only static URL structure."
+msgstr "Cache Master只支援靜態網址結構。"
+
+#: inc/class-cache-master.php:672
+#: inc/admin/classes/class-scm-benchmark-widget.php:55
+msgid "Cache status"
+msgstr "快取狀態"
+
+#: inc/class-cache-master.php:671
+#: inc/admin/classes/class-scm-benchmark-widget.php:54
+msgid "Cache status powered by Cache Master plugin"
+msgstr "快取狀態由 Cache Master 外掛提供"
+
+#: inc/admin/views/page-statistics.php:56
+msgid "Cache Type"
+msgstr "快取類別"
+
+#: inc/admin/setting.php:109
+msgid "Caching Status"
+msgstr "快取運行狀態"
+
+#: inc/admin/functions.php:53 inc/admin/views/option-post-archives.php:18
+msgid "Category"
+msgstr "分類"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:95
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:108
+#: inc/admin/views/option-advanced-cache-driver-redis.php:101
+msgid "Change the settings carefully, make sure you know what you are doing."
+msgstr "仔細地變更設定，確定您知道您在做什麼。"
+
+#: inc/admin/views/option-driver.php:50
+msgid "Choose a driver to cache your posts and pages."
+msgstr "選擇驅動程式來快取你的文章和頁面。"
+
+#: inc/admin/admin-bar.php:29 inc/admin/setting.php:344
+#: inc/admin/views/page-statistics.php:55
+msgid "Clear Cache"
+msgstr "清除快取"
+
+#: inc/admin/views/option-clear-cache.php:33
+msgid "Clear cache data of a specific cache type, or just clear all of them."
+msgstr "清除特定快取類型的快取資料，或就把它們全部清除。"
+
+#: inc/admin/views/option-woocommerce-event-payment-complete.php:35
 msgid ""
-"If you have any issues, or found any bugs, please report them in the "
-"following URL."
-msgstr "如果你有任何問題或找到任何程式臭蟲，請在下方網址回報。"
+"Clear the product page cache referred to the order after a user has "
+"successfully completed a purchase."
+msgstr "在使用者成功完成購買之後，清除和訂單關聯的商品頁面快取。"
 
-#: inc/admin/views/page_about.php:33
-msgid "Core"
-msgstr "核心程式"
-
-#: inc/admin/views/page_about.php:34
-msgid "Plugin"
-msgstr "外掛"
-
-#: inc/admin/views/page_expert_mode.php:26
+#: inc/admin/views/page-expert-mode.php:33
 msgid "Code"
 msgstr "程式碼"
 
-#: inc/admin/views/page_expert_mode.php:27
-msgid "This PHP code is generated dynamically depends on your settings."
-msgstr "這個 PHP 程式碼是動態產生，取決於你的設定。"
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:28
+msgid "Collection"
+msgstr "集合"
 
-#: inc/admin/views/page_expert_mode.php:28
+#: inc/admin/views/page-statistics.php:95
+#: inc/admin/views/page-statistics.php:126
+msgid "Confirm Clearing Cache"
+msgstr "確認清除快取"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:50
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:113
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:62
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:125
+#: inc/admin/views/option-advanced-cache-driver-redis.php:55
+#: inc/admin/views/option-advanced-cache-driver-redis.php:147
+msgid "Connection"
+msgstr "連線"
+
+#: inc/admin/views/page-about.php:40
+msgid "Core"
+msgstr "核心程式"
+
+#: inc/admin/views/option-expert-mode-status.php:53
+msgid "Could not find PHP code for Expert Mode."
+msgstr "尚未發現專家模式的 PHP 程式碼。"
+
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:27
+msgid "Database"
+msgstr "資料庫"
+
+#: inc/admin/functions.php:55 inc/admin/views/option-post-archives.php:20
+msgid "Date"
+msgstr "日期"
+
+#: inc/admin/setting.php:155
+msgid "Debug Comment"
+msgstr "偵錯註解"
+
+#: inc/admin/views/option-caching-status.php:31
+#: inc/admin/views/option-expert-mode-status.php:45
+#: inc/admin/views/option-statistics-status.php:31
+msgid "Disable"
+msgstr "停用"
+
+#: inc/admin/setting.php:370 inc/admin/setting.php:390
+msgid "Display"
+msgstr "顯示"
+
+#: inc/admin/views/option-benchmark-footer-text.php:35
+msgid "Display the benchmark information in the footer area."
+msgstr "在底部區域顯示基準分析資訊。"
+
+#: inc/admin/classes/class-scm-benchmark-widget.php:29
+msgid "Display the benchmark report before and after caching by Cache Master."
+msgstr "顯示經由 Cache Master 快取前後的基準分析報告。"
+
+#: inc/admin/setting.php:104 inc/admin/setting.php:199
+msgid "Driver"
+msgstr "驅動程式"
+
+#: inc/admin/setting.php:231 inc/admin/setting.php:280
+#: inc/admin/setting.php:334 inc/admin/setting.php:364
+#: inc/admin/setting.php:384 inc/admin/views/option-caching-status.php:24
+#: inc/admin/views/option-expert-mode-status.php:38
+#: inc/admin/views/option-statistics-status.php:24
+msgid "Enable"
+msgstr "啟用"
+
+#: inc/admin/setting.php:260
+msgid "Events"
+msgstr "事件"
+
+#: inc/admin/views/option-benchmark-footer-text-display.php:43
+#: inc/admin/views/option-benchmark-widget-display.php:43
+msgid "Example"
+msgstr "例子"
+
+#: inc/admin/setting.php:304
+msgid "Excluded $_COOKIE Variables"
+msgstr "排除 $_COOKIE 變數"
+
+#: inc/admin/setting.php:292
+msgid "Excluded $_GET Variables"
+msgstr "排除 $_GET 變數"
+
+#: inc/admin/setting.php:298
+msgid "Excluded $_POST Variables"
+msgstr "排除 $_POST 變數"
+
+#: inc/admin/views/page-settings-page.php:108
+msgid ""
+"Excluded pages or pages contain JavaScript errors will not display benchmark "
+"information."
+msgstr "被排除的頁面或頁面存在著 JavaScript 錯誤時將不會顯示基準分析資訊。"
+
+#: inc/admin/setting.php:286
+msgid "Excluded URL Path List"
+msgstr "排除網址路徑列表"
+
+#: inc/admin/views/page-settings-page.php:72
+msgid "Exclusion"
+msgstr "排除"
+
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:314
+msgid "Expert Mode"
+msgstr "專家模式"
+
+#: inc/class-cache-master.php:499
 #, php-format
-msgid "Please modify %s and put the following code into %s"
-msgstr "請修改 %s 並將以下程式碼放進 %s"
+msgid "Expires at: %s"
+msgstr "過期於：%s"
 
-#: inc/admin/views/page_expert_mode.php:31
+#: inc/admin/views/option-driver.php:18
+msgid "File"
+msgstr "檔案"
+
+#: inc/admin/setting.php:359
+msgid "Footer Text"
+msgstr "底部文字"
+
+#: inc/admin/views/option-excluded-list.php:26
+msgid ""
+"For example, use <code>/custom-type/</code> instead of <code>www.example."
+"com/custom-type/1/</code> for a web page."
+msgstr ""
+"舉例，對於網頁來說，使用 <code>/custom-type/</code> 而不是 <code>www.example.com/custom-"
+"type/1/</code>。"
+
+#: inc/admin/setting.php:135
+msgid "Guests"
+msgstr "訪客"
+
+#: inc/admin/views/page-expert-mode.php:39
 msgid "Guide"
 msgstr "指南"
 
-#: inc/admin/views/page_expert_mode.php:32
-msgid ""
-"The position of the PHP code is supposed to put right after the DB constants."
-msgstr "這段 PHP 程式碼的位置應該就放在在 DB 的常數之後。"
+#: inc/admin/functions.php:50 inc/admin/setting.php:183
+msgid "Homepage"
+msgstr "首頁"
 
-#: inc/admin/views/page_expert_mode.php:36
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:20
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:20
+#: inc/admin/views/option-advanced-cache-driver-redis.php:20
+msgid "Host"
+msgstr "主機"
+
+#. %s is a placeholder for a file name.
+#: inc/admin/views/option-expert-mode-status.php:25
+#, php-format
+msgid ""
+"However, if you modify %s to let Cache Master output cache before everything "
+"initialized, it can save up to a maximum of <strong>95</strong> percent "
+"memory - possibly even more."
+msgstr ""
+"不過呢，如果你修改 %s 讓Cache Master能在所有東西完成初始化之前輸出快取，可以節省上看 <strong>95</strong> "
+"百分比的記憶體，甚至更多。"
+
+#. URI of the plugin
+msgid "https://github.com/terrylinooo/cache-master"
+msgstr "https://github.com/terrylinooo/cache-master"
+
+#. Author URI of the plugin
+msgid "https://terryl.in/"
+msgstr "https://terryl.in/"
+
+#: inc/admin/views/option-benchmark-footer-text-display.php:31
+#: inc/admin/views/option-benchmark-widget-display.php:31
+msgid "Icon"
+msgstr "圖示"
+
+#: inc/admin/views/page-about.php:38
+#, fuzzy
+#| msgid ""
+#| "If you have any issues, or found any bugs, please report them in the "
+#| "following URL."
+msgid ""
+"If you have any issues or have found any bugs, please report them at the "
+"following URL."
+msgstr "如果你有任何問題或找到任何程式臭蟲，請在下方網址回報。"
+
+#: inc/admin/views/option-html-debug-comment.php:35
+#, fuzzy
+#| msgid ""
+#| "Insert an HTML debug comment in the source code. This is for debug "
+#| "purpose only, to let us know that the page is caching."
+msgid ""
+"Insert an HTML debug comment in the source code. This is for debug purposes "
+"only, to let us know that the page is being cached."
+msgstr "在原始碼中插入一個 HTML 偵錯註解。這個只為偵錯用途，讓我們知道頁面正被快取中。"
+
+#: inc/admin/views/option-uninstall.php:31
+msgid "Keep data generated by Cache Master."
+msgstr "保持Cache Master產生的資料。"
+
+#: inc/admin/setting.php:141
+msgid "Logged-in Users"
+msgstr "已登入使用者"
+
+#: inc/admin/views/option-visibility-login-user.php:39
+msgid ""
+"Logged-in users always see cached pages when Expert Mode is working because "
+"of outputting cache at a very early stage when running in Expert Mode."
+msgstr "已登入的使用者在「專家模式」運行時，總是看到快取網頁，因為在「專家模式」時，輸出快取是在非常早期階段的關係。"
+
+#: inc/admin/views/option-visibility-login-user.php:38
+msgid ""
+"Logged-in users will not trigger the caching processes to avoid displaying "
+"admin bar to everyone."
+msgstr "已登入的使用者不會觸發快取的程序以避免管理選單列給所有人看到。"
+
+#: inc/admin/views/option-driver.php:20
+msgid "Memcache"
+msgstr "Memcache"
+
+#: inc/admin/setting.php:210 inc/admin/views/option-driver.php:21
+msgid "Memcached"
+msgstr "Memcached"
+
+#: inc/class-cache-master.php:678 inc/class-cache-master.php:679
+#: inc/admin/classes/class-scm-benchmark-widget.php:63
+#: inc/admin/classes/class-scm-benchmark-widget.php:64
+msgid "Memory usage"
+msgstr "記憶體使用量"
+
+#: inc/class-cache-master.php:482 inc/class-cache-master.php:500
+#, php-format
+msgid "Memory usage: %s MB"
+msgstr "記憶體使用量：%s MB"
+
+#: inc/admin/setting.php:216 inc/admin/views/option-driver.php:25
+msgid "MongoDB"
+msgstr "MongoDB"
+
+#: inc/admin/views/option-driver.php:26
+msgid "MySQL"
+msgstr "MySQL"
+
+#: inc/admin/views/option-benchmark-footer-text.php:31
+#: inc/admin/views/option-benchmark-widget.php:31
+#: inc/admin/views/option-exclusion-status.php:31
+#: inc/admin/views/option-html-debug-comment.php:31
+#: inc/admin/views/option-post-homepage.php:31
+#: inc/admin/views/option-visibility-login-user.php:31
+#: inc/admin/views/option-woocommerce-event-payment-complete.php:31
+#: inc/admin/views/option-woocommerce-status.php:31
+msgid "No"
+msgstr "否"
+
+#: inc/admin/views/option-visibility-login-user.php:37
+msgid "Note"
+msgstr "注意"
+
+#: inc/class-cache-master.php:481
+#, php-format
+msgid "Now: %s"
+msgstr "現在時間：%s"
+
+#: inc/admin/views/option-caching-status.php:35
+#, fuzzy
+#| msgid ""
+#| "Once you make this option disable, Cache Master will stop working and all "
+#| "cache  will be cleared."
+msgid ""
+"Once you disable this option, Cache Master will stop working and all cache "
+"will be cleared."
+msgstr "每當你使這個選項停用，Cache Master會停止運作，所有快取將被清除。"
+
+#. %s is a placeholder for a file name.
+#: inc/admin/views/page-expert-mode.php:45
 #, php-format
 msgid ""
 "Once you have done things right, if you are using Chome, %s or right click "
 "and select \"View Source\" to vew the HTML source code."
 msgstr "當你把事情正確完成時，如果你正用 Chrome 瀏覽器，%s 或右鍵點擊並選擇 \"檢視原始碼\" 來查看 HTML 原始碼。"
 
-#: inc/admin/views/page_expert_mode.php:40
-msgid "You should see the result like this."
-msgstr "你應該看到的的結果像這樣。"
-
-#: inc/admin/views/page_settings_page.php:44
-#, php-format
-msgid ""
-"Cache Master cannot work with the plugin \"%s\" becasue of output buffer "
-"conflicts."
-msgstr "Cache Master無法和此外掛「%s」一同運作，因為緩衝區輸出衝突的關係。"
-
-#: inc/admin/views/page_settings_page.php:57
-msgid "Basic"
-msgstr "基本設定"
-
-#: inc/admin/views/page_settings_page.php:60
-msgid "Advanced"
-msgstr "進階"
-
-#: inc/admin/views/page_settings_page.php:63
-msgid "Preferences"
-msgstr "偏好設定"
-
-#: inc/admin/views/page_settings_page.php:66
-msgid "Benchmark"
-msgstr "基準分析"
-
-#: inc/admin/views/page_settings_page.php:73
-msgid "Exclusion"
-msgstr "排除"
-
-#: inc/admin/views/page_settings_page.php:92
-#: inc/admin/views/page_settings_page.php:105
-#: inc/admin/views/page_settings_page.php:140
+#: inc/admin/views/page-settings-page.php:94
+#: inc/admin/views/page-settings-page.php:107
+#: inc/admin/views/page-settings-page.php:142
 msgid "Once you make changes in this page, all cache data will be cleared."
 msgstr "一旦你在這個頁面進行設定變更，全部的快取資料會被清除。"
 
-#: inc/admin/views/page_settings_page.php:99
-msgid ""
-"Benchmark information consists of memory usage, SQL query number, page "
-"generation time and page caching status."
-msgstr "基準分析資訊由記憶體使用量、資料庫讀取次數、頁面產生耗費時間及頁面快取狀態所組成。"
+#: inc/admin/setting.php:150
+msgid "Others"
+msgstr "其它"
 
-#: inc/admin/views/page_settings_page.php:106
-msgid ""
-"Excluded pages or pages contain JavaScript errors will not display benchmark "
-"information."
-msgstr "被排除的頁面或頁面存在著 JavaScript 錯誤時將不會顯示基準分析資訊。"
+#: inc/admin/functions.php:52 inc/admin/views/option-post-types.php:19
+msgid "Page"
+msgstr "頁面"
 
-#: inc/admin/views/page_settings_page.php:112
+#: inc/class-cache-master.php:484 inc/class-cache-master.php:502
+#, php-format
+msgid "Page generated in %s seconds."
+msgstr "頁面在 %s 秒內產生。"
+
+#: inc/class-cache-master.php:692 inc/class-cache-master.php:693
+#: inc/admin/classes/class-scm-benchmark-widget.php:81
+#: inc/admin/classes/class-scm-benchmark-widget.php:82
+msgid "Page generation time"
+msgstr "頁面產生時間"
+
+#: inc/admin/setting.php:172 inc/admin/setting.php:240
+msgid "Pages"
+msgstr "頁面"
+
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:26
+#: inc/admin/views/option-advanced-cache-driver-redis.php:23
+msgid "Password"
+msgstr "密碼"
+
+#: inc/admin/setting.php:265
+msgid "Payment Complete"
+msgstr "付款完成"
+
+#: inc/admin/views/option-expert-mode-status.php:51
+msgid "PHP code for Expert Mode found."
+msgstr "專家模式的 PHP 程式碼已找到。"
+
+#. %s is the name of the PHP extension
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:177
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:185
+#: inc/admin/views/option-advanced-cache-driver-redis.php:178
+#, php-format
+msgid "PHP extension \"%s\" is not installed on your system."
+msgstr "PHP 擴充套件 \"%s\" 未被安裝到您的系統上。"
+
+#: inc/admin/views/option-excluded-list.php:24
+msgid ""
+"Please enter the <strong>begin with</strong> URLs you want them excluded "
+"from Cache Master."
+msgstr "請輸入您想把它們從 Cache Master 排除的 <strong>開頭</strong> 網址。"
+
+#: inc/admin/views/option-ttl.php:36
+msgid "Please fill in a number between 300-86400. (in seconds)"
+msgstr "請填入在 300 至 86400 之間的數字。（以秒計）"
+
+#. %s is a placeholder for a file name.
+#: inc/admin/views/page-expert-mode.php:36
+#, fuzzy, php-format
+#| msgid "Please modify %s and insert the following code into %s"
+msgid "Please modify %1$s and insert the following code into %2$s"
+msgstr "請修改 %s 並將以下程式碼放進 %s"
+
+#: inc/admin/views/page-about.php:41
+msgid "Plugin"
+msgstr "外掛"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:21
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:21
+#: inc/admin/views/option-advanced-cache-driver-redis.php:21
+msgid "Port"
+msgstr "通訊阜"
+
+#: inc/admin/functions.php:51 inc/admin/views/option-post-types.php:18
+msgid "Post"
+msgstr "文章"
+
+#: inc/admin/setting.php:177 inc/admin/setting.php:245
+msgid "Post Types"
+msgstr "文章類型"
+
+#: inc/admin/views/page-settings-page.php:62
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: inc/admin/functions.php:57
+#: inc/admin/views/option-woocommerce-post-types.php:18
+msgid "Product"
+msgstr "商品"
+
+#: inc/admin/functions.php:59
+#: inc/admin/views/option-woocommerce-post-archives.php:19
+msgid "Product category"
+msgstr "商品分類"
+
+#: inc/admin/functions.php:58
+#: inc/admin/views/option-woocommerce-post-archives.php:20
+msgid "Product tag"
+msgstr "商品標簽"
+
+#: inc/admin/views/option-statistics-status.php:35
+msgid "Record the caching information."
+msgstr "記錄快取的資訊。"
+
+#: inc/admin/setting.php:204 inc/admin/views/option-driver.php:19
+msgid "Redis"
+msgstr "Redis"
+
+#: inc/admin/views/option-benchmark-widget.php:35
+msgid "Register a widget that can display the benchmark information."
+msgstr "註冊一個可顯示基準分析資訊的小工具。"
+
+#: inc/admin/views/option-uninstall.php:24
+msgid "Remove data generated by Cache Master."
+msgstr "移除Cache Master產生的資料。"
+
+#: inc/admin/views/page-statistics.php:57
+msgid "Rows"
+msgstr "筆數"
+
+#: inc/class-cache-master.php:695
+#: inc/admin/classes/class-scm-benchmark-widget.php:85
+msgid "sec"
+msgstr "秒"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:101
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:114
+#: inc/admin/views/option-advanced-cache-driver-redis.php:107
+msgid "Set the permission of the socket file to 777 might solve this problem."
+msgstr "把 socket 檔案的權限設為 777 或許能解決這個問題。"
+
+#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:143
+msgid "Settings"
+msgstr "設定"
+
+#: inc/admin/views/page-settings-page.php:114
 msgid ""
 "Skip those settings unless you want to make changes to default settings."
 msgstr "略過這些設定，除非你要變更預設值。"
 
-#: inc/admin/views/page_settings_page.php:131
-msgid "WooCommerce is not actived."
-msgstr "WooCommerce 未啟用。"
+#: inc/admin/menu.php:162
+msgid "Source code"
+msgstr "原始碼"
 
-#: inc/admin/views/page_statistics.php:56
-msgid "Cache Type"
-msgstr "快取類別"
+#: inc/class-cache-master.php:685 inc/class-cache-master.php:686
+#: inc/admin/classes/class-scm-benchmark-widget.php:72
+#: inc/admin/classes/class-scm-benchmark-widget.php:73
+msgid "SQL queries"
+msgstr "資料庫查詢次數"
 
-#: inc/admin/views/page_statistics.php:57
-msgid "Rows"
-msgstr "筆數"
+#: inc/class-cache-master.php:483 inc/class-cache-master.php:501
+#, php-format
+msgid "SQL queries: %s"
+msgstr "資料庫查詢次數：%s"
 
-#: inc/admin/views/page_statistics.php:58
-msgid "Total Size"
-msgstr "總大小"
+#: inc/admin/views/option-driver.php:27
+msgid "SQLite"
+msgstr "SQLite"
 
-#: inc/admin/views/page_statistics.php:94
-#: inc/admin/views/page_statistics.php:125
-msgid "Confirm Clearing Cache"
-msgstr "確認清除快取"
+#: inc/admin/menu.php:57 inc/admin/menu.php:58 inc/admin/setting.php:329
+msgid "Statistics"
+msgstr "統計"
 
-#. Description of the plugin
-msgid "A wordpress cache plugin."
-msgstr "WordPress 快取外掛"
+#: inc/admin/setting.php:319
+msgid "Status"
+msgstr "狀態"
 
-#. URI of the plugin
-msgid "https://github.com/terrylinooo/cache-master"
-msgstr "https://github.com/terrylinooo/cache-master"
+#: inc/admin/setting.php:226
+msgid "Support"
+msgstr "支援"
+
+#: inc/admin/views/option-woocommerce-status.php:35
+msgid "Support to WooCommerce plugin."
+msgstr "支援 WooCommerce 外掛。"
+
+#: inc/admin/functions.php:54 inc/admin/views/option-post-archives.php:19
+msgid "Tag"
+msgstr "標籤"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:57
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:120
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:69
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:132
+#: inc/admin/views/option-advanced-cache-driver-redis.php:62
+#: inc/admin/views/option-advanced-cache-driver-redis.php:154
+msgid "TCP"
+msgstr "TCP"
 
 #. Author of the plugin
 msgid "Terry Lin"
 msgstr "Terry Lin"
 
-#. Author URI of the plugin
-msgid "https://terryl.in/"
-msgstr "https://terryl.in/"
+#: inc/admin/views/option-benchmark-footer-text-display.php:24
+#: inc/admin/views/option-benchmark-widget-display.php:24
+msgid "Text"
+msgstr "文字"
+
+#: inc/admin/views/option-exclusion-status.php:35
+#: inc/admin/views/option-woocommerce-status.php:36
+msgid "The following settings work only when this option is enabled."
+msgstr "以下的設定只會在此選項被啟用時運作。"
+
+#: inc/admin/views/page-expert-mode.php:40
+msgid ""
+"The position of the PHP code is supposed to put right after the DB constants."
+msgstr "這段 PHP 程式碼的位置應該就放在在 DB 的常數之後。"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:98
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:111
+#: inc/admin/views/option-advanced-cache-driver-redis.php:104
+msgid ""
+"The settings you have set are not working, please recheck your settings."
+msgstr "您設定的設定值無法正常運作，請再檢查一次您的設定值。"
+
+#: inc/admin/ajax-action.php:44
+msgid "There is no cache on your site currently."
+msgstr "目前在你的網站上沒有快取資料。"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:94
+msgid "This option is also applied to Memcache as well."
+msgstr "此選項同樣套用至 Memcache。"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:154
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:166
+#: inc/admin/views/option-advanced-cache-driver-redis.php:136
+msgid ""
+"This option is not available to change, becasue you are using this driver."
+msgstr "此選項不能變更，因為您正使用這個驅動程式。"
+
+#: inc/admin/views/option-expert-mode-status.php:49
+msgid ""
+"This option only works when you have put the custom PHP code in wp-config.php"
+msgstr "這個選項只在你有放客製的 PHP 程式碼在 wp-config.php 裡才會運作。"
+
+#: inc/admin/views/option-uninstall.php:35
+msgid "This option only works when you uninstall this plugin."
+msgstr "這個選項只在你反安裝這個外掛時運作。"
+
+#: inc/class-cache-master.php:496
+msgid "This page is cached by Cache Master plugin."
+msgstr "此頁面由Cache Master外掛進行快取。"
+
+#: inc/admin/views/page-expert-mode.php:34
+msgid "This PHP code is generated dynamically depending on your settings."
+msgstr "這個 PHP 程式碼是動態產生，取決於你的設定。"
+
+#: inc/class-cache-master.php:498
+#, php-format
+msgid "Time to cache: %s"
+msgstr "快取的時間：%s"
+
+#: inc/admin/setting.php:121
+msgid "Time to Live"
+msgstr "存活時間"
+
+#: inc/admin/ajax-action.php:29
+msgid "Token has been rejected."
+msgstr "令牌已被拒絕。"
+
+#: inc/admin/views/page-statistics.php:58
+msgid "Total Size"
+msgstr "總大小"
+
+#: inc/admin/functions.php:60
+msgid "Uncategorised"
+msgstr "未分類"
+
+#: inc/admin/setting.php:161
+msgid "Uninstall"
+msgstr "反安裝"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:23
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:63
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:126
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:23
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:75
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:138
+#: inc/admin/views/option-advanced-cache-driver-redis.php:25
+#: inc/admin/views/option-advanced-cache-driver-redis.php:68
+#: inc/admin/views/option-advanced-cache-driver-redis.php:160
+msgid "Unix Socket"
+msgstr "Unix Socket"
+
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:25
+#: inc/admin/views/option-advanced-cache-driver-redis.php:22
+msgid "User"
+msgstr "使用者"
+
+#: inc/admin/setting.php:130
+msgid "Visibilty"
+msgstr "可見度"
+
+#: inc/admin/views/option-post-archives.php:40
+#: inc/admin/views/option-woocommerce-post-archives.php:39
+msgid "What type of archive page do you like to cache?"
+msgstr "什麼類型的彙整頁面要被快取？"
+
+#: inc/admin/views/option-post-types.php:38
+#: inc/admin/views/option-woocommerce-post-types.php:37
+msgid "What type of post would you like to cache?"
+msgstr "你想快取何種文章類型？"
+
+#: inc/admin/views/option-woocommerce-status.php:37
+msgid ""
+"When a user's shopping cart is not empty, Cache Master will stop outputting "
+"cache."
+msgstr "當使用者的購物車不是空的時候，Cache Master 會停止輸出快取。"
+
+#: inc/admin/setting.php:379
+msgid "Widget"
+msgstr "小工具"
+
+#: inc/admin/views/option-driver.php:24
+msgid "WinCache"
+msgstr "WinCache"
+
+#: inc/admin/functions.php:47 inc/admin/views/page-settings-page.php:68
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: inc/admin/views/page-settings-page.php:133
+msgid "WooCommerce is not actived."
+msgstr "WooCommerce 未啟用。"
+
+#: inc/admin/views/option-post-homepage.php:35
+msgid "Would you like to cache the homepage of your site?"
+msgstr "你想要快取你的網站首頁嗎？"
+
+#: inc/admin/views/option-visibility-login-user.php:35
+msgid "Would you like to show cached pages to logged-in users as well?"
+msgstr "你也想要顯示快取網頁給已登入的使用者嗎？"
+
+#: inc/admin/views/option-benchmark-footer-text-display.php:42
+#: inc/admin/views/option-benchmark-widget-display.php:42
+#, fuzzy
+#| msgid ""
+#| "Would you like to use text or icon as the label name when display "
+#| "benchmark results?"
+msgid ""
+"Would you like to use text or an icon as the label name when displaying "
+"benchmark results?"
+msgstr "你想要使用文字還是圖示作為顯示基準分析結果的標籤名稱？"
+
+#: inc/admin/views/option-benchmark-footer-text.php:24
+#: inc/admin/views/option-benchmark-widget.php:24
+#: inc/admin/views/option-exclusion-status.php:24
+#: inc/admin/views/option-html-debug-comment.php:24
+#: inc/admin/views/option-post-homepage.php:24
+#: inc/admin/views/option-visibility-guest.php:24
+#: inc/admin/views/option-visibility-login-user.php:24
+#: inc/admin/views/option-woocommerce-event-payment-complete.php:24
+#: inc/admin/views/option-woocommerce-status.php:24
+msgid "Yes"
+msgstr "是"
+
+#. %s: permalink setting url.
+#: inc/admin/menu.php:215
+#, php-format
+msgid "You need to go to the %s page and change the permalink settings."
+msgstr "你必須到 %s 頁面改變固定連結設定。"
+
+#: inc/admin/views/page-expert-mode.php:49
+msgid "You should see the result like this."
+msgstr "你應該看到的的結果像這樣。"

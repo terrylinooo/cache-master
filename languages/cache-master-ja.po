@@ -1,0 +1,680 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cache Master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-28 17:20+0000\n"
+"PO-Revision-Date: 2023-05-28 18:29+0000\n"
+"Last-Translator: \n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.1; wp-6.2.2"
+
+#. %s is the number of rows.
+#: inc/admin/ajax-action.php:42
+#, php-format
+msgid "%s rows has been deleted."
+msgstr "%s行が削除されました。"
+
+#: inc/admin/views/option-excluded-list.php:25
+msgid "A URL per line."
+msgstr "1行に1つのURL。"
+
+#: inc/admin/views/option-excluded-cookie-vars.php:25 inc/admin/views/option-excluded-get-vars.php:25 inc/admin/views/option-excluded-post-vars.php:25
+msgid "A variable key per line."
+msgstr "1行に1つの変数キー。"
+
+#. Description of the plugin
+msgid "A WordPress cache plugin."
+msgstr "WordPressキャッシュプラグイン。"
+
+#: inc/admin/menu.php:66 inc/admin/menu.php:67
+msgid "About"
+msgstr "紹介"
+
+#: inc/admin/ajax-action.php:34
+msgid "Access denied."
+msgstr "アクセスが拒否されました。"
+
+#: inc/admin/views/page-settings-page.php:59
+msgid "Advanced"
+msgstr "高度な"
+
+#: inc/class-cache-master.php:480
+msgid "After"
+msgstr "後"
+
+#: inc/admin/views/option-clear-cache.php:21 inc/admin/views/page-statistics.php:88
+msgid "All"
+msgstr "すべて"
+
+#: inc/admin/views/option-visibility-guest.php:28
+msgid "Always show cached pages to guests."
+msgstr "常にキャッシュされたページをゲストに表示します。"
+
+#: inc/admin/views/option-excluded-cookie-vars.php:24 inc/admin/views/option-excluded-get-vars.php:24 inc/admin/views/option-excluded-post-vars.php:24
+msgid "Any request containing those variables, even if its value is empty, will be ignored by Caster Master."
+msgstr "それらの変数を含む任意のリクエスト、値が空であっても、Caster Masterによって無視されます。"
+
+#: inc/admin/views/option-driver.php:22
+msgid "APC"
+msgstr "APC"
+
+#: inc/admin/views/option-driver.php:23
+msgid "APCu"
+msgstr "APCu"
+
+#: inc/admin/functions.php:46
+msgid "Archive"
+msgstr "アーカイブ"
+
+#: inc/admin/setting.php:189 inc/admin/setting.php:251
+msgid "Archive Pages"
+msgstr "アーカイブページ"
+
+#: inc/admin/functions.php:56 inc/admin/views/option-post-archives.php:21
+msgid "Author"
+msgstr "作者"
+
+#: inc/admin/views/page-settings-page.php:56
+msgid "Basic"
+msgstr "基本"
+
+#: inc/admin/views/option-expert-mode-status.php:20
+msgid "Because Cache Master works after all plugins are installed, it can only save a maximum of 20-25 percent memory."
+msgstr "Cache Masterはすべてのプラグインがインストールされた後に動作するため、メモリを最大20-25パーセントしか節約できません。"
+
+#: inc/class-cache-master.php:497
+msgid "Before"
+msgstr "前"
+
+#: inc/admin/views/page-settings-page.php:65
+msgid "Benchmark"
+msgstr "ベンチマーク"
+
+#: inc/admin/views/page-settings-page.php:101
+msgid "Benchmark information consists of memory usage, SQL query number, page generation time and page caching status."
+msgstr "ベンチマーク情報は、メモリ使用量、SQLクエリ数、ページ生成時間、ページキャッシュ状態から成り立っています。"
+
+#: inc/admin/classes/class-scm-benchmark-widget.php:33
+msgid "Benchmark Report"
+msgstr "ベンチマークレポート"
+
+#: inc/admin/views/option-benchmark-footer-text-display.php:38 inc/admin/views/option-benchmark-widget-display.php:38
+msgid "Both"
+msgstr "両方"
+
+#: inc/admin/setting.php:115
+msgid "Cache Driver"
+msgstr "キャッシュドライバー"
+
+#: inc/admin/update-post.php:52
+msgid "Cache has been cleared."
+msgstr "キャッシュはクリアされました。"
+
+#: inc/admin/menu.php:29 inc/admin/menu.php:30 inc/admin/update-post.php:52 inc/admin/classes/class-scm-benchmark-widget.php:105
+msgid "Cache Master"
+msgstr "キャッシュマスター"
+
+msgid "Cache Master cannot work with the plugin \"%s\" because of output buffer conflicts."
+msgstr "出力バッファの競合のため、「キャッシュマスター」はプラグイン「%s」と共に動作できません。"
+
+msgid "Cache Master is brought to you by <a href=\"%1$s\">Terry L.</a> from <a href=\"%2$s\">Taiwan</a>."
+msgstr "キャッシュマスターは、<a href=\"%2$s\">台湾</a>の<a href=\"%1$s\">Terry L.</a>が提供しています。"
+
+msgid "Cache Master supports only static URL structure."
+msgstr "キャッシュマスターは静的URL構造のみをサポートしています。"
+
+msgid "Cache status"
+msgstr "キャッシュステータス"
+
+msgid "Cache status powered by Cache Master plugin"
+msgstr "キャッシュマスタープラグインによるキャッシュステータス"
+
+msgid "Cache Type"
+msgstr "キャッシュタイプ"
+
+msgid "Caching Status"
+msgstr "キャッシングステータス"
+
+msgid "Category"
+msgstr "カテゴリー"
+
+msgid "Change the settings carefully, make sure you know what you are doing."
+msgstr "設定を慎重に変更し、何をしているかを確認してください。"
+
+msgid "Choose a driver to cache your posts and pages."
+msgstr "投稿とページをキャッシュするドライバーを選択してください。"
+
+msgid "Clear Cache"
+msgstr "キャッシュをクリア"
+
+msgid "Clear cache data of a specific cache type, or just clear all of them."
+msgstr "特定のキャッシュタイプのキャッシュデータをクリアする、またはすべてクリアする。"
+
+msgid "Clear the product page cache referred to the order after a user has successfully completed a purchase."
+msgstr "ユーザーが購入を完了した後、注文に関連した商品ページのキャッシュをクリアします。"
+
+msgid "Code"
+msgstr "コード"
+
+msgid "Collection"
+msgstr "コレクション"
+
+msgid "Confirm Clearing Cache"
+msgstr "キャッシュクリアの確認"
+
+msgid "Connection"
+msgstr "接続"
+
+#: inc/admin/views/page-about.php:40
+msgid "Core"
+msgstr "コア"
+
+#: inc/admin/views/option-expert-mode-status.php:53
+msgid "Could not find PHP code for Expert Mode."
+msgstr "エキスパートモードのPHPコードが見つかりませんでした。"
+
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:27
+msgid "Database"
+msgstr "データベース"
+
+#: inc/admin/functions.php:55 inc/admin/views/option-post-archives.php:20
+msgid "Date"
+msgstr "日付"
+
+#: inc/admin/setting.php:155
+msgid "Debug Comment"
+msgstr "デバッグコメント"
+
+#: inc/admin/views/option-caching-status.php:31 inc/admin/views/option-expert-mode-status.php:45 inc/admin/views/option-statistics-status.php:31
+msgid "Disable"
+msgstr "無効"
+
+#: inc/admin/setting.php:370 inc/admin/setting.php:390
+msgid "Display"
+msgstr "表示"
+
+#: inc/admin/views/option-benchmark-footer-text.php:35
+msgid "Display the benchmark information in the footer area."
+msgstr "フッターエリアにベンチマーク情報を表示します。"
+
+#: inc/admin/classes/class-scm-benchmark-widget.php:29
+msgid "Display the benchmark report before and after caching by Cache Master."
+msgstr "キャッシュマスターによるキャッシュ前後のベンチマークレポートを表示します。"
+
+#: inc/admin/setting.php:104 inc/admin/setting.php:199
+msgid "Driver"
+msgstr "ドライバー"
+
+#: inc/admin/setting.php:231 inc/admin/setting.php:280 inc/admin/setting.php:334 inc/admin/setting.php:364 inc/admin/setting.php:384 inc/admin/views/option-caching-status.php:24 inc/admin/views/option-expert-mode-status.php:38 inc/admin/views/option-statistics-status.php:24
+msgid "Enable"
+msgstr "有効"
+
+#: inc/admin/setting.php:260
+msgid "Events"
+msgstr "イベント"
+
+#: inc/admin/views/option-benchmark-footer-text-display.php:43 inc/admin/views/option-benchmark-widget-display.php:43
+msgid "Example"
+msgstr "例"
+
+#: inc/admin/setting.php:304
+msgid "Excluded $_COOKIE Variables"
+msgstr "除外された $_COOKIE 変数"
+
+#: inc/admin/setting.php:292
+msgid "Excluded $_GET Variables"
+msgstr "除外された $_GET 変数"
+
+#: inc/admin/setting.php:298
+msgid "Excluded $_POST Variables"
+msgstr "除外された $_POST 変数"
+
+#: inc/admin/views/page-settings-page.php:108
+msgid "Excluded pages or pages contain JavaScript errors will not display benchmark information."
+msgstr "除外されたページやJavaScriptエラーを含むページでは、ベンチマーク情報は表示されません。"
+
+#: inc/admin/setting.php:286
+msgid "Excluded URL Path List"
+msgstr "除外されたURLパスリスト"
+
+#: inc/admin/views/page-settings-page.php:72
+msgid "Exclusion"
+msgstr "除外"
+
+#: inc/admin/menu.php:48 inc/admin/menu.php:49 inc/admin/setting.php:314
+msgid "Expert Mode"
+msgstr "エキスパートモード"
+
+#: inc/class-cache-master.php:499
+#, php-format
+msgid "Expires at: %s"
+msgstr "有効期限：%s"
+
+#: inc/admin/views/option-driver.php:18
+msgid "File"
+msgstr "ファイル"
+
+#: inc/admin/setting.php:359
+msgid "Footer Text"
+msgstr "フッターテキスト"
+
+#: inc/admin/views/option-excluded-list.php:26
+msgid "For example, use <code>/custom-type/</code> instead of <code>www.example.com/custom-type/1/</code> for a web page."
+msgstr "たとえば、ウェブページのために<code>www.example.com/custom-type/1/</code> の代わりに <code>/custom-type/</code> を使用します。"
+
+#: inc/admin/setting.php:135
+msgid "Guests"
+msgstr "ゲスト"
+
+#: inc/admin/views/page-expert-mode.php:39
+msgid "Guide"
+msgstr "ガイド"
+
+#: inc/admin/functions.php:50 inc/admin/setting.php:183
+msgid "Homepage"
+msgstr "ホームページ"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:20 inc/admin/views/option-advanced-cache-driver-mongodb.php:20 inc/admin/views/option-advanced-cache-driver-redis.php:20
+msgid "Host"
+msgstr "ホスト"
+
+#. %s is a placeholder for a file name.
+#: inc/admin/views/option-expert-mode-status.php:25
+#, php-format
+msgid "However, if you modify %s to let Cache Master output cache before everything initialized, it can save up to a maximum of <strong>95</strong> percent memory - possibly even more."
+msgstr "しかし、%sを変更してCache Masterがすべてを初期化する前にキャッシュを出力するようにすると、メモリの最大<strong>95</strong>％を節約できる可能性があります - それ以上の可能性もあります。"
+
+#. URI of the plugin
+msgid "https://github.com/terrylinooo/cache-master"
+msgstr "https://github.com/terrylinooo/cache-master"
+
+#. Author URI of the plugin
+msgid "https://terryl.in/"
+msgstr "https://terryl.in/"
+
+#: inc/admin/views/option-benchmark-footer-text-display.php:31 inc/admin/views/option-benchmark-widget-display.php:31
+msgid "Icon"
+msgstr "アイコン"
+
+#: inc/admin/views/page-about.php:38
+msgid "If you have any issues or have found any bugs, please report them at the following URL."
+msgstr "何か問題があるか、バグを見つけた場合は、以下のURLで報告してください。"
+
+#: inc/admin/views/option-html-debug-comment.php:35
+msgid "Insert an HTML debug comment in the source code. This is for debug purposes only, to let us know that the page is being cached."
+msgstr "ソースコードにHTMLデバッグコメントを挿入します。これはデバッグ目的のみで、ページがキャッシュされていることを知らせるためのものです。"
+
+#: inc/admin/views/option-uninstall.php:31
+msgid "Keep data generated by Cache Master."
+msgstr "Cache Masterによって生成されたデータを保持します。"
+
+#: inc/admin/setting.php:141
+msgid "Logged-in Users"
+msgstr "ログインユーザー"
+
+#: inc/admin/views/option-visibility-login-user.php:39
+msgid "Logged-in users always see cached pages when Expert Mode is working because of outputting cache at a very early stage when running in Expert Mode."
+msgstr "エキスパートモードで動作しているときにログインユーザーは常にキャッシュされたページを見ることができます。なぜなら、エキスパートモードで実行すると非常に早い段階でキャッシュが出力されるからです。"
+
+#: inc/admin/views/option-visibility-login-user.php:38
+msgid "Logged-in users will not trigger the caching processes to avoid displaying admin bar to everyone."
+msgstr "ログインユーザーは、管理バーを全員に表示するのを避けるために、キャッシュ処理をトリガーしません。"
+
+#: inc/admin/views/option-driver.php:20
+msgid "Memcache"
+msgstr "Memcache"
+
+#: inc/admin/setting.php:210 inc/admin/views/option-driver.php:21
+msgid "Memcached"
+msgstr "Memcached"
+
+#: inc/class-cache-master.php:678 inc/class-cache-master.php:679 inc/admin/classes/class-scm-benchmark-widget.php:63 inc/admin/classes/class-scm-benchmark-widget.php:64
+msgid "Memory usage"
+msgstr "メモリ使用量"
+
+#: inc/class-cache-master.php:482 inc/class-cache-master.php:500
+#, php-format
+msgid "Memory usage: %s MB"
+msgstr "メモリ使用量：%s MB"
+
+#: inc/admin/setting.php:216 inc/admin/views/option-driver.php:25
+msgid "MongoDB"
+msgstr "MongoDB"
+
+#: inc/admin/views/option-driver.php:26
+msgid "MySQL"
+msgstr "MySQL"
+
+#: inc/admin/views/option-benchmark-footer-text.php:31 inc/admin/views/option-benchmark-widget.php:31 inc/admin/views/option-exclusion-status.php:31 inc/admin/views/option-html-debug-comment.php:31 inc/admin/views/option-post-homepage.php:31 inc/admin/views/option-visibility-login-user.php:31 inc/admin/views/option-woocommerce-event-payment-complete.php:31 inc/admin/views/option-woocommerce-status.php:31
+msgid "No"
+msgstr "いいえ"
+
+#: inc/admin/views/option-visibility-login-user.php:37
+msgid "Note"
+msgstr "注意"
+
+#: inc/class-cache-master.php:481
+#, php-format
+msgid "Now: %s"
+msgstr "現在：%s"
+
+#: inc/admin/views/option-caching-status.php:35
+msgid "Once you disable this option, Cache Master will stop working and all cache will be cleared."
+msgstr "このオプションを無効にすると、Cache Masterは停止し、すべてのキャッシュがクリアされます。"
+
+#. %s is a placeholder for a file name.
+#: inc/admin/views/page-expert-mode.php:45
+#, php-format
+msgid "Once you have done things right, if you are using Chome, %s or right click and select \"View Source\" to vew the HTML source code."
+msgstr "あなたが正しく行ったら、Chromeを使用している場合は、%sまたは右クリックして「ソースを表示」を選択し、HTMLソースコードを表示します。"
+
+#: inc/admin/views/page-settings-page.php:94 inc/admin/views/page-settings-page.php:107 inc/admin/views/page-settings-page.php:142
+msgid "Once you make changes in this page, all cache data will be cleared."
+msgstr "このページで変更を加えると、すべてのキャッシュデータがクリアされます。"
+
+#: inc/admin/setting.php:150
+msgid "Others"
+msgstr "その他"
+
+#: inc/admin/functions.php:52 inc/admin/views/option-post-types.php:19
+msgid "Page"
+msgstr "ページ"
+
+#: inc/class-cache-master.php:484 inc/class-cache-master.php:502
+#, php-format
+msgid "Page generated in %s seconds."
+msgstr "ページ生成時間：%s秒"
+
+#: inc/class-cache-master.php:692 inc/class-cache-master.php:693 inc/admin/classes/class-scm-benchmark-widget.php:81 inc/admin/classes/class-scm-benchmark-widget.php:82
+msgid "Page generation time"
+msgstr "ページ生成時間"
+
+#: inc/admin/setting.php:172 inc/admin/setting.php:240
+msgid "Pages"
+msgstr "ページ"
+
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:26 inc/admin/views/option-advanced-cache-driver-redis.php:23
+msgid "Password"
+msgstr "パスワード"
+
+#: inc/admin/setting.php:265
+msgid "Payment Complete"
+msgstr "支払い完了"
+
+#: inc/admin/views/option-expert-mode-status.php:51
+msgid "PHP code for Expert Mode found."
+msgstr "エキスパートモードのPHPコードが見つかりました。"
+
+#. %s is the name of the PHP extension
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:177 inc/admin/views/option-advanced-cache-driver-mongodb.php:185 inc/admin/views/option-advanced-cache-driver-redis.php:178
+#, php-format
+msgid "PHP extension \"%s\" is not installed on your system."
+msgstr "PHP拡張機能 \"%s\" はあなたのシステムにインストールされていません。"
+
+#: inc/admin/views/option-excluded-list.php:24
+msgid "Please enter the <strong>begin with</strong> URLs you want them excluded from Cache Master."
+msgstr "Cache Masterから除外したい <strong>始まりの</strong> URLを入力してください。"
+
+#: inc/admin/views/option-ttl.php:36
+msgid "Please fill in a number between 300-86400. (in seconds)"
+msgstr "300から86400の間の数字を入力してください。(秒単位)"
+
+#. %s is a placeholder for a file name.
+#: inc/admin/views/page-expert-mode.php:36
+#, php-format
+msgid "Please modify %1$s and insert the following code into %2$s"
+msgstr "%1$sを修正し、以下のコードを%2$sに挿入してください"
+
+#: inc/admin/views/page-about.php:41
+msgid "Plugin"
+msgstr "プラグイン"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:21 inc/admin/views/option-advanced-cache-driver-mongodb.php:21 inc/admin/views/option-advanced-cache-driver-redis.php:21
+msgid "Port"
+msgstr "ポート"
+
+#: inc/admin/functions.php:51 inc/admin/views/option-post-types.php:18
+msgid "Post"
+msgstr "投稿"
+
+#: inc/admin/setting.php:177 inc/admin/setting.php:245
+msgid "Post Types"
+msgstr "投稿タイプ"
+
+#: inc/admin/views/page-settings-page.php:62
+msgid "Preferences"
+msgstr "プリファレンス"
+
+#: inc/admin/functions.php:57 inc/admin/views/option-woocommerce-post-types.php:18
+msgid "Product"
+msgstr "製品"
+
+#: inc/admin/functions.php:59 inc/admin/views/option-woocommerce-post-archives.php:19
+msgid "Product category"
+msgstr "製品カテゴリ"
+
+#: inc/admin/functions.php:58 inc/admin/views/option-woocommerce-post-archives.php:20
+msgid "Product tag"
+msgstr "製品タグ"
+
+#: inc/admin/views/option-statistics-status.php:35
+msgid "Record the caching information."
+msgstr "キャッシュ情報を記録する。"
+
+#: inc/admin/setting.php:204 inc/admin/views/option-driver.php:19
+msgid "Redis"
+msgstr "Redis"
+
+#: inc/admin/views/option-benchmark-widget.php:35
+msgid "Register a widget that can display the benchmark information."
+msgstr "ベンチマーク情報を表示できるウィジェットを登録します。"
+
+#: inc/admin/views/option-uninstall.php:24
+msgid "Remove data generated by Cache Master."
+msgstr "Cache Masterによって生成されたデータを削除します。"
+
+#: inc/admin/views/page-statistics.php:57
+msgid "Rows"
+msgstr "行数"
+
+#: inc/class-cache-master.php:695 inc/admin/classes/class-scm-benchmark-widget.php:85
+msgid "sec"
+msgstr "秒"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:101 inc/admin/views/option-advanced-cache-driver-mongodb.php:114 inc/admin/views/option-advanced-cache-driver-redis.php:107
+msgid "Set the permission of the socket file to 777 might solve this problem."
+msgstr "ソケットファイルの権限を777に設定すると、この問題が解決するかもしれません。"
+
+#: inc/admin/menu.php:39 inc/admin/menu.php:40 inc/admin/menu.php:143
+msgid "Settings"
+msgstr "設定"
+
+#: inc/admin/views/page-settings-page.php:114
+msgid "Skip those settings unless you want to make changes to default settings."
+msgstr "デフォルトの設定を変更したい場合以外は、これらの設定をスキップしてください。"
+
+#: inc/admin/menu.php:162
+msgid "Source code"
+msgstr "ソースコード"
+
+#: inc/class-cache-master.php:685 inc/class-cache-master.php:686 inc/admin/classes/class-scm-benchmark-widget.php:72 inc/admin/classes/class-scm-benchmark-widget.php:73
+msgid "SQL queries"
+msgstr "SQLクエリ"
+
+#: inc/class-cache-master.php:483 inc/class-cache-master.php:501
+#, php-format
+msgid "SQL queries: %s"
+msgstr "SQLクエリ: %s"
+
+#: inc/admin/views/option-driver.php:27
+msgid "SQLite"
+msgstr "SQLite"
+
+#: inc/admin/menu.php:57 inc/admin/menu.php:58 inc/admin/setting.php:329
+msgid "Statistics"
+msgstr "統計"
+
+#: inc/admin/setting.php:319
+msgid "Status"
+msgstr "ステータス"
+
+#: inc/admin/setting.php:226
+msgid "Support"
+msgstr "サポート"
+
+#: inc/admin/views/option-woocommerce-status.php:35
+msgid "Support to WooCommerce plugin."
+msgstr "WooCommerceプラグインのサポート"
+
+#: inc/admin/functions.php:54 inc/admin/views/option-post-archives.php:19
+msgid "Tag"
+msgstr "タグ"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:57 inc/admin/views/option-advanced-cache-driver-memcached.php:120 inc/admin/views/option-advanced-cache-driver-mongodb.php:69 inc/admin/views/option-advanced-cache-driver-mongodb.php:132 inc/admin/views/option-advanced-cache-driver-redis.php:62 inc/admin/views/option-advanced-cache-driver-redis.php:154
+msgid "TCP"
+msgstr "TCP"
+
+#. Author of the plugin
+msgid "Terry Lin"
+msgstr "テリー・リン"
+
+#: inc/admin/views/option-benchmark-footer-text-display.php:24 inc/admin/views/option-benchmark-widget-display.php:24
+msgid "Text"
+msgstr "テキスト"
+
+#: inc/admin/views/option-exclusion-status.php:35 inc/admin/views/option-woocommerce-status.php:36
+msgid "The following settings work only when this option is enabled."
+msgstr "以下の設定は、このオプションが有効になっているときのみ機能します。"
+
+#: inc/admin/views/page-expert-mode.php:40
+msgid "The position of the PHP code is supposed to put right after the DB constants."
+msgstr "PHPコードはDB定数の直後に置くことを想定しています。"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:98 inc/admin/views/option-advanced-cache-driver-mongodb.php:111 inc/admin/views/option-advanced-cache-driver-redis.php:104
+msgid "The settings you have set are not working, please recheck your settings."
+msgstr "設定が機能していません。設定を再確認してください。"
+
+#: inc/admin/ajax-action.php:44
+msgid "There is no cache on your site currently."
+msgstr "現在、あなたのサイトにはキャッシュがありません。"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:94
+msgid "This option is also applied to Memcache as well."
+msgstr "このオプションはMemcacheにも適用されます。"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:154 inc/admin/views/option-advanced-cache-driver-mongodb.php:166 inc/admin/views/option-advanced-cache-driver-redis.php:136
+msgid "This option is not available to change, becasue you are using this driver."
+msgstr "このオプションは、このドライバーを使用しているため、変更できません。"
+
+#: inc/admin/views/option-expert-mode-status.php:49
+msgid "This option only works when you have put the custom PHP code in wp-config.php"
+msgstr "このオプションは、カスタムPHPコードをwp-config.phpに入れた場合のみ機能します"
+
+#: inc/admin/views/option-uninstall.php:35
+msgid "This option only works when you uninstall this plugin."
+msgstr "このオプションは、このプラグインをアンインストールするときにのみ機能します。"
+
+#: inc/class-cache-master.php:496
+msgid "This page is cached by Cache Master plugin."
+msgstr "このページはCache Masterプラグインによってキャッシュされています。"
+
+#: inc/admin/views/page-expert-mode.php:34
+msgid "This PHP code is generated dynamically depending on your settings."
+msgstr "このPHPコードは、設定に応じて動的に生成されます。"
+
+#: inc/class-cache-master.php:498
+#, php-format
+msgid "Time to cache: %s"
+msgstr "キャッシュまでの時間: %s"
+
+#: inc/admin/setting.php:121
+msgid "Time to Live"
+msgstr "生存時間"
+
+#: inc/admin/ajax-action.php:29
+msgid "Token has been rejected."
+msgstr "トークンが拒否されました。"
+
+#: inc/admin/views/page-statistics.php:58
+msgid "Total Size"
+msgstr "合計サイズ"
+
+#: inc/admin/functions.php:60
+msgid "Uncategorised"
+msgstr "未分類"
+
+#: inc/admin/setting.php:161
+msgid "Uninstall"
+msgstr "アンインストール"
+
+#: inc/admin/views/option-advanced-cache-driver-memcached.php:23 inc/admin/views/option-advanced-cache-driver-memcached.php:63 inc/admin/views/option-advanced-cache-driver-memcached.php:126 inc/admin/views/option-advanced-cache-driver-mongodb.php:23 inc/admin/views/option-advanced-cache-driver-mongodb.php:75 inc/admin/views/option-advanced-cache-driver-mongodb.php:138 inc/admin/views/option-advanced-cache-driver-redis.php:25 inc/admin/views/option-advanced-cache-driver-redis.php:68 inc/admin/views/option-advanced-cache-driver-redis.php:160
+msgid "Unix Socket"
+msgstr "Unixソケット"
+
+#: inc/admin/views/option-advanced-cache-driver-mongodb.php:25 inc/admin/views/option-advanced-cache-driver-redis.php:22
+msgid "User"
+msgstr "ユーザー"
+
+#: inc/admin/setting.php:130
+msgid "Visibilty"
+msgstr "表示"
+
+#: inc/admin/views/option-post-archives.php:40 inc/admin/views/option-woocommerce-post-archives.php:39
+msgid "What type of archive page do you like to cache?"
+msgstr "どの種類のアーカイブページをキャッシュしますか？"
+
+#: inc/admin/views/option-post-types.php:38 inc/admin/views/option-woocommerce-post-types.php:37
+msgid "What type of post would you like to cache?"
+msgstr "どの種類の投稿をキャッシュしますか？"
+
+#: inc/admin/views/option-woocommerce-status.php:37
+msgid "When a user's shopping cart is not empty, Cache Master will stop outputting cache."
+msgstr "ユーザーのショッピングカートが空でない場合、Cache Masterはキャッシュの出力を停止します。"
+
+#: inc/admin/setting.php:379
+msgid "Widget"
+msgstr "ウィジェット"
+
+#: inc/admin/views/option-driver.php:24
+msgid "WinCache"
+msgstr "WinCache"
+
+#: inc/admin/functions.php:47 inc/admin/views/page-settings-page.php:68
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: inc/admin/views/page-settings-page.php:133
+msgid "WooCommerce is not actived."
+msgstr "WooCommerceがアクティブ化されていません。"
+
+#: inc/admin/views/option-post-homepage.php:35
+msgid "Would you like to cache the homepage of your site?"
+msgstr "あなたのサイトのホームページをキャッシュしますか？"
+
+#: inc/admin/views/option-visibility-login-user.php:35
+msgid "Would you like to show cached pages to logged-in users as well?"
+msgstr "ログインユーザーにもキャッシュされたページを表示しますか？"
+
+#: inc/admin/views/option-benchmark-footer-text-display.php:42 inc/admin/views/option-benchmark-widget-display.php:42
+msgid "Would you like to use text or an icon as the label name when displaying benchmark results?"
+msgstr "ベンチマーク結果を表示する際に、ラベル名としてテキストまたはアイコンを使用しますか？"
+
+#: inc/admin/views/option-benchmark-footer-text.php:24 inc/admin/views/option-benchmark-widget.php:24 inc/admin/views/option-exclusion-status.php:24 inc/admin/views/option-html-debug-comment.php:24 inc/admin/views/option-post-homepage.php:24 inc/admin/views/option-visibility-guest.php:24 inc/admin/views/option-visibility-login-user.php:24 inc/admin/views/option-woocommerce-event-payment-complete.php:24 inc/admin/views/option-woocommerce-status.php:24
+msgid "Yes"
+msgstr "はい"
+
+#. %s: permalink setting url.
+#: inc/admin/menu.php:215
+#, php-format
+msgid "You need to go to the %s page and change the permalink settings."
+msgstr "%sページに移動してパーマリンクの設定を変更する必要があります。"
+
+#: inc/admin/views/page-expert-mode.php:49
+msgid "You should see the result like this."
+msgstr "このような結果が表示されます。"

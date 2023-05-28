@@ -45,7 +45,7 @@ $total_rows = 0;
 	<?php if ( 'enable' === get_option( 'scm_option_statistics_status' ) ) : ?>
 
 	<div class="scm-content-wrapper">
-	
+
 		<table class="table-stats-wrapper">
 			<tr>
 				<td class="stats-l">
@@ -98,7 +98,7 @@ $total_rows = 0;
 				<td class="stats-r">
 					<form action="options.php" method="post">
 						<?php settings_fields( 'scm_setting_group_3' ); ?>
-						<?php do_settings_sections( 'scm_setting_page_3' );  ?>
+						<?php do_settings_sections( 'scm_setting_page_3' ); ?>
 						<hr />
 						<?php submit_button(); ?>
 					</form>
@@ -108,20 +108,20 @@ $total_rows = 0;
 	</div>
 	<div id="hidden-form-clear-cache" style="display: none">
 		<?php settings_fields( 'scm_setting_group_4' ); ?>
-		<?php do_settings_sections( 'scm_setting_page_4' );  ?>
+		<?php do_settings_sections( 'scm_setting_page_4' ); ?>
 	</div>
 
 	<?php else : ?>
 
 		<form action="options.php" method="post">
 			<?php settings_fields( 'scm_setting_group_3' ); ?>
-			<?php do_settings_sections( 'scm_setting_page_3' );  ?>
+			<?php do_settings_sections( 'scm_setting_page_3' ); ?>
 			<hr />
 			<?php submit_button(); ?>
 		</form>
 		<form action="options.php" method="post">
 			<?php settings_fields( 'scm_setting_group_4' ); ?>
-			<?php do_settings_sections( 'scm_setting_page_4' );  ?>
+			<?php do_settings_sections( 'scm_setting_page_4' ); ?>
 			<hr />
 			<?php submit_button( __( 'Confirm Clearing Cache', 'cache-master' ) ); ?>
 		</form>

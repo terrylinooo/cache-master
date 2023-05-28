@@ -191,7 +191,7 @@ function scm_run_expert_mode( $args ) {
 				$debug_message .= sprintf( 'Memory usage: %s MB', $memory_usage ) . "\n";
 				$debug_message .= sprintf( 'SQL queries: %s', $sql_queries ) . "\n";
 				$debug_message .= sprintf( 'Page generated in %s seconds.', $page_speed ) . "\n\n";
-				$debug_message .= '(Running as Expert Mode)' . "\n";
+				$debug_message .= '(running in Expert Mode)' . "\n";
 				$debug_message .= "\n//-->";
 
 				$cached_content .= $debug_message;

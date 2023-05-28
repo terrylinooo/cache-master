@@ -4,15 +4,14 @@ Contributors: terrylin
 Tags: cache, redis, mongodb, memcached, apc, apcu
 Requires at least: 4.7
 Tested up to: 6.0.1
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 Requires PHP: 7.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
 == Description ==
 
-Cache Master is an extremely light-weight and high-performace cache plugin that speeds up your WordPress sites on the fly.
-The core of Cache Master is driven by Shieldon Simple Cache, a PSR-16 simple cache library.
+Cache Master is an extremely lightweight, high-performance cache plugin that speeds up your WordPress sites on the fly. The core of Cache Master is driven by Shieldon Simple Cache, a PSR-16 simple cache library.
 
 Open sourced on GitHub:
 
@@ -23,42 +22,41 @@ First release date: October, 1, 2020
 
 == Features ==
 
-* Extremely light-weight and high-performace.
-* Support up to 10 cache drivers such as File, Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL, SQLite and MongoDB.
-* Detailed cache statistics, easy to manage.
-* Support to WooCommerce plugin.
-* More...
+* Extremely lightweight and high-performance.
+* Support up to 10 cache drivers such as File, Redis, Memcache, Memcached, APC, APCu, WinCache, MySQL, SQLite, and MongoDB.
+* Provide detailed cache statistics, easy to manage.
+* Compatible with the WooCommerce plugin.
+* And more...
 
 Notice:
 
-Before you install and use this plugin, please read the following notices carefully.
+Before you install and use this plugin, please read the following notices carefully:
 
-- Logged-in users will not trigger the caching processes.
-- A debug message will be attached to the end of the page source code. `<!-- This page is cached by Cache Master plugin. //-->`. This is for debugging purpose only, to let us know that the page is caching. This message can be disabled in `Settings` page.
+- Logged-in users will not trigger the caching process.
+- A debug message will be appended to the end of the page's source code: `<!-- This page is cached by the Cache Master plugin. //-->`. This is intended for debugging purposes only, confirming that the page is being cached. This message can be disabled in the Settings page.
 
-If you find your website doesn't work with Cache Master, please report an issue on GitHub and list all plugins installed on your website. I'll find out the problem and fix it.
+If you encounter issues with your website when using Cache Master, please report the problem on GitHub and list all plugins installed on your website. I'll investigate the problem and provide a fix.
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/cache-master` directory, or install the plugin through the WordPress plugins screen directly.
-2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Go to the Cache Master menu in Plugins and set your options.
+- Upload the plugin files to the /wp-content/plugins/cache-master directory, or install the plugin directly through the WordPress plugins screen.
+- Activate the plugin via the 'Plugins' screen in WordPress.
+- Navigate to the Cache Master menu in the Plugins section and configure your options.
 
 == Frequently Asked Questions ==
 
 = Should I disable other cache plugins? =
 
-Cache Master caches full webpages to static HTML files so that it is better to disable other similar cache plugins that do the same thing. It's okay to work with the object cache plugin together.
+Cache Master caches entire webpages into static HTML files. Therefore, it is recommended to disable other similar cache plugins that perform the same function. However, it can function alongside object cache plugins without issue.
 
-= How do I know whether or not the caching is working? =
+= How can I determine whether the caching is working or not? =
 
-Things to be aware of, the logged-in users will not trigger the caching processes. Please use incognito mode or another browser to revisit the same webpage, and then you can check the cache status in one of the following ways:
+Be aware that logged-in users will not trigger the caching process. To verify caching, use incognito mode or a different browser to revisit the same webpage, and then you can check the cache status in one of the following ways:
 
-* View the source code of the webpage to check the debug message as the screenshot (L)
-* Turn on the benchmark information in the footer section, as the screenshot (K), and you can see the cache status there.
+- View the source code of the webpage and check the debug message as shown in screenshot (L).
+- Enable the benchmark information in the footer section as shown in screenshot (K), where you can see the cache status.
 
-If there is no debug message in the source code or the cache status always shows No, it is probably a plugin conflicting with Cache Master, causing it not working.
-
+If there is no debug message in the source code, or if the cache status consistently displays 'No', there might be a plugin conflict with Cache Master that prevents it from working correctly.
 
 == Screenshots ==
 
@@ -75,6 +73,10 @@ If there is no debug message in the source code or the cache status always shows
 11. Front page - Benchmark (footer text)
 12. Debug message (Normal mode)
 13. Debug message (Expert mode)
+
+== Translation ==
+
+Japanese (ja_JP) by [Colocal](https://colocal.com).
 
 == Changelog ==
 
@@ -159,3 +161,9 @@ If there is no debug message in the source code or the cache status always shows
 * Test up to PHP 8.0
 * Test up to WordPress 6.0.1
 * Fix coding style to fit the WordPress coding standard.
+
+= 2.1.3 (5/29/2023) =
+
+* Test up to PHP 8.2.5
+* Test up to WordPress 6.2.2
+* Add Japanese translation.

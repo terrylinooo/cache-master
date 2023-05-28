@@ -14,11 +14,11 @@ if ( ! defined( 'SCM_INC' ) ) {
 
 add_action( 'admin_init', 'scm_settings' );
 
- /**
-  * Add settings.
-  *
-  * @return void
-  */
+/**
+ * Add settings.
+ *
+ * @return void
+ */
 function scm_settings() {
 
 	$register_groups = array(

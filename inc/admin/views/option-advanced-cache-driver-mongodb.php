@@ -105,11 +105,12 @@ if ( scm_test_driver( 'mongo' ) ) {
 			<?php endforeach; ?>
 
 		</div>
-		<p><em><?php _e( 'Change the settings carefully, make sure you know what you do.', 'cache-master' ); ?></em></p>
+		<p><em><?php _e( 'Change the settings carefully, make sure you know what you are doing.', 'cache-master' ); ?></em></p>
 		<?php if ( ! $is_driver_setting_correct ) : ?>
 		<p><em class="scm-msg scm-msg-error">
-			<?php _e( 'The settings you set are not working, please recheck your settings.', 'cache-master' ); ?>
-			<?php if ( 'socket' === $option_mongodb_connection_type ) : ?><br />
+			<?php _e( 'The settings you have set are not working, please recheck your settings.', 'cache-master' ); ?>
+			<?php if ( 'socket' === $option_mongodb_connection_type ) : ?>
+				<br />
 				<?php _e( 'Set the permission of the socket file to 777 might solve this problem.', 'cache-master' ); ?>
 			<?php endif; ?>
 		<?php endif; ?>
@@ -180,6 +181,7 @@ if ( scm_test_driver( 'mongo' ) ) {
 		</div>
 		<?php endforeach; ?>
 	</div>
+	<?php // translators: %s is the name of the PHP extension ?>
 	<p><em class="scm-msg scm-msg-error"><?php echo sprintf( __( 'PHP extension "%s" is not installed on your system.', 'cache-master' ), 'mongodb' ); ?></em></p>
 
 <?php endif; ?>
