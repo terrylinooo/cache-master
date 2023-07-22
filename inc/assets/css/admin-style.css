@@ -303,3 +303,20 @@
   border: 1px #99984e solid;
   color: #99984e;
 }
+
+.scm-table-ttl-example {
+  margin: 10px;
+  border: 1px #dddddd solid;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #f5f5f5;
+}
+.scm-table-ttl-example th {
+  background-color: #dddddd;
+  text-align: center;
+  padding: 10px;
+}
+.scm-table-ttl-example td {
+  text-align: center;
+  padding: 10px;
+}

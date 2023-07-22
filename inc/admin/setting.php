@@ -28,6 +28,7 @@ function scm_settings() {
 			'caching_status',
 			'driver',
 			'ttl',
+			'ttl_mechanism',
 			'visibility_login_user',
 			'visibility_guest',
 			'html_debug_comment',

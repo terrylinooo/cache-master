@@ -368,3 +368,22 @@
 		color: #99984e;
 	}
 }
+
+.scm-table-ttl-example {
+	margin: 10px;
+	border: 1px #dddddd solid;
+	padding: 5px;
+	border-radius: 3px;
+	background-color: #f5f5f5;
+
+	th {
+		background-color: #dddddd;
+		text-align: center;
+		padding: 10px;
+	}
+
+	td {
+		text-align: center;
+		padding: 10px;
+	}
+}

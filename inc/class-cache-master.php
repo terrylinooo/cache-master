@@ -271,6 +271,10 @@ class Cache_Master {
 			$ttl = (int) get_option( 'scm_option_ttl' );
 
 			$cache_content .= $debug_message;
+	
+			if ( 'disable' === get_option( 'scm_option_ttl_mechanism' ) ) {
+				$ttl = null;
+			}
 
 			$this->driver->set( $this->cache_key, $cache_content, $ttl );
 			$this->log( $this->data_type, $this->cache_key, $cache_content );
@@ -491,12 +495,20 @@ class Cache_Master {
 				$expires      = time() + $ttl;
 				$date_expires = $this->get_date( $expires );
 
+				$ttl_mechanism = get_option( 'scm_option_ttl_mechanism' );
+
 				$this->msg();
 				$this->msg( '<!--', 2 );
 				$this->msg( __( 'This page is cached by Cache Master plugin.', 'cache-master' ), 2 );
 				$this->msg( '....... ' . __( 'Before', 'cache-master' ) . ' .......', 2 );
 				$this->msg( sprintf( __( 'Time to cache: %s', 'cache-master' ), $date ) );
-				$this->msg( sprintf( __( 'Expires at: %s', 'cache-master' ), $date_expires ) );
+
+				if ( $ttl_mechanism === 'disable' ) {
+					$this->msg( __( 'TTL mechanism: disabled', 'cache-master' ) );
+				} else {
+					$this->msg( sprintf( __( 'Expires at: %s', 'cache-master' ), $date_expires ) );
+				}
+
 				$this->msg( sprintf( __( 'Memory usage: %s MB', 'cache-master' ), $memory_usage ) );
 				$this->msg( sprintf( __( 'SQL queries: %s', 'cache-master' ), $sql_queries ) );
 				$this->msg( sprintf( __( 'Page generated in %s seconds.', 'cache-master' ), $timer_stop ) );

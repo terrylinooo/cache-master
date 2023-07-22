@@ -3,7 +3,7 @@
 Contributors: terrylin
 Tags: cache, redis, mongodb, memcached, apc, apcu
 Requires at least: 4.7
-Tested up to: 6.0.1
+Tested up to: 6.2.2
 Stable tag: 2.1.3
 Requires PHP: 7.1.0
 License: GPLv3 or later
@@ -167,3 +167,7 @@ Japanese (ja_JP) by [Colocal](https://colocal.com).
 * Test up to PHP 8.2.5
 * Test up to WordPress 6.2.2
 * Add Japanese translation.
+
+= 2.2.0 (7/22/2023) =
+
+* Add an option to disable cache expiring mechanism.
